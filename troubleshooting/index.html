@@ -896,7 +896,7 @@
 <div class="highlight"><pre><span></span><code>/var/log/gpustack.log
 </code></pre></div>
 <h3 id="windows">Windows</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">Join-Path</span> <span class="n">-Path</span> <span class="nv">$env:APPDATA</span> <span class="n">-ChildPath</span> <span class="s2">&quot;gpustack\log\gpustack.log&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span>
 </code></pre></div>
 <h2 id="configure-log-level">Configure Log Level</h2>
 <p>You can enable the DEBUG log level on <code>gpustack start</code> by setting the <code>--debug</code> parameter.</p>

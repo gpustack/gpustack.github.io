@@ -927,7 +927,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -server-url http://myserver -token mytoken&quot;</span>
 </code></pre></div>
 <p>In the default setup, you can run the following to get the token used for adding workers:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="p">(</span><span class="nb">Join-Path</span> <span class="n">-Path</span> <span class="nv">$env:APPDATA</span> <span class="n">-ChildPath</span> <span class="s2">&quot;gpustack\token&quot;</span><span class="p">)</span> <span class="n">-Raw</span>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\token&quot;</span> <span class="n">-Raw</span>
 </code></pre></div>
 <h3 id="manual-installation">Manual Installation</h3>
 <p>For manual installation or detailed configurations, refer to the <a href="../installation/manual-installation/">installation</a> docs.</p>
@@ -940,7 +940,11 @@
 <ol>
 <li>Open <code>http://myserver</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</li>
 </ol>
+<p><strong>Linux or MacOS</strong></p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
+<p><strong>Windows</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
 </code></pre></div>
 <ol>
 <li>Click <code>Playground</code> in the navigation menus. Now you can chat with the LLM in the UI playground.</li>
