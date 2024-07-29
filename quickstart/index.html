@@ -920,7 +920,7 @@
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
 </code></pre></div>
 <h3 id="windows">Windows</h3>
-<p>Run PowerShell as administrator, then run the following command to install GPUStack:</p>
+<p>Run PowerShell as administrator (<strong>avoid</strong> using PowerShell ISE), then run the following command to install GPUStack:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
 </code></pre></div>
 <p>Optionally, you can add extra workers to form a GPUStack cluster by running the following command on other nodes (replace <code>http://myserver</code> and <code>mytoken</code> with your actual server URL and token):</p>
