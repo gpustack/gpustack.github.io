@@ -618,6 +618,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-self-hosted-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Self-hosted Model
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -927,6 +936,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-self-hosted-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Self-hosted Model
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1018,6 +1036,21 @@
 <li>Find the model instance you want to check.</li>
 <li>Click the <code>View Logs</code> button for the model instance in the <code>Operations</code> column.</li>
 </ol>
+<h2 id="use-self-hosted-model">Use Self-hosted Model</h2>
+<p>You can deploy self-hosted Ollama models by configuring the <code>--ollama-library-base-url</code> option in the GPUStack server. The <code>Ollama Library</code> URL should point to the base URL of the Ollama model registry. For example, <code>https://registry.mycompany.com</code>.</p>
+<p>Here is an example workflow to set up a registry, publish a model, and use it in GPUStack:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run a self-hosted OCI registry</span>
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">5001</span>:5000<span class="w"> </span>--name<span class="w"> </span>registry<span class="w"> </span>registry:2
+
+<span class="c1"># Push a model to the registry using Ollama</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>llama3
+ollama<span class="w"> </span>cp<span class="w"> </span>llama3<span class="w"> </span>localhost:5001/library/llama3
+ollama<span class="w"> </span>push<span class="w"> </span>localhost:5001/library/llama3<span class="w"> </span>--insecure
+
+<span class="c1"># Start GPUStack server with the custom Ollama library URL</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--ollama-library-base-url<span class="w"> </span>http://localhost:5001
+</code></pre></div>
+<p>That's it! You can now deploy the model <code>llama3</code> from <code>Ollama Library</code> source in GPUStack as usual, but the model will now be fetched from the self-hosted registry.</p>
 
 
 

@@ -1039,6 +1039,11 @@
 <td><code>False</code></td>
 <td>Force authentication for requests originating from localhost (127.0.0.1).When set to True, all requests from localhost will require authentication.</td>
 </tr>
+<tr>
+<td><code>--ollama-library-base-url</code></td>
+<td><code>https://registry.ollama.ai</code></td>
+<td>Base URL for the Ollama library.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="worker-options">Worker Options</h3>
@@ -1062,9 +1067,9 @@
 <td>IP address of the worker node. Auto-detected by default.</td>
 </tr>
 <tr>
-<td><code>--enable-metrics</code></td>
-<td><code>True</code></td>
-<td>Enable metrics.</td>
+<td><code>--disable-metrics</code></td>
+<td><code>False</code></td>
+<td>Disable metrics.</td>
 </tr>
 <tr>
 <td><code>--metrics-port</code> value</td>
@@ -1101,11 +1106,12 @@
 <span class="nt">system_reserved</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">gpu_memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">ollama_library_base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://registry.mycompany.com</span>
 
 <span class="c1"># Worker Options</span>
 <span class="nt">server_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://myserver</span>
 <span class="nt">worker_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.101</span>
-<span class="nt">enable_metrics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">disable_metrics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">metrics_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10151</span>
 <span class="nt">worker_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10150</span>
 <span class="nt">log_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/dir</span>
