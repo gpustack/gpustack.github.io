@@ -1429,11 +1429,11 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 </ul>
 <p>Select a GPU from the list. The model instance will attempt to deploy to this GPU if resources permit.</p>
 <h3 id="backend">Backend</h3>
-<p>The inference backend. Currently, GPUStack supports two backends: llama-box and vLLM. GPUStack automatically selects the backend based on the model's information.</p>
+<p>The inference backend. Currently, GPUStack supports two backends: llama-box and vLLM. GPUStack automatically selects the backend based on the model's configuration.</p>
 <p>For more details, please refer to the <a href="../inference-backends/">Inference Backends</a> section.</p>
 <h3 id="backend-parameters">Backend Parameters</h3>
-<p>Input the parameters for the backend you want to customize while running the model instance. Should be in the format <code>--parameter=value</code>, <code>--bool-parameter</code> or separate <code>--parameter</code> and <code>value</code> in two fields.
-For example, <code>--ctx-size=8192</code> for llama-box.</p>
+<p>Input the parameters for the backend you want to customize when running the model. The parameter should be in the format <code>--parameter=value</code>, <code>--bool-parameter</code> or as separate fields for <code>--parameter</code> and <code>value</code>.
+For example, use <code>--ctx-size=8192</code> for llama-box.</p>
 <p>For full list of supported parameters, please refer to the <a href="../inference-backends/">Inference Backends</a> section.</p>
 <h3 id="allow-cpu-offloading">Allow CPU Offloading</h3>
 <div class="admonition note">
