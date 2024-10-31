@@ -449,20 +449,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-server" class="md-nav__link">
+  <a href="#install-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Run Server
+      Install Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-worker" class="md-nav__link">
+  <a href="#install-worker" class="md-nav__link">
     <span class="md-ellipsis">
-      Add Worker
+      Install Worker
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Install Worker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-or-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux or MacOS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1231,20 +1255,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-server" class="md-nav__link">
+  <a href="#install-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Run Server
+      Install Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-worker" class="md-nav__link">
+  <a href="#install-worker" class="md-nav__link">
     <span class="md-ellipsis">
-      Add Worker
+      Install Worker
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Install Worker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux-or-macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux or MacOS:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1360,11 +1408,23 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 </table>
 <h2 id="available-cli-flags">Available CLI Flags</h2>
 <p>The appended CLI flags of the installation script are passed directly as flags for the <code>gpustack start</code> command. You can refer to the <a href="../../cli-reference/start/">CLI Reference</a> for details.</p>
-<h2 id="run-server">Run Server</h2>
-<p>To run a GPUStack server, install GPUStack without the <code>--server-url</code> flag. By default, the GPUStack server also runs a worker.</p>
-<p>If you want to run the server without the embedded worker, use the <code>--disable-worker</code> flag.</p>
-<h2 id="add-worker">Add Worker</h2>
-<p>To add a GPUStack worker, install GPUStack with the <code>--server-url</code> flag to specify the server it should connect to.</p>
+<h2 id="install-server">Install Server</h2>
+<p>To set up the GPUStack server (the management node), install GPUStack without the <code>--server-url</code> flag. By default, the GPUStack server includes an embedded worker. To disable this embedded worker on the server, use the <code>--disable-worker</code> flag.</p>
+<h2 id="install-worker">Install Worker</h2>
+<p>To form a cluster, you can add GPUStack workers on additional nodes. Install GPUStack with the <code>--server-url</code> flag to specify the server' address and the <code>--token</code> flag for worker authenticate.</p>
+<p>Examples are as follows:</p>
+<h3 id="linux-or-macos">Linux or MacOS:</h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://myserver<span class="w"> </span>--token<span class="w"> </span>mytoken
+</code></pre></div>
+<p>In the default setup, you can run the following on the server node to get the token used for adding workers:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
+<h3 id="windows_1">Windows:</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } --server-url http://myserver --token mytoken&quot;</span>
+</code></pre></div>
+<p>In the default setup, you can run the following on the server node to get the token used for adding workers:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\token&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 
 
 
