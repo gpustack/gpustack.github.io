@@ -1308,6 +1308,11 @@
 <td>Directory to store data. Default is OS specific.</td>
 </tr>
 <tr>
+<td><code>--cache-dir</code> value</td>
+<td></td>
+<td>Directory to store cache (e.g., model files). Defaults to <data-dir>/cache.</td>
+</tr>
+<tr>
 <td><code>-t</code> value, <code>--token</code> value</td>
 <td>Auto-generated.</td>
 <td>Shared secret used to add a worker.</td>
@@ -1432,7 +1437,8 @@
 <p>You can configure start options using a YAML-format config file when starting GPUStack server or worker. Here is a complete example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Common Options</span>
 <span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">data_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/dir</span>
+<span class="nt">data_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/data_dir</span>
+<span class="nt">cache_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/cache_dir</span>
 <span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mytoken</span>
 
 <span class="c1"># Server Options</span>
@@ -1452,7 +1458,7 @@
 <span class="nt">disable_metrics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">metrics_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10151</span>
 <span class="nt">worker_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10150</span>
-<span class="nt">log_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/dir</span>
+<span class="nt">log_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/log_dir</span>
 <span class="nt">system_reserved</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ram</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">  </span><span class="nt">vram</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>

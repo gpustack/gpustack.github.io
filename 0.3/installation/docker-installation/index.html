@@ -1255,7 +1255,8 @@
 </ul>
 <h2 id="run-gpustack-with-docker">Run GPUStack with Docker</h2>
 <p>Run the following command to start the GPUStack server:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>--ipc<span class="o">=</span>host<span class="w"> </span>gpustack/gpustack
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span>gpustack/gpustack
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

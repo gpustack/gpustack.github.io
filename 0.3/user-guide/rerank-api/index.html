@@ -701,6 +701,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -1150,6 +1159,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -1196,6 +1214,16 @@
 <p class="admonition-title">Note</p>
 <p>The Rerank API is only available when using the llama-box <a href="../inference-backends/">inference backend</a>.</p>
 </div>
+<h2 id="supported-models">Supported Models</h2>
+<p>The following models are available for reranking:</p>
+<ul>
+<li><a href="https://huggingface.co/gpustack/bce-reranker-base_v1-GGUF">bce-reranker-base_v1</a></li>
+<li><a href="https://huggingface.co/gpustack/jina-reranker-v1-turbo-en-GGUF">jina-reranker-v1-turbo-en</a></li>
+<li><a href="https://huggingface.co/gpustack/jina-reranker-v1-tiny-en-GGUF">jina-reranker-v1-tiny-en</a></li>
+<li><a href="https://huggingface.co/gpustack/bge-reranker-v2-m3-GGUF">bge-reranker-v2-m3</a></li>
+<li><a href="https://huggingface.co/gpustack/gte-multilingual-reranker-base-GGUF">gte-multilingual-reranker-base</a> <span title="experimental">🧪</span></li>
+<li><a href="https://huggingface.co/gpustack/jina-reranker-v2-base-multilingual-GGUF">jina-reranker-v2-base-multilingual</a> <span title="experimental">🧪</span></li>
+</ul>
 <h2 id="usage">Usage</h2>
 <p>The following is an example using the Rerank API:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>myapikey
