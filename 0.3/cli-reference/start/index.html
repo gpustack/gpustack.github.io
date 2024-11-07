@@ -1378,6 +1378,11 @@
 <td>Initial password for the default admin user.</td>
 </tr>
 <tr>
+<td><code>--database-url</code> value</td>
+<td><code>sqlite:///&lt;data-dir&gt;/database.db</code></td>
+<td>URL of the database. Example: postgresql://user:password@hostname:port/db_name</td>
+</tr>
+<tr>
 <td><code>--ssl-keyfile</code> value</td>
 <td></td>
 <td>Path to the SSL key file.</td>
@@ -1468,6 +1473,7 @@
 <span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
 <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="nt">disable_worker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">database_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://user:password@hostname:port/db_name</span>
 <span class="nt">ssl_keyfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/keyfile</span>
 <span class="nt">ssl_certfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/certfile</span>
 <span class="nt">force_auth_localhost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>

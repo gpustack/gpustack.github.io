@@ -1363,6 +1363,9 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 <span class="c1"># Run server with TLS.</span>
 curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--ssl-keyfile<span class="w"> </span>/path/to/keyfile<span class="w"> </span>--ssl-certfile<span class="w"> </span>/path/to/certfile
 
+<span class="c1"># Run server with external postgresql database.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--database-url<span class="w"> </span><span class="s2">&quot;postgresql://username:password@host:port/database_name&quot;</span>
+
 <span class="c1"># Run worker with specified IP.</span>
 curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://myserver<span class="w"> </span>--token<span class="w"> </span>mytoken<span class="w"> </span>--worker-ip<span class="w"> </span><span class="m">192</span>.168.1.100
 
@@ -1383,6 +1386,10 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 
 <span class="c"># Run server with TLS.</span>
 <span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --ssl-keyfile &#39;C:\path\to\keyfile&#39; --ssl-certfile &#39;C:\path\to\certfile&#39;&quot;</span>
+
+
+<span class="c"># Run server with external postgresql database.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --database-url &#39;postgresql://username:password@host:port/database_name&#39;&quot;</span>
 
 <span class="c"># Run worker with specified IP.</span>
 <span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --server-url &#39;http://myserver&#39; --token &#39;mytoken&#39; --worker-ip &#39;192.168.1.100&#39;&quot;</span>
