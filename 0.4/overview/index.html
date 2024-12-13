@@ -339,21 +339,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported Platforms">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#supported-architectures" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported Architectures
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -445,6 +430,8 @@
       
         
       
+        
+      
     
     
     
@@ -472,6 +459,27 @@
             Installation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/installation-requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1587,21 +1595,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported Platforms">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#supported-architectures" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported Architectures
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1698,59 +1691,6 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> macOS</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Windows</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Linux</li>
-</ul>
-<p>The following operating systems are verified to work with GPUStack:</p>
-<table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Versions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows</td>
-<td>10, 11</td>
-</tr>
-<tr>
-<td>Ubuntu</td>
-<td>&gt;= 20.04</td>
-</tr>
-<tr>
-<td>Debian</td>
-<td>&gt;= 11</td>
-</tr>
-<tr>
-<td>RHEL</td>
-<td>&gt;= 8</td>
-</tr>
-<tr>
-<td>Rocky</td>
-<td>&gt;= 8</td>
-</tr>
-<tr>
-<td>Fedora</td>
-<td>&gt;= 36</td>
-</tr>
-<tr>
-<td>OpenSUSE</td>
-<td>&gt;= 15.3 (leap)</td>
-</tr>
-<tr>
-<td>OpenEuler</td>
-<td>&gt;= 22.03</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The installation of GPUStack worker on a Linux system requires that the GLIBC version be 2.29 or higher.</p>
-</div>
-<h3 id="supported-architectures">Supported Architectures</h3>
-<p>GPUStack supports both <strong>AMD64</strong> and <strong>ARM64</strong> architectures, with the following notes:</p>
-<ul>
-<li>On Linux and macOS, if using Python versions below 3.12, ensure you install the Python distribution matching your architecture.</li>
-<li>On Windows, please use the AMD64 distribution of Python, as wheel packages for certain dependencies are unavailable for ARM64. If you use tools like <code>conda</code>, this will be handled automatically, as conda installs the AMD64 distribution by default.</li>
 </ul>
 <h2 id="supported-accelerators">Supported Accelerators</h2>
 <ul class="task-list">

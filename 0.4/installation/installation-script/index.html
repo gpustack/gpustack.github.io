@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.gpustack.ai/0.4/installation/installation-script/">
       
       
-        <link rel="prev" href="../../quickstart/">
+        <link rel="prev" href="../installation-requirements/">
       
       
         <link rel="next" href="../docker-installation/">
@@ -334,6 +334,8 @@
       
         
       
+        
+      
     
     
     
@@ -361,6 +363,27 @@
             Installation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation-requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1729,6 +1752,9 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 
 <span class="c1"># Install a custom wheel package other than releases form pypi.org.</span>
 curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_PACKAGE_SPEC</span><span class="o">=</span>https://repo.mycompany.com/my-gpustack.whl<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+
+<span class="c1"># Install a specific version with extra audio dependencies.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_PACKAGE_SPEC</span><span class="o">=</span>gpustack<span class="o">[</span>audio<span class="o">]==</span><span class="m">0</span>.4.0<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
 </code></pre></div>
 <h2 id="windows">Windows</h2>
 <p>You can use the installation script available at <code>https://get.gpustack.ai</code> to install GPUStack as a service on Windows Service Manager.</p>
@@ -1759,6 +1785,10 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 <span class="c"># Install a custom wheel package other than releases form pypi.org.</span>
 <span class="nv">$env:INSTALL_PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;https://repo.mycompany.com/my-gpustack.whl&quot;</span>
 <span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+
+<span class="c"># Install a specific version with extra audio dependencies.</span>
+<span class="nv">$env:INSTALL_PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack[audio]==0.4.0&quot;</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1783,11 +1813,6 @@ curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<
 <td><code>INSTALL_PACKAGE_SPEC</code></td>
 <td><code>gpustack[all]</code> or <code>gpustack[audio]</code></td>
 <td>The package spec to install. The install script will automatically decide based on the platform. It supports PYPI package names, URLs, and local paths. See the <a href="https://pip.pypa.io/en/stable/cli/pip_install/#pip-install">pip install documentation</a> for details. <ul><li><code>gpustack[all]</code>: With all inference backends: llama-box, vllm, vox-box.</li><li><code>gpustack[vllm]</code>: With inference backends: llama-box, vllm.</li><li><code>gpustack[audio]</code>: With inference backends: llama-box, vox-box.</li></ul></td>
-</tr>
-<tr>
-<td><code>INSTALL_PRE_RELEASE</code></td>
-<td>(empty)</td>
-<td>If set to 1, pre-release packages will be installed.</td>
 </tr>
 <tr>
 <td><code>INSTALL_SKIP_POST_CHECK</code></td>
