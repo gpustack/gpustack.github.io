@@ -1631,25 +1631,24 @@
 </ol>
 <h2 id="use-api-key">Use API Key</h2>
 <p>GPUStack supports using the API key as a bearer token. The following is an example using curl:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>myapikey
-curl<span class="w"> </span>http://myserver/v1-openai/chat/completions<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">    &quot;model&quot;: &quot;llama3&quot;,</span>
-<span class="s1">    &quot;messages&quot;: [</span>
-<span class="s1">      {</span>
-<span class="s1">        &quot;role&quot;: &quot;system&quot;,</span>
-<span class="s1">        &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
-<span class="s1">      },</span>
-<span class="s1">      {</span>
-<span class="s1">        &quot;role&quot;: &quot;user&quot;,</span>
-<span class="s1">        &quot;content&quot;: &quot;Hello!&quot;</span>
-<span class="s1">      }</span>
-<span class="s1">    ],</span>
-<span class="s1">    &quot;stream&quot;: true</span>
-<span class="s1">  }&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">export GPUSTACK_API_KEY=myapikey
+curl http://myserver/v1-openai/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $GPUSTACK_API_KEY" \
+  -d '{
+    "model": "llama3",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ],
+    "stream": true
+  }'</code></pre>
 
 
 

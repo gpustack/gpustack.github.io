@@ -1647,23 +1647,20 @@
 <p>If you installed GPUStack using the installation script, a script to uninstall GPUStack was generated during installation.</p>
 <h3 id="linux-or-macos">Linux or macOS</h3>
 <p>Run the following command to uninstall GPUStack:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>/var/lib/gpustack/uninstall.sh
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">sudo /var/lib/gpustack/uninstall.sh</code></pre>
 <h3 id="windows">Windows</h3>
 <p>Run the following command in PowerShell to uninstall GPUStack:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="p">&amp;</span> <span class="s2">&quot;$env:APPDATA\gpustack\uninstall.ps1&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-powershell">Set-ExecutionPolicy Bypass -Scope Process -Force; &amp; "$env:APPDATA\gpustack\uninstall.ps1"</code></pre>
 <h2 id="manual-uninstallation">Manual Uninstallation</h2>
 <p>If you install GPUStack manually, the followings are example commands to uninstall GPUStack. You can modify according to your setup:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Stop and remove the service.</span>
-systemctl<span class="w"> </span>stop<span class="w"> </span>gpustack.service
-rm<span class="w"> </span>/etc/systemd/system/gpustack.service
-systemctl<span class="w"> </span>daemon-reload
-<span class="c1"># Uninstall the CLI.</span>
-pip<span class="w"> </span>uninstall<span class="w"> </span>gpustack
-<span class="c1"># Remove the data directory.</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/gpustack
-</code></pre></div>
+<pre class="highlight"><code class="language-bash"># Stop and remove the service.
+systemctl stop gpustack.service
+rm /etc/systemd/system/gpustack.service
+systemctl daemon-reload
+# Uninstall the CLI.
+pip uninstall gpustack
+# Remove the data directory.
+rm -rf /var/lib/gpustack</code></pre>
 
 
 

@@ -1694,33 +1694,31 @@
 <p>Set up an online environment identical to the air-gapped environment, including <strong>OS</strong>, <strong>architecture</strong>, and <strong>Python version</strong>.</p>
 <h3 id="step-1-download-the-required-packages">Step 1: Download the Required Packages</h3>
 <p>Run the following commands in an online environment:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># On Windows (PowerShell):</span>
-<span class="c1"># $PACKAGE_SPEC = &quot;gpustack&quot;</span>
+<pre class="highlight"><code class="language-bash"># On Windows (PowerShell):
+# $PACKAGE_SPEC = "gpustack"
 
-<span class="c1"># Optional: To include extra dependencies (vllm, audio, all) or install a specific version</span>
-<span class="c1"># PACKAGE_SPEC=&quot;gpustack[all]&quot;</span>
-<span class="c1"># PACKAGE_SPEC=&quot;gpustack==0.4.0&quot;</span>
-<span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack&quot;</span>
+# Optional: To include extra dependencies (vllm, audio, all) or install a specific version
+# PACKAGE_SPEC="gpustack[all]"
+# PACKAGE_SPEC="gpustack==0.4.0"
+PACKAGE_SPEC="gpustack"
 
-<span class="c1"># Download all required packages</span>
-pip<span class="w"> </span>wheel<span class="w"> </span><span class="nv">$PACKAGE_SPEC</span><span class="w"> </span>-w<span class="w"> </span>gpustack_offline_packages
+# Download all required packages
+pip wheel $PACKAGE_SPEC -w gpustack_offline_packages
 
-<span class="c1"># Install GPUStack to access its CLI</span>
-pip<span class="w"> </span>install<span class="w"> </span>gpustack
+# Install GPUStack to access its CLI
+pip install gpustack
 
-<span class="c1"># Download dependency tools and save them as an archive</span>
-gpustack<span class="w"> </span>download-tools<span class="w"> </span>--save-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
-</code></pre></div>
+# Download dependency tools and save them as an archive
+gpustack download-tools --save-archive gpustack_offline_tools.tar.gz</code></pre>
 <p>Optional: Additional Dependencies for macOS.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Deploying the speech-to-text CosyVoice model on macOS requires additional dependencies.</span>
-brew<span class="w"> </span>install<span class="w"> </span>openfst
-<span class="nv">CPLUS_INCLUDE_PATH</span><span class="o">=</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>openfst<span class="k">)</span>/include
-<span class="nv">LIBRARY_PATH</span><span class="o">=</span><span class="k">$(</span>brew<span class="w"> </span>--prefix<span class="w"> </span>openfst<span class="k">)</span>/lib
+<pre class="highlight"><code class="language-bash"># Deploying the speech-to-text CosyVoice model on macOS requires additional dependencies.
+brew install openfst
+CPLUS_INCLUDE_PATH=$(brew --prefix openfst)/include
+LIBRARY_PATH=$(brew --prefix openfst)/lib
 
-<span class="nv">AUDIO_DEPENDENCY_PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;wetextprocessing&quot;</span>
-pip<span class="w"> </span>wheel<span class="w"> </span><span class="nv">$AUDIO_DEPENDENCY_PACKAGE_SPEC</span><span class="w"> </span>-w<span class="w"> </span>gpustack_audio_dependency_offline_packages
-mv<span class="w"> </span>gpustack_audio_dependency_offline_packages/*<span class="w"> </span>gpustack_offline_packages/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>gpustack_audio_dependency_offline_packages
-</code></pre></div>
+AUDIO_DEPENDENCY_PACKAGE_SPEC="wetextprocessing"
+pip wheel $AUDIO_DEPENDENCY_PACKAGE_SPEC -w gpustack_audio_dependency_offline_packages
+mv gpustack_audio_dependency_offline_packages/* gpustack_offline_packages/ &amp;&amp; rm -rf gpustack_audio_dependency_offline_packages</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This instruction assumes that the online environment uses the same GPU type as the air-gapped environment. If the GPU types differ, use the <code>--device</code> flag to specify the device type for the air-gapped environment. Refer to the <a href="../../cli-reference/download-tools/">download-tools</a> command for more information.</p>
@@ -1733,18 +1731,16 @@ mv<span class="w"> </span>gpustack_audio_dependency_offline_packages/*<span clas
 </ul>
 <h3 id="step-3-install-gpustack">Step 3: Install GPUStack</h3>
 <p>In the air-gapped environment, run the following commands:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install GPUStack from the downloaded packages</span>
-pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>gpustack_offline_packages<span class="w"> </span>gpustack
+<pre class="highlight"><code class="language-bash"># Install GPUStack from the downloaded packages
+pip install --no-index --find-links=gpustack_offline_packages gpustack
 
-<span class="c1"># Load and apply the pre-downloaded tools archive</span>
-gpustack<span class="w"> </span>download-tools<span class="w"> </span>--load-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
-</code></pre></div>
+# Load and apply the pre-downloaded tools archive
+gpustack download-tools --load-archive gpustack_offline_tools.tar.gz</code></pre>
 <p>Optional: Additional Dependencies for macOS.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install the additional dependencies for speech-to-text CosyVoice model on macOS.</span>
-brew<span class="w"> </span>install<span class="w"> </span>openfst
+<pre class="highlight"><code class="language-bash"># Install the additional dependencies for speech-to-text CosyVoice model on macOS.
+brew install openfst
 
-pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>gpustack_offline_packages<span class="w"> </span>wetextprocessing
-</code></pre></div>
+pip install --no-index --find-links=gpustack_offline_packages wetextprocessing</code></pre>
 <p>Now you can run GPUStack by following the instructions in the <a href="../manual-installation/#run-gpustack">Manual Installation</a> guide.</p>
 
 

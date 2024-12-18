@@ -1639,8 +1639,9 @@
 </ul>
 <h2 id="installing-gpustack">Installing GPUStack</h2>
 <p>Run PowerShell as administrator (avoid using PowerShell ISE), then run the following command to install GPUStack:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-powershell">
+Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content
+</code></pre>
 <p>After installation, follow the on-screen instructions to obtain credentials and log in to the GPUStack UI.</p>
 <h2 id="deploying-a-model">Deploying a Model</h2>
 <ol>

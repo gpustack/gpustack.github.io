@@ -1643,24 +1643,20 @@
 <p>Install Python version 3.10 to 3.12.</p>
 <h2 id="install-gpustack-cli">Install GPUStack CLI</h2>
 <p>Run the following to install GPUStack:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># You can add extra dependencies, options are &quot;vllm&quot;, &quot;audio&quot; and &quot;all&quot;.</span>
-<span class="c1"># e.g., gpustack[all]</span>
-pip<span class="w"> </span>install<span class="w"> </span>gpustack
-</code></pre></div>
+<pre class="highlight"><code class="language-shell"># You can add extra dependencies, options are "vllm", "audio" and "all".
+# e.g., gpustack[all]
+pip install gpustack</code></pre>
 <p>To verify, run:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>version
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">gpustack version</code></pre>
 <h2 id="run-gpustack">Run GPUStack</h2>
 <p>Run the following command to start the GPUStack server:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">gpustack start</code></pre>
 <p>By default, GPUStack uses <code>/var/lib/gpustack</code> as the data directory so you need <code>sudo</code> or proper permission for that. You can also set a custom data directory by running:</p>
-<div class="highlight"><pre><span></span><code>gpustack start --data-dir mypath
-</code></pre></div>
+<pre class="highlight"><code>gpustack start --data-dir mypath</code></pre>
 <h3 id="run-gpustack-as-a-system-service">Run GPUStack as a System Service</h3>
 <p>A recommended way is to run GPUStack as a startup service. For example, using systemd:</p>
 <p>Create a service file in <code>/etc/systemd/system/gpustack.service</code>:</p>
-<div class="highlight"><pre><span></span><code>[Unit]
+<pre class="highlight"><code>[Unit]
 Description=GPUStack Service
 Wants=network-online.target
 After=network-online.target
@@ -1674,12 +1670,10 @@ StandardOutput=append:/var/log/gpustack.log
 StandardError=append:/var/log/gpustack.log
 
 [Install]
-WantedBy=multi-user.target
-</code></pre></div>
+WantedBy=multi-user.target</code></pre>
 <p>Then start GPUStack:</p>
-<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload
-systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gpustack
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">systemctl daemon-reload
+systemctl enable gpustack</code></pre>
 
 
 

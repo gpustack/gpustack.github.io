@@ -1658,56 +1658,54 @@
 </ol>
 <h2 id="step-3-reranking">Step 3: Reranking</h2>
 <p>With the model deployed and an API key, you can rerank a list of documents via the GPUStack API. Here is an example script using <code>curl</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SERVER_URL</span><span class="o">=</span>&lt;your-server-url&gt;
-<span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>&lt;your-api-key&gt;
-curl<span class="w"> </span><span class="nv">$SERVER_URL</span>/v1/rerank<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;model&quot;: &quot;bge-reranker-v2-m3&quot;,</span>
-<span class="s1">        &quot;query&quot;: &quot;What is a panda?&quot;,</span>
-<span class="s1">        &quot;top_n&quot;: 3,</span>
-<span class="s1">        &quot;documents&quot;: [</span>
-<span class="s1">            &quot;hi&quot;,</span>
-<span class="s1">            &quot;it is a bear&quot;,</span>
-<span class="s1">            &quot;The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China.&quot;</span>
-<span class="s1">        ]</span>
-<span class="s1">    }&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">export SERVER_URL=&lt;your-server-url&gt;
+export GPUSTACK_API_KEY=&lt;your-api-key&gt;
+curl $SERVER_URL/v1/rerank \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $GPUSTACK_API_KEY" \
+    -d '{
+        "model": "bge-reranker-v2-m3",
+        "query": "What is a panda?",
+        "top_n": 3,
+        "documents": [
+            "hi",
+            "it is a bear",
+            "The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China."
+        ]
+    }' | jq</code></pre>
 <p>Replace <code>&lt;your-server-url&gt;</code> with the URL of your GPUStack server and <code>&lt;your-api-key&gt;</code> with the API key you generated in the previous step.</p>
 <p>Example response:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bge-reranker-v2-m3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China.&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.951932668685913</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it is a bear&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.7347371578216553</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hi&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.157620906829834</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-json">{
+  "model": "bge-reranker-v2-m3",
+  "object": "list",
+  "results": [
+    {
+      "document": {
+        "text": "The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China."
+      },
+      "index": 2,
+      "relevance_score": 1.951932668685913
+    },
+    {
+      "document": {
+        "text": "it is a bear"
+      },
+      "index": 1,
+      "relevance_score": -3.7347371578216553
+    },
+    {
+      "document": {
+        "text": "hi"
+      },
+      "index": 0,
+      "relevance_score": -6.157620906829834
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 69,
+    "total_tokens": 69
+  }
+}</code></pre>
 
 
 

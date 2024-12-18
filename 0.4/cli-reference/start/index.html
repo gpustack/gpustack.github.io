@@ -1680,8 +1680,7 @@
 
 <h1 id="gpustack-start">gpustack start</h1>
 <p>Run GPUStack server or worker.</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">gpustack start [OPTIONS]</code></pre>
 <h2 id="configurations">Configurations</h2>
 <h3 id="common-options">Common Options</h3>
 <table>
@@ -1863,37 +1862,36 @@
 </table>
 <h2 id="config-file">Config File</h2>
 <p>You can configure start options using a YAML-format config file when starting GPUStack server or worker. Here is a complete example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Common Options</span>
-<span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">data_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/data_dir</span>
-<span class="nt">cache_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/cache_dir</span>
-<span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mytoken</span>
+<pre class="highlight"><code class="language-yaml"># Common Options
+debug: false
+data_dir: /path/to/data_dir
+cache_dir: /path/to/cache_dir
+token: mytoken
 
-<span class="c1"># Server Options</span>
-<span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
-<span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="nt">disable_worker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">database_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://user:password@hostname:port/db_name</span>
-<span class="nt">ssl_keyfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/keyfile</span>
-<span class="nt">ssl_certfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/certfile</span>
-<span class="nt">force_auth_localhost</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">bootstrap_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myadminpassword</span>
-<span class="nt">ollama_library_base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://registry.mycompany.com</span>
-<span class="nt">disable_update_check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+# Server Options
+host: 0.0.0.0
+port: 80
+disable_worker: false
+database_url: postgresql://user:password@hostname:port/db_name
+ssl_keyfile: /path/to/keyfile
+ssl_certfile: /path/to/certfile
+force_auth_localhost: false
+bootstrap_password: myadminpassword
+ollama_library_base_url: https://registry.mycompany.com
+disable_update_check: false
 
-<span class="c1"># Worker Options</span>
-<span class="nt">server_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://myserver</span>
-<span class="nt">worker_ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.1.101</span>
-<span class="nt">disable_metrics</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">disable_rpc_servers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">metrics_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10151</span>
-<span class="nt">worker_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10150</span>
-<span class="nt">log_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/log_dir</span>
-<span class="nt">system_reserved</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ram</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">  </span><span class="nt">vram</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="nt">tools_download_base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://mirror.mycompany.com</span>
-</code></pre></div>
+# Worker Options
+server_url: http://myserver
+worker_ip: 192.168.1.101
+disable_metrics: false
+disable_rpc_servers: false
+metrics_port: 10151
+worker_port: 10150
+log_dir: /path/to/log_dir
+system_reserved:
+  ram: 2
+  vram: 0
+tools_download_base_url: https://mirror.mycompany.com</code></pre>
 
 
 

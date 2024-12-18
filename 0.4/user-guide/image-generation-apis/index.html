@@ -1834,63 +1834,61 @@
 <h3 id="create-image">Create Image</h3>
 <h4 id="streaming">Streaming</h4>
 <p>This image generation API supports streaming responses to return the progressing of the generation. To enable streaming, set the <code>stream</code> parameter to <code>true</code> in the request body. Example:</p>
-<div class="highlight"><pre><span></span><code>REQUEST : (application/json)
+<pre class="highlight"><code>REQUEST : (application/json)
 {
-  &quot;n&quot;: 1,
-  &quot;response_format&quot;: &quot;b64_json&quot;,
-  &quot;size&quot;: &quot;512x512&quot;,
-  &quot;prompt&quot;: &quot;A lovely cat&quot;,
-  &quot;quality&quot;: &quot;standard&quot;,
-  &quot;stream&quot;: true,
-  &quot;stream_options&quot;: {
-    &quot;include_usage&quot;: true, // return usage information
+  "n": 1,
+  "response_format": "b64_json",
+  "size": "512x512",
+  "prompt": "A lovely cat",
+  "quality": "standard",
+  "stream": true,
+  "stream_options": {
+    "include_usage": true, // return usage information
   }
 }
 
 RESPONSE : (text/event-stream)
-data: {&quot;created&quot;:1731916353,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:10.0}], ...}
+data: {"created":1731916353,"data":[{"index":0,"object":"image.chunk","progress":10.0}], ...}
 ...
-data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:50.0}], ...}
+data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":50.0}], ...}
 ...
-data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:100.0,&quot;b64_json&quot;:&quot;...&quot;}], &quot;usage&quot;:{&quot;generation_per_second&quot;:...,&quot;time_per_generation_ms&quot;:...,&quot;time_to_process_ms&quot;:...}, ...}
-data: [DONE]
-</code></pre></div>
+data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":100.0,"b64_json":"..."}], "usage":{"generation_per_second":...,"time_per_generation_ms":...,"time_to_process_ms":...}, ...}
+data: [DONE]</code></pre>
 <h4 id="advanced-options">Advanced Options</h4>
 <p>This image generation API supports additional options to control the generation process. The following options are available:</p>
-<div class="highlight"><pre><span></span><code>REQUEST : (application/json)
+<pre class="highlight"><code>REQUEST : (application/json)
 {
-  &quot;n&quot;: 1,
-  &quot;response_format&quot;: &quot;b64_json&quot;,
-  &quot;size&quot;: &quot;512x512&quot;,
-  &quot;prompt&quot;: &quot;A lovely cat&quot;,
-  &quot;sampler&quot;: &quot;euler&quot;,      // required, select from euler_a;euler;heun;dpm2;dpm++2s_a;dpm++2m;dpm++2mv2;ipndm;ipndm_v;lcm
-  &quot;schedule&quot;: &quot;default&quot;,   // optional, select from default;discrete;karras;exponential;ays;gits
-  &quot;seed&quot;: null,            // optional, random seed
-  &quot;cfg_scale&quot;: 4.5,        // optional, for sampler, the scale of classifier-free guidance in the output phase
-  &quot;sample_steps&quot;: 20,      // optional, number of sample steps
-  &quot;negative_prompt&quot;: &quot;&quot;,   // optional, negative prompt
-  &quot;stream&quot;: true,
-  &quot;stream_options&quot;: {
-    &quot;include_usage&quot;: true, // return usage information
+  "n": 1,
+  "response_format": "b64_json",
+  "size": "512x512",
+  "prompt": "A lovely cat",
+  "sampler": "euler",      // required, select from euler_a;euler;heun;dpm2;dpm++2s_a;dpm++2m;dpm++2mv2;ipndm;ipndm_v;lcm
+  "schedule": "default",   // optional, select from default;discrete;karras;exponential;ays;gits
+  "seed": null,            // optional, random seed
+  "cfg_scale": 4.5,        // optional, for sampler, the scale of classifier-free guidance in the output phase
+  "sample_steps": 20,      // optional, number of sample steps
+  "negative_prompt": "",   // optional, negative prompt
+  "stream": true,
+  "stream_options": {
+    "include_usage": true, // return usage information
   }
 }
 
 RESPONSE : (text/event-stream)
-data: {&quot;created&quot;:1731916353,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:10.0}], ...}
+data: {"created":1731916353,"data":[{"index":0,"object":"image.chunk","progress":10.0}], ...}
 ...
-data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:50.0}], ...}
+data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":50.0}], ...}
 ...
-data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:100.0,&quot;b64_json&quot;:&quot;...&quot;}], &quot;usage&quot;:{&quot;generation_per_second&quot;:...,&quot;time_per_generation_ms&quot;:...,&quot;time_to_process_ms&quot;:...}, ...}
-data: [DONE]
-</code></pre></div>
+data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":100.0,"b64_json":"..."}], "usage":{"generation_per_second":...,"time_per_generation_ms":...,"time_to_process_ms":...}, ...}
+data: [DONE]</code></pre>
 <h3 id="create-image-edit">Create Image Edit</h3>
 <h4 id="streaming_1">Streaming</h4>
 <p>This image generation API supports streaming responses to return the progressing of the generation. To enable streaming, set the <code>stream</code> parameter to <code>true</code> in the request body. Example:</p>
-<div class="highlight"><pre><span></span><code>REQUEST: (multipart/form-data)
+<pre class="highlight"><code>REQUEST: (multipart/form-data)
 n=1
 response_format=b64_json
 size=512x512
-prompt=&quot;A lovely cat&quot;
+prompt="A lovely cat"
 quality=standard
 image=...                         // required
 mask=...                          // optional
@@ -1899,22 +1897,21 @@ stream_options_include_usage=true // return usage information
 
 RESPONSE : (text/event-stream)
 CASE 1: correct input image
-  data: {&quot;created&quot;:1731916353,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:10.0}], ...}
+  data: {"created":1731916353,"data":[{"index":0,"object":"image.chunk","progress":10.0}], ...}
   ...
-  data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:50.0}], ...}
+  data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":50.0}], ...}
   ...
-  data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:100.0,&quot;b64_json&quot;:&quot;...&quot;}], &quot;usage&quot;:{&quot;generation_per_second&quot;:...,&quot;time_per_generation_ms&quot;:...,&quot;time_to_process_ms&quot;:...}, ...}
+  data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":100.0,"b64_json":"..."}], "usage":{"generation_per_second":...,"time_per_generation_ms":...,"time_to_process_ms":...}, ...}
   data: [DONE]
 CASE 2: illegal input image
-  error: {&quot;code&quot;: 400, &quot;message&quot;: &quot;Invalid image&quot;, &quot;type&quot;: &quot;invalid_request_error&quot;}
-</code></pre></div>
+  error: {"code": 400, "message": "Invalid image", "type": "invalid_request_error"}</code></pre>
 <h4 id="advanced-options_1">Advanced Options</h4>
 <p>This image generation API supports additional options to control the generation process. The following options are available:</p>
-<div class="highlight"><pre><span></span><code>REQUEST: (multipart/form-data)
+<pre class="highlight"><code>REQUEST: (multipart/form-data)
 n=1
 response_format=b64_json
 size=512x512
-prompt=&quot;A lovely cat&quot;
+prompt="A lovely cat"
 image=...                         // required
 mask=...                          // optional
 sampler=euler                     // required, select from euler_a;euler;heun;dpm2;dpm++2s_a;dpm++2m;dpm++2mv2;ipndm;ipndm_v;lcm
@@ -1922,50 +1919,48 @@ schedule=default                  // optional, select from default;discrete;karr
 seed=null                         // optional, random seed
 cfg_scale=4.5                     // optional, for sampler, the scale of classifier-free guidance in the output phase
 sample_steps=20                   // optional, number of sample steps
-negative_prompt=&quot;&quot;                // optional, negative prompt
+negative_prompt=""                // optional, negative prompt
 stream=true
 stream_options_include_usage=true // return usage information
 
 RESPONSE : (text/event-stream)
 CASE 1: correct input image
-  data: {&quot;created&quot;:1731916353,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:10.0}], ...}
+  data: {"created":1731916353,"data":[{"index":0,"object":"image.chunk","progress":10.0}], ...}
   ...
-  data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:50.0}], ...}
+  data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":50.0}], ...}
   ...
-  data: {&quot;created&quot;:1731916371,&quot;data&quot;:[{&quot;index&quot;:0,&quot;object&quot;:&quot;image.chunk&quot;,&quot;progress&quot;:100.0,&quot;b64_json&quot;:&quot;...&quot;}], &quot;usage&quot;:{&quot;generation_per_second&quot;:...,&quot;time_per_generation_ms&quot;:...,&quot;time_to_process_ms&quot;:...}, ...}
+  data: {"created":1731916371,"data":[{"index":0,"object":"image.chunk","progress":100.0,"b64_json":"..."}], "usage":{"generation_per_second":...,"time_per_generation_ms":...,"time_to_process_ms":...}, ...}
   data: [DONE]
 CASE 2: illegal input image
-  error: {&quot;code&quot;: 400, &quot;message&quot;: &quot;Invalid image&quot;, &quot;type&quot;: &quot;invalid_request_error&quot;}
-</code></pre></div>
+  error: {"code": 400, "message": "Invalid image", "type": "invalid_request_error"}</code></pre>
 <h2 id="usage">Usage</h2>
 <p>The followings are examples using the image generation APIs:</p>
 <h3 id="curl-create-image">curl (Create Image)</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>myapikey
-curl<span class="w"> </span>http://myserver/v1-openai/image/generate<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;n&quot;: 1,</span>
-<span class="s1">        &quot;response_format&quot;: &quot;b64_json&quot;,</span>
-<span class="s1">        &quot;size&quot;: &quot;512x512&quot;,</span>
-<span class="s1">        &quot;prompt&quot;: &quot;A lovely cat&quot;,</span>
-<span class="s1">        &quot;quality&quot;: &quot;standard&quot;,</span>
-<span class="s1">        &quot;stream&quot;: true,</span>
-<span class="s1">        &quot;stream_options&quot;: {</span>
-<span class="s1">        &quot;include_usage&quot;: true</span>
-<span class="s1">        }</span>
-<span class="s1">    }&#39;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">export GPUSTACK_API_KEY=myapikey
+curl http://myserver/v1-openai/image/generate \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $GPUSTACK_API_KEY" \
+    -d '{
+        "n": 1,
+        "response_format": "b64_json",
+        "size": "512x512",
+        "prompt": "A lovely cat",
+        "quality": "standard",
+        "stream": true,
+        "stream_options": {
+        "include_usage": true
+        }
+    }'
+</code></pre>
 <h3 id="curl-create-image-edit">curl (Create Image Edit)</h3>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>myapikey
-curl<span class="w"> </span>http://myserver/v1-openai/image/edit<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-F<span class="w"> </span><span class="nv">image</span><span class="o">=</span><span class="s2">&quot;@otter.png&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-F<span class="w"> </span><span class="nv">mask</span><span class="o">=</span><span class="s2">&quot;@mask.png&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-F<span class="w"> </span><span class="nv">prompt</span><span class="o">=</span><span class="s2">&quot;A lovely cat&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-F<span class="w"> </span><span class="nv">n</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-F<span class="w"> </span><span class="nv">size</span><span class="o">=</span><span class="s2">&quot;512x512&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">export GPUSTACK_API_KEY=myapikey
+curl http://myserver/v1-openai/image/edit \
+    -H "Authorization: Bearer $GPUSTACK_API_KEY" \
+    -F image="@otter.png" \
+    -F mask="@mask.png" \
+    -F prompt="A lovely cat" \
+    -F n=1 \
+    -F size="512x512"</code></pre>
 
 
 

@@ -1638,18 +1638,16 @@
 </ul>
 <h2 id="run-gpustack-with-docker">Run GPUStack with Docker</h2>
 <p>Run the following command to start the GPUStack server:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span>gpustack/gpustack
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">docker run -d --gpus all -p 80:80 --ipc=host \
+    -v gpustack-data:/var/lib/gpustack gpustack/gpustack</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can either use the <code>--ipc=host</code> flag or <code>--shm-size</code> flag to allow the container to access the host’s shared memory. It is used by vLLM and pyTorch to share data between processes under the hood, particularly for tensor parallel inference.</p>
 </div>
 <p>You can set additional flags for the <code>gpustack start</code> command by appending them to the docker run command.</p>
 <p>For example, to start a GPUStack worker:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>--ipc<span class="o">=</span>host<span class="w"> </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gpustack/gpustack<span class="w"> </span>--server-url<span class="w"> </span>http://myserver<span class="w"> </span>--token<span class="w"> </span>mytoken
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">docker run -d --gpus all --ipc=host --network=host \
+    gpustack/gpustack --server-url http://myserver --token mytoken</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code>--network=host</code> flag is used to ensure that server is accessible to the worker and inference services running on it. Alternatively, you can set <code>--worker-ip &lt;host-ip&gt; -p 10150:10150 -p 40000-41024:40000-41024</code> to expose relevant ports.</p>
@@ -1657,34 +1655,31 @@
 <p>For configuration details, please refer to the <a href="../../cli-reference/start/">CLI Reference</a>.</p>
 <h2 id="run-gpustack-with-docker-compose">Run GPUStack with Docker Compose</h2>
 <p>Get the docker-compose file from GPUStack repository, run the following command to start the GPUStack server:</p>
-<div class="highlight"><pre><span></span><code>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">docker-compose up -d</code></pre>
 <p>You can update the <code>docker-compose.yml</code> file to customize the command while starting a GPUStack worker.</p>
 <h2 id="build-your-own-docker-image">Build Your Own Docker Image</h2>
 <p>The official Docker image is built with CUDA 12.4. If you want to use a different version of CUDA, you can build your own Docker image.</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Example Dockerfile</span>
-<span class="k">ARG</span><span class="w"> </span><span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="m">12</span>.4.1
+<pre class="highlight"><code class="language-dockerfile"># Example Dockerfile
+ARG CUDA_VERSION=12.4.1
 
-<span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:$CUDA_VERSION-cudnn-runtime-ubuntu22.04</span>
+FROM nvidia/cuda:$CUDA_VERSION-cudnn-runtime-ubuntu22.04
 
-<span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
-<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>wget<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>tzdata<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>python3<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>python3-pip<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+RUN apt-get update &amp;&amp; apt-get install -y \
+    wget \
+    tzdata \
+    python3 \
+    python3-pip \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
 
 
-<span class="k">RUN</span><span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>gpustack<span class="o">[</span>all<span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>pip3<span class="w"> </span>cache<span class="w"> </span>purge
+RUN pip3 install gpustack[all] &amp;&amp; \
+    pip3 cache purge
 
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;gpustack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="w"> </span><span class="p">]</span>
-</code></pre></div>
+ENTRYPOINT [ "gpustack", "start" ]</code></pre>
 <p>Run the following command to build the Docker image:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my/gpustack<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="m">12</span>.0.0<span class="w"> </span>.
-</code></pre></div>
+<pre class="highlight"><code class="language-shell">docker build -t my/gpustack --build-arg CUDA_VERSION=12.0.0 .</code></pre>
 
 
 

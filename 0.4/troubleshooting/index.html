@@ -1658,20 +1658,16 @@
 <h2 id="view-gpustack-logs">View GPUStack Logs</h2>
 <p>If you installed GPUStack using the installation script, you can view GPUStack logs at the following path:</p>
 <h3 id="linux-or-macos">Linux or macOS</h3>
-<div class="highlight"><pre><span></span><code>/var/log/gpustack.log
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">/var/log/gpustack.log</code></pre>
 <h3 id="windows">Windows</h3>
-<div class="highlight"><pre><span></span><code><span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-powershell">"$env:APPDATA\gpustack\log\gpustack.log"</code></pre>
 <h2 id="configure-log-level">Configure Log Level</h2>
 <p>You can enable the DEBUG log level on <code>gpustack start</code> by setting the <code>--debug</code> parameter.</p>
 <p>You can configure log level of GPUStack server at runtime by running the following command on the server node:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost/debug/log_level<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;debug&quot;</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">curl -X PUT http://localhost/debug/log_level -d "debug"</code></pre>
 <h2 id="reset-admin-password">Reset Admin Password</h2>
 <p>In case you forgot the admin password, you can reset it by running the following command on the <strong>server</strong> node:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">gpustack reset-admin-password</code></pre>
 
 
 

@@ -1800,16 +1800,14 @@
 </ul>
 <h3 id="verify-container-runtime-configuration">Verify Container Runtime Configuration</h3>
 <p>Ensure the output shows the default runtime as <code>mthreads</code>.</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>/usr/bin/musa<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>./docker<span class="w"> </span>setup<span class="w"> </span><span class="nv">$PWD</span><span class="o">)</span>
-$<span class="w"> </span>docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mthreads
-<span class="w"> </span>Runtimes:<span class="w"> </span>mthreads<span class="w"> </span>mthreads-experimental<span class="w"> </span>runc
-<span class="w"> </span>Default<span class="w"> </span>Runtime:<span class="w"> </span>mthreads
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">$ (cd /usr/bin/musa &amp;&amp; sudo ./docker setup $PWD)
+$ docker info | grep mthreads
+ Runtimes: mthreads mthreads-experimental runc
+ Default Runtime: mthreads</code></pre>
 <h2 id="installing-gpustack">Installing GPUStack</h2>
 <p>To set up an isolated environment for GPUStack, we recommend using Docker.</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack-musa<span class="w"> </span>-p<span class="w"> </span><span class="m">9009</span>:80<span class="w"> </span>--ipc<span class="o">=</span>host<span class="w"> </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gpustack/gpustack:main-musa
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">docker run -d --name gpustack-musa -p 9009:80 --ipc=host -v gpustack-data:/var/lib/gpustack \
+    gpustack/gpustack:main-musa</code></pre>
 <p>This command will:</p>
 <ul>
 <li>Start a container with the GPUStack image.</li>
@@ -1817,12 +1815,10 @@ $<span class="w"> </span>docker<span class="w"> </span>info<span class="w"> </sp
 <li>Mount the <code>gpustack-data</code> volume to store the GPUStack data.</li>
 </ul>
 <p>To check the logs of the running container, use the following command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack-musa
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">docker logs -f gpustack-musa</code></pre>
 <p>If the following message appears, the GPUStack container is running successfully:</p>
-<div class="highlight"><pre><span></span><code><span class="m">2024</span>-11-15T23:37:46+00:00<span class="w"> </span>-<span class="w"> </span>gpustack.server.server<span class="w"> </span>-<span class="w"> </span>INFO<span class="w"> </span>-<span class="w"> </span>Serving<span class="w"> </span>on<span class="w"> </span><span class="m">0</span>.0.0.0:80.
-<span class="m">2024</span>-11-15T23:37:46+00:00<span class="w"> </span>-<span class="w"> </span>gpustack.worker.worker<span class="w"> </span>-<span class="w"> </span>INFO<span class="w"> </span>-<span class="w"> </span>Starting<span class="w"> </span>GPUStack<span class="w"> </span>worker.
-</code></pre></div>
+<pre class="highlight"><code class="language-bash">2024-11-15T23:37:46+00:00 - gpustack.server.server - INFO - Serving on 0.0.0.0:80.
+2024-11-15T23:37:46+00:00 - gpustack.worker.worker - INFO - Starting GPUStack worker.</code></pre>
 <p>Once the container is running, access the GPUStack web interface by navigating to <code>http://localhost:9009</code> in your browser.</p>
 <p>After the initial setup for GPUStack, you should see the following screen:</p>
 <h3 id="dashboard">Dashboard</h3>
@@ -1835,29 +1831,28 @@ $<span class="w"> </span>docker<span class="w"> </span>info<span class="w"> </sp
 <p>After installation, you can deploy models and run inference. Refer to the <a href="../../user-guide/model-management/">model management</a> for detailed usage instructions.</p>
 <p>Moore Threads GPUs support inference through the llama-box (<a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>) backend. Most recent models are supported (e.g., llama3.2:1b, llama3.2-vision:11b, qwen2.5:7b, etc.).</p>
 <p>Use <code>mthreads-gmi</code> to verify if the model is offloaded to the GPU.</p>
-<div class="highlight"><pre><span></span><code>root@a414c45864ee:/#<span class="w"> </span>mthreads-gmi
-Sat<span class="w"> </span>Nov<span class="w"> </span><span class="m">16</span><span class="w"> </span><span class="m">12</span>:00:16<span class="w"> </span><span class="m">2024</span>
+<pre class="highlight"><code class="language-bash">root@a414c45864ee:/# mthreads-gmi
+Sat Nov 16 12:00:16 2024
 ---------------------------------------------------------------
-<span class="w">    </span>mthreads-gmi:1.14.0<span class="w">          </span>Driver<span class="w"> </span>Version:2.7.0
+    mthreads-gmi:1.14.0          Driver Version:2.7.0
 ---------------------------------------------------------------
-ID<span class="w">   </span>Name<span class="w">           </span><span class="p">|</span>PCIe<span class="w">                </span><span class="p">|</span>%GPU<span class="w">  </span>Mem
-<span class="w">     </span>Device<span class="w"> </span>Type<span class="w">    </span><span class="p">|</span>Pcie<span class="w"> </span>Lane<span class="w"> </span>Width<span class="w">     </span><span class="p">|</span>Temp<span class="w">  </span>MPC<span class="w"> </span>Capable
-<span class="w">                                         </span><span class="p">|</span><span class="w">      </span>ECC<span class="w"> </span>Mode
+ID   Name           |PCIe                |%GPU  Mem
+     Device Type    |Pcie Lane Width     |Temp  MPC Capable
+                                         |      ECC Mode
 +-------------------------------------------------------------+
-<span class="m">0</span><span class="w">    </span>MTT<span class="w"> </span>S80<span class="w">        </span><span class="p">|</span><span class="m">00000000</span>:01:00.0<span class="w">    </span><span class="p">|</span><span class="m">98</span>%<span class="w">   </span>1339MiB<span class="o">(</span>16384MiB<span class="o">)</span>
-<span class="w">     </span>Physical<span class="w">       </span><span class="p">|</span>16x<span class="o">(</span>16x<span class="o">)</span><span class="w">            </span><span class="p">|</span>56C<span class="w">   </span>YES
-<span class="w">                                         </span><span class="p">|</span><span class="w">      </span>N/A
+0    MTT S80        |00000000:01:00.0    |98%   1339MiB(16384MiB)
+     Physical       |16x(16x)            |56C   YES
+                                         |      N/A
 ---------------------------------------------------------------
 
 ---------------------------------------------------------------
 Processes:
-ID<span class="w">   </span>PID<span class="w">       </span>Process<span class="w"> </span>name<span class="w">                         </span>GPU<span class="w"> </span>Memory
-<span class="w">                                                         </span>Usage
+ID   PID       Process name                         GPU Memory
+                                                         Usage
 +-------------------------------------------------------------+
-<span class="m">0</span><span class="w">    </span><span class="m">120</span><span class="w">       </span>...ird_party/bin/llama-box/llama-box<span class="w">       </span>2MiB
-<span class="m">0</span><span class="w">    </span><span class="m">2022</span><span class="w">      </span>...ird_party/bin/llama-box/llama-box<span class="w">    </span>1333MiB
----------------------------------------------------------------
-</code></pre></div>
+0    120       ...ird_party/bin/llama-box/llama-box       2MiB
+0    2022      ...ird_party/bin/llama-box/llama-box    1333MiB
+---------------------------------------------------------------</code></pre>
 
 
 
