@@ -1650,7 +1650,7 @@
     gpustack/gpustack --server-url http://myserver --token mytoken</code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>--network=host</code> flag is used to ensure that server is accessible to the worker and inference services running on it. Alternatively, you can set <code>--worker-ip &lt;host-ip&gt; -p 10150:10150 -p 40000-41024:40000-41024</code> to expose relevant ports.</p>
+<p>The <code>--network=host</code> flag is used to ensure that server is accessible to the worker and inference services running on it. Alternatively, you can set <code>--worker-ip &lt;host-ip&gt; -p 10150:10150 -p 40000-41024:40000-41024 -p 50000-51024:50000-51024</code> to expose relevant ports.</p>
 </div>
 <p>For configuration details, please refer to the <a href="../../cli-reference/start/">CLI Reference</a>.</p>
 <h2 id="run-gpustack-with-docker-compose">Run GPUStack with Docker Compose</h2>
