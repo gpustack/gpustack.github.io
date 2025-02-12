@@ -1242,6 +1242,8 @@
       
         
       
+        
+      
     
     
     
@@ -1576,6 +1578,27 @@
   
   <span class="md-ellipsis">
     Running Inference with AMD GPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/running-inference-with-hygon-dcus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Inference with Hygon DCUs
   </span>
   
 
@@ -2147,6 +2170,9 @@ For configuration details, please refer to the <a href="../../cli-reference/star
     --ipc=host \
     -v gpustack-data:/var/lib/gpustack \
     gpustack/gpustack --worker-ip your_host_ip</code></pre>
+<p>To retrieve the default admin password, run the following command:</p>
+<pre class="highlight"><code class="language-shell">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password
+</code></pre>
 <p>(<strong>Optional</strong>) Run the following command to start the GPUStack server <strong>without</strong> built-in worker:</p>
 <pre class="highlight"><code class="language-shell">docker run -d --name gpustack-server \
     --restart=unless-stopped \
@@ -2186,6 +2212,9 @@ For configuration details, please refer to the <a href="../../cli-reference/star
     --device /dev/dri \
     -v gpustack-data:/var/lib/gpustack \
     gpustack/gpustack:latest-rocm</code></pre>
+<p>To retrieve the default admin password, run the following command:</p>
+<pre class="highlight"><code class="language-shell">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password
+</code></pre>
 <p>(<strong>Optional</strong>) Run the following command to start the GPUStack server <strong>without</strong> built-in worker:</p>
 <pre class="highlight"><code class="language-shell">docker run -d --name gpustack-server \
     --restart=unless-stopped \
@@ -2226,6 +2255,9 @@ For configuration details, please refer to the <a href="../../cli-reference/star
     --ipc=host \
     -v gpustack-data:/var/lib/gpustack \
     gpustack/gpustack:latest-npu</code></pre>
+<p>To retrieve the default admin password, run the following command:</p>
+<pre class="highlight"><code class="language-shell">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password
+</code></pre>
 <p>(<strong>Optional</strong>) Run the following command to start the GPUStack server <strong>without</strong> built-in worker:</p>
 <pre class="highlight"><code class="language-shell">docker run -d --name gpustack-server \
     --restart=unless-stopped \
@@ -2262,6 +2294,9 @@ For configuration details, please refer to the <a href="../../cli-reference/star
     --ipc=host \
     -v gpustack-data:/var/lib/gpustack \
     gpustack/gpustack:latest-musa</code></pre>
+<p>To retrieve the default admin password, run the following command:</p>
+<pre class="highlight"><code class="language-shell">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password
+</code></pre>
 <p>(<strong>Optional</strong>) Run the following command to start the GPUStack server <strong>without</strong> built-in worker:</p>
 <pre class="highlight"><code class="language-shell">docker run -d --name gpustack-server \
     --restart=unless-stopped \

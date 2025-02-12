@@ -14,7 +14,7 @@
         <link rel="prev" href="../running-inference-with-moorethreads-gpus/">
       
       
-        <link rel="next" href="../../architecture/">
+        <link rel="next" href="../running-inference-with-hygon-dcus/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -983,6 +983,8 @@
       
         
       
+        
+      
     
     
     
@@ -1502,6 +1504,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../running-inference-with-hygon-dcus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Inference with Hygon DCUs
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2036,7 +2059,7 @@ rocm-smi -i --showmeminfo vram --showpower --showserial --showuse --showtemp --s
 <p>Follow the <a href="https://docs.docker.com/desktop/install/linux/">Docker Installation Guide</a> to install and configure the container runtime.</p>
 <h4 id="installing-gpustack">Installing GPUStack</h4>
 <p>To set up an isolated environment for GPUStack, we recommend using Docker.</p>
-<pre class="highlight"><code class="language-bash">docker run -it \
+<pre class="highlight"><code class="language-bash">docker run -itd \
    --network=host \
    --ipc=host \
    --group-add=video \
@@ -2089,22 +2112,22 @@ rocm-smi -i --showmeminfo vram --showpower --showserial --showuse --showtemp --s
 <tbody>
 <tr>
 <td>gfx1101: AMD Radeon RX 7800</td>
-<td>llama-box, vLLM(Linux Only)</td>
+<td>llama-box</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>gfx1100: AMD Radeon RX 7900/7700/7600</td>
-<td>llama-box, vLLM(Linux Only)</td>
+<td>llama-box</td>
 <td></td>
 </tr>
 <tr>
 <td>gfx90a: AMD Instinct accelerators MI250X/MI250/MI210/MI200s</td>
-<td>llama-box(Linux Only), vLLM(Linux Only)</td>
+<td>llama-box(Linux Only)</td>
 <td></td>
 </tr>
 <tr>
 <td>gfx942: AMD Instinct accelerators MI325X/MI300X/MI300A</td>
-<td>llama-box(Linux Only), vLLM(Linux Only)</td>
+<td>llama-box(Linux Only)</td>
 <td></td>
 </tr>
 <tr>
