@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.gpustack.ai/0.5/tutorials/running-inference-with-hygon-dcus/">
+        <link rel="canonical" href="https://docs.gpustack.ai/0.5/tutorials/using-deepseek-r1/">
       
       
-        <link rel="prev" href="../running-inference-with-ascend-npus/">
+        <link rel="prev" href="../performing-distributed-inference-across-workers/">
       
       
-        <link rel="next" href="../running-inference-with-amd-gpus/">
+        <link rel="next" href="../using-image-generation-models/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Running Inference with Hygon DCUs - GPUStack</title>
+        <title>Using DeepSeek R1 - GPUStack</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-inference-with-hygon-dcus" class="md-skip">
+        <a href="#deploying-and-using-deepseek-r1-in-gpustack" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Running Inference with Hygon DCUs
+              Using DeepSeek R1
             
           </span>
         </div>
@@ -1061,10 +1061,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../using-deepseek-r1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Using DeepSeek R1
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1073,6 +1093,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-deploy-the-deepseek-r1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Deploy the DeepSeek R1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-use-the-deepseek-r1-for-text-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Use the DeepSeek R1 for Text Generation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1271,30 +1338,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Running Inference with Hygon DCUs
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../running-inference-with-hygon-dcus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1303,167 +1350,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#docker-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Docker Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-and-hardware-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      System and Hardware Support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup Instructions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-driver-and-dtk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install Driver and DTK
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-the-container-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure the Container Runtime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-gpustack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing GPUStack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-inference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#non-docker-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      non-Docker Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="non-Docker Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-and-hardware-support_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      System and Hardware Support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-instructions_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup Instructions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-driver-and-dtk_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install Driver and DTK
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-gpustack_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing GPUStack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-inference_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1803,143 +1689,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#docker-installation" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker Installation
+      Prerequisites
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Docker Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-and-hardware-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      System and Hardware Support
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup Instructions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-driver-and-dtk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install Driver and DTK
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-the-container-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure the Container Runtime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-gpustack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing GPUStack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-inference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-docker-installation" class="md-nav__link">
+  <a href="#step-1-deploy-the-deepseek-r1" class="md-nav__link">
     <span class="md-ellipsis">
-      non-Docker Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="non-Docker Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#system-and-hardware-support_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      System and Hardware Support
+      Step 1: Deploy the DeepSeek R1
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-instructions_1" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-2-use-the-deepseek-r1-for-text-generation" class="md-nav__link">
     <span class="md-ellipsis">
-      Setup Instructions
+      Step 2: Use the DeepSeek R1 for Text Generation
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Setup Instructions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-driver-and-dtk_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install Driver and DTK
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-gpustack_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing GPUStack
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-inference_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running Inference
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1958,7 +1730,7 @@
                   
 
   
-    <a href="https://github.com/gpustack/gpustack/edit/main/docs/tutorials/running-inference-with-hygon-dcus.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/edit/main/docs/tutorials/using-deepseek-r1.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1967,186 +1739,53 @@
     
       
     
-    <a href="https://github.com/gpustack/gpustack/raw/main/docs/tutorials/running-inference-with-hygon-dcus.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/raw/main/docs/tutorials/using-deepseek-r1.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="running-inference-with-hygon-dcus">Running Inference With Hygon DCUs</h1>
-<p>GPUStack supports running inference on Hygon GPUs. This tutorial will guide you through the configuration steps.</p>
-<h2 id="docker-installation">Docker Installation</h2>
-<h3 id="system-and-hardware-support">System and Hardware Support</h3>
-<table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Architecture</th>
-<th>Status</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux</td>
-<td>x86_64</td>
-<td>Support</td>
-<td>Ubuntu 22.04</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tools</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Driver</td>
-<td>rock-5.7.1-6.2.26-V1.5</td>
-</tr>
-<tr>
-<td>DTK</td>
-<td>DTK-24.04.3</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Supported Backends</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>llama-box</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>vLLM</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>vox-box</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h3 id="setup-instructions">Setup Instructions</h3>
-<h4 id="install-driver-and-dtk">Install Driver and DTK</h4>
+<h1 id="deploying-and-using-deepseek-r1-in-gpustack">Deploying and Using DeepSeek R1 in GPUStack</h1>
+<p>GPUStack supports deploying and running powerful DeepSeek models.</p>
+<p>In this tutorial, we will guide you through deploying and using DeepSeek R1 in GPUStack.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure that you have the following:</p>
+<ul>
+<li>One or more GPUs with sufficient VRAM.</li>
+<li>Access to Hugging Face or ModelScope for downloading the model files.</li>
+<li>GPUStack installed and running. If not, refer to the <a href="../../quickstart/">Quickstart Guide</a>.</li>
+</ul>
+<h2 id="step-1-deploy-the-deepseek-r1">Step 1: Deploy the DeepSeek R1</h2>
+<p>Follow these steps to deploy the model from Catalog:</p>
 <ol>
-<li>Install Required Packages</li>
+<li>Navigate to the <code>Models</code> page in the GPUStack UI.</li>
+<li>Click the <code>Deploy Model</code> button.</li>
+<li>In the dropdown, select <code>Catalog</code> as the source for your model.</li>
+<li>In the catalog list page, use the search bar in the top left to search for the model keyword <code>DeepSeek</code>.</li>
+<li>Review the model description, maximum context length and supported sizes.</li>
 </ol>
-<p>Register and log in to Hygon Developer Community: https://developer.hpccube.com/tool/#sdk</p>
-<p>Select the appropriate installation method for your system. Download the Driver and DTK(DCU Toolkit), install base on the document community provided.</p>
-<ol start="2">
-<li>Verify Installation</li>
+<p><a class="glightbox" href="../../assets/tutorials/using-deepseek-r1/model-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Model List" src="../../assets/tutorials/using-deepseek-r1/model-list.png" /></a></p>
+<ol start="6">
+<li>Select the <code>Deepseek R1</code>, configure the model deployment details and click the <code>Save</code> button to deploy the model.</li>
 </ol>
-<pre class="highlight"><code class="language-bash"># Verify the rocminfo.
-# Expected result: Device Type: DCU
-rocminfo | grep DCU
-
-# Check if the GPU is listed as an agent.
-rocminfo
-
-# Check rocm-smi.
-rocm-smi -i --showmeminfo vram --showpower --showserial --showuse --showtemp --showproductname
-
-# Check hy-smi
-hy-smi</code></pre>
-<h4 id="configure-the-container-runtime">Configure the Container Runtime</h4>
-<p>Follow the <a href="https://docs.docker.com/desktop/install/linux/">Docker Installation Guide</a> to install and configure the container runtime.</p>
-<h4 id="installing-gpustack">Installing GPUStack</h4>
-<p>To set up an isolated environment for GPUStack, we recommend using Docker.</p>
-<pre class="highlight"><code class="language-bash">docker run -itd --shm-size 500g \
-   --network=host --privileged \
-   --group-add video \
-   --cap-add=SYS_PTRACE \
-   --security-opt seccomp=unconfined \
-   --device=/dev/kfd --device=/dev/dri \
-   -v /opt/hyhal:/opt/hyhal:ro \
-   gpustack/gpustack:v0.5.1-dcu</code></pre>
-<p>If the following message appears, the GPUStack container is running successfully:</p>
-<pre class="highlight"><code class="language-bash">2024-11-15T23:37:46+00:00 - gpustack.server.server - INFO - Serving on 0.0.0.0:80.
-2024-11-15T23:37:46+00:00 - gpustack.worker.worker - INFO - Starting GPUStack worker.</code></pre>
-<p>Once the container is running, access the GPUStack web interface by navigating to <code>http://localhost:80</code> in your browser, you should see that GPUStack successfully recognizes the Hygon DCU Device in the resources page.</p>
-<p><a class="glightbox" href="../../assets/tutorials/running-inference-with-hygon-dcus/resources-dcu-device.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="dcu-device" src="../../assets/tutorials/running-inference-with-hygon-dcus/resources-dcu-device.png" /></a></p>
-<h4 id="running-inference">Running Inference</h4>
-<p>After installation, you can deploy models and run inference. Refer to the <a href="../../user-guide/model-management/">model management</a> for detailed usage instructions.</p>
-<h2 id="non-docker-installation">non-Docker Installation</h2>
-<h3 id="system-and-hardware-support_1">System and Hardware Support</h3>
-<table>
-<thead>
-<tr>
-<th>OS</th>
-<th>Architecture</th>
-<th>Status</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux</td>
-<td>x86_64</td>
-<td>Support</td>
-<td>Ubuntu 20.04/22.04</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Tools</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Driver</td>
-<td>rock-5.7.1-6.2.26-V1.5</td>
-</tr>
-<tr>
-<td>DTK</td>
-<td>DTK-24.04.3</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Supported Backends</th>
-<th>Verified</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>llama-box</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>vox-box</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
-<h3 id="setup-instructions_1">Setup Instructions</h3>
-<h4 id="install-driver-and-dtk_1">Install Driver and DTK</h4>
-<p>The method of installing the Driver and DTK is the same as that in the Docker part above.</p>
-<h4 id="installing-gpustack_1">Installing GPUStack</h4>
-<p>Once the environment is set up, install GPUStack following the <a href="../../installation/installation-script/">installation guide</a>.</p>
-<p>After installation, GPUStack will detect Hygon DCUs automatically.</p>
-<p>Example:</p>
-<p><a class="glightbox" href="../../assets/tutorials/running-inference-with-hygon-dcus/resources-dcu-device.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="dcu-device" src="../../assets/tutorials/running-inference-with-hygon-dcus/resources-dcu-device.png" /></a></p>
-<h4 id="running-inference_1">Running Inference</h4>
-<p>After installation, you can deploy models and run inference. Refer to the <a href="../../user-guide/model-management/">model management</a> for usage details.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>vllm backend is not supported in non-Docker deployment.</p>
-</div>
+<p><a class="glightbox" href="../../assets/tutorials/using-deepseek-r1/deploy-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Model" src="../../assets/tutorials/using-deepseek-r1/deploy-model.png" /></a></p>
+<p>After deployment, you can monitor the model's status on the <code>Models</code> page and wait for it to start running.</p>
+<h2 id="step-2-use-the-deepseek-r1-for-text-generation">Step 2: Use the DeepSeek R1 for Text Generation</h2>
+<ol>
+<li>Navigate to the <code>Playground</code> &gt; <code>Text</code> page in the GPUStack UI.</li>
+<li>Verify that the deployed model is selected from the top-right <code>Model</code> dropdown.</li>
+<li>Provide a prompt for the text generation. For example:</li>
+</ol>
+<pre class="highlight"><code>2, 4, 6, 8, &gt; What is the next number?</code></pre>
+<ol start="4">
+<li>Adjust the <code>Parameters</code> on the right based on your needs.</li>
+<li>Check the <code>Markdown</code> option to view a well-formatted result.</li>
+<li>Click the <code>Submit</code> button to generate the text.</li>
+</ol>
+<p>The generated chain of thought and result will be displayed in the UI.</p>
+<p><a class="glightbox" href="../../assets/tutorials/using-deepseek-r1/generated.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generated" src="../../assets/tutorials/using-deepseek-r1/generated.png" /></a></p>
+<p>By following these steps, you can leverage DeepSeek R1 for AI-powered text generation and natural language tasks in GPUStack. Experiment with different prompts and settings to explore the full capabilities of DeepSeek!</p>
 
 
 
