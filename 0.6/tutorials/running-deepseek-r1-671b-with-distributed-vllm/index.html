@@ -2509,16 +2509,17 @@
 <h2 id="step-1-install-gpustack-server">Step 1: Install GPUStack Server</h2>
 <p>In this tutorial, we will use Docker to install GPUStack. You can also use other installation methods if you prefer.</p>
 <p>Use the following command to start the GPUStack server:</p>
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    -v /path/to/your/model:/path/to/your/model \
-    -e NCCL_SOCKET_IFNAME=eth2 \
-    -e GLOO_SOCKET_IFNAME=eth2 \
-    gpustack/gpustack --enable-ray</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/path/to/your/model:/path/to/your/model<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>eth2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">GLOO_SOCKET_IFNAME</span><span class="o">=</span>eth2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack<span class="w"> </span>--enable-ray
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -2528,23 +2529,25 @@
 </ul>
 </div>
 <p>After GPUStack server is up and running, run the following commands to get the initial admin password and the token for worker registration:</p>
-<pre class="highlight"><code class="language-bash">docker exec gpustack cat /var/lib/gpustack/initial_admin_password
-docker exec gpustack cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <h2 id="step-2-install-gpustack-workers">Step 2: Install GPUStack Workers</h2>
 <p>On <strong>each worker node</strong>, run the following command to start a GPUStack worker:</p>
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    -v /path/to/your/model:/path/to/your/model \
-    -e NCCL_SOCKET_IFNAME=eth2 \
-    -e GLOO_SOCKET_IFNAME=eth2 \
-    gpustack/gpustack \
-    --server-url http://your_gpustack_server_ip_or_hostname \
-    --token your_gpustack_token \
-    --enable-ray</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/path/to/your/model:/path/to/your/model<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">NCCL_SOCKET_IFNAME</span><span class="o">=</span>eth2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">GLOO_SOCKET_IFNAME</span><span class="o">=</span>eth2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_server_ip_or_hostname<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--enable-ray
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
@@ -2554,7 +2557,8 @@ docker exec gpustack cat /var/lib/gpustack/token</code></pre>
 </div>
 <h2 id="step-3-access-gpustack-ui">Step 3: Access GPUStack UI</h2>
 <p>Once the server and all workers are running, access the GPUStack UI via your browser:</p>
-<pre class="highlight"><code>http://your_gpustack_server_ip_or_hostname</code></pre>
+<div class="highlight"><pre><span></span><code>http://your_gpustack_server_ip_or_hostname
+</code></pre></div>
 <p>Log in using the <code>admin</code> username and the password obtained in Step 1. Navigate to the <code>Resources</code> page to verify that all workers are in the Ready state and their GPUs are listed.</p>
 <p><a class="glightbox" href="../../assets/tutorials/running-deepseek-r1-671b-with-distributed-vllm/initial-resources.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="initial-resources" src="../../assets/tutorials/running-deepseek-r1-671b-with-distributed-vllm/initial-resources.png" /></a></p>
 <h2 id="step-4-deploy-the-deepseek-r1-model">Step 4: Deploy the DeepSeek R1 Model</h2>

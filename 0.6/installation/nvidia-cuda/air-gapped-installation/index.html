@@ -2615,10 +2615,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">AMD64</label><label for="__tabbed_2_2">ARM64</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">grep -E -i "neon|asimd" /proc/cpuinfo</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;neon|asimd&quot;</span><span class="w"> </span>/proc/cpuinfo
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2632,15 +2634,18 @@
 <li><a href="https://www.nvidia.com/en-us/drivers/">NVIDIA Driver</a></li>
 </ul>
 <p>Check if the NVIDIA driver is installed:</p>
-<pre class="highlight"><code class="language-bash">nvidia-smi --format=csv,noheader --query-gpu=index,name,memory.total,memory.used,utilization.gpu,temperature.gpu</code></pre>
+<div class="highlight"><pre><span></span><code>nvidia-smi<span class="w"> </span>--format<span class="o">=</span>csv,noheader<span class="w"> </span>--query-gpu<span class="o">=</span>index,name,memory.total,memory.used,utilization.gpu,temperature.gpu
+</code></pre></div>
 <p>And ensure the driver supports CUDA 12.4 or higher:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">nvidia-smi | grep "CUDA Version"</code></pre>
+<div class="highlight"><pre><span></span><code>nvidia-smi<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;CUDA Version&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">nvidia-smi | findstr "CUDA Version"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">nvidia-smi</span> <span class="p">|</span> <span class="n">findstr</span> <span class="s2">&quot;CUDA Version&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2651,7 +2656,8 @@
 <li><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a></li>
 </ul>
 <p>Check if Docker and NVIDIA Container Toolkit are installed:</p>
-<pre class="highlight"><code class="language-bash">docker info | grep Runtimes | grep nvidia</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Runtimes<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia
+</code></pre></div>
 <ul>
 <li><a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/48">Disabling Systemd Cgroup Management in Docker</a></li>
 </ul>
@@ -2662,25 +2668,30 @@
 <p>To prevent <a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/48">this issue</a>, disabling systemd cgroup management in Docker is required.</p>
 </div>
 <p>Set the parameter "exec-opts": ["native.cgroupdriver=cgroupfs"] in the <code>/etc/docker/daemon.json</code> file and restart docker, such as:</p>
-<pre class="highlight"><code class="language-bash">vim /etc/docker/daemon.json</code></pre>
-<pre class="highlight"><code class="language-json">{
-  "runtimes": {
-    "nvidia": {
-      "args": [],
-      "path": "nvidia-container-runtime"
-    }
-  },
-  "exec-opts": ["native.cgroupdriver=cgroupfs"]
-}</code></pre>
-<pre class="highlight"><code class="language-bash">systemctl daemon-reload &amp;&amp; systemctl restart docker</code></pre>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/docker/daemon.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;nvidia&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia-container-runtime&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;exec-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;native.cgroupdriver=cgroupfs&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
 <h3 id="run-gpustack">Run GPUStack</h3>
 <p>When running GPUStack with Docker, it works out of the box in an air-gapped environment as long as the Docker images are available. To do this, follow these steps:</p>
 <ol>
 <li>Pull GPUStack docker image in an online environment:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment in terms of OS or arch, specify the OS and arch of the air-gapped environment when pulling the image:</p>
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/amd64 gpustack/gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>gpustack/gpustack
+</code></pre></div>
 <ol start="2">
 <li>Publish docker image to a private registry or load it directly in the air-gapped environment.</li>
 <li>Refer to the <a href="../online-installation/#docker-installation">Docker Installation</a> guide to run GPUStack using Docker.</li>
@@ -2691,12 +2702,14 @@
 <li>Python 3.10 ~ 3.12</li>
 </ul>
 <p>Check the Python version:</p>
-<pre class="highlight"><code class="language-bash">python -V</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-V
+</code></pre></div>
 <ul>
 <li><a href="https://developer.nvidia.com/cuda-toolkit">NVIDIA CUDA Toolkit 12</a></li>
 </ul>
 <p>Check if CUDA is installed and verify that its version is at least 12.4:</p>
-<pre class="highlight"><code class="language-bash">nvcc -V</code></pre>
+<div class="highlight"><pre><span></span><code>nvcc<span class="w"> </span>-V
+</code></pre></div>
 <ul>
 <li><a href="https://developer.nvidia.com/cudnn">NVIDIA cuDNN 9</a> (Optional, required for audio models)</li>
 </ul>
@@ -2704,10 +2717,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">ldconfig -p | grep libcudnn</code></pre>
+<div class="highlight"><pre><span></span><code>ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>libcudnn
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-ChildItem -Path C:\ -Recurse -Filter "cudnn*.dll" -ErrorAction SilentlyContinue</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="n">C</span><span class="p">:\</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="s2">&quot;cudnn*.dll&quot;</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2722,40 +2737,49 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">AMD64</label><label for="__tabbed_6_2">ARM64</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash"># Extra dependencies options are "vllm", "audio" and "all"
-# "vllm" is only available for Linux AMD64
-PACKAGE_SPEC="gpustack[all]"
-# To install a specific version
-# PACKAGE_SPEC="gpustack[all]==0.6.0"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extra dependencies options are &quot;vllm&quot;, &quot;audio&quot; and &quot;all&quot;</span>
+<span class="c1"># &quot;vllm&quot; is only available for Linux AMD64</span>
+<span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack[all]&quot;</span>
+<span class="c1"># To install a specific version</span>
+<span class="c1"># PACKAGE_SPEC=&quot;gpustack[all]==0.6.0&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">PACKAGE_SPEC="gpustack[audio]"
-# To install a specific version
-# PACKAGE_SPEC="gpustack[audio]==0.6.0"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack[audio]&quot;</span>
+<span class="c1"># To install a specific version</span>
+<span class="c1"># PACKAGE_SPEC=&quot;gpustack[audio]==0.6.0&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>If you don’t need the vLLM backend and support for audio models, just set:</p>
-<pre class="highlight"><code class="language-bash">PACKAGE_SPEC="gpustack"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Run the following commands in an online environment:</p>
-<pre class="highlight"><code class="language-powershell">$PACKAGE_SPEC = "gpustack[audio]"
-# To install a specific version
-# $PACKAGE_SPEC = "gpustack[audio]==0.6.0"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack[audio]&quot;</span>
+<span class="c"># To install a specific version</span>
+<span class="c"># $PACKAGE_SPEC = &quot;gpustack[audio]==0.6.0&quot;</span>
+</code></pre></div>
 <p>If you don’t need support for audio models, just set:</p>
-<pre class="highlight"><code class="language-powershell">$PACKAGE_SPEC = "gpustack"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>Download all required packages:</p>
-<pre class="highlight"><code class="language-bash">pip wheel $PACKAGE_SPEC -w gpustack_offline_packages</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>wheel<span class="w"> </span><span class="nv">$PACKAGE_SPEC</span><span class="w"> </span>-w<span class="w"> </span>gpustack_offline_packages
+</code></pre></div>
 <p>Install GPUStack to use its CLI:</p>
-<pre class="highlight"><code class="language-bash">pip install gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gpustack
+</code></pre></div>
 <p>Download dependency tools and save them as an archive:</p>
-<pre class="highlight"><code class="language-bash">gpustack download-tools --save-archive gpustack_offline_tools.tar.gz</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>download-tools<span class="w"> </span>--save-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment, specify the <strong>OS</strong>, <strong>architecture</strong>, and <strong>device</strong> explicitly:</p>
-<pre class="highlight"><code class="language-bash">gpustack download-tools --save-archive gpustack_offline_tools.tar.gz --system linux --arch amd64 --device cuda</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>download-tools<span class="w"> </span>--save-archive<span class="w"> </span>gpustack_offline_tools.tar.gz<span class="w"> </span>--system<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>amd64<span class="w"> </span>--device<span class="w"> </span>cuda
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This instruction assumes that the online environment uses the same GPU type as the air-gapped environment. If the GPU types differ, use the <code>--device</code> flag to specify the device type for the air-gapped environment. Refer to the <a href="../../../cli-reference/download-tools/">download-tools</a> command for more information.</p>
@@ -2769,9 +2793,11 @@ PACKAGE_SPEC="gpustack[all]"
 <h4 id="step-3-install-gpustack">Step 3: Install GPUStack</h4>
 <p>In the air-gapped environment, run the following commands.</p>
 <p>Install GPUStack from the downloaded packages:</p>
-<pre class="highlight"><code class="language-bash">pip install --no-index --find-links=gpustack_offline_packages gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>gpustack_offline_packages<span class="w"> </span>gpustack
+</code></pre></div>
 <p>Load and apply the pre-downloaded tools archive:</p>
-<pre class="highlight"><code class="language-bash">gpustack download-tools --load-archive gpustack_offline_tools.tar.gz</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>download-tools<span class="w"> </span>--load-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
+</code></pre></div>
 <p>Now you can run GPUStack by following the instructions in the <a href="../online-installation/#pip-installation">pip Installation</a> guide.</p>
 
 

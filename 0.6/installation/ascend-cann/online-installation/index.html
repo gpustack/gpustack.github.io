@@ -2626,12 +2626,14 @@
 <li>CPU support for llama-box backend: ARM64 with NEON</li>
 </ul>
 <p>Check if the CPU is supported:</p>
-<pre class="highlight"><code class="language-bash">grep -E -i "neon|asimd" /proc/cpuinfo</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;neon|asimd&quot;</span><span class="w"> </span>/proc/cpuinfo
+</code></pre></div>
 <ul>
-<li><a href="https://www.hiascend.com/hardware/firmware-drivers/community?product=4&amp;model=26&amp;cann=8.0.0.beta1&amp;driver=1.0.28.alpha">NPU Driver and Firmware</a> (Must supports CANN 8.0.0.beta1)</li>
+<li><a href="https://www.hiascend.com/hardware/firmware-drivers/community?product=4&amp;model=26&amp;cann=8.0.0.beta1&amp;driver=1.0.28.alpha">NPU Driver and Firmware</a> (Must support CANN 8.0.0.beta1)</li>
 </ul>
 <p>Check if the NPU driver is installed:</p>
-<pre class="highlight"><code class="language-bash">npu-smi info</code></pre>
+<div class="highlight"><pre><span></span><code>npu-smi<span class="w"> </span>info
+</code></pre></div>
 <h2 id="docker-installation">Docker Installation</h2>
 <h3 id="supported-backends">Supported backends</h3>
 <ul class="task-list">
@@ -2651,41 +2653,43 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Host Network</label><label for="__tabbed_2_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    -p 80:80 \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu \
-    --worker-ip your_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2695,41 +2699,43 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Host Network</label><label for="__tabbed_3_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu-310p</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu-310p
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    -p 80:80 \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu-310p \
-    --worker-ip your_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu-310p<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2738,13 +2744,16 @@
 </div>
 <p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available startup flags.</p>
 <p>Check if the startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">docker logs -f gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
+</code></pre></div>
 <p>If the logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <h3 id="optional-add-worker">(Optional) Add Worker</h3>
 <p>You can add more GPU nodes to GPUStack to form a GPU cluster. You need to add workers on other GPU nodes and specify the <code>--server-url</code> and <code>--token</code> parameters to join GPUStack.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong> (Set <code>ASCEND_VISIBLE_DEVICES</code> to the required GPU indices), run the following command on the <strong>worker node</strong>. Be sure to replace the URL, token and node IP with your specific values:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Ascend 910B</label><label for="__tabbed_4_2">Ascend 310P</label></div>
 <div class="tabbed-content">
@@ -2753,41 +2762,43 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Host Network</label><label for="__tabbed_5_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu \
-    --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu \
-    --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2797,41 +2808,43 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Host Network</label><label for="__tabbed_6_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu-310p \
-    --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu-310p<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --device /dev/davinci0 \
-    --device /dev/davinci_manager \
-    --device /dev/devmm_svm \
-    --device /dev/hisi_hdc \
-    -v /usr/local/dcmi:/usr/local/dcmi \
-    -v /usr/local/bin/npu-smi:/usr/local/bin/npu-smi \
-    -v /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/ \
-    -v /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info \
-    -v /etc/ascend_install.info:/etc/ascend_install.info \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-npu-310p \
-    --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci0<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/davinci_manager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/devmm_svm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--device<span class="w"> </span>/dev/hisi_hdc<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/dcmi:/usr/local/dcmi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/bin/npu-smi:/usr/local/bin/npu-smi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>/etc/ascend_install.info:/etc/ascend_install.info<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-npu-310p<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2866,27 +2879,35 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 <li><a href="https://www.hiascend.com/developer/download/community/result?module=cann&amp;cann=8.0.0.beta1">Ascend CANN Toolkit 8.0.0.beta1 &amp; Kernels</a></li>
 </ul>
 <p>Check if CANN is installed and verify that its version is 8.0.0:</p>
-<pre class="highlight"><code class="language-bash">cat /usr/local/Ascend/ascend-toolkit/latest/version.cfg</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/usr/local/Ascend/ascend-toolkit/latest/version.cfg
+</code></pre></div>
 <p>Check if CANN kernels are installed and verify that its version is 8.0.0:</p>
-<pre class="highlight"><code class="language-bash">cat /usr/local/Ascend/ascend-toolkit/latest/version.cfg | grep opp</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/usr/local/Ascend/ascend-toolkit/latest/version.cfg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>opp
+</code></pre></div>
 <h3 id="run-gpustack_1">Run GPUStack</h3>
 <p>GPUStack provides a script to install it as a service with default port 80.</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To install GPUStack and start it as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s - --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 
 
 

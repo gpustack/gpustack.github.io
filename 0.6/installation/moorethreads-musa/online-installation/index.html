@@ -2593,75 +2593,85 @@
 <li>CPU support for llama-box backend: AMD64 with AVX2</li>
 </ul>
 <p>Check if the CPU is supported:</p>
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 <ul>
 <li><a href="https://developer.mthreads.com/sdk/download/musa">Driver for MTT S80/S3000/S4000</a></li>
 </ul>
 <p>Check if the driver is installed:</p>
-<pre class="highlight"><code class="language-bash">mthreads-gmi</code></pre>
+<div class="highlight"><pre><span></span><code>mthreads-gmi
+</code></pre></div>
 <h2 id="docker-installation">Docker Installation</h2>
 <ul>
 <li><a href="https://docs.docker.com/engine/install/">Docker</a></li>
 <li><a href="https://developer.mthreads.com/sdk/download/CloudNative">MT Container Toolkits</a></li>
 </ul>
 <p>Check if the MT Container Toolkits are installed and set as the default runtime:</p>
-<pre class="highlight"><code class="language-bash"># cd /usr/bin/musa &amp;&amp; sudo ./docker setup $PWD
-docker info | grep Runtimes | grep mthreads</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># cd /usr/bin/musa &amp;&amp; sudo ./docker setup $PWD</span>
+docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Runtimes<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mthreads
+</code></pre></div>
 <h3 id="run-gpustack">Run GPUStack</h3>
 <p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Host Network</label><label for="__tabbed_1_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-musa</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-musa
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    -p 80:80 \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-musa \
-    --worker-ip your_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-musa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available startup flags.</p>
 <p>Check if the startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">docker logs -f gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
+</code></pre></div>
 <p>If the logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <h3 id="optional-add-worker">(Optional) Add Worker</h3>
 <p>You can add more GPU nodes to GPUStack to form a GPU cluster. You need to add workers on other GPU nodes and specify the <code>--server-url</code> and <code>--token</code> parameters to join GPUStack.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL, token and node IP with your specific values:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Host Network</label><label for="__tabbed_2_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-musa \
-    --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-musa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack:latest-musa \
-    --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack:latest-musa<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2687,22 +2697,28 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 </ul>
 <h3 id="run-gpustack_1">Run GPUStack</h3>
 <p>GPUStack provides a script to install it as a service with default port 80.</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To install GPUStack and start it as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s - --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 
 
 

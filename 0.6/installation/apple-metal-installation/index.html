@@ -2611,88 +2611,109 @@
 <li>Python 3.10 ~ 3.12</li>
 </ul>
 <p>Check the Python version:</p>
-<pre class="highlight"><code class="language-bash">python -V</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-V
+</code></pre></div>
 <h2 id="installation-script">Installation Script</h2>
 <p>GPUStack provides a script to install it as a service with default port 80.</p>
 <h3 id="run-gpustack">Run GPUStack</h3>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <p>If you need support for audio models, run:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | INSTALL_SKIP_BUILD_DEPENDENCIES=0 sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_SKIP_BUILD_DEPENDENCIES</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../installation-script/">Installation Script</a>.</p>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <h3 id="optional-add-worker">(Optional) Add Worker</h3>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To install GPUStack and start it as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s - --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <p>If you need support for audio models, run:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | INSTALL_SKIP_BUILD_DEPENDENCIES=0 sh -s - --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_SKIP_BUILD_DEPENDENCIES</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 <h2 id="pip-installation">pip Installation</h2>
 <h3 id="install-gpustack">Install GPUStack</h3>
 <p>Run the following to install GPUStack:</p>
-<pre class="highlight"><code class="language-bash">pip install gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gpustack
+</code></pre></div>
 <p>If you need support for audio models, run:</p>
-<pre class="highlight"><code class="language-bash">pip install "gpustack[audio]"</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;gpustack[audio]&quot;</span>
+</code></pre></div>
 <p>To verify, run:</p>
-<pre class="highlight"><code class="language-bash">gpustack version</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>version
+</code></pre></div>
 <h3 id="run-gpustack_1">Run GPUStack</h3>
 <p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
-<pre class="highlight"><code class="language-bash">sudo gpustack start</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>gpustack<span class="w"> </span>start
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <p>By default, GPUStack uses <code>/var/lib/gpustack</code> as the data directory so you need <code>sudo</code> or proper permission for that. You can also set a custom data directory by running:</p>
-<pre class="highlight"><code>gpustack start --data-dir mypath</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack start --data-dir mypath
+</code></pre></div>
 <p>You can refer to the <a href="../../cli-reference/start/">CLI Reference</a> for available CLI Flags.</p>
 <h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>To add a worker to the GPUStack cluster, you need to specify the server URL and the authentication token.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To start a GPUStack worker and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-bash">sudo gpustack start --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>gpustack<span class="w"> </span>start<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <h3 id="run-gpustack-as-a-launchd-service">Run GPUStack as a Launchd Service</h3>
 <p>A recommended way is to run GPUStack as a startup service. For example, using launchd:</p>
 <p>Create a service file in <code>/Library/LaunchDaemons/ai.gpustack.plist</code>:</p>
-<pre class="highlight"><code class="language-bash">sudo tee /Library/LaunchDaemons/ai.gpustack.plist &gt; /dev/null &lt;&lt;EOF
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
-&lt;plist version="1.0"&gt;
-&lt;dict&gt;
-  &lt;key&gt;Label&lt;/key&gt;
-  &lt;string&gt;ai.gpustack&lt;/string&gt;
-  &lt;key&gt;ProgramArguments&lt;/key&gt;
-  &lt;array&gt;
-    &lt;string&gt;$(command -v gpustack)&lt;/string&gt;
-    &lt;string&gt;start&lt;/string&gt;
-  &lt;/array&gt;
-  &lt;key&gt;RunAtLoad&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;KeepAlive&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;EnableTransactions&lt;/key&gt;
-  &lt;true/&gt;
-  &lt;key&gt;StandardOutPath&lt;/key&gt;
-  &lt;string&gt;/var/log/gpustack.log&lt;/string&gt;
-  &lt;key&gt;StandardErrorPath&lt;/key&gt;
-  &lt;string&gt;/var/log/gpustack.log&lt;/string&gt;
-&lt;/dict&gt;
-&lt;/plist&gt;
-EOF</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>/Library/LaunchDaemons/ai.gpustack.plist<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+<span class="s">&lt;plist version=&quot;1.0&quot;&gt;</span>
+<span class="s">&lt;dict&gt;</span>
+<span class="s">  &lt;key&gt;Label&lt;/key&gt;</span>
+<span class="s">  &lt;string&gt;ai.gpustack&lt;/string&gt;</span>
+<span class="s">  &lt;key&gt;ProgramArguments&lt;/key&gt;</span>
+<span class="s">  &lt;array&gt;</span>
+<span class="s">    &lt;string&gt;$(command -v gpustack)&lt;/string&gt;</span>
+<span class="s">    &lt;string&gt;start&lt;/string&gt;</span>
+<span class="s">  &lt;/array&gt;</span>
+<span class="s">  &lt;key&gt;RunAtLoad&lt;/key&gt;</span>
+<span class="s">  &lt;true/&gt;</span>
+<span class="s">  &lt;key&gt;KeepAlive&lt;/key&gt;</span>
+<span class="s">  &lt;true/&gt;</span>
+<span class="s">  &lt;key&gt;EnableTransactions&lt;/key&gt;</span>
+<span class="s">  &lt;true/&gt;</span>
+<span class="s">  &lt;key&gt;StandardOutPath&lt;/key&gt;</span>
+<span class="s">  &lt;string&gt;/var/log/gpustack.log&lt;/string&gt;</span>
+<span class="s">  &lt;key&gt;StandardErrorPath&lt;/key&gt;</span>
+<span class="s">  &lt;string&gt;/var/log/gpustack.log&lt;/string&gt;</span>
+<span class="s">&lt;/dict&gt;</span>
+<span class="s">&lt;/plist&gt;</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <p>Then start GPUStack:</p>
-<pre class="highlight"><code class="language-bash">sudo launchctl bootstrap system /Library/LaunchDaemons/ai.gpustack.plist</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>launchctl<span class="w"> </span>bootstrap<span class="w"> </span>system<span class="w"> </span>/Library/LaunchDaemons/ai.gpustack.plist
+</code></pre></div>
 <p>Check the service status:</p>
-<pre class="highlight"><code class="language-bash">sudo launchctl print system/ai.gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>launchctl<span class="w"> </span>print<span class="w"> </span>system/ai.gpustack
+</code></pre></div>
 <p>And ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 
 
 

@@ -2531,73 +2531,75 @@
 </ol>
 <h2 id="step-3-do-inference">Step 3: Do Inference</h2>
 <p>With the model deployed and an API key, you can call the model via the GPUStack API. Here is an example script using <code>curl</code> (replace <code>&lt;your-server-url&gt;</code> with your GPUStack server URL and <code>&lt;your-api-key&gt;</code> with the API key generated in the previous step):</p>
-<pre class="highlight"><code class="language-bash">export GPUSTACK_SERVER_URL=&lt;your-server-url&gt;
-export GPUSTACK_API_KEY=&lt;your-api-key&gt;
-curl $GPUSTACK_SERVER_URL/v1-openai/chat/completions \
--H "Content-Type: application/json" \
--H "Authorization: Bearer $GPUSTACK_API_KEY" \
--d '{
-  "model": "qwen2.5-7b-instruct",
-  "messages": [
-    {
-      "role": "user",
-      "content": "What'\''s the weather like in Boston today?"
-    }
-  ],
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "get_current_weather",
-        "description": "Get the current weather in a given location",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {
-              "type": "string",
-              "description": "The city and state, e.g. San Francisco, CA"
-            },
-            "unit": {
-              "type": "string",
-              "enum": ["celsius", "fahrenheit"]
-            }
-          },
-          "required": ["location"]
-        }
-      }
-    }
-  ],
-  "tool_choice": "auto"
-}'</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_SERVER_URL</span><span class="o">=</span>&lt;your-server-url&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>&lt;your-api-key&gt;
+curl<span class="w"> </span><span class="nv">$GPUSTACK_SERVER_URL</span>/v1-openai/chat/completions<span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">  &quot;model&quot;: &quot;qwen2.5-7b-instruct&quot;,</span>
+<span class="s1">  &quot;messages&quot;: [</span>
+<span class="s1">    {</span>
+<span class="s1">      &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">      &quot;content&quot;: &quot;What&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;s the weather like in Boston today?&quot;</span>
+<span class="s1">    }</span>
+<span class="s1">  ],</span>
+<span class="s1">  &quot;tools&quot;: [</span>
+<span class="s1">    {</span>
+<span class="s1">      &quot;type&quot;: &quot;function&quot;,</span>
+<span class="s1">      &quot;function&quot;: {</span>
+<span class="s1">        &quot;name&quot;: &quot;get_current_weather&quot;,</span>
+<span class="s1">        &quot;description&quot;: &quot;Get the current weather in a given location&quot;,</span>
+<span class="s1">        &quot;parameters&quot;: {</span>
+<span class="s1">          &quot;type&quot;: &quot;object&quot;,</span>
+<span class="s1">          &quot;properties&quot;: {</span>
+<span class="s1">            &quot;location&quot;: {</span>
+<span class="s1">              &quot;type&quot;: &quot;string&quot;,</span>
+<span class="s1">              &quot;description&quot;: &quot;The city and state, e.g. San Francisco, CA&quot;</span>
+<span class="s1">            },</span>
+<span class="s1">            &quot;unit&quot;: {</span>
+<span class="s1">              &quot;type&quot;: &quot;string&quot;,</span>
+<span class="s1">              &quot;enum&quot;: [&quot;celsius&quot;, &quot;fahrenheit&quot;]</span>
+<span class="s1">            }</span>
+<span class="s1">          },</span>
+<span class="s1">          &quot;required&quot;: [&quot;location&quot;]</span>
+<span class="s1">        }</span>
+<span class="s1">      }</span>
+<span class="s1">    }</span>
+<span class="s1">  ],</span>
+<span class="s1">  &quot;tool_choice&quot;: &quot;auto&quot;</span>
+<span class="s1">}&#39;</span>
+</code></pre></div>
 <p>Example response:</p>
-<pre class="highlight"><code class="language-json">{
-  "model": "qwen2.5-7b-instruct",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "id": "chatcmpl-tool-b99d32848b324eaea4bac5a5830d00b8",
-            "type": "function",
-            "function": {
-              "name": "get_current_weather",
-              "arguments": "{\"location\": \"Boston, MA\", \"unit\": \"fahrenheit\"}"
-            }
-          }
-        ]
-      },
-      "finish_reason": "tool_calls"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 212,
-    "total_tokens": 242,
-    "completion_tokens": 30
-  }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-7b-instruct&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;choices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tool_calls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chatcmpl-tool-b99d32848b324eaea4bac5a5830d00b8&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;function&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;function&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;get_current_weather&quot;</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;location\&quot;: \&quot;Boston, MA\&quot;, \&quot;unit\&quot;: \&quot;fahrenheit\&quot;}&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;finish_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tool_calls&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">212</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">242</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;completion_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 

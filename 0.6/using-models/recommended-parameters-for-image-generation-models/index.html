@@ -2561,13 +2561,14 @@ Different models may have variations in parameter settings. In order to quickly 
 <p>Recommended samplers: euler, heun, ipndm, ipndm_v</p>
 <p>Recommended scheduler: discrete</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: A kangaroo holding a beer,wearing ski goggles and passionately singing silly songs.
+<div class="highlight"><pre><span></span><code>Prompt: A kangaroo holding a beer,wearing ski goggles and passionately singing silly songs.
 Size: 1024x1024
 Sampler: euler
 Scheduler: discrete
 Steps: 20
 CFG: 1.0
-Seed: 838887451</code></pre>
+Seed: 838887451
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/flux.1-dev.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="flux.1-dev" src="../../assets/using-models/recommended-parameters-for-image-generation-models/flux.1-dev.png" /></a></p>
 <h3 id="using-lora">Using LoRA</h3>
 <p><strong>Configuration</strong>: Edit model -&gt; Advanced -&gt; Backend Parameters -&gt; Add <code>--lora=&lt;path/to/your/lora_file&gt;</code></p>
@@ -2614,13 +2615,14 @@ Seed: 838887451</code></pre>
 <p>Recommended samplers: euler, dpm++2mv2, ipndm_v</p>
 <p>Recommended scheduler: discrete</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: A mischievous ferret with a playful grin squeezes itself into a large glass jar, surrounded by colorful candy. The jar sits on a wooden table in a cozy kitchen, and warm sunlight filters through a nearby window
+<div class="highlight"><pre><span></span><code>Prompt: A mischievous ferret with a playful grin squeezes itself into a large glass jar, surrounded by colorful candy. The jar sits on a wooden table in a cozy kitchen, and warm sunlight filters through a nearby window
 Size: 1024x1024
 Sampler: euler
 Scheduler: discrete
 Steps: 3
 CFG: 1.0
-Seed: 1565801500</code></pre>
+Seed: 1565801500
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/flux.1-schnell.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="flux.1-schnell" src="../../assets/using-models/recommended-parameters-for-image-generation-models/flux.1-schnell.png" /></a></p>
 <h2 id="stable-diffusion-v3-5-large">Stable-Diffusion-v3-5-Large</h2>
 <p>Reference settings:</p>
@@ -2657,13 +2659,14 @@ Seed: 1565801500</code></pre>
 <p>Recommended samplers: dpm++2m, ipndm, ipndm_v, dpm++2mv2, eluer, heun, dpm2</p>
 <p>Recommended scheduler: discrete</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: Lucky flower pop art style with pink color scheme,happy cute girl character wearing oversized headphones and smiling while listening to music in the air with her eyes closed,vibrant colorful Japanese anime cartoon illustration with bold outlines and bright colors,colorful text "GPUStack" on top of background,high resolution,detailed,
+<div class="highlight"><pre><span></span><code>Prompt: Lucky flower pop art style with pink color scheme,happy cute girl character wearing oversized headphones and smiling while listening to music in the air with her eyes closed,vibrant colorful Japanese anime cartoon illustration with bold outlines and bright colors,colorful text &quot;GPUStack&quot; on top of background,high resolution,detailed,
 Size: 1024x1024
 Sampler: dpm++2m
 Scheduler: discrete
 Steps: 25
 CFG: 5
-Seed: 3520225659</code></pre>
+Seed: 3520225659
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-large.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sd-v3_5-large" src="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-large.png" /></a></p>
 <h2 id="stable-diffusion-v3-5-large-turbo">Stable-Diffusion-v3-5-Large-Turbo</h2>
 <p>For turbo models, it is recommended to disable CFG (CFG=1) for better results.</p>
@@ -2701,13 +2704,14 @@ Seed: 3520225659</code></pre>
 <p>Recommended samplers: euler, ipndm, ipndm_v, dpm++2mv2, heun, dpm2, dpm++2m</p>
 <p>Recommended scheduler: discrete, karras, exponential</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest
+<div class="highlight"><pre><span></span><code>Prompt: This dreamlike digital art captures a vibrant, kaleidoscopic bird in a lush rainforest
 Size: 768x1024
 Sampler: heun
 Scheduler: karras
 Steps: 15
 CFG: 1.0
-Seed: 2536656539</code></pre>
+Seed: 2536656539
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-large-turbo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sd-v3_5-large-turbo" src="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-large-turbo.png" /></a></p>
 <h2 id="stable-diffusion-v3-5-medium">Stable-Diffusion-v3-5-Medium</h2>
 <p>Reference settings:</p>
@@ -2744,14 +2748,15 @@ Seed: 2536656539</code></pre>
 <p>Recommended samplers: euler, ipndm, ipndm_v, dpm++2mv2, heun, dpm2, dpm++2m</p>
 <p>Recommended scheduler: discrete</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: Plush toy, a box of French fries, pink bag, long French fries, smiling expression, round eyes, smiling mouth, bright colors, simple composition, clean background, jellycat style,
+<div class="highlight"><pre><span></span><code>Prompt: Plush toy, a box of French fries, pink bag, long French fries, smiling expression, round eyes, smiling mouth, bright colors, simple composition, clean background, jellycat style,
 Negative Prompt: ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2)
 Size: 768x1024
 Sampler: euler
 Scheduler: discrete
 Steps: 28
 CFG: 4.5
-Seed: 3353126565</code></pre>
+Seed: 3353126565
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-medium.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sd-v3_5-medium" src="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v3_5-medium.png" /></a></p>
 <h2 id="stable-diffusion-v3-medium">Stable-Diffusion-v3-Medium</h2>
 <p>Reference settings:</p>
@@ -2788,13 +2793,14 @@ Seed: 3353126565</code></pre>
 <p>Recommended samplers: euler, ipndm, ipndm_v, dpm++2mv2, heun, dpm2, dpm++2m</p>
 <p>Recommended scheduler: discrete</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: A guitar crafted from a watermelon, realistic, close-up, ultra-HD, digital art, with smoke and ice cubes, soft lighting, dramatic stage effects of light and shadow, pastel aesthetic filter, time-lapse photography, macro photography, ultra-high resolution, perfect design composition, surrealism, hyper-imaginative, ultra-realistic, ultra-HD quality
+<div class="highlight"><pre><span></span><code>Prompt: A guitar crafted from a watermelon, realistic, close-up, ultra-HD, digital art, with smoke and ice cubes, soft lighting, dramatic stage effects of light and shadow, pastel aesthetic filter, time-lapse photography, macro photography, ultra-high resolution, perfect design composition, surrealism, hyper-imaginative, ultra-realistic, ultra-HD quality
 Size: 768x1280
 Sampler: euler
 Scheduler: discrete
 Steps: 30
 CFG: 5.0
-Seed: 1937760054</code></pre>
+Seed: 1937760054
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The default maximum image height is 1024. To increase it, edit the model and add the backend parameter --image-max-height=1280 in the advanced settings.</p>
@@ -2835,14 +2841,15 @@ Seed: 1937760054</code></pre>
 <p>Recommended samplers: euler, ipndm, ipndm_v, dpm++2mv2, heun, dpm2, dpm++2m</p>
 <p>Recommended scheduler: discrete, karras, exponential</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: Weeds blowing in the wind,By the seaside,Ultra-realistic,Majestic epic scenery,excessively splendid ancient rituals,vibrant,beautiful Eastern fantasy,bright sunshine,pink peach blossoms,daytime perspective.
+<div class="highlight"><pre><span></span><code>Prompt: Weeds blowing in the wind,By the seaside,Ultra-realistic,Majestic epic scenery,excessively splendid ancient rituals,vibrant,beautiful Eastern fantasy,bright sunshine,pink peach blossoms,daytime perspective.
 Negative Prompt: ng_deepnegative_v1_75t,(badhandv4:1.2),EasyNegative,(worst quality:2),
 Size: 768x1280
 Sampler: dpm++2m
 Scheduler: exponential
 Steps: 30
 CFG: 5.0
-Seed: 3754742591</code></pre>
+Seed: 3754742591
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/sdxl-base-v1.0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sdxl-base-v1.0" src="../../assets/using-models/recommended-parameters-for-image-generation-models/sdxl-base-v1.0.png" /></a></p>
 <h2 id="stable-diffusion-v2-1-turbo">Stable-Diffusion-v2-1-Turbo</h2>
 <p>For turbo models, it is recommended to disable CFG (CFG=1) for better results.</p>
@@ -2880,13 +2887,14 @@ Seed: 3754742591</code></pre>
 <p>Recommended samplers: eluer_a, dmp++2s, lcm</p>
 <p>Recommended scheduler: discrete, karras, exponential, ays, gits</p>
 <p>✏️<strong>Try it out!</strong></p>
-<pre class="highlight"><code class="language-text">Prompt: A burger patty, with the bottom bun and lettuce and tomatoes.
+<div class="highlight"><pre><span></span><code>Prompt: A burger patty, with the bottom bun and lettuce and tomatoes.
 Size: 512x512
 Sampler: euler_a
 Scheduler: discrete
 Steps: 6
 CFG: 1.0
-Seed: 1375548153</code></pre>
+Seed: 1375548153
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v2_1-turbo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sd-v2_1-turbo" src="../../assets/using-models/recommended-parameters-for-image-generation-models/sd-v2_1-turbo.png" /></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

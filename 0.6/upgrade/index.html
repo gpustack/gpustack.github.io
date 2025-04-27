@@ -2456,26 +2456,42 @@
 </ol>
 <h3 id="linux-or-macos">Linux or macOS</h3>
 <p>For example, to upgrade GPUStack to the latest version on a Linux system and macOS:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | &lt;EXISTING_INSTALL_ENV&gt; sh -s - &lt;EXISTING_GPUSTACK_ARGS&gt;</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>&lt;EXISTING_INSTALL_ENV&gt;<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>&lt;EXISTING_GPUSTACK_ARGS&gt;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>&lt;EXISTING_INSTALL_ENV&gt;</code> are the environment variables you set during the initial installation, and <code>&lt;EXISTING_GPUSTACK_ARGS&gt;</code> are the startup parameters you configured back then.</p>
+<p><strong>Simply execute the same installation command again, and the system will automatically perform an upgrade.</strong></p>
+</div>
 <p>To upgrade to a specific version, specify the <code>INSTALL_PACKAGE_SPEC</code> environment variable similar to the <code>pip install</code> command:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | INSTALL_PACKAGE_SPEC=gpustack==x.y.z &lt;EXISTING_INSTALL_ENV&gt; sh -s - &lt;EXISTING_GPUSTACK_ARGS&gt;</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_PACKAGE_SPEC</span><span class="o">=</span><span class="nv">gpustack</span><span class="o">==</span>x.y.z<span class="w"> </span>&lt;EXISTING_INSTALL_ENV&gt;<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>&lt;EXISTING_GPUSTACK_ARGS&gt;
+</code></pre></div>
 <h3 id="windows">Windows</h3>
 <p>To upgrade GPUStack to the latest version on a Windows system:</p>
-<pre class="highlight"><code class="language-powershell">$env:&lt;EXISTING_INSTALL_ENV&gt; = &lt;EXISTING_INSTALL_ENV_VALUE&gt;
-Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$env</span><span class="p">:&lt;</span><span class="n">EXISTING_INSTALL_ENV</span><span class="p">&gt;</span> <span class="p">=</span> <span class="p">&lt;</span><span class="n">EXISTING_INSTALL_ENV_VALUE</span><span class="p">&gt;</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>&lt;EXISTING_INSTALL_ENV&gt;</code> are the environment variables you set during the initial installation, and <code>&lt;EXISTING_GPUSTACK_ARGS&gt;</code> are the startup parameters you configured back then.</p>
+<p><strong>Simply execute the same installation command again, and the system will automatically perform an upgrade.</strong></p>
+</div>
 <p>To upgrade to a specific version:</p>
-<pre class="highlight"><code class="language-powershell">$env:INSTALL_PACKAGE_SPEC = gpustack==x.y.z
-$env:&lt;EXISTING_INSTALL_ENV&gt; = &lt;EXISTING_INSTALL_ENV_VALUE&gt;
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } &lt;EXISTING_GPUSTACK_ARGS&gt;"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$env:INSTALL_PACKAGE_SPEC</span> <span class="p">=</span> <span class="n">gpustack</span><span class="p">==</span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="p">.</span><span class="n">z</span>
+<span class="nv">$env</span><span class="p">:&lt;</span><span class="n">EXISTING_INSTALL_ENV</span><span class="p">&gt;</span> <span class="p">=</span> <span class="p">&lt;</span><span class="n">EXISTING_INSTALL_ENV_VALUE</span><span class="p">&gt;</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } &lt;EXISTING_GPUSTACK_ARGS&gt;&quot;</span>
+</code></pre></div>
 <h2 id="docker-upgrade">Docker Upgrade</h2>
 <p>If you installed GPUStack using Docker, upgrade to the a new version by pulling the Docker image with the desired version tag.</p>
 <p>For example:</p>
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:vX.Y.Z</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:vX.Y.Z
+</code></pre></div>
 <p>Then restart the GPUStack service with the new image.</p>
 <h2 id="pip-upgrade">pip Upgrade</h2>
 <p>If you install GPUStack manually using pip, upgrade using the common <code>pip</code> workflow.</p>
 <p>For example, to upgrade GPUStack to the latest version:</p>
-<pre class="highlight"><code class="language-bash">pip install --upgrade gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>gpustack
+</code></pre></div>
 <p>Then restart the GPUStack service according to your setup.</p>
 
 

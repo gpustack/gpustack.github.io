@@ -2431,73 +2431,75 @@
 <h2 id="linux-and-macos">Linux and macOS</h2>
 <p>You can use the installation script available at <code>https://get.gpustack.ai</code> to install GPUStack as a service on systemd and launchd based systems.</p>
 <p>You can set additional environment variables and CLI flags when running the script. The following are examples running the installation script with different configurations:</p>
-<pre class="highlight"><code class="language-bash"># Run server with the built-in worker.
-curl -sfL https://get.gpustack.ai | sh -s -
+<div class="highlight"><pre><span></span><code><span class="c1"># Run server with the built-in worker.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
 
-# Run server with non-default port.
-curl -sfL https://get.gpustack.ai | sh -s - --port 8080
+<span class="c1"># Run server with non-default port.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
 
-# Run server with a custom data path.
-curl -sfL https://get.gpustack.ai | sh -s - --data-dir /data/gpustack-data
+<span class="c1"># Run server with a custom data path.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--data-dir<span class="w"> </span>/data/gpustack-data
 
-# Run server without the built-in worker.
-curl -sfL https://get.gpustack.ai | sh -s - --disable-worker
+<span class="c1"># Run server without the built-in worker.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--disable-worker
 
-# Run server with TLS.
-curl -sfL https://get.gpustack.ai | sh -s - --ssl-keyfile /path/to/keyfile --ssl-certfile /path/to/certfile
+<span class="c1"># Run server with TLS.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--ssl-keyfile<span class="w"> </span>/path/to/keyfile<span class="w"> </span>--ssl-certfile<span class="w"> </span>/path/to/certfile
 
-# Run server with external postgresql database.
-curl -sfL https://get.gpustack.ai | sh -s - --database-url "postgresql://username:password@host:port/database_name"
+<span class="c1"># Run server with external postgresql database.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--database-url<span class="w"> </span><span class="s2">&quot;postgresql://username:password@host:port/database_name&quot;</span>
 
-# Run worker with specified IP.
-curl -sfL https://get.gpustack.ai | sh -s - --server-url http://myserver --token mytoken --worker-ip 192.168.1.100
+<span class="c1"># Run worker with specified IP.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://myserver<span class="w"> </span>--token<span class="w"> </span>mytoken<span class="w"> </span>--worker-ip<span class="w"> </span><span class="m">192</span>.168.1.100
 
-# Install with a custom PyPI mirror.
-curl -sfL https://get.gpustack.ai | INSTALL_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple sh -s -
+<span class="c1"># Install with a custom PyPI mirror.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_INDEX_URL</span><span class="o">=</span>https://pypi.tuna.tsinghua.edu.cn/simple<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
 
-# Install a custom wheel package other than releases form pypi.org.
-curl -sfL https://get.gpustack.ai | INSTALL_PACKAGE_SPEC=https://repo.mycompany.com/my-gpustack.whl sh -s -
+<span class="c1"># Install a custom wheel package other than releases form pypi.org.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_PACKAGE_SPEC</span><span class="o">=</span>https://repo.mycompany.com/my-gpustack.whl<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
 
-# Install a specific version with extra audio dependencies.
-curl -sfL https://get.gpustack.ai | INSTALL_PACKAGE_SPEC=gpustack[audio]==0.6.0 sh -s -</code></pre>
+<span class="c1"># Install a specific version with extra audio dependencies.</span>
+curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">INSTALL_PACKAGE_SPEC</span><span class="o">=</span>gpustack<span class="o">[</span>audio<span class="o">]==</span><span class="m">0</span>.6.0<span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <h2 id="windows">Windows</h2>
 <p>You can use the installation script available at <code>https://get.gpustack.ai</code> to install GPUStack as a service on Windows Service Manager.</p>
 <p>You can set additional environment variables and CLI flags when running the script. The following are examples running the installation script with different configurations:</p>
-<pre class="highlight"><code class="language-powershell"># Run server with the built-in worker.
-Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content
+<div class="highlight"><pre><span></span><code><span class="c"># Run server with the built-in worker.</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
 
-# Run server with non-default port.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --port 8080"
+<span class="c"># Run server with non-default port.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --port 8080&quot;</span>
 
-# Run server with a custom data path.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --data-dir 'D:\gpustack-data'"
+<span class="c"># Run server with a custom data path.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --data-dir &#39;D:\gpustack-data&#39;&quot;</span>
 
-# Run server without the built-in worker.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --disable-worker"
+<span class="c"># Run server without the built-in worker.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --disable-worker&quot;</span>
 
-# Run server with TLS.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --ssl-keyfile 'C:\path\to\keyfile' --ssl-certfile 'C:\path\to\certfile'"
+<span class="c"># Run server with TLS.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --ssl-keyfile &#39;C:\path\to\keyfile&#39; --ssl-certfile &#39;C:\path\to\certfile&#39;&quot;</span>
 
-# Run server with external postgresql database.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --database-url 'postgresql://username:password@host:port/database_name'"
+<span class="c"># Run server with external postgresql database.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --database-url &#39;postgresql://username:password@host:port/database_name&#39;&quot;</span>
 
-# Run worker with specified IP.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --server-url 'http://myserver' --token 'mytoken' --worker-ip '192.168.1.100'"
+<span class="c"># Run worker with specified IP.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --server-url &#39;http://myserver&#39; --token &#39;mytoken&#39; --worker-ip &#39;192.168.1.100&#39;&quot;</span>
 
-# Run worker with customize reserved resource.
-Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --server-url 'http://myserver' --token 'mytoken' --system-reserved '{""ram"":5, ""vram"":5}'"
+<span class="c"># Run worker with customize reserved resource.</span>
+<span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --server-url &#39;http://myserver&#39; --token &#39;mytoken&#39; --system-reserved &#39;{&quot;&quot;ram&quot;&quot;:5, &quot;&quot;vram&quot;&quot;:5}&#39;&quot;</span>
 
-# Install with a custom PyPI mirror.
-$env:INSTALL_INDEX_URL = "https://pypi.tuna.tsinghua.edu.cn/simple"
-Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content
+<span class="c"># Install with a custom PyPI mirror.</span>
+<span class="nv">$env:INSTALL_INDEX_URL</span> <span class="p">=</span> <span class="s2">&quot;https://pypi.tuna.tsinghua.edu.cn/simple&quot;</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
 
-# Install a custom wheel package other than releases form pypi.org.
-$env:INSTALL_PACKAGE_SPEC = "https://repo.mycompany.com/my-gpustack.whl"
-Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content
+<span class="c"># Install a custom wheel package other than releases form pypi.org.</span>
+<span class="nv">$env:INSTALL_PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;https://repo.mycompany.com/my-gpustack.whl&quot;</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
 
-# Install a specific version with extra audio dependencies.
-$env:INSTALL_PACKAGE_SPEC = "gpustack[audio]==0.6.0"
-Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content</code></pre>
+<span class="c"># Install a specific version with extra audio dependencies.</span>
+<span class="nv">$env:INSTALL_PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack[audio]==0.6.0&quot;</span>
+<span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Avoid using PowerShell ISE as it is not compatible with the installation script.</p>
@@ -2551,8 +2553,9 @@ Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicPar
 <li><strong>Windows</strong>: <code>$env:APPDATA\gpustack\gpustack.env</code></li>
 </ul>
 <p>The following is an example of the content of the file:</p>
-<pre class="highlight"><code class="language-bash">HF_TOKEN="mytoken"
-HF_ENDPOINT="https://my-hf-endpoint"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">HF_TOKEN</span><span class="o">=</span><span class="s2">&quot;mytoken&quot;</span>
+<span class="nv">HF_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;https://my-hf-endpoint&quot;</span>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Unlike Systemd, Launchd and Windows services do not natively support reading environment variables from a file. Configuration via the environment file is implemented by the installation script. It reads the file and applies the variables to the service configuration. After modifying the environment file on Windows and macOS, you need to re-run the installation script to apply changes to the GPUStack service.</p>

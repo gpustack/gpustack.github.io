@@ -2449,89 +2449,91 @@
 <h2 id="customize-model-catalog">Customize Model Catalog</h2>
 <p>You can customize the Model Catalog by providing a YAML file via GPUStack server configuration using the <code>--model-catalog-file</code> flag. It accepts either a local file path or a URL. You can refer to the built-in model catalog file <a href="https://github.com/gpustack/gpustack/blob/main/gpustack/assets/model-catalog.yaml">here</a> for the schema. It contains a list of model sets, each with model metadata and templates for deployment configurations.</p>
 <p>The following is an example model set in the model catalog file:</p>
-<pre class="highlight"><code class="language-yaml">- name: Llama3.2
-  description: The Llama 3.2 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction-tuned generative models in 1B and 3B sizes (text in/text out). The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. They outperform many of the available open source and closed chat models on common industry benchmarks.
-  home: https://www.llama.com/
-  icon: /static/catalog_icons/meta.png
-  categories:
-    - llm
-  capabilities:
-    - context/128k
-    - tools
-  sizes:
-    - 1
-    - 3
-  licenses:
-    - llama3.2
-  release_date: "2024-09-25"
-  order: 2
-  templates:
-    - quantizations:
-        - Q3_K_L
-        - Q4_K_M
-        - Q5_K_M
-        - Q6_K_L
-        - Q8_0
-        - f16
-      source: huggingface
-      huggingface_repo_id: bartowski/Llama-3.2-{size}B-Instruct-GGUF
-      huggingface_filename: "*-{quantization}*.gguf"
-      replicas: 1
-      backend: llama-box
-      cpu_offloading: true
-      distributed_inference_across_workers: true
-    - quantizations: ["BF16"]
-      source: huggingface
-      huggingface_repo_id: unsloth/Llama-3.2-{size}B-Instruct
-      replicas: 1
-      backend: vllm
-      backend_parameters:
-        - --enable-auto-tool-choice
-        - --tool-call-parser=llama3_json
-        - --chat-template={data_dir}/chat_templates/tool_chat_template_llama3.2_json.jinja</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Llama3.2</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The Llama 3.2 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction-tuned generative models in 1B and 3B sizes (text in/text out). The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. They outperform many of the available open source and closed chat models on common industry benchmarks.</span>
+<span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.llama.com/</span>
+<span class="w">  </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/catalog_icons/meta.png</span>
+<span class="w">  </span><span class="nt">categories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llm</span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context/128k</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tools</span>
+<span class="w">  </span><span class="nt">sizes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">licenses</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama3.2</span>
+<span class="w">  </span><span class="nt">release_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-09-25&quot;</span>
+<span class="w">  </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">templates</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">quantizations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q3_K_L</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q4_K_M</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q5_K_M</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q6_K_L</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q8_0</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f16</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface</span>
+<span class="w">      </span><span class="nt">huggingface_repo_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bartowski/Llama-3.2-{size}B-Instruct-GGUF</span>
+<span class="w">      </span><span class="nt">huggingface_filename</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*-{quantization}*.gguf&quot;</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-box</span>
+<span class="w">      </span><span class="nt">cpu_offloading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">distributed_inference_across_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">quantizations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;BF16&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">huggingface</span>
+<span class="w">      </span><span class="nt">huggingface_repo_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unsloth/Llama-3.2-{size}B-Instruct</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm</span>
+<span class="w">      </span><span class="nt">backend_parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-auto-tool-choice</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--tool-call-parser=llama3_json</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--chat-template={data_dir}/chat_templates/tool_chat_template_llama3.2_json.jinja</span>
+</code></pre></div>
 <h3 id="using-model-catalog-in-air-gapped-environments">Using Model Catalog in Air-Gapped Environments</h3>
 <p>The built-in model catalog sources models from either Hugging Face or ModelScope. If you are using GPUStack in an air-gapped environment without internet access, you can customize the model catalog to use a local-path model source. Here is an example:</p>
-<pre class="highlight"><code class="language-yaml">- name: Llama3.2
-  description: The Llama 3.2 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction-tuned generative models in 1B and 3B sizes (text in/text out). The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. They outperform many of the available open source and closed chat models on common industry benchmarks.
-  home: https://www.llama.com/
-  icon: /static/catalog_icons/meta.png
-  categories:
-    - llm
-  capabilities:
-    - context/128k
-    - tools
-  sizes:
-    - 1
-    - 3
-  licenses:
-    - llama3.2
-  release_date: "2024-09-25"
-  order: 2
-  templates:
-    - quantizations:
-        - Q3_K_L
-        - Q4_K_M
-        - Q5_K_M
-        - Q6_K_L
-        - Q8_0
-        - f16
-      source: local_path
-      # assuming you have all the GGUF model files in /path/to/the/model/directory
-      local_path: /path/to/the/model/directory/Llama-3.2-{size}B-Instruct-{quantization}.gguf
-      replicas: 1
-      backend: llama-box
-      cpu_offloading: true
-      distributed_inference_across_workers: true
-    - quantizations: ["BF16"]
-      source: local_path
-      # assuming you have both /path/to/Llama-3.2-1B-Instruct and /path/to/Llama-3.2-3B-Instruct directories
-      local_path: /path/to/Llama-3.2-{size}B-Instruct
-      replicas: 1
-      backend: vllm
-      backend_parameters:
-        - --enable-auto-tool-choice
-        - --tool-call-parser=llama3_json
-        - --chat-template={data_dir}/chat_templates/tool_chat_template_llama3.2_json.jinja</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Llama3.2</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The Llama 3.2 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction-tuned generative models in 1B and 3B sizes (text in/text out). The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks. They outperform many of the available open source and closed chat models on common industry benchmarks.</span>
+<span class="w">  </span><span class="nt">home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.llama.com/</span>
+<span class="w">  </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/static/catalog_icons/meta.png</span>
+<span class="w">  </span><span class="nt">categories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llm</span>
+<span class="w">  </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">context/128k</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tools</span>
+<span class="w">  </span><span class="nt">sizes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">licenses</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama3.2</span>
+<span class="w">  </span><span class="nt">release_date</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-09-25&quot;</span>
+<span class="w">  </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">templates</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">quantizations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q3_K_L</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q4_K_M</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q5_K_M</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q6_K_L</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q8_0</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f16</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_path</span>
+<span class="w">      </span><span class="c1"># assuming you have all the GGUF model files in /path/to/the/model/directory</span>
+<span class="w">      </span><span class="nt">local_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/the/model/directory/Llama-3.2-{size}B-Instruct-{quantization}.gguf</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama-box</span>
+<span class="w">      </span><span class="nt">cpu_offloading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">distributed_inference_across_workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">quantizations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;BF16&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_path</span>
+<span class="w">      </span><span class="c1"># assuming you have both /path/to/Llama-3.2-1B-Instruct and /path/to/Llama-3.2-3B-Instruct directories</span>
+<span class="w">      </span><span class="nt">local_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/Llama-3.2-{size}B-Instruct</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vllm</span>
+<span class="w">      </span><span class="nt">backend_parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-auto-tool-choice</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--tool-call-parser=llama3_json</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--chat-template={data_dir}/chat_templates/tool_chat_template_llama3.2_json.jinja</span>
+</code></pre></div>
 <h3 id="template-variables">Template Variables</h3>
 <p>The following template variables are available for the deployment configuration:</p>
 <ul>

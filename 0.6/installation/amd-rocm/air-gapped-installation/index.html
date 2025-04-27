@@ -2517,7 +2517,8 @@
 <li>CPU support for llama-box backend: AMD64 with AVX2</li>
 </ul>
 <p>Check if the CPU is supported:</p>
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 <h2 id="docker-installation">Docker Installation</h2>
 <h3 id="prerequisites_1">Prerequisites</h3>
 <ul>
@@ -2528,35 +2529,43 @@
 <ol>
 <li>Install ROCm:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">sudo apt update
-wget https://repo.radeon.com/amdgpu-install/6.2.4/ubuntu/jammy/amdgpu-install_6.2.60204-1_all.deb
-sudo apt install ./amdgpu-install_6.2.60204-1_all.deb
-amdgpu-install -y --usecase=graphics,rocm
-sudo reboot</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+wget<span class="w"> </span>https://repo.radeon.com/amdgpu-install/6.2.4/ubuntu/jammy/amdgpu-install_6.2.60204-1_all.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./amdgpu-install_6.2.60204-1_all.deb
+amdgpu-install<span class="w"> </span>-y<span class="w"> </span>--usecase<span class="o">=</span>graphics,rocm
+sudo<span class="w"> </span>reboot
+</code></pre></div>
 <ol start="2">
 <li>Set Groups permissions:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">sudo usermod -a -G render,video $LOGNAME
-sudo reboot</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>render,video<span class="w"> </span><span class="nv">$LOGNAME</span>
+sudo<span class="w"> </span>reboot
+</code></pre></div>
 <ol start="3">
 <li>Verify Installation:</li>
 </ol>
 <p>Verify that the current user is added to the render and video groups:</p>
-<pre class="highlight"><code class="language-bash">groups</code></pre>
+<div class="highlight"><pre><span></span><code>groups
+</code></pre></div>
 <p>Check if amdgpu kernel driver is installed:</p>
-<pre class="highlight"><code class="language-bash">dkms status</code></pre>
+<div class="highlight"><pre><span></span><code>dkms<span class="w"> </span>status
+</code></pre></div>
 <p>Check if the GPU is listed as an agent:</p>
-<pre class="highlight"><code class="language-bash">rocminfo</code></pre>
+<div class="highlight"><pre><span></span><code>rocminfo
+</code></pre></div>
 <p>Check <code>rocm-smi</code>:</p>
-<pre class="highlight"><code class="language-bash">rocm-smi -i --showmeminfo vram --showpower --showserial --showuse --showtemp --showproductname --showuniqueid --json</code></pre>
+<div class="highlight"><pre><span></span><code>rocm-smi<span class="w"> </span>-i<span class="w"> </span>--showmeminfo<span class="w"> </span>vram<span class="w"> </span>--showpower<span class="w"> </span>--showserial<span class="w"> </span>--showuse<span class="w"> </span>--showtemp<span class="w"> </span>--showproductname<span class="w"> </span>--showuniqueid<span class="w"> </span>--json
+</code></pre></div>
 <h3 id="run-gpustack">Run GPUStack</h3>
 <p>When running GPUStack with Docker, it works out of the box in an air-gapped environment as long as the Docker images are available. To do this, follow these steps:</p>
 <ol>
 <li>Pull GPUStack docker image in an online environment:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:latest-rocm</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:latest-rocm
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment in terms of OS or arch, specify the OS and arch of the air-gapped environment when pulling the image:</p>
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/amd64 gpustack/gpustack:latest-rocm</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>gpustack/gpustack:latest-rocm
+</code></pre></div>
 <ol start="2">
 <li>Publish docker image to a private registry or load it directly in the air-gapped environment.</li>
 <li>Refer to the <a href="../online-installation/#docker-installation">Docker Installation</a> guide to run GPUStack using Docker.</li>

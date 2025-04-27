@@ -2744,10 +2744,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">AMD64</label><label for="__tabbed_2_2">ARM64</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">grep -E -i "neon|asimd" /proc/cpuinfo</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;neon|asimd&quot;</span><span class="w"> </span>/proc/cpuinfo
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2761,15 +2763,18 @@
 <li><a href="https://www.nvidia.com/en-us/drivers/">NVIDIA Driver</a></li>
 </ul>
 <p>Check if the NVIDIA driver is installed:</p>
-<pre class="highlight"><code class="language-bash">nvidia-smi --format=csv,noheader --query-gpu=index,name,memory.total,memory.used,utilization.gpu,temperature.gpu</code></pre>
+<div class="highlight"><pre><span></span><code>nvidia-smi<span class="w"> </span>--format<span class="o">=</span>csv,noheader<span class="w"> </span>--query-gpu<span class="o">=</span>index,name,memory.total,memory.used,utilization.gpu,temperature.gpu
+</code></pre></div>
 <p>And ensure the driver supports CUDA 12.4 or higher:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">nvidia-smi | grep "CUDA Version"</code></pre>
+<div class="highlight"><pre><span></span><code>nvidia-smi<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;CUDA Version&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">nvidia-smi | findstr "CUDA Version"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">nvidia-smi</span> <span class="p">|</span> <span class="n">findstr</span> <span class="s2">&quot;CUDA Version&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2779,7 +2784,8 @@
 <li><a href="https://developer.nvidia.com/cuda-toolkit">NVIDIA CUDA Toolkit 12</a></li>
 </ul>
 <p>Check if CUDA is installed and verify that its version is at least 12.4:</p>
-<pre class="highlight"><code class="language-bash">nvcc -V</code></pre>
+<div class="highlight"><pre><span></span><code>nvcc<span class="w"> </span>-V
+</code></pre></div>
 <ul>
 <li><a href="https://developer.nvidia.com/cudnn">NVIDIA cuDNN 9</a> (Optional, required for audio models)</li>
 </ul>
@@ -2787,10 +2793,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">ldconfig -p | grep libcudnn</code></pre>
+<div class="highlight"><pre><span></span><code>ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>libcudnn
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-ChildItem -Path C:\ -Recurse -Filter "cudnn*.dll" -ErrorAction SilentlyContinue</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="n">C</span><span class="p">:\</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="s2">&quot;cudnn*.dll&quot;</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2802,47 +2810,59 @@
 <ul>
 <li>Install Server</li>
 </ul>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <ul>
 <li>(Optional) Add Worker</li>
 </ul>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To install GPUStack and start it as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s - --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <ul>
 <li>Install Server</li>
 </ul>
-<pre class="highlight"><code class="language-powershell">Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+</code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-powershell">Get-Content "$env:APPDATA\gpustack\log\gpustack.log" -Tail 200 -Wait</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span> <span class="n">-Tail</span> <span class="n">200</span> <span class="n">-Wait</span>
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<p><pre class="highlight"><code class="language-powershell">Get-Content -Path "$env:APPDATA\gpustack\initial_admin_password" -Raw</code></pre>
+<p><div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
 <ul>
 <li>(Optional) Add Worker</li>
 </ul>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-powershell">Get-Content -Path "$env:APPDATA\gpustack\token" -Raw</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\token&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>token</code> file will be located in the specified directory.</p>
 <p>To install GPUStack and start it as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
-<pre class="highlight"><code class="language-powershell">Invoke-Expression "&amp; { $((Invoke-WebRequest -Uri 'https://get.gpustack.ai' -UseBasicParsing).Content) } -- --server-url http://your_gpustack_url --token your_gpustack_token"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="s2">&quot;&amp; { </span><span class="p">$((</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s1">&#39;https://get.gpustack.ai&#39;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span><span class="p">)</span><span class="s2"> } -- --server-url http://your_gpustack_url --token your_gpustack_token&quot;</span>
+</code></pre></div>
 <p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-powershell">Get-Content "$env:APPDATA\gpustack\log\gpustack.log" -Tail 200 -Wait</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span> <span class="n">-Tail</span> <span class="n">200</span> <span class="n">-Wait</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2853,7 +2873,8 @@ If you specify the <code>--data-dir</code> parameter to set the data directory, 
 <li><a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a></li>
 </ul>
 <p>Check if Docker and NVIDIA Container Toolkit are installed:</p>
-<pre class="highlight"><code class="language-bash">docker info | grep Runtimes | grep nvidia</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Runtimes<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia
+</code></pre></div>
 <ul>
 <li><a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/48">Disabling Systemd Cgroup Management in Docker</a></li>
 </ul>
@@ -2864,76 +2885,86 @@ If you specify the <code>--data-dir</code> parameter to set the data directory, 
 <p>To prevent <a href="https://github.com/NVIDIA/nvidia-container-toolkit/issues/48">this issue</a>, disabling systemd cgroup management in Docker is required.</p>
 </div>
 <p>Set the parameter "exec-opts": ["native.cgroupdriver=cgroupfs"] in the <code>/etc/docker/daemon.json</code> file and restart docker, such as:</p>
-<pre class="highlight"><code class="language-bash">vim /etc/docker/daemon.json</code></pre>
-<pre class="highlight"><code class="language-json">{
-  "runtimes": {
-    "nvidia": {
-      "args": [],
-      "path": "nvidia-container-runtime"
-    }
-  },
-  "exec-opts": ["native.cgroupdriver=cgroupfs"]
-}</code></pre>
-<pre class="highlight"><code class="language-bash">systemctl daemon-reload &amp;&amp; systemctl restart docker</code></pre>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/docker/daemon.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;runtimes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;nvidia&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nvidia-container-runtime&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;exec-opts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;native.cgroupdriver=cgroupfs&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
 <h3 id="run-gpustack_1">Run GPUStack</h3>
 <p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Host Network</label><label for="__tabbed_6_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    -p 80:80 \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack \
-    --worker-ip your_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available startup flags.</p>
 <p>Check if the startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">docker logs -f gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
+</code></pre></div>
 <p>If the logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <h3 id="optional-add-worker">(Optional) Add Worker</h3>
 <p>You can add more GPU nodes to GPUStack to form a GPU cluster. You need to add workers on other GPU nodes and specify the <code>--server-url</code> and <code>--token</code> parameters to join GPUStack.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<pre class="highlight"><code class="language-bash">docker exec -it gpustack cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 <p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL, token and node IP with your specific values:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Host Network</label><label for="__tabbed_7_2">Port Mapping</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    --network=host \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack \
-    --server-url http://your_gpustack_url --token your_gpustack_token</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker run -d --name gpustack \
-    --restart=unless-stopped \
-    --gpus all \
-    -p 10150:10150 \
-    -p 40064-40131:40064-40131 \
-    --ipc=host \
-    -v gpustack-data:/var/lib/gpustack \
-    gpustack/gpustack \
-    --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2957,57 +2988,61 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 </div>
 <h3 id="build-your-own-docker-image">Build Your Own Docker Image</h3>
 <p>For example, the official GPUStack NVIDIA CUDA image is built with CUDA 12.4. If you want to use a different CUDA version, you can build your own Docker image.</p>
-<pre class="highlight"><code class="language-dockerfile"># Example Dockerfile
-ARG CUDA_VERSION=12.4.1
+<div class="highlight"><pre><span></span><code><span class="c"># Example Dockerfile</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="m">12</span>.4.1
 
-FROM nvidia/cuda:$CUDA_VERSION-cudnn-runtime-ubuntu22.04
+<span class="k">FROM</span><span class="w"> </span><span class="s">nvidia/cuda:$CUDA_VERSION-cudnn-runtime-ubuntu22.04</span>
 
-ARG TARGETPLATFORM
-ENV DEBIAN_FRONTEND=noninteractive
+<span class="k">ARG</span><span class="w"> </span>TARGETPLATFORM
+<span class="k">ENV</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
 
-RUN apt-get update &amp;&amp; apt-get install -y \
-    git \
-    curl \
-    wget \
-    tzdata \
-    iproute2 \
-    python3 \
-    python3-pip \
-    python3-venv \
-    &amp;&amp; rm -rf /var/lib/apt/lists/*
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>tzdata<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>iproute2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python3<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python3-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python3-venv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 
-COPY . /workspace/gpustack
-RUN cd /workspace/gpustack &amp;&amp; \
-    make build
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/workspace/gpustack
+<span class="k">RUN</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/workspace/gpustack<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>make<span class="w"> </span>build
 
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
-    # Install vllm dependencies for x86_64
-    WHEEL_PACKAGE="$(ls /workspace/gpustack/dist/*.whl)[all]"; \
-    else  \
-    WHEEL_PACKAGE="$(ls /workspace/gpustack/dist/*.whl)[audio]"; \
-    fi &amp;&amp; \
-    pip install pipx &amp;&amp; \
-    pip install $WHEEL_PACKAGE &amp;&amp; \
-    pip cache purge &amp;&amp; \
-    rm -rf /workspace/gpustack
+<span class="k">RUN</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$TARGETPLATFORM</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;linux/amd64&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>#<span class="w"> </span>Install<span class="w"> </span>vllm<span class="w"> </span>dependencies<span class="w"> </span><span class="k">for</span><span class="w"> </span>x86_64
+<span class="w">    </span><span class="nv">WHEEL_PACKAGE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>ls<span class="w"> </span>/workspace/gpustack/dist/*.whl<span class="k">)</span><span class="s2">[all]&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">else</span><span class="w">  </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">WHEEL_PACKAGE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>ls<span class="w"> </span>/workspace/gpustack/dist/*.whl<span class="k">)</span><span class="s2">[audio]&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">fi</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pip<span class="w"> </span>install<span class="w"> </span>pipx<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">$WHEEL_PACKAGE</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>pip<span class="w"> </span>cache<span class="w"> </span>purge<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/workspace/gpustack
 
-RUN gpustack download-tools
+<span class="k">RUN</span><span class="w"> </span>gpustack<span class="w"> </span>download-tools
 
-ENTRYPOINT [ "gpustack", "start" ]</code></pre>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;gpustack&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;start&quot;</span><span class="w"> </span><span class="p">]</span>
+</code></pre></div>
 <p>Run the following command to build the Docker image:</p>
-<pre class="highlight"><code class="language-bash">docker build -t gpustack:cuda-12.8 --build-arg CUDA_VERSION=12.8.1 .</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>gpustack:cuda-12.8<span class="w"> </span>--build-arg<span class="w"> </span><span class="nv">CUDA_VERSION</span><span class="o">=</span><span class="m">12</span>.8.1<span class="w"> </span>.
+</code></pre></div>
 <h2 id="pip-installation">pip Installation</h2>
 <h3 id="prerequisites_2">Prerequisites</h3>
 <ul>
 <li>Python 3.10 ~ 3.12</li>
 </ul>
 <p>Check the Python version:</p>
-<pre class="highlight"><code class="language-bash">python -V</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-V
+</code></pre></div>
 <ul>
 <li><a href="https://developer.nvidia.com/cuda-toolkit">NVIDIA CUDA Toolkit 12</a></li>
 </ul>
 <p>Check if CUDA is installed and verify that its version is at least 12.4:</p>
-<pre class="highlight"><code class="language-bash">nvcc -V</code></pre>
+<div class="highlight"><pre><span></span><code>nvcc<span class="w"> </span>-V
+</code></pre></div>
 <ul>
 <li><a href="https://developer.nvidia.com/cudnn">NVIDIA cuDNN 9</a> (Optional, required for audio models)</li>
 </ul>
@@ -3015,10 +3050,12 @@ ENTRYPOINT [ "gpustack", "start" ]</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux</label><label for="__tabbed_8_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">ldconfig -p | grep libcudnn</code></pre>
+<div class="highlight"><pre><span></span><code>ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>libcudnn
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-ChildItem -Path C:\ -Recurse -Filter "cudnn*.dll" -ErrorAction SilentlyContinue</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ChildItem</span> <span class="n">-Path</span> <span class="n">C</span><span class="p">:\</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="s2">&quot;cudnn*.dll&quot;</span> <span class="n">-ErrorAction</span> <span class="n">SilentlyContinue</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -3027,35 +3064,43 @@ ENTRYPOINT [ "gpustack", "start" ]</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Linux AMD64</label><label for="__tabbed_9_2">Linux ARM64 or Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash"># Extra dependencies options are "vllm", "audio" and "all"
-# "vllm" is only available for Linux AMD64
-pip install "gpustack[all]"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extra dependencies options are &quot;vllm&quot;, &quot;audio&quot; and &quot;all&quot;</span>
+<span class="c1"># &quot;vllm&quot; is only available for Linux AMD64</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;gpustack[all]&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">pip install "gpustack[audio]"</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;gpustack[audio]&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>If you don’t need the vLLM backend and support for audio models, just run:</p>
-<pre class="highlight"><code class="language-bash">pip install gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gpustack
+</code></pre></div>
 <p>To verify, run:</p>
-<pre class="highlight"><code class="language-bash">gpustack version</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>version
+</code></pre></div>
 <h3 id="run-gpustack_2">Run GPUStack</h3>
 <p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
-<pre class="highlight"><code class="language-bash">gpustack start</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start
+</code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Linux</label><label for="__tabbed_10_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-Content -Path "$env:APPDATA\gpustack\initial_admin_password" -Raw</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>By default, GPUStack uses <code>/var/lib/gpustack</code> as the data directory so you need <code>sudo</code> or proper permission for that. You can also set a custom data directory by running:</p>
-<pre class="highlight"><code class="language-bash">gpustack start --data-dir mypath</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start<span class="w"> </span>--data-dir<span class="w"> </span>mypath
+</code></pre></div>
 <p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available CLI Flags.</p>
 <h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>To add a worker to the GPUStack cluster, you need to specify the server URL and the authentication token.</p>
@@ -3063,40 +3108,47 @@ pip install "gpustack[all]"</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Linux</label><label for="__tabbed_11_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/token</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-Content -Path "$env:APPDATA\gpustack\token" -Raw</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\token&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL, token and node IP with your specific values:</p>
-<pre class="highlight"><code class="language-bash">gpustack start --server-url http://your_gpustack_url --token your_gpustack_token --worker-ip your_worker_host_ip</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start<span class="w"> </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
+</code></pre></div>
 <h3 id="run-gpustack-as-a-system-service">Run GPUStack as a System Service</h3>
 <p>A recommended way is to run GPUStack as a startup service. For example, using systemd:</p>
 <p>Create a service file in <code>/etc/systemd/system/gpustack.service</code>:</p>
-<pre class="highlight"><code class="language-bash">tee /etc/systemd/system/gpustack.service &gt; /dev/null &lt;&lt;EOF
-[Unit]
-Description=GPUStack Service
-Wants=network-online.target
-After=network-online.target
+<div class="highlight"><pre><span></span><code>tee<span class="w"> </span>/etc/systemd/system/gpustack.service<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">[Unit]</span>
+<span class="s">Description=GPUStack Service</span>
+<span class="s">Wants=network-online.target</span>
+<span class="s">After=network-online.target</span>
 
-[Service]
-EnvironmentFile=-/etc/default/%N
-ExecStart=$(command -v gpustack) start
-Restart=always
-StandardOutput=append:/var/log/gpustack.log
-StandardError=append:/var/log/gpustack.log
+<span class="s">[Service]</span>
+<span class="s">EnvironmentFile=-/etc/default/%N</span>
+<span class="s">ExecStart=$(command -v gpustack) start</span>
+<span class="s">Restart=always</span>
+<span class="s">StandardOutput=append:/var/log/gpustack.log</span>
+<span class="s">StandardError=append:/var/log/gpustack.log</span>
 
-[Install]
-WantedBy=multi-user.target
-EOF</code></pre>
+<span class="s">[Install]</span>
+<span class="s">WantedBy=multi-user.target</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <p>Then start GPUStack:</p>
-<pre class="highlight"><code class="language-bash">systemctl daemon-reload &amp;&amp; systemctl enable gpustack --now</code></pre>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gpustack<span class="w"> </span>--now
+</code></pre></div>
 <p>Check the service status:</p>
-<pre class="highlight"><code class="language-bash">systemctl status gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>gpustack
+</code></pre></div>
 <p>And ensure that the GPUStack startup logs are normal:</p>
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 
 
 

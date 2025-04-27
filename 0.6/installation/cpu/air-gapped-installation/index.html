@@ -2591,10 +2591,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">AMD64</label><label for="__tabbed_2_2">ARM64</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">grep -E -i "neon|asimd" /proc/cpuinfo</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;neon|asimd&quot;</span><span class="w"> </span>/proc/cpuinfo
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2614,9 +2616,11 @@
 <ol>
 <li>Pull GPUStack docker image in an online environment:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:latest-cpu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:latest-cpu
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment in terms of OS or arch, specify the OS and arch of the air-gapped environment when pulling the image:</p>
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/amd64 gpustack/gpustack:latest-cpu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>gpustack/gpustack:latest-cpu
+</code></pre></div>
 <ol start="2">
 <li>Publish docker image to a private registry or load it directly in the air-gapped environment.</li>
 <li>Refer to the <a href="../online-installation/#docker-installation">Docker Installation</a> guide to run GPUStack using Docker.</li>
@@ -2627,7 +2631,8 @@
 <li>Python 3.10 ~ 3.12</li>
 </ul>
 <p>Check the Python version:</p>
-<pre class="highlight"><code class="language-bash">python -V</code></pre>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-V
+</code></pre></div>
 <h3 id="install-gpustack">Install GPUStack</h3>
 <p>For manually pip installation, you need to prepare the required packages and tools in an online environment and then transfer them to the air-gapped environment.</p>
 <p>Set up an online environment identical to the air-gapped environment, including <strong>OS</strong>, <strong>architecture</strong>, and <strong>Python version</strong>.</p>
@@ -2636,29 +2641,37 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">PACKAGE_SPEC="gpustack[audio]"
-# To install a specific version
-# PACKAGE_SPEC="gpustack[audio]==0.6.0"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack[audio]&quot;</span>
+<span class="c1"># To install a specific version</span>
+<span class="c1"># PACKAGE_SPEC=&quot;gpustack[audio]==0.6.0&quot;</span>
+</code></pre></div>
 <p>If you don’t need support for audio models, just set:</p>
-<pre class="highlight"><code class="language-bash">PACKAGE_SPEC="gpustack"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">PACKAGE_SPEC</span><span class="o">=</span><span class="s2">&quot;gpustack&quot;</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">$PACKAGE_SPEC = "gpustack[audio]"
-# To install a specific version
-# $PACKAGE_SPEC = "gpustack[audio]==0.6.0"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack[audio]&quot;</span>
+<span class="c"># To install a specific version</span>
+<span class="c"># $PACKAGE_SPEC = &quot;gpustack[audio]==0.6.0&quot;</span>
+</code></pre></div>
 <p>If you don’t need support for audio models, just set:</p>
-<pre class="highlight"><code class="language-powershell">$PACKAGE_SPEC = "gpustack"</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nv">$PACKAGE_SPEC</span> <span class="p">=</span> <span class="s2">&quot;gpustack&quot;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
 <p>Download all required packages:</p>
-<pre class="highlight"><code class="language-bash">pip wheel $PACKAGE_SPEC -w gpustack_offline_packages</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>wheel<span class="w"> </span><span class="nv">$PACKAGE_SPEC</span><span class="w"> </span>-w<span class="w"> </span>gpustack_offline_packages
+</code></pre></div>
 <p>Install GPUStack to use its CLI:</p>
-<pre class="highlight"><code class="language-bash">pip install gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>gpustack
+</code></pre></div>
 <p>Download dependency tools and save them as an archive:</p>
-<pre class="highlight"><code class="language-bash">gpustack download-tools --save-archive gpustack_offline_tools.tar.gz</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>download-tools<span class="w"> </span>--save-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment, specify the <strong>OS</strong>, <strong>architecture</strong>, and <strong>device</strong> explicitly:</p>
-<pre class="highlight"><code class="language-bash">gpustack download-tools --save-archive gpustack_offline_tools.tar.gz --system linux --arch amd64 --device cpu</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>download-tools<span class="w"> </span>--save-archive<span class="w"> </span>gpustack_offline_tools.tar.gz<span class="w"> </span>--system<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>amd64<span class="w"> </span>--device<span class="w"> </span>cpu
+</code></pre></div>
 <h4 id="step-2-transfer-the-packages">Step 2: Transfer the Packages</h4>
 <p>Transfer the following files from the online environment to the air-gapped environment.</p>
 <ul>
@@ -2667,11 +2680,12 @@
 </ul>
 <h4 id="step-3-install-gpustack">Step 3: Install GPUStack</h4>
 <p>In the air-gapped environment, run the following commands:</p>
-<pre class="highlight"><code class="language-bash"># Install GPUStack from the downloaded packages
-pip install --no-index --find-links=gpustack_offline_packages gpustack
+<div class="highlight"><pre><span></span><code><span class="c1"># Install GPUStack from the downloaded packages</span>
+pip<span class="w"> </span>install<span class="w"> </span>--no-index<span class="w"> </span>--find-links<span class="o">=</span>gpustack_offline_packages<span class="w"> </span>gpustack
 
-# Load and apply the pre-downloaded tools archive
-gpustack download-tools --load-archive gpustack_offline_tools.tar.gz</code></pre>
+<span class="c1"># Load and apply the pre-downloaded tools archive</span>
+gpustack<span class="w"> </span>download-tools<span class="w"> </span>--load-archive<span class="w"> </span>gpustack_offline_tools.tar.gz
+</code></pre></div>
 <p>Now you can run GPUStack by following the instructions in the <a href="../online-installation/#pip-installation">pip Installation</a> guide.</p>
 
 

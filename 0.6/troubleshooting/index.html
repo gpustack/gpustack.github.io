@@ -2395,31 +2395,39 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux</label><label for="__tabbed_1_2">macOS</label><label for="__tabbed_1_3">Windows</label><label for="__tabbed_1_4">Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">tail -200f /var/log/gpustack.log</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/log/gpustack.log
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-Content "$env:APPDATA\gpustack\log\gpustack.log" -Tail 200 -Wait</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span> <span class="n">-Tail</span> <span class="n">200</span> <span class="n">-Wait</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker logs -f gpustack</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
+</code></pre></div>
 </div>
 </div>
 </div>
 <h2 id="configure-log-level">Configure Log Level</h2>
 <p>You can enable the DEBUG log level for <code>gpustack start</code> by setting the <code>--debug</code> parameter.</p>
 <p>You can configure log level of the GPUStack server at runtime by running the following command on the server node:</p>
-<pre class="highlight"><code class="language-bash">curl -X PUT http://localhost/debug/log_level -d "debug"</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost/debug/log_level<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;debug&quot;</span>
+</code></pre></div>
 <p>The same applies to GPUStack workers:</p>
-<pre class="highlight"><code class="language-bash">curl -X PUT http://localhost:10150/debug/log_level -d "debug"</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost:10150/debug/log_level<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;debug&quot;</span>
+</code></pre></div>
 <p>The available log levels are: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warning</code>, <code>error</code>, <code>critical</code>.</p>
 <h2 id="reset-admin-password">Reset Admin Password</h2>
 <p>In case you forgot the admin password, you can reset it by running the following command on the <strong>server</strong> node or inside the <strong>server container</strong>:</p>
-<pre class="highlight"><code class="language-bash">gpustack reset-admin-password</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password
+</code></pre></div>
 <p>If the default port has been changed, specify the GPUStack URL using the <code>--server-url</code> parameter. It must be run locally on the server and accessed via <code>localhost</code>:</p>
-<pre class="highlight"><code class="language-bash">gpustack reset-admin-password --server-url http://localhost:9090</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password<span class="w"> </span>--server-url<span class="w"> </span>http://localhost:9090
+</code></pre></div>
 
 
 

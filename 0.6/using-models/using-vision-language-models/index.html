@@ -2600,11 +2600,13 @@
 </div>
 <h2 id="step-1-install-gpustack">Step 1: Install GPUStack</h2>
 <p>Run the following command to install GPUStack:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s - --huggingface-token &lt;Hugging Face API Key&gt;</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-<span class="w"> </span>--huggingface-token<span class="w"> </span>&lt;Hugging<span class="w"> </span>Face<span class="w"> </span>API<span class="w"> </span>Key&gt;
+</code></pre></div>
 <p>Replace <code>&lt;Hugging Face API Key&gt;</code> with your <a href="https://huggingface.co/settings/tokens">Hugging Face API key</a>. GPUStack will use this key to download the model files.</p>
 <h2 id="step-2-log-in-to-gpustack-ui">Step 2: Log in to GPUStack UI</h2>
 <p>Run the following command to get the default password:</p>
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 <p>Open your browser and navigate to <code>http://&lt;your-server-ip&gt;</code>. Replace <code>&lt;your-server-ip&gt;</code> with the IP address of your server. Log in using the username <code>admin</code> and the password you obtained in the previous step.</p>
 <h2 id="step-3-deploy-vision-language-models">Step 3: Deploy Vision Language Models</h2>
 <h3 id="deoloy-from-catalog">Deoloy from Catalog</h3>

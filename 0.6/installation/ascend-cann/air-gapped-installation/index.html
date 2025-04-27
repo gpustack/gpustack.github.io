@@ -2431,12 +2431,14 @@
 <li>CPU support for llama-box backend: ARM64 with NEON</li>
 </ul>
 <p>Check if the CPU is supported:</p>
-<pre class="highlight"><code class="language-bash">grep -E -i "neon|asimd" /proc/cpuinfo</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-E<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;neon|asimd&quot;</span><span class="w"> </span>/proc/cpuinfo
+</code></pre></div>
 <ul>
-<li><a href="https://www.hiascend.com/hardware/firmware-drivers/community?product=4&amp;model=26&amp;cann=8.0.0.beta1&amp;driver=1.0.28.alpha">NPU Driver and Firmware</a> (Must supports CANN 8.0.0.beta1)</li>
+<li><a href="https://www.hiascend.com/hardware/firmware-drivers/community?product=4&amp;model=26&amp;cann=8.0.0.beta1&amp;driver=1.0.28.alpha">NPU Driver and Firmware</a> (Must support CANN 8.0.0.beta1)</li>
 </ul>
 <p>Check if the NPU driver is installed:</p>
-<pre class="highlight"><code class="language-bash">npu-smi info</code></pre>
+<div class="highlight"><pre><span></span><code>npu-smi<span class="w"> </span>info
+</code></pre></div>
 <ul>
 <li><a href="https://docs.docker.com/engine/install/">Docker</a></li>
 </ul>
@@ -2448,10 +2450,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ascend 910B</label><label for="__tabbed_1_2">Ascend 310P</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:latest-npu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:latest-npu
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:latest-npu-310p</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:latest-npu-310p
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2459,10 +2463,12 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ascend 910B</label><label for="__tabbed_2_2">Ascend 310P</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/arm64 gpustack/gpustack:latest-npu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/arm64<span class="w"> </span>gpustack/gpustack:latest-npu
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/arm64 gpustack/gpustack:latest-npu-310p</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/arm64<span class="w"> </span>gpustack/gpustack:latest-npu-310p
+</code></pre></div>
 </div>
 </div>
 </div>

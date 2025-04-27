@@ -2445,7 +2445,8 @@
 
 <h1 id="gpustack-chat">gpustack chat</h1>
 <p>Chat with a large language model.</p>
-<pre class="highlight"><code class="language-bash">gpustack chat model [prompt]</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>chat<span class="w"> </span>model<span class="w"> </span><span class="o">[</span>prompt<span class="o">]</span>
+</code></pre></div>
 <h2 id="positional-arguments">Positional Arguments</h2>
 <table>
 <thead>
@@ -2467,19 +2468,22 @@
 </table>
 <h2 id="one-time-chat-with-a-prompt">One-time Chat with a Prompt</h2>
 <p>If a prompt is provided, it performs a one-time inference. For example:</p>
-<pre class="highlight"><code class="language-bash">gpustack chat llama3 "tell me a joke."</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>chat<span class="w"> </span>llama3<span class="w"> </span><span class="s2">&quot;tell me a joke.&quot;</span>
+</code></pre></div>
 <p>Example output:</p>
-<pre class="highlight"><code>Why couldn't the bicycle stand up by itself?
+<div class="highlight"><pre><span></span><code>Why couldn&#39;t the bicycle stand up by itself?
 
-Because it was two-tired!</code></pre>
+Because it was two-tired!
+</code></pre></div>
 <h2 id="interactive-chat">Interactive Chat</h2>
 <p>If the <code>prompt</code> argument is not provided, you can chat with the large language model interactively. For example:</p>
-<pre class="highlight"><code class="language-bash">gpustack chat llama3</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>chat<span class="w"> </span>llama3
+</code></pre></div>
 <p>Example output:</p>
-<pre class="highlight"><code>&gt;tell me a joke.
-Here's one:
+<div class="highlight"><pre><span></span><code>&gt;tell me a joke.
+Here&#39;s one:
 
-Why couldn't the bicycle stand up by itself?
+Why couldn&#39;t the bicycle stand up by itself?
 
 (wait for it...)
 
@@ -2487,7 +2491,7 @@ Because it was two-tired!
 
 Hope that made you smile!
 &gt;Do you have a better one?
-Here's another one:
+Here&#39;s another one:
 
 Why did the scarecrow win an award?
 
@@ -2498,13 +2502,15 @@ Because he was outstanding in his field!
 Hope that one stuck with you!
 
 Do you want to hear another one?
-&gt;\quit</code></pre>
+&gt;\quit
+</code></pre></div>
 <h3 id="interactive-commands">Interactive Commands</h3>
 <p>Followings are available commands in interactive chat:</p>
-<pre class="highlight"><code>Commands:
+<div class="highlight"><pre><span></span><code>Commands:
   \q or \quit - Quit the chat
   \c or \clear - Clear chat context in prompt
-  \? or \h or \help - Print this help message</code></pre>
+  \? or \h or \help - Print this help message
+</code></pre></div>
 <h2 id="connect-to-external-gpustack-server">Connect to External GPUStack Server</h2>
 <p>If you are not running <code>gpustack chat</code> on the server node, or if you are serving on a custom host or port, you should provide the following environment variables:</p>
 <table>

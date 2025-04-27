@@ -2441,37 +2441,39 @@
 </ol>
 <h2 id="step-3-generate-text-embeddings">Step 3: Generate Text Embeddings</h2>
 <p>With the model deployed and an API key, you can generate text embeddings via the GPUStack API. Here is an example script using <code>curl</code>:</p>
-<pre class="highlight"><code class="language-bash">export SERVER_URL=&lt;your-server-url&gt;
-export GPUSTACK_API_KEY=&lt;your-api-key&gt;
-curl $SERVER_URL/v1-openai/embeddings \
-  -H "Authorization: Bearer $GPUSTACK_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": "The food was delicious and the waiter...",
-    "model": "bge-small-en-v1.5",
-    "encoding_format": "float"
-  }'</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SERVER_URL</span><span class="o">=</span>&lt;your-server-url&gt;
+<span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>&lt;your-api-key&gt;
+curl<span class="w"> </span><span class="nv">$SERVER_URL</span>/v1-openai/embeddings<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;input&quot;: &quot;The food was delicious and the waiter...&quot;,</span>
+<span class="s1">    &quot;model&quot;: &quot;bge-small-en-v1.5&quot;,</span>
+<span class="s1">    &quot;encoding_format&quot;: &quot;float&quot;</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
 <p>Replace <code>&lt;your-server-url&gt;</code> with the URL of your GPUStack server and <code>&lt;your-api-key&gt;</code> with the API key you generated in the previous step.</p>
 <p>Example response:</p>
-<pre class="highlight"><code class="language-json">{
-  "data": [
-    {
-      "embedding": [
-        -0.012189436703920364, 0.016934078186750412, 0.003965042531490326,
-        -0.03453584015369415, -0.07623119652271271, -0.007116147316992283,
-        0.11278388649225235, 0.019714849069714546, 0.010370955802500248,
-        -0.04219457507133484, -0.029902394860982895, 0.01122555136680603,
-        0.022912170737981796, 0.031186765059828758, 0.006303929258137941,
-        # ... additional values
-      ],
-      "index": 0,
-      "object": "embedding"
-    }
-  ],
-  "model": "bge-small-en-v1.5",
-  "object": "list",
-  "usage": { "prompt_tokens": 12, "total_tokens": 12 }
-}</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;embedding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="mf">-0.012189436703920364</span><span class="p">,</span><span class="w"> </span><span class="mf">0.016934078186750412</span><span class="p">,</span><span class="w"> </span><span class="mf">0.003965042531490326</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">-0.03453584015369415</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.07623119652271271</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.007116147316992283</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.11278388649225235</span><span class="p">,</span><span class="w"> </span><span class="mf">0.019714849069714546</span><span class="p">,</span><span class="w"> </span><span class="mf">0.010370955802500248</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">-0.04219457507133484</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.029902394860982895</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01122555136680603</span><span class="p">,</span>
+<span class="w">        </span><span class="mf">0.022912170737981796</span><span class="p">,</span><span class="w"> </span><span class="mf">0.031186765059828758</span><span class="p">,</span><span class="w"> </span><span class="mf">0.006303929258137941</span><span class="p">,</span>
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">addi</span><span class="kc">t</span><span class="err">io</span><span class="kc">nal</span><span class="w"> </span><span class="err">values</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;embedding&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bge-small-en-v1.5&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 
 

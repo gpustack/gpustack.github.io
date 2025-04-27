@@ -2431,21 +2431,25 @@
 <li>CPU support for llama-box backend: AMD64 with AVX2</li>
 </ul>
 <p>Check if the CPU is supported:</p>
-<pre class="highlight"><code class="language-bash">lscpu | grep avx2</code></pre>
+<div class="highlight"><pre><span></span><code>lscpu<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>avx2
+</code></pre></div>
 <ul>
 <li><a href="https://docs.docker.com/engine/install/">Docker</a></li>
 <li><a href="https://developer.sourcefind.cn/tool/">DCU Driver rock-6.3</a></li>
 </ul>
 <p>Check if the driver is installed:</p>
-<pre class="highlight"><code class="language-bash">lsmod | grep dcu</code></pre>
+<div class="highlight"><pre><span></span><code>lsmod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>dcu
+</code></pre></div>
 <h3 id="run-gpustack">Run GPUStack</h3>
 <p>When running GPUStack with Docker, it works out of the box in an air-gapped environment as long as the Docker images are available. To do this, follow these steps:</p>
 <ol>
 <li>Pull GPUStack docker image in an online environment:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">docker pull gpustack/gpustack:latest-dcu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>gpustack/gpustack:latest-dcu
+</code></pre></div>
 <p>If your online environment differs from the air-gapped environment in terms of OS or arch, specify the OS and arch of the air-gapped environment when pulling the image:</p>
-<pre class="highlight"><code class="language-bash">docker pull --platform linux/amd64 gpustack/gpustack:latest-dcu</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="w"> </span>linux/amd64<span class="w"> </span>gpustack/gpustack:latest-dcu
+</code></pre></div>
 <ol start="2">
 <li>Publish docker image to a private registry or load it directly in the air-gapped environment.</li>
 <li>Refer to the <a href="../online-installation/#docker-installation">Docker Installation</a> guide to run GPUStack using Docker.</li>

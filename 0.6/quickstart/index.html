@@ -2413,15 +2413,18 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>GPUStack provides a script to install it as a systemd service on Linux with default port 80. To install GPUStack using this method, just run:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>GPUStack provides a script to install it as a launchd service on macOS with default port 80. To install GPUStack using this method, just run:</p>
-<pre class="highlight"><code class="language-bash">curl -sfL https://get.gpustack.ai | sh -s -</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Run PowerShell as administrator (<strong>avoid</strong> using PowerShell ISE), then run the following command to install GPUStack with default port 80:</p>
-<pre class="highlight"><code class="language-powershell">Invoke-Expression (Invoke-WebRequest -Uri "https://get.gpustack.ai" -UseBasicParsing).Content</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2431,7 +2434,8 @@
 <ol>
 <li>Run and chat with the <strong>llama3.2</strong> model:</li>
 </ol>
-<pre class="highlight"><code class="language-bash">gpustack chat llama3.2 "tell me a joke."</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>chat<span class="w"> </span>llama3.2<span class="w"> </span><span class="s2">&quot;tell me a joke.&quot;</span>
+</code></pre></div>
 <ol start="2">
 <li>Run and generate an image with the <strong>stable-diffusion-v3-5-large-turbo</strong> model:</li>
 </ol>
@@ -2439,9 +2443,10 @@
 <p class="admonition-title">Tip</p>
 <p>This command downloads the model (~12GB) from Hugging Face. The download time depends on your network speed. Ensure you have enough disk space and VRAM (12GB) to run the model. If you encounter issues, you can skip this step and move to the next one.</p>
 </div>
-<pre class="highlight"><code class="language-bash">gpustack draw hf.co/gpustack/stable-diffusion-v3-5-large-turbo-GGUF:stable-diffusion-v3-5-large-turbo-Q4_0.gguf \
-"A minion holding a sign that says 'GPUStack'. The background is filled with futuristic elements like neon lights, circuit boards, and holographic displays. The minion is wearing a tech-themed outfit, possibly with LED lights or digital patterns. The sign itself has a sleek, modern design with glowing edges. The overall atmosphere is high-tech and vibrant, with a mix of dark and neon colors." \
---sample-steps 5 --show</code></pre>
+<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>draw<span class="w"> </span>hf.co/gpustack/stable-diffusion-v3-5-large-turbo-GGUF:stable-diffusion-v3-5-large-turbo-Q4_0.gguf<span class="w"> </span><span class="se">\</span>
+<span class="s2">&quot;A minion holding a sign that says &#39;GPUStack&#39;. The background is filled with futuristic elements like neon lights, circuit boards, and holographic displays. The minion is wearing a tech-themed outfit, possibly with LED lights or digital patterns. The sign itself has a sleek, modern design with glowing edges. The overall atmosphere is high-tech and vibrant, with a mix of dark and neon colors.&quot;</span><span class="w"> </span><span class="se">\</span>
+--sample-steps<span class="w"> </span><span class="m">5</span><span class="w"> </span>--show
+</code></pre></div>
 <p>Once the command completes, the generated image will appear in the default viewer. You can experiment with the prompt and CLI options to customize the output.</p>
 <p><a class="glightbox" href="../assets/quickstart-minion.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generated Image" src="../assets/quickstart-minion.png" /></a></p>
 <ol start="3">
@@ -2450,13 +2455,16 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">macOS</label><label for="__tabbed_2_3">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-bash">cat /var/lib/gpustack/initial_admin_password</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<pre class="highlight"><code class="language-powershell">Get-Content -Path "$env:APPDATA\gpustack\initial_admin_password" -Raw</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -2478,24 +2486,25 @@
 <p>Now you can use the API key to access the OpenAI-compatible API. For example, use curl as the following:</p>
 </li>
 </ol>
-<pre class="highlight"><code class="language-bash">export GPUSTACK_API_KEY=your_api_key
-curl http://your_gpustack_server_url/v1-openai/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $GPUSTACK_API_KEY" \
-  -d '{
-    "model": "llama3.2",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Hello!"
-      }
-    ],
-    "stream": true
-  }'</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GPUSTACK_API_KEY</span><span class="o">=</span>your_api_key
+curl<span class="w"> </span>http://your_gpustack_server_url/v1-openai/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;model&quot;: &quot;llama3.2&quot;,</span>
+<span class="s1">    &quot;messages&quot;: [</span>
+<span class="s1">      {</span>
+<span class="s1">        &quot;role&quot;: &quot;system&quot;,</span>
+<span class="s1">        &quot;content&quot;: &quot;You are a helpful assistant.&quot;</span>
+<span class="s1">      },</span>
+<span class="s1">      {</span>
+<span class="s1">        &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s1">        &quot;content&quot;: &quot;Hello!&quot;</span>
+<span class="s1">      }</span>
+<span class="s1">    ],</span>
+<span class="s1">    &quot;stream&quot;: true</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
 <h2 id="cleanup">Cleanup</h2>
 <p>After you complete using the deployed models, you can go to the <code>Models</code> page in the GPUStack UI and delete the models to free up resources.</p>
 

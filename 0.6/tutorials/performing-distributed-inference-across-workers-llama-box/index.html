@@ -2414,8 +2414,9 @@
 <p>In this tutorial, we’ll assume a cluster with two nodes, each equipped with an NVIDIA P40 GPU (22GB VRAM), as shown in the following image:</p>
 <p><a class="glightbox" href="../../assets/tutorials/performing-distributed-inference-across-workers/worker-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="worker-list" src="../../assets/tutorials/performing-distributed-inference-across-workers/worker-list.png" /></a></p>
 <p>We aim to run a large language model that requires more VRAM than a single worker can provide. For this tutorial, we’ll use the <code>Qwen/Qwen2.5-72B-Instruct</code> model with the <code>q2_k</code> quantization format. The required resources for running this model can be estimated using the <a href="https://github.com/gpustack/gguf-parser-go">gguf-parser</a> tool:</p>
-<pre class="highlight"><code class="language-bash">gguf-parser --hf-repo Qwen/Qwen2.5-72B-Instruct-GGUF --hf-file qwen2.5-72b-instruct-q2_k-00001-of-00007.gguf --ctx-size=8192 --in-short --skip-architecture --skip-metadata --skip-tokenizer</code></pre>
-<pre class="highlight"><code>+--------------------------------------------------------------------------------------+
+<div class="highlight"><pre><span></span><code>gguf-parser<span class="w"> </span>--hf-repo<span class="w"> </span>Qwen/Qwen2.5-72B-Instruct-GGUF<span class="w"> </span>--hf-file<span class="w"> </span>qwen2.5-72b-instruct-q2_k-00001-of-00007.gguf<span class="w"> </span>--ctx-size<span class="o">=</span><span class="m">8192</span><span class="w"> </span>--in-short<span class="w"> </span>--skip-architecture<span class="w"> </span>--skip-metadata<span class="w"> </span>--skip-tokenizer
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>+--------------------------------------------------------------------------------------+
 | ESTIMATE                                                                             |
 +----------------------------------------------+---------------------------------------+
 |                      RAM                     |                 VRAM 0                |
@@ -2423,7 +2424,8 @@
 | LAYERS (I + T + O) |     UMA    |   NONUMA   | LAYERS (T + O) |    UMA   |   NONUMA  |
 +--------------------+------------+------------+----------------+----------+-----------+
 |      1 + 0 + 0     | 259.89 MiB | 409.89 MiB |     80 + 1     | 2.50 GiB | 28.89 GiB |
-+--------------------+------------+------------+----------------+----------+-----------+</code></pre>
++--------------------+------------+------------+----------------+----------+-----------+
+</code></pre></div>
 <p>From the output, we can see that the estimated VRAM requirement for this model exceeds the 22GB VRAM available on each worker node. Thus, we need to distribute the inference across multiple workers to successfully run the model.</p>
 <h3 id="step-1-deploy-the-model">Step 1: Deploy the Model</h3>
 <p>Follow these steps to deploy the model from Hugging Face, enabling distributed inference:</p>
