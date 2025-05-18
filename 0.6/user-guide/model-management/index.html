@@ -2870,6 +2870,10 @@
 </li>
 </ol>
 <h3 id="deploying-an-ollama-model">Deploying an Ollama Model</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As of version v0.6.1, Ollama model source is deprecated. For more context, please refer to the <a href="https://github.com/gpustack/gpustack/issues/1979">GitHub issue</a>.</p>
+</div>
 <ol>
 <li>
 <p>Click the <code>Deploy Model</code> button, then select <code>Ollama Library</code> in the dropdown.</p>
@@ -2975,6 +2979,10 @@
 <li>Click the <code>View Logs</code> button for the model instance in the <code>Operations</code> column.</li>
 </ol>
 <h2 id="use-self-hosted-ollama-models">Use Self-hosted Ollama Models</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As of version v0.6.1, Ollama model source is deprecated. For more context, please refer to the <a href="https://github.com/gpustack/gpustack/issues/1979">GitHub issue</a>.</p>
+</div>
 <p>You can deploy self-hosted Ollama models by configuring the <code>--ollama-library-base-url</code> option in the GPUStack server. The <code>Ollama Library</code> URL should point to the base URL of the Ollama model registry. For example, <code>https://registry.mycompany.com</code>.</p>
 <p>Here is an example workflow to set up a registry, publish a model, and use it in GPUStack:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Run a self-hosted OCI registry</span>

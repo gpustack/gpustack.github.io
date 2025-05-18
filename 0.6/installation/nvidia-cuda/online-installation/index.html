@@ -554,6 +554,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-add-worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Optional) Add Worker
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -588,7 +597,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optional-add-worker" class="md-nav__link">
+  <a href="#optional-add-worker_1" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) Add Worker
     </span>
@@ -648,7 +657,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optional-add-worker_1" class="md-nav__link">
+  <a href="#optional-add-worker_2" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) Add Worker
     </span>
@@ -2552,6 +2561,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-add-worker" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Optional) Add Worker
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2586,7 +2604,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optional-add-worker" class="md-nav__link">
+  <a href="#optional-add-worker_1" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) Add Worker
     </span>
@@ -2646,7 +2664,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optional-add-worker_1" class="md-nav__link">
+  <a href="#optional-add-worker_2" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) Add Worker
     </span>
@@ -2807,9 +2825,6 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<ul>
-<li>Install Server</li>
-</ul>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sfL<span class="w"> </span>https://get.gpustack.ai<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>-
 </code></pre></div>
 <p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
@@ -2820,9 +2835,25 @@
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
 </code></pre></div>
 <p>If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
-<ul>
-<li>(Optional) Add Worker</li>
-</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
+</code></pre></div>
+<p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
+<p>After installed, ensure that the GPUStack startup logs are normal:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span> <span class="n">-Tail</span> <span class="n">200</span> <span class="n">-Wait</span>
+</code></pre></div>
+<p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
+<p><div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
+</code></pre></div>
+If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
+</div>
+</div>
+</div>
+<h3 id="optional-add-worker">(Optional) Add Worker</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token
@@ -2836,22 +2867,6 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<ul>
-<li>Install Server</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-Expression</span> <span class="p">(</span><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="s2">&quot;https://get.gpustack.ai&quot;</span> <span class="n">-UseBasicParsing</span><span class="p">).</span><span class="n">Content</span>
-</code></pre></div>
-<p>To configure additional environment variables and startup flags when running the script, refer to the <a href="../../installation-script/">Installation Script</a>.</p>
-<p>After installed, ensure that the GPUStack startup logs are normal:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="s2">&quot;$env:APPDATA\gpustack\log\gpustack.log&quot;</span> <span class="n">-Tail</span> <span class="n">200</span> <span class="n">-Wait</span>
-</code></pre></div>
-<p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<p><div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\initial_admin_password&quot;</span> <span class="n">-Raw</span>
-</code></pre></div>
-If you specify the <code>--data-dir</code> parameter to set the data directory, the <code>initial_admin_password</code> file will be located in the specified directory.</p>
-<ul>
-<li>(Optional) Add Worker</li>
-</ul>
 <p>To add workers to the GPUStack cluster, you need to specify the server URL and authentication token when installing GPUStack on the workers.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Get-Content</span> <span class="n">-Path</span> <span class="s2">&quot;$env:APPDATA\gpustack\token&quot;</span> <span class="n">-Raw</span>
@@ -2900,10 +2915,7 @@ If you specify the <code>--data-dir</code> parameter to set the data directory, 
 <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>daemon-reload<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
 </code></pre></div>
 <h3 id="run-gpustack_1">Run GPUStack</h3>
-<p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Host Network</label><label for="__tabbed_6_2">Port Mapping</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<p>Run the following command to start the GPUStack server <strong>and built-in worker</strong> (host network mode is recommended):</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
@@ -2912,38 +2924,29 @@ If you specify the <code>--data-dir</code> parameter to set the data directory, 
 <span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack
 </code></pre></div>
-</div>
-<div class="tabbed-block">
+<p>If you need to change the default server port 80, please use the <code>--port</code> parameter:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+<span class="w">    </span>--port<span class="w"> </span><span class="m">9090</span>
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available startup flags.</p>
+<p>If other ports are in conflict, or if you want to customize startup options, refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available flags and configuration instructions.</p>
 <p>Check if the startup logs are normal:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
 </code></pre></div>
 <p>If the logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
 </code></pre></div>
-<h3 id="optional-add-worker">(Optional) Add Worker</h3>
+<h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>You can add more GPU nodes to GPUStack to form a GPU cluster. You need to add workers on other GPU nodes and specify the <code>--server-url</code> and <code>--token</code> parameters to join GPUStack.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
 </code></pre></div>
-<p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL, token and node IP with your specific values:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Host Network</label><label for="__tabbed_7_2">Port Mapping</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the <strong>worker node</strong>. Be sure to replace the URL and token with your specific values:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
@@ -2953,21 +2956,6 @@ If you specify the <code>--data-dir</code> parameter to set the data directory, 
 <span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">40064</span>-40131:40064-40131<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--ipc<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
-</code></pre></div>
-</div>
-</div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
@@ -2980,9 +2968,6 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 </li>
 <li>
 <p>You can either use the <code>--ipc=host</code> flag or <code>--shm-size</code> flag to allow the container to access the host’s shared memory. It is used by vLLM and pyTorch to share data between processes under the hood, particularly for tensor parallel inference.</p>
-</li>
-<li>
-<p>The  <code>-p 40064-40131:40064-40131</code> flag is used to ensure connectivity for distributed inference across workers. For more details, please refer to the <a href="../../installation-requirements/#port-requirements">Port Requirements</a>. You can omit this flag if you don't need distributed inference across workers.</p>
 </li>
 </ol>
 </div>
@@ -3047,7 +3032,7 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 <li><a href="https://developer.nvidia.com/cudnn">NVIDIA cuDNN 9</a> (Optional, required for audio models)</li>
 </ul>
 <p>Check if cuDNN 9 is installed:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux</label><label for="__tabbed_8_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>libcudnn
@@ -3061,7 +3046,7 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 </div>
 <h3 id="install-gpustack">Install GPUStack</h3>
 <p>Run the following to install GPUStack.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Linux AMD64</label><label for="__tabbed_9_2">Linux ARM64 or Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux AMD64</label><label for="__tabbed_8_2">Linux ARM64 or Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># Extra dependencies options are &quot;vllm&quot;, &quot;audio&quot; and &quot;all&quot;</span>
@@ -3086,7 +3071,7 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 <div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start
 </code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Linux</label><label for="__tabbed_10_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Linux</label><label for="__tabbed_9_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
@@ -3102,10 +3087,10 @@ pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot
 <div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start<span class="w"> </span>--data-dir<span class="w"> </span>mypath
 </code></pre></div>
 <p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available CLI Flags.</p>
-<h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
+<h3 id="optional-add-worker_2">(Optional) Add Worker</h3>
 <p>To add a worker to the GPUStack cluster, you need to specify the server URL and the authentication token.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Linux</label><label for="__tabbed_11_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Linux</label><label for="__tabbed_10_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token

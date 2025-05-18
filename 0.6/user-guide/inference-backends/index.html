@@ -2901,9 +2901,19 @@
 <h4 id="allow-distributed-inference-across-workers">Allow Distributed Inference Across Workers</h4>
 <p>Enable distributed inference across multiple workers. The primary Model Instance will communicate with backend instances on one or more others workers, offloading computation tasks to them.</p>
 <h4 id="multimodal-language-models">Multimodal Language Models</h4>
-<p>Llama-box supports the following multimodal language models. When using a vision language model, image inputs are supported in the chat completion API.</p>
+<p>Llama-box supports the following vision language models. When using a vision language model, image inputs are supported in the chat completion API.</p>
 <ul>
-<li>Qwen2-VL</li>
+<li>LLaVA Series</li>
+<li>MiniCPM VL Series</li>
+<li>Qwen2 VL Series</li>
+<li>GLM-Edge-V Series</li>
+<li>Granite VL Series</li>
+<li>Gemma3 VL Series</li>
+<li>SmolVLM Series</li>
+<li>Pixtral Series</li>
+<li>MobileVLM Series</li>
+<li>Mistral Small 3.1</li>
+<li>Qwen2.5 VL Series</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2942,6 +2952,8 @@
 <li>The GPUStack server and all participating workers must run on Linux and use the same version of Python, which is a requirement of Ray.</li>
 <li>Model files must be accessible at the same path on all participating workers. You must either use a shared file system or download the model files to the same path on all participating workers.</li>
 <li>Each worker can only be assigned to one distributed vLLM model instance at a time.</li>
+<li>A custom vLLM version may not work if its Ray distributed executor implementation is incompatible with the built-in vLLM version.</li>
+<li>If you install GPUStack with Docker, you must use the host network mode to leverage RDMA/InfiniBand and ensure connectivity between nodes.</li>
 </ol>
 </div>
 <p>Auto-scheduling is supported with the following conditions:</p>
@@ -3083,6 +3095,12 @@
 <td><a href="https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B">Hugging Face</a>, <a href="https://modelscope.cn/models/iic/CosyVoice2-0.5B">ModelScope</a></td>
 <td>Linux(ARM not supported), macOS, Windows(Not supported)</td>
 </tr>
+<tr>
+<td>Dia-1.6B</td>
+<td>text-to-speech</td>
+<td><a href="https://huggingface.co/nari-labs/Dia-1.6B">Hugging Face</a>, <a href="https://modelscope.cn/models/nari-labs/Dia-1.6B">ModelScope</a></td>
+<td>Linux(ARM not supported), macOS, Windows(Not supported)</td>
+</tr>
 </tbody>
 </table>
 <h3 id="supported-features_2">Supported Features</h3>
@@ -3095,35 +3113,38 @@ on <a href="https://www.hiascend.com/en/hardware/product">Ascend hardware</a>.</
 <p>The Ascend MindIE backend works on Linux platforms only, including ARM64 and x86_64 architectures.</p>
 <h3 id="supported-models_3">Supported Models</h3>
 <p>Ascend MindIE supports various models
-listed <a href="https://www.hiascend.com/document/detail/zh/mindie/100/whatismindie/mindie_what_0003.html">here</a>.</p>
+listed <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/modellist/mindie_modellist_0001.html">here</a>.</p>
 <p>Within GPUStack, support
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/whatismindie/mindie_what_0003.html">large language models (LLMs)</a>
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/modellist/mindie_modellist_0001.html">large language models (LLMs)</a>
 and
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/whatismindie/mindie_what_0004.html">multimodal language models (VLMs)</a>
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/modellist/mindie_modellist_0002.html">multimodal language models (VLMs)</a>
 . However, <em>embedding models</em> and <em>multimodal generation models</em> are not supported yet.</p>
 <h3 id="supported-features_3">Supported Features</h3>
 <p>Ascend MindIE owns a variety of features
-outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0001.html">here</a>.</p>
+outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0001.html">here</a>.</p>
 <p>At present, GPUStack supports a subset of these capabilities, including
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0288.html">Quantization</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0297.html">Mixture of Experts(MoE)</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0302.html">Prefix Caching</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0303.html">Function Calling</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0304.html">Multimodal Understanding</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>.</p>
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0288.html">Quantization</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0295.html">Extending Context Size</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0297.html">Mixture of Experts(MoE)</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0302.html">Prefix Caching</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0303.html">Function Calling</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0304.html">Multimodal Understanding</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
 <li>Quantization needs specific weight, and must adjust the model's <code>config.json</code>,
-   please follow the <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0288.html">reference(guide)</a> to prepare the correct weight.</li>
+   please follow the <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0288.html">reference(guide)</a> to prepare the correct weight.</li>
 <li>For Multimodal Understanding feature, some versions of Ascend MindIE's API are incompatible with OpenAI,
    please track this <a href="https://github.com/gpustack/gpustack/issues/1803">issue</a> for more support.</li>
-<li><a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiellm/llmdev/mindie_llm0295.html">Extending Context Size</a> feature is WIP,
-   please track this <a href="https://github.com/gpustack/gpustack/issues/1864">issue</a> for more details.</li>
 <li>Some features are mutually exclusive, so be careful when using them.</li>
 </ol>
 </div>
 <h3 id="parameters-reference_2">Parameters Reference</h3>
+<p>Ascend MindIE has
+configurable <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0004.html">parameters</a>
+and <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0416.html">environment variables</a>.</p>
+<p>To avoid directly configuring JSON, GPUStack provides a set of command line parameters as below.</p>
 <table>
 <thead>
 <tr>
@@ -3141,12 +3162,22 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiel
 <tr>
 <td><code>--npu-memory-fraction</code></td>
 <td>0.9</td>
-<td>Fraction of NPU memory to be used for the model executor (0 to 1). Example: 0.5 means 50% memory utilization.</td>
+<td>Fraction of NPU memory to be used for the model executor (0 to 1). For example: <code>0.5</code> means 50% memory utilization.</td>
 </tr>
 <tr>
 <td><code>--max-link-num</code></td>
 <td>1000</td>
 <td>Maximum number of parallel requests.</td>
+</tr>
+<tr>
+<td><code>--token-timeout</code></td>
+<td>60</td>
+<td>Timeout for a token generation in seconds.</td>
+</tr>
+<tr>
+<td><code>--e2e-timeout</code></td>
+<td>60</td>
+<td>E2E (from request accepted to inference stopped) timeout in seconds.</td>
 </tr>
 <tr>
 <td><code>--max-seq-len</code></td>
@@ -3161,7 +3192,7 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiel
 <tr>
 <td><code>--truncation</code></td>
 <td></td>
-<td>Truncate the input token length when it exceeds the minimum of <code>--max-input-token-len</code> and <code>--max-seq-len - 1</code>.</td>
+<td>Truncate the input token length when it exceeds the minimum of <code>--max-input-token-len</code> and <code>--max-seq-len</code> - 1.</td>
 </tr>
 <tr>
 <td><code>--cpu-mem-size</code></td>
@@ -3201,7 +3232,7 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiel
 <tr>
 <td><code>--prefill-policy-type</code></td>
 <td>0</td>
-<td>Prefill stage strategy: <br> <code>0</code>: FCFS (First Come First Serve) <br> <code>1</code>: STATE (same as FCFS) <br> <code>2</code>: PRIORITY (priority queue) <br> <code>3</code>: MLFQ (Multi-Level Feedback Queue)</td>
+<td>Prefill stage strategy: <br> <code>0</code>: FCFS (First Come First Serve). <br> <code>1</code>: STATE (same as FCFS). <br> <code>2</code>: PRIORITY (priority queue). <br> <code>3</code>: MLFQ (Multi-Level Feedback Queue).</td>
 </tr>
 <tr>
 <td><code>--decode-time-ms-per-req</code></td>
@@ -3229,6 +3260,26 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiel
 <td>Emit operators in eager mode.</td>
 </tr>
 <tr>
+<td><code>--dtype</code></td>
+<td>auto</td>
+<td>Data type for model weights and activations. <br> <code>auto</code>: use the default data type of the model config. <br> <code>half</code>/<code>float16</code>: for FP16. <br> <code>bfloat16</code>: for BF16. <br> <code>float</code>/<code>float32</code>: for FP32.</td>
+</tr>
+<tr>
+<td><code>--rope-scaling</code></td>
+<td></td>
+<td>RoPE scaling configuration in JSON format. For example: <code>{"type":"yarn","factor":4.0,"original_max_position_embeddings":32768}</code>. This will merge into the <code>config.json</code> of the model structure.</td>
+</tr>
+<tr>
+<td><code>--rope-theta</code></td>
+<td></td>
+<td>RoPE theta configuration. This will merge into the <code>config.json</code> of the model structure.</td>
+</tr>
+<tr>
+<td><code>--override-generation-config</code></td>
+<td></td>
+<td>Overrides or sets generation config in JSON format. For example: <code>{"temperature": 0.5}</code>. This will merge into the <code>generation_config.json</code> of the model structure.</td>
+</tr>
+<tr>
 <td><code>--metrics</code></td>
 <td></td>
 <td>Expose metrics at <code>/metrics</code> endpoint.</td>
@@ -3240,6 +3291,13 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/100/mindiel
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPUStack allows users to inject custom environment variables during model deployment,
+however, some variables may be conflicted with GPUStack managment.
+Hence, GPUStack will override/prevent those variables.
+Please compare the model instance logs' output with your expectations.</p>
+</div>
 
 
 

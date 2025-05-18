@@ -530,6 +530,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#network-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectivity-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Connectivity Requirements
@@ -2560,6 +2569,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#network-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#connectivity-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Connectivity Requirements
@@ -2736,7 +2754,7 @@
 <p>For Ascend CANN as an accelerator, ensure the following components are installed:</p>
 <ul>
 <li><a href="https://www.hiascend.com/hardware/firmware-drivers/community">Ascend NPU Driver &amp; Firmware</a></li>
-<li><a href="https://www.hiascend.com/developer/download/community/result?module=cann&amp;cann=8.0.0.beta1">Ascend CANN Toolkit &amp; Kernels</a> (Optional, required for non-Docker installations)</li>
+<li><a href="https://www.hiascend.com/developer/download/community/result?module=cann&amp;cann=8.1.RC1.beta1">Ascend CANN Toolkit &amp; Kernels</a> (Optional, required for non-Docker installations)</li>
 </ul>
 <h3 id="hygon-dtk">Hygon DTK</h3>
 <p>To use Hygon DTK as an accelerator, ensure the following components are installed:</p>
@@ -2751,6 +2769,9 @@
 <li><a href="https://developer.mthreads.com/sdk/download/CloudNative">MT Container Toolkits</a> (Optional, required for docker installation)</li>
 </ul>
 <h2 id="networking-requirements">Networking Requirements</h2>
+<h3 id="network-architecture">Network Architecture</h3>
+<p>The following diagram shows the network architecture of GPUStack:</p>
+<p><a class="glightbox" href="../../assets/gpustack-network-architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-network-architecture" src="../../assets/gpustack-network-architecture.png" /></a></p>
 <h3 id="connectivity-requirements">Connectivity Requirements</h3>
 <p>The following network connectivity is required to ensure GPUStack functions properly:</p>
 <p><strong>Server-to-Worker:</strong> The server must be able to reach the workers for proxying inference requests.</p>
@@ -2798,9 +2819,17 @@
 <td>TCP 40097</td>
 <td>Default port for Ray Client Server</td>
 </tr>
+<tr>
+<td>TCP 40098</td>
+<td>Default port for Ray node manager</td>
+</tr>
+<tr>
+<td>TCP 40099</td>
+<td>Default port for Ray object manager</td>
+</tr>
 </tbody>
 </table>
-<p>The default ports in GPUStack may differ from Ray’s default ports to simplify port exposure, especially when using Docker. For more information about Ray ports, refer to the <a href="https://docs.ray.io/en/latest/ray-core/configure.html#ports-configurations">Ray documentation</a>.</p>
+<p>For more information about Ray ports, refer to the <a href="https://docs.ray.io/en/latest/ray-core/configure.html#ports-configurations">Ray documentation</a>.</p>
 <h4 id="worker-ports">Worker Ports</h4>
 <table>
 <thead>

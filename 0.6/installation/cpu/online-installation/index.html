@@ -2763,30 +2763,22 @@
 <li><a href="https://docs.docker.com/engine/install/">Docker</a></li>
 </ul>
 <h3 id="run-gpustack">Run GPUStack</h3>
-<p>Run the following command to start the GPUStack server <strong>and built-in worker</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Host Network</label><label for="__tabbed_4_2">Port Mapping</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<p>Run the following command to start the GPUStack server <strong>and built-in worker</strong> (host network mode is recommended):</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack:latest-cpu
 </code></pre></div>
-</div>
-<div class="tabbed-block">
+<p>If you need to change the default server port 80, please use the <code>--port</code> parameter:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack:latest-cpu<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--worker-ip<span class="w"> </span>your_host_ip
+<span class="w">    </span>--port<span class="w"> </span><span class="m">9090</span>
 </code></pre></div>
-</div>
-</div>
-</div>
-<p>You can refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available startup flags.</p>
+<p>If other ports are in conflict, or if you want to customize startup options, refer to the <a href="../../../cli-reference/start/">CLI Reference</a> for available flags and configuration instructions.</p>
 <p>Check if the startup logs are normal:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
 </code></pre></div>
@@ -2798,10 +2790,7 @@
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/token
 </code></pre></div>
-<p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the worker node. Be sure to replace the URL, token and node IP with your specific values:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Host Network</label><label for="__tabbed_5_2">Port Mapping</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<p>To start GPUStack as a worker, and <strong>register it with the GPUStack server</strong>, run the following command on the worker node. Be sure to replace the URL and token with your specific values:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
@@ -2809,18 +2798,6 @@
 <span class="w">    </span>gpustack/gpustack:latest-cpu<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-p<span class="w"> </span><span class="m">10150</span>:10150<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-v<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>gpustack/gpustack:latest-cpu<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--server-url<span class="w"> </span>http://your_gpustack_url<span class="w"> </span>--token<span class="w"> </span>your_gpustack_token<span class="w"> </span>--worker-ip<span class="w"> </span>your_worker_host_ip
-</code></pre></div>
-</div>
-</div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
@@ -2856,7 +2833,7 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 <div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>start
 </code></pre></div>
 <p>If the startup logs are normal, open <code>http://your_host_ip</code> in the browser to access the GPUStack UI. Log in to GPUStack with username <code>admin</code> and the default password. You can run the following command to get the password for the default setup:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Linux</label><label for="__tabbed_6_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux</label><label for="__tabbed_4_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
@@ -2875,7 +2852,7 @@ For configuration details, please refer to the <a href="../../../cli-reference/s
 <h3 id="optional-add-worker_1">(Optional) Add Worker</h3>
 <p>To add a worker to the GPUStack cluster, you need to specify the server URL and the authentication token.</p>
 <p>To get the token used for adding workers, run the following command on the GPUStack <strong>server node</strong>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Linux</label><label for="__tabbed_7_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Linux</label><label for="__tabbed_5_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/lib/gpustack/token

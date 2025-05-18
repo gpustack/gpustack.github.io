@@ -2458,16 +2458,20 @@
 <p>GPUStack is an open-source GPU cluster manager for running AI models.</p>
 <h3 id="key-features">Key Features</h3>
 <ul>
-<li><strong>Broad Hardware Compatibility:</strong> Run with different brands of GPUs in Apple Macs, Windows PCs, and Linux servers.</li>
-<li><strong>Broad Model Support:</strong> From LLMs to diffusion models, audio, embedding, and reranker models.</li>
-<li><strong>Scales with Your GPU Inventory:</strong> Easily add more GPUs or nodes to scale up your operations.</li>
-<li><strong>Distributed Inference</strong>: Supports both single-node multi-GPU and multi-node inference and serving.</li>
-<li><strong>Multiple Inference Backends</strong>: Supports llama-box (llama.cpp &amp; stable-diffusion.cpp), vox-box and vLLM as the inference backends.</li>
-<li><strong>Lightweight Python Package:</strong> Minimal dependencies and operational overhead.</li>
-<li><strong>OpenAI-compatible APIs:</strong> Serve APIs that are compatible with OpenAI standards.</li>
-<li><strong>User and API key management:</strong> Simplified management of users and API keys.</li>
-<li><strong>GPU metrics monitoring:</strong> Monitor GPU performance and utilization in real-time.</li>
-<li><strong>Token usage and rate metrics:</strong> Track token usage and manage rate limits effectively.</li>
+<li><strong>Broad GPU Compatibility:</strong> Seamlessly supports GPUs from various vendors across Apple Macs, Windows PCs, and Linux servers.</li>
+<li><strong>Extensive Model Support:</strong> Supports a wide range of models including LLMs, VLMs, image models, audio models, embedding models, and rerank models.</li>
+<li><strong>Flexible Inference Backends:</strong> Integrates with llama-box (llama.cpp &amp; stable-diffusion.cpp), vox-box, vLLM, and Ascend MindIE.</li>
+<li><strong>Multi-Version Backend Support:</strong> Run multiple versions of inference backends concurrently to meet the diverse runtime requirements of different models.</li>
+<li><strong>Distributed Inference:</strong> Supports single-node and multi-node multi-GPU inference, including heterogeneous GPUs across vendors and runtime environments.</li>
+<li><strong>Scalable GPU Architecture:</strong> Easily scale up by adding more GPUs or nodes to your infrastructure.</li>
+<li><strong>Robust Model Stability:</strong> Ensures high availability with automatic failure recovery, multi-instance redundancy, and load balancing for inference requests.</li>
+<li><strong>Intelligent Deployment Evaluation:</strong> Automatically assess model resource requirements, backend and architecture compatibility, OS compatibility, and other deployment-related factors.</li>
+<li><strong>Automated Scheduling:</strong> Dynamically allocate models based on available resources.</li>
+<li><strong>Lightweight Python Package:</strong> Minimal dependencies and low operational overhead.</li>
+<li><strong>OpenAI-Compatible APIs:</strong> Fully compatible with OpenAI’s API specifications for seamless integration.</li>
+<li><strong>User &amp; API Key Management:</strong> Simplified management of users and API keys.</li>
+<li><strong>Real-Time GPU Monitoring:</strong> Track GPU performance and utilization in real time.</li>
+<li><strong>Token and Rate Metrics:</strong> Monitor token usage and API request rates.</li>
 </ul>
 <h2 id="supported-platforms">Supported Platforms</h2>
 <ul class="task-list">
@@ -2490,16 +2494,13 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Qualcomm AI Engine</li>
 </ul>
 <h2 id="supported-models">Supported Models</h2>
-<p>GPUStack uses <a href="https://github.com/gpustack/llama-box">llama-box</a> (bundled <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> and <a href="https://github.com/leejet/stable-diffusion.cpp">stable-diffusion.cpp</a> server), <a href="https://github.com/vllm-project/vllm">vLLM</a> and <a href="https://github.com/gpustack/vox-box">vox-box</a> as the backends and supports a wide range of models. Models from the following sources are supported:</p>
+<p>GPUStack uses <a href="https://github.com/gpustack/llama-box">llama-box</a> (bundled <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> and <a href="https://github.com/leejet/stable-diffusion.cpp">stable-diffusion.cpp</a> server), <a href="https://github.com/vllm-project/vllm">vLLM</a>, <a href="https://www.hiascend.com/en/software/mindie">Ascend MindIE</a> and <a href="https://github.com/gpustack/vox-box">vox-box</a> as the backends and supports a wide range of models. Models from the following sources are supported:</p>
 <ol>
 <li>
 <p><a href="https://huggingface.co/">Hugging Face</a></p>
 </li>
 <li>
 <p><a href="https://modelscope.cn/">ModelScope</a></p>
-</li>
-<li>
-<p><a href="https://ollama.com/library">Ollama Library</a></p>
 </li>
 <li>
 <p>Local File Path</p>

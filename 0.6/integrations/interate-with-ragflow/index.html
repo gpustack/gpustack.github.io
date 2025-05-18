@@ -2394,7 +2394,20 @@
 <h1 id="integrate-with-ragflow">Integrate with RAGFlow</h1>
 <p>RAGFlow can integrate with GPUStack to leverage locally deployed LLMs, embeddings, reranking, Speech-to-Text and Text-to-Speech capabilities.</p>
 <h2 id="deploying-models">Deploying Models</h2>
-<p>In GPUStack UI, navigate to the <code>Models</code> page and click on <code>Deploy Model</code> to deploy the models you need.</p>
+<ol>
+<li>In GPUStack UI, navigate to the <code>Models</code> page and click on <code>Deploy Model</code> to deploy the models you need. Here are some example models:</li>
+</ol>
+<ul>
+<li>qwen3-8b</li>
+<li>qwen2.5-vl-3b-instruct</li>
+<li>bge-m3</li>
+<li>bge-reranker-v2-m3</li>
+</ul>
+<p><a class="glightbox" href="../../assets/integrations/integration-gpustack-models.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-models" src="../../assets/integrations/integration-gpustack-models.png" /></a></p>
+<ol start="2">
+<li>In the model’s Operations, open <code>API Access Info</code> to see how to integrate with this model.</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-gpustack-api-access-info.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-api-access-info" src="../../assets/integrations/integration-gpustack-api-access-info.png" /></a></p>
 <h2 id="create-an-api-key">Create an API Key</h2>
 <ol>
 <li>
@@ -2408,7 +2421,9 @@
 </li>
 </ol>
 <h2 id="integrating-gpustack-into-ragflow">Integrating GPUStack into RAGFlow</h2>
-<p>Go to <code>Profile &gt; Model Providers &gt; GPUStack</code> and fill in:</p>
+<ol>
+<li>Access the RAGFlow UI, go to the top right corner and click the avatar, select <code>Model Providers &gt; GPUStack</code>, then select <code>Add the model</code> and fill in:</li>
+</ol>
 <ul>
 <li>
 <p>Model type: Select the model type based on the model.</p>
@@ -2417,17 +2432,42 @@
 <p>Model name: The name must match the model name deployed on GPUStack.</p>
 </li>
 <li>
-<p>Base url: <code>http://your-gpustack-url</code>, the URL should not include the path and cannot be <code>localhost</code>, as <code>localhost</code> is limited to the container’s internal network. Ensure the URL is accessible from within the RAGFlow container. You can test this by using <code>curl</code>.</p>
+<p>Base URL: <code>http://your-gpustack-url</code>, the URL should not include the path and do not use <code>localhost</code>, as it refers to the container’s internal network. If you’re using a custom port, make sure to include it. Also, ensure the URL is accessible from inside the RAGFlow container (you can test this with <code>curl</code>).</p>
 </li>
 <li>
 <p>API-Key: Input the API key you copied from previous steps.</p>
 </li>
+<li>
+<p>Max Tokens: Input the max tokens supported by current model configuration.</p>
+</li>
 </ul>
-<p>Click <code>Save</code> to add the model:</p>
+<p>Click <code>OK</code> to add the model:</p>
 <p><a class="glightbox" href="../../assets/integrations/integration-ragflow-add-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-add-model" src="../../assets/integrations/integration-ragflow-add-model.png" /></a></p>
-<p>Select the added models in the <code>System Model Settings</code> and save:</p>
-<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-system-model-settings.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-add-model" src="../../assets/integrations/integration-ragflow-system-model-settings.png" /></a></p>
-<p>You can now use the models in the application.</p>
+<ol start="2">
+<li>Add other models as needed, then select the added models in the <code>Set default models</code> and save:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-set-default-models.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-set-default-models" src="../../assets/integrations/integration-ragflow-set-default-models.png" /></a></p>
+<p>You can now use the models in the <code>Chat</code> and <code>Knowledge Base</code>, here is a simple case:</p>
+<ol>
+<li>Go to <code>Knowledge base</code> to create a new knowledge base and add your file:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-create-knowledge-base.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-create-knowledge-base" src="../../assets/integrations/integration-ragflow-create-knowledge-base.png" /></a></p>
+<ol start="2">
+<li>Navigate to <code>Retrieval testing</code> and set the rerank model to <code>bge-reranker-v2-m3</code>:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-set-rerank-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-set-rerank-model" src="../../assets/integrations/integration-ragflow-set-rerank-model.png" /></a></p>
+<ol start="3">
+<li>In <code>Chat</code>, create an assistant, link the previously created knowledge base, and select a chat model:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-create-assistant.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-create-assistant" src="../../assets/integrations/integration-ragflow-create-assistant.png" /></a></p>
+<ol start="4">
+<li>Create a chat session — you can now interact with the model and query the knowledge base:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-chat-with-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-chat-with-model" src="../../assets/integrations/integration-ragflow-chat-with-model.png" /></a></p>
+<ol start="5">
+<li>Edit the assistant and switch the model to <code>qwen2.5-vl-3b-instruct</code>. After saving, create a new chat and upload an image to enable multimodal input:</li>
+</ol>
+<p><a class="glightbox" href="../../assets/integrations/integration-ragflow-chat-with-vlm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ragflow-chat-with-vlm" src="../../assets/integrations/integration-ragflow-chat-with-vlm.png" /></a></p>
 
 
 

@@ -2535,8 +2535,8 @@
 <ul>
 <li>Single Worker Node, Single GPU Full Offload: Identifies candidates where a single GPU on a single worker can fully offload the model, which usually offers the best performance.</li>
 <li>Single Worker Node, Multiple GPU Full Offload: Identifies candidates where multiple GPUs on a single worker can fully the offload the model.</li>
-<li>Single Worker Node Partial Offload: Identifies candidates on a single worker that can handle a partial offload, used only when partial offloading is allowed.</li>
 <li>Distributed Inference Across Multiple Workers: Identifies candidates where a combination of GPUs across multiple workers can handle full or partial offloading, used only when distributed inference across nodes is permitted.</li>
+<li>Single Worker Node Partial Offload: Identifies candidates on a single worker that can handle a partial offload, used only when partial offloading is allowed.</li>
 <li>Single Worker Node, CPU: When no GPUs are available, the system will use the CPU for inference, identifying candidates where memory resources on a single worker are sufficient.</li>
 </ul>
 <h3 id="scoring-phase">Scoring Phase</h3>
