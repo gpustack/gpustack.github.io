@@ -2296,6 +2296,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#how-can-i-view-the-ray-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I view the Ray logs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#where-are-the-model-logs-stored" class="md-nav__link">
     <span class="md-ellipsis">
       Where are the model logs stored?
@@ -2966,6 +2975,15 @@
   <a href="#how-can-i-view-the-rpc-server-logs" class="md-nav__link">
     <span class="md-ellipsis">
       How can I view the RPC server logs?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-view-the-ray-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      How can I view the Ray logs?
     </span>
   </a>
   
@@ -3796,6 +3814,18 @@ sudo<span class="w"> </span>vim<span class="w"> </span>/Library/LaunchDaemons/ai
 </code></pre></div>
 <p>Each GPU corresponds to an RPC Server. For other GPU indices, modify it to the actual index:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack<span class="w"> </span>tail<span class="w"> </span>-200f<span class="w"> </span>/var/lib/gpustack/log/rpc_server/gpu-n.log
+</code></pre></div>
+<h3 id="how-can-i-view-the-ray-logs">How can I view the Ray logs?</h3>
+<p>Ray is used for distributed inference of vLLM. If the model starts abnormally or if there are issues with distributed inference, you can check the Ray logs on the server and corresponding workers. If installed via container, the following refers to the directory inside the container.</p>
+<p>The default path is as follows. If the <code>--data-dir</code> or <code>--log-dir</code> parameters are set, please modify it to the actual path you have configured:</p>
+<p>Ray head startup logs:</p>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/lib/gpustack/log/ray-head.log
+</code></pre></div>
+<p>Ray worker startup logs:</p>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-200f<span class="w"> </span>/var/lib/gpustack/log/ray-worker.log
+</code></pre></div>
+<p>Ray component logs:</p>
+<div class="highlight"><pre><span></span><code>/tmp/ray/session_*/logs
 </code></pre></div>
 <h3 id="where-are-the-model-logs-stored">Where are the model logs stored?</h3>
 <p>The model instance logs are stored in the <code>/var/lib/gpustack/log/serve/</code> directory of the corresponding worker node or worker container, with the log file named <code>id.log</code>, where id is the model instance ID. If the <code>--data-dir</code> or <code>--log-dir</code> parameter is set, the logs will be stored in the actual path specified by the parameter.</p>
