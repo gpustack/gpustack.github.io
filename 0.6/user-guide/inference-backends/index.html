@@ -344,6 +344,8 @@
       
         
       
+        
+      
     
     
     
@@ -896,7 +898,7 @@
             
   
   <span class="md-ellipsis">
-    CPU
+    Iluvatar Corex
   </span>
   
 
@@ -905,6 +907,97 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Iluvatar Corex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/iluvatar-corex/online-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Online Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/iluvatar-corex/air-gapped-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-Gapped Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
             <span class="md-nav__icon md-icon"></span>
             CPU
           </label>
@@ -2931,12 +3024,12 @@
 </ul>
 <p>For more details, please refer to <a href="https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server">vLLM documentation</a>.</p>
 <h3 id="supported-platforms_1">Supported Platforms</h3>
-<p>The vLLM backend works on AMD64 Linux.</p>
+<p>The vLLM backend works on Linux.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
 <li>When users install GPUStack on amd64 Linux using the installation script, vLLM is automatically installed.</li>
-<li>When users deploy a model using the vLLM backend, GPUStack sets worker label selectors to <code>{"os": "linux", "arch": "amd64"}</code> by default to ensure the model instance is scheduled to proper workers. You can customize the worker label selectors in the model configuration.</li>
+<li>When users deploy a model using the vLLM backend, GPUStack sets worker label selectors to <code>{"os": "linux"}</code> by default to ensure the model instance is scheduled to proper workers. You can customize the worker label selectors in the model configuration.</li>
 </ol>
 </div>
 <h3 id="supported-models_1">Supported Models</h3>
@@ -3126,18 +3219,21 @@ outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindi
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0288.html">Quantization</a>,
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0295.html">Extending Context Size</a>,
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0297.html">Mixture of Experts(MoE)</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0300.html">Split Fuse</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0301.html">Speculative Decoding</a>,
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0302.html">Prefix Caching</a>,
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0303.html">Function Calling</a>,
 <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0304.html">Multimodal Understanding</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>.</p>
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0424.html">Data Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0425.html">Buffer Response(Since Ascend MindIE 2.0.RC1)</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
 <li>Quantization needs specific weight, and must adjust the model's <code>config.json</code>,
    please follow the <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/llmdev/mindie_llm0288.html">reference(guide)</a> to prepare the correct weight.</li>
-<li>For Multimodal Understanding feature, some versions of Ascend MindIE's API are incompatible with OpenAI,
-   please track this <a href="https://github.com/gpustack/gpustack/issues/1803">issue</a> for more support.</li>
-<li>Some features are mutually exclusive, so be careful when using them.</li>
+<li>Some features are mutually exclusive, so be careful when using them. 
+   For example, with Prefix Caching enabled, the Extending Context Size feature cannot be used.</li>
 </ol>
 </div>
 <h3 id="parameters-reference_2">Parameters Reference</h3>
@@ -3150,144 +3246,319 @@ and <a href="https://www.hiascend.com/document/detail/zh/mindie/20RC1/mindiellm/
 <tr>
 <th>Parameter</th>
 <th>Default</th>
+<th>Range</th>
+<th>Scope</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>--trust-remote-code</code></td>
+<td><code>--log-level</code></td>
+<td>Info</td>
 <td></td>
-<td>Trust remote code (for model loading).</td>
-</tr>
-<tr>
-<td><code>--npu-memory-fraction</code></td>
-<td>0.9</td>
-<td>Fraction of NPU memory to be used for the model executor (0 to 1). For example: <code>0.5</code> means 50% memory utilization.</td>
+<td>Log Config</td>
+<td>Log level for MindIE. Options: <code>Verbose</code>, <code>Info</code>, <code>Warning</code>, <code>Warn</code>, <code>Error</code>, <code>Debug</code>.</td>
 </tr>
 <tr>
 <td><code>--max-link-num</code></td>
 <td>1000</td>
+<td>[1, 1000]</td>
+<td>Server Config</td>
 <td>Maximum number of parallel requests.</td>
 </tr>
 <tr>
 <td><code>--token-timeout</code></td>
 <td>60</td>
+<td>[1, 3600]</td>
+<td>Server Config</td>
 <td>Timeout for a token generation in seconds.</td>
 </tr>
 <tr>
 <td><code>--e2e-timeout</code></td>
 <td>60</td>
+<td>[1, 3600]</td>
+<td>Server Config</td>
 <td>E2E (from request accepted to inference stopped) timeout in seconds.</td>
 </tr>
 <tr>
 <td><code>--max-seq-len</code></td>
 <td>8192</td>
+<td>(0, ]</td>
+<td>Model Deploy Config</td>
 <td>Model context length. If unspecified, it will be derived from the model config.</td>
 </tr>
 <tr>
 <td><code>--max-input-token-len</code></td>
 <td></td>
+<td>(0, <code>--max-seq-len</code>]</td>
+<td>Model Deploy Config</td>
 <td>Maximum input token length. If unspecified, it will be derived from <code>--max-seq-len</code>.</td>
 </tr>
 <tr>
 <td><code>--truncation</code></td>
 <td></td>
+<td></td>
+<td>Model Deploy Config</td>
 <td>Truncate the input token length when it exceeds the minimum of <code>--max-input-token-len</code> and <code>--max-seq-len</code> - 1.</td>
 </tr>
 <tr>
 <td><code>--cpu-mem-size</code></td>
 <td>5</td>
+<td>(0, ]</td>
+<td>Model Config</td>
 <td>CPU swap space size in GiB. If unspecified, the default value will be used.</td>
+</tr>
+<tr>
+<td><code>--npu-memory-fraction</code></td>
+<td>0.9</td>
+<td>(0, 1]</td>
+<td>Model Config</td>
+<td>Fraction of NPU memory to be used for the model executor (0 to 1). For example: <code>0.5</code> means 50% memory utilization.</td>
+</tr>
+<tr>
+<td><code>--trust-remote-code</code></td>
+<td></td>
+<td></td>
+<td>Model Config</td>
+<td>Trust remote code (for model loading).</td>
 </tr>
 <tr>
 <td><code>--cache-block-size</code></td>
 <td>128</td>
+<td></td>
+<td>Schedule Config</td>
 <td>KV cache block size. Must be a power of 2.</td>
-</tr>
-<tr>
-<td><code>--max-batch-size</code></td>
-<td>200</td>
-<td>Maximum number of requests batched during decode stage.</td>
 </tr>
 <tr>
 <td><code>--max-prefill-batch-size</code></td>
 <td>50</td>
+<td>[1, <code>--max-batch-size</code>]</td>
+<td>Schedule Config</td>
 <td>Maximum number of requests batched during prefill stage. Must be less than <code>--max-batch-size</code>.</td>
-</tr>
-<tr>
-<td><code>--max-preempt-count</code></td>
-<td>0</td>
-<td>Maximum number of preempted requests allowed during decoding. Must be less than <code>--max-batch-size</code>.</td>
-</tr>
-<tr>
-<td><code>--max-queue-delay-microseconds</code></td>
-<td>5000</td>
-<td>Maximum queue wait time in microseconds.</td>
 </tr>
 <tr>
 <td><code>--prefill-time-ms-per-req</code></td>
 <td>150</td>
+<td>[0, 1000]</td>
+<td>Schedule Config</td>
 <td>Estimated prefill time per request (ms). Used to decide between prefill and decode stage.</td>
 </tr>
 <tr>
 <td><code>--prefill-policy-type</code></td>
 <td>0</td>
+<td></td>
+<td>Schedule Config</td>
 <td>Prefill stage strategy: <br> <code>0</code>: FCFS (First Come First Serve). <br> <code>1</code>: STATE (same as FCFS). <br> <code>2</code>: PRIORITY (priority queue). <br> <code>3</code>: MLFQ (Multi-Level Feedback Queue).</td>
+</tr>
+<tr>
+<td><code>--max-batch-size</code></td>
+<td>200</td>
+<td>[1, 5000]</td>
+<td>Schedule Config</td>
+<td>Maximum number of requests batched during decode stage.</td>
 </tr>
 <tr>
 <td><code>--decode-time-ms-per-req</code></td>
 <td>50</td>
+<td>[0, 1000]</td>
+<td>Schedule Config</td>
 <td>Estimated decode time per request (ms). Used with <code>--prefill-time-ms-per-req</code> for batch selection.</td>
 </tr>
 <tr>
 <td><code>--decode-policy-type</code></td>
 <td>0</td>
+<td></td>
+<td>Schedule Config</td>
 <td>Decode stage strategy: <br> <code>0</code>: FCFS <br> <code>1</code>: STATE (prioritize preempted or swapped requests) <br> <code>2</code>: PRIORITY <br> <code>3</code>: MLFQ</td>
+</tr>
+<tr>
+<td><code>--max-preempt-count</code></td>
+<td>0</td>
+<td>[0, <code>--max-batch-size</code>]</td>
+<td>Schedule Config</td>
+<td>Maximum number of preempted requests allowed during decoding. Must be less than <code>--max-batch-size</code>.</td>
 </tr>
 <tr>
 <td><code>--support-select-batch</code></td>
 <td></td>
-<td>Enable batch selection. Determines execution priority based on <code>--prefill-time-ms-per-req</code> and <code>--decode-time-ms-per-req</code>.</td>
+<td></td>
+<td>Schedule Config</td>
+<td>Enable batch selection. Determines execution priority based on <code>--prefill-time-ms-per-req</code> and <code>--decode-time-ms-per-req</code>. Use <code>--no-support-select-batch</code> to disable explicitly.</td>
 </tr>
 <tr>
-<td><code>--enable-prefix-caching</code></td>
+<td><code>--max-queue-delay-microseconds</code></td>
+<td>5000</td>
+<td>[500, 1000000]</td>
+<td>Schedule Config</td>
+<td>Maximum queue wait time in microseconds.</td>
+</tr>
+<tr>
+<td><code>--override-generation-config</code></td>
 <td></td>
-<td>Enable prefix caching. Use <code>--no-enable-prefix-caching</code> to disable explicitly.</td>
+<td></td>
+<td></td>
+<td>Overrides or sets generation config in JSON format. For example: <code>{"temperature": 0.5}</code>. This will merge into the <code>generation_config.json</code> of the model structure.</td>
 </tr>
 <tr>
 <td><code>--enforce-eager</code></td>
 <td></td>
+<td></td>
+<td></td>
 <td>Emit operators in eager mode.</td>
+</tr>
+<tr>
+<td><code>--metrics</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Expose metrics at <code>/metrics</code> endpoint.</td>
 </tr>
 <tr>
 <td><code>--dtype</code></td>
 <td>auto</td>
+<td></td>
+<td></td>
 <td>Data type for model weights and activations. <br> <code>auto</code>: use the default data type of the model config. <br> <code>half</code>/<code>float16</code>: for FP16. <br> <code>bfloat16</code>: for BF16. <br> <code>float</code>/<code>float32</code>: for FP32.</td>
 </tr>
 <tr>
 <td><code>--rope-scaling</code></td>
 <td></td>
+<td></td>
+<td>Extending Context Size</td>
 <td>RoPE scaling configuration in JSON format. For example: <code>{"type":"yarn","factor":4.0,"original_max_position_embeddings":32768}</code>. This will merge into the <code>config.json</code> of the model structure.</td>
 </tr>
 <tr>
 <td><code>--rope-theta</code></td>
 <td></td>
+<td></td>
+<td>Extending Context Size</td>
 <td>RoPE theta configuration. This will merge into the <code>config.json</code> of the model structure.</td>
 </tr>
 <tr>
-<td><code>--override-generation-config</code></td>
+<td><code>--enable-split</code></td>
 <td></td>
-<td>Overrides or sets generation config in JSON format. For example: <code>{"temperature": 0.5}</code>. This will merge into the <code>generation_config.json</code> of the model structure.</td>
+<td></td>
+<td>Split Fuse</td>
+<td>Enable split fuse, something like chunked prefill. Use <code>--no-enable-split</code> to disable explicitly.</td>
 </tr>
 <tr>
-<td><code>--metrics</code></td>
+<td><code>--policy-type</code></td>
+<td>0</td>
 <td></td>
-<td>Expose metrics at <code>/metrics</code> endpoint.</td>
+<td>Split Fuse</td>
+<td>Strategy of split fuse. <br> <code>0</code>: FCFS, first come first serving. <br> <code>4</code>: SJF, shortest job first. <br> <code>5</code>: LJF, longest job first. <br> <code>6</code>: Skip-Join MLFQ, skip-Join multi-levels feedback queue. <br> <code>7</code>: SJF-MLFQ, shortest job first and multi-levels feedback queue.</td>
 </tr>
 <tr>
-<td><code>--log-level</code></td>
-<td>Info</td>
-<td>Log level for MindIE. Options: <code>Verbose</code>, <code>Info</code>, <code>Warning</code>, <code>Warn</code>, <code>Error</code>, <code>Debug</code>.</td>
+<td><code>--split-chunk-tokens</code></td>
+<td>512</td>
+<td>[512, <code>--max-input-token-len</code>]</td>
+<td>Split Fuse</td>
+<td>Tokens size to batch for split fuse.</td>
+</tr>
+<tr>
+<td><code>--split-start-batch-size</code></td>
+<td>16</td>
+<td>[0, <code>--max-batch-size</code>]</td>
+<td>Split Fuse</td>
+<td>Batch size to start splitting for split fuse.</td>
+</tr>
+<tr>
+<td><code>--enable-memory-decoding</code></td>
+<td></td>
+<td></td>
+<td>Speculative Decoding / Memory Decoding</td>
+<td>Enable memory decoding speculation. Use <code>--no-enable-memory-decoding</code> to disable explicitly.</td>
+</tr>
+<tr>
+<td><code>--memory-decoding-length</code></td>
+<td>16</td>
+<td>[1, 16]</td>
+<td>Speculative Decoding / Memory Decoding</td>
+<td>Length for memory decoding speculation.</td>
+</tr>
+<tr>
+<td><code>--memory-decoding-dynamic-algo</code></td>
+<td></td>
+<td></td>
+<td>Speculative Decoding / Memory Decoding</td>
+<td>Enable dynamic algorithm for memory decoding speculation.</td>
+</tr>
+<tr>
+<td><code>--enable-lookahead</code></td>
+<td></td>
+<td></td>
+<td>Speculative Decoding / Lookahead</td>
+<td>Enable lookahead speculation. Use <code>--no-enable-lookahead</code> to disable explicitly.</td>
+</tr>
+<tr>
+<td><code>--lookahead-level</code></td>
+<td>4</td>
+<td>[3, 16]</td>
+<td>Speculative Decoding / Lookahead</td>
+<td>Level for lookahead speculation.</td>
+</tr>
+<tr>
+<td><code>--lookahead-window</code></td>
+<td>5</td>
+<td>[1, 16]</td>
+<td>Speculative Decoding / Lookahead</td>
+<td>Window size for lookahead speculation.</td>
+</tr>
+<tr>
+<td><code>--lookahead-guess-set-size</code></td>
+<td>5</td>
+<td>[1, 16]</td>
+<td>Speculative Decoding / Lookahead</td>
+<td>Guess set size for lookahead speculation.</td>
+</tr>
+<tr>
+<td><code>--enable-prefix-caching</code></td>
+<td></td>
+<td></td>
+<td>Prefix Caching</td>
+<td>Enable prefix caching. Use <code>--no-enable-prefix-caching</code> to disable explicitly.</td>
+</tr>
+<tr>
+<td><code>--tensor-parallel-size</code>, <code>-tp</code></td>
+<td>-1</td>
+<td></td>
+<td>Data Parallelism</td>
+<td>Number of tensor parallel groups. <code>-1</code> means using world size as tensor parallel size, otherwise, must be a power of 2.</td>
+</tr>
+<tr>
+<td><code>--enable-expert-parallel</code></td>
+<td></td>
+<td></td>
+<td>Data Parallelism</td>
+<td>Use expert parallelism instead of tensor parallelism for MoE layers. Use <code>--no-enable-expert-parallel</code> to disable explicitly.</td>
+</tr>
+<tr>
+<td><code>--data-parallel-size</code>, <code>-dp</code></td>
+<td>-1</td>
+<td></td>
+<td>Data Parallelism</td>
+<td>Number of data parallel groups. <code>-1</code> means disabling data parallelism, otherwise, must be a power of 2. MoE layers will be sharded according to the product of the tensor parallel size and data parallel size.</td>
+</tr>
+<tr>
+<td><code>--enable-buffer-response</code></td>
+<td></td>
+<td></td>
+<td>Buffer Response</td>
+<td>Enable buffer response. Use <code>--no-enable-buffer-response</code> to disable explicitly.</td>
+</tr>
+<tr>
+<td><code>--prefill-expected-time-ms</code></td>
+<td></td>
+<td></td>
+<td>Buffer Response</td>
+<td>Expected latency (SLO) for Time to First Token (TTFT) in milliseconds.</td>
+</tr>
+<tr>
+<td><code>--decode-expected-time-ms</code></td>
+<td></td>
+<td></td>
+<td>Buffer Response</td>
+<td>Expected latency (SLO) for Time Per Output Token (TPOT) in milliseconds.</td>
 </tr>
 </tbody>
 </table>

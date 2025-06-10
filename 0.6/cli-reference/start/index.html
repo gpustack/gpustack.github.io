@@ -346,6 +346,8 @@
       
         
       
+        
+      
     
     
     
@@ -898,7 +900,7 @@
             
   
   <span class="md-ellipsis">
-    CPU
+    Iluvatar Corex
   </span>
   
 
@@ -907,6 +909,97 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            Iluvatar Corex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/iluvatar-corex/online-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Online Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/iluvatar-corex/air-gapped-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-Gapped Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CPU
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
             <span class="md-nav__icon md-icon"></span>
             CPU
           </label>
@@ -2556,7 +2649,7 @@
 <tr>
 <td><code>--database-url</code> value</td>
 <td><code>sqlite:///&lt;data-dir&gt;/database.db</code></td>
-<td>URL of the database. Example: postgresql://user:password@hostname:port/db_name or mysql://user:password@host:port/db_name</td>
+<td>URL of the database. Supports SQLite, PostgreSQL 13.0+, and MySQL 8.0+. Example: postgresql://user:password@hostname:port/db_name or mysql://user:password@host:port/db_name</td>
 </tr>
 <tr>
 <td><code>--ssl-keyfile</code> value</td>
@@ -2599,29 +2692,29 @@
 <td>Port of Ray Client Server. Used when Ray is enabled.</td>
 </tr>
 <tr>
-<td><code>--enable_cors</code></td>
+<td><code>--enable-cors</code></td>
 <td><code>False</code></td>
-<td>Enable CORS in server.</td>
-</tr>
-<tr>
-<td><code>--allow-origins</code> value</td>
-<td><code>["*"]</code></td>
-<td>A list of origins that should be permitted to make cross-origin requests.</td>
+<td>Enable Cross-Origin Resource Sharing (CORS) on the server.</td>
 </tr>
 <tr>
 <td><code>--allow-credentials</code></td>
 <td><code>False</code></td>
-<td>Indicate that cookies should be supported for cross-origin requests.</td>
+<td>Allow cookies and credentials in cross-origin requests.</td>
+</tr>
+<tr>
+<td><code>--allow-origins</code> value</td>
+<td><code>["*"]</code></td>
+<td>Origins allowed for cross-origin requests. Specify the flag multiple times for multiple origins. Example: <code>--allow-origins https://example.com --allow-origins https://api.example.com</code></td>
 </tr>
 <tr>
 <td><code>--allow-methods</code> value</td>
 <td><code>["GET", "POST"]</code></td>
-<td>A list of HTTP methods that should be allowed for cross-origin requests.</td>
+<td>HTTP methods allowed in cross-origin requests. Specify the flag multiple times for multiple methods. Example: <code>--allow-methods GET --allow-methods POST</code></td>
 </tr>
 <tr>
 <td><code>--allow-headers</code> value</td>
 <td><code>["Authorization", "Content-Type"]</code></td>
-<td>A list of HTTP request headers that should be supported for cross-origin requests.</td>
+<td>HTTP request headers allowed in cross-origin requests. Specify the flag multiple times for multiple headers. Example: <code>--allow-headers Authorization --allow-headers Content-Type</code></td>
 </tr>
 </tbody>
 </table>
