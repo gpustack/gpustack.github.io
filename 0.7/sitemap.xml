@@ -2,362 +2,294 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.gpustack.ai/0.7/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/api-reference/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/architecture/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/code-of-conduct/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/contributing/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/development/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/faq/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/migration/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/overview/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/quickstart/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/scheduler/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/troubleshooting/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/upgrade/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/cli-reference/chat/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/cli-reference/download-tools/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/cli-reference/draw/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/cli-reference/start/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/apple-metal-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/desktop-installer/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/installation-requirements/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/installation-script/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/uninstallation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/amd-rocm/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/amd-rocm/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/ascend-cann/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/ascend-cann/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/cambricon-mlu/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/cpu/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/cpu/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/hygon-dtk/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/hygon-dtk/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/iluvatar-corex/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/iluvatar-corex/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/moorethreads-musa/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/moorethreads-musa/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/nvidia-cuda/air-gapped-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/installation/nvidia-cuda/online-installation/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/integrations/integrate-with-dify/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/integrations/integrate-with-ragflow/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/integrations/openai-compatible-apis/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/inference-on-cpus/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/inference-with-tool-calling/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/performing-distributed-inference-across-workers-llama-box/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/running-deepseek-r1-671b-with-distributed-ascend-mindie/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/running-deepseek-r1-671b-with-distributed-vllm/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/tutorials/running-on-copilot-plus-pcs-with-snapdragon-x/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/api-key-management/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/compatibility-check/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/desktop-setup/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/image-generation-apis/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/inference-backends/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/model-catalog/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/model-deployment-management/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/model-file-management/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/openai-compatible-apis/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/pinned-backend-versions/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/rerank-api/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
+    </url>
+    <url>
+         <loc>https://docs.gpustack.ai/0.7/user-guide/sso/</loc>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/user-management/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/audio/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/chat/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/embedding/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/image/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/user-guide/playground/rerank/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/editing-images/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/recommended-parameters-for-image-generation-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-audio-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-embedding-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-image-generation-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-large-language-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-reranker-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/0.7/using-models/using-vision-language-models/</loc>
-         <lastmod>2025-07-25</lastmod>
-         <changefreq>daily</changefreq>
+         <lastmod>2025-08-22</lastmod>
     </url>
 </urlset>
