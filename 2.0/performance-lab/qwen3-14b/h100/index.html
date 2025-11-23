@@ -1,0 +1,4457 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.gpustack.ai/2.0/performance-lab/qwen3-14b/h100/">
+      
+      
+        <link rel="prev" href="../a100/">
+      
+      
+        <link rel="next" href="../../qwen3-32b/a100/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+    
+    
+      
+        <title>H100 - GPUStack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#optimizing-qwen3-14b-throughput-on-nvidia-h100-gpus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="GPUStack" class="md-header__button md-logo" aria-label="GPUStack" data-md-component="logo">
+      
+  <img src="../../../assets/logo-white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GPUStack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              H100
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/gpustack/gpustack" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+    
+  
+  Inference Performance Lab
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="GPUStack" class="md-nav__button md-logo" aria-label="GPUStack" data-md-component="logo">
+      
+  <img src="../../../assets/logo-white.png" alt="logo">
+
+    </a>
+    GPUStack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/gpustack/gpustack" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quickstart
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/requirements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requirements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/nvidia/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NVIDIA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/amd/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/ascend/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ascend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/hygon/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hygon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/mthreads/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MThreads
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/iluvatar/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Iluvatar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/cambricon/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cambricon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/air-gapped/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Air-Gapped Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/uninstallation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uninstallation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../upgrade/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Upgrade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../user-guide/playground/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Playground
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_6_1" id="__nav_1_6_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Playground
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/playground/chat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/playground/image/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/playground/audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/playground/embedding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Embedding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/playground/rerank/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rerank
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/model-catalog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Catalog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/model-deployment-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model Deployment Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/inference-backend-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inference Backend Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/built-in-inference-backends/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Built-in Inference Backends
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/compatibility-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compatibility Check
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/model-file-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model File management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/cluster-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cluster Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/cloud-credential-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud Credential Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/openai-compatible-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAI Compatible APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/image-generation-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Image Generation APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/rerank-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rerank API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/api-key-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Key Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/user-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/sso/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Single Sign-On (SSO) Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Observability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using Models
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Using Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-large-language-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Large Language Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-vision-language-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Vision Language Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-embedding-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Embedding Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-reranker-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Reranker Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-image-generation-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Image Generation Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/recommended-parameters-for-image-generation-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recommended Parameters for Image Generation Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/editing-images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Editing Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using-models/using-audio-models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Audio Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/running-deepseek-r1-671b-with-distributed-vllm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running DeepSeek R1 671B with Distributed vLLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/running-deepseek-r1-671b-with-distributed-ascend-mindie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running DeepSeek R1 671B with Distributed Ascend Mindie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/inference-on-cpus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inference On CPUs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/inference-with-tool-calling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inference with Tool Calling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/using-custom-backends/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Custom Inference Backend
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/adding-gpucluster-using-digitalocean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding GPUCluster Using DigitalOcean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/adding-gpucluster-using-kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding GPUCluster Using Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/openai-compatible-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenAI Compatible APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/integrate-with-dify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrate with Dify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/integrate-with-ragflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrate with RAGFlow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../integrations/integrate-with-cherrystudio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrate with CherryStudio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../scheduler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api-reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_15" id="__nav_1_15_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CLI Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_15">
+            <span class="md-nav__icon md-icon"></span>
+            CLI Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/download-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/reload-config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reload Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/list-images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/save-images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Save Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli-reference/copy-images/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copy Images
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Inference Performance Lab
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Inference Performance Lab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Optimizing Throughput
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Optimizing Throughput
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GLM-4.6/4.5-Air
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            GLM-4.6/4.5-Air
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glm-4.5-air/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glm-4.5-air/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GLM-4.6/4.5
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            GLM-4.6/4.5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glm-4.6/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glm-4.6/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glm-4.6/h200/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H200
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GPT-OSS-20B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            GPT-OSS-20B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpt-oss-20b/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpt-oss-20b/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_4" id="__nav_2_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GPT-OSS-120B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            GPT-OSS-120B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpt-oss-120b/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gpt-oss-120b/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_5" id="__nav_2_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DeepSeek-R1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            DeepSeek-R1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deepseek-r1/h200/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H200
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_6" id="__nav_2_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-8B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-8B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-8b/910b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    910B
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_7" id="__nav_2_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-14B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-14B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experimental Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engine-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiment Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-choosing-the-inference-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Choosing the Inference Engine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quantization-in-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quantization in SGLang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-attention-backends-in-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Attention Backends in SGLang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-optimization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Optimization Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-benchmark-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Benchmark Cases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_8" id="__nav_2_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-32B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-32B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-32b/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-32b/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_9" id="__nav_2_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-30B-A3B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-30B-A3B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-30b-a3b/910b/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    910B
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_10" id="__nav_2_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-235B-A22B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-235B-A22B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-235b-a22b/a100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-235b-a22b/h100/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Optimizing Latency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Optimizing Latency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwen3-8B
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Qwen3-8B
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qwen3-8b/h100-latency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    H100
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/the-impact-of-quantization-on-vllm-inference-performance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Impact of Quantization on vLLM Inference Performance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/evaluating-lmcache-prefill-acceleration-in-vllm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evaluating LMCache Prefill Acceleration in vLLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experimental Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experimental Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engine-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Engine Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark Dataset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiment-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiment Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Experiment Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-choosing-the-inference-engine" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Choosing the Inference Engine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-quantization-in-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Quantization in SGLang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-attention-backends-in-sglang" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Attention Backends in SGLang
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-optimization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of Optimization Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-benchmark-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Benchmark Cases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/gpustack/gpustack/edit/main/docs/performance-lab/qwen3-14b/h100.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/gpustack/gpustack/raw/main/docs/performance-lab/qwen3-14b/h100.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+<h1 id="optimizing-qwen3-14b-throughput-on-nvidia-h100-gpus">Optimizing Qwen3-14B Throughput on NVIDIA H100 GPUs</h1>
+<h2 id="conclusion">Conclusion</h2>
+<p><a class="glightbox" href="../../../assets/performance-lab/qwen3-14b-h100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="qwen3-14b-h100" src="../../../assets/performance-lab/qwen3-14b-h100.png" /></a></p>
+<p>Recommended configuration for optimizing throughput of Qwen3-14B on H100 GPUs:</p>
+<details class="tip" open="open">
+<summary>Serving Command</summary>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span>--model-path<span class="w"> </span>Qwen/Qwen3-14B-FP8
+</code></pre></div>
+</details>
+<p>Comparison of benchmark results before and after optimization:</p>
+<table>
+<thead>
+<tr>
+<th>Benchmark Case</th>
+<th>baseline (vLLM without any optimizations)</th>
+<th>Optimized</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ShareGPT</strong></td>
+<td>Total TPS: 6595.66<br>Mean TPOT(ms): 226.03</td>
+<td>Total TPS: 10426.27 <span style="background-color:lightgreen;">(+58.1%)</span><br>Mean TPOT(ms): 251.67</td>
+</tr>
+<tr>
+<td><strong>Short Prompt</strong></td>
+<td>Total TPS: 5796.73<br>Mean TPOT(ms): 525.31</td>
+<td>Total TPS: 16884.75 <span style="background-color:lightgreen;">(+191.3%)</span><br>Mean TPOT(ms): 927.88</td>
+</tr>
+<tr>
+<td><strong>Medium Prompt</strong></td>
+<td>Total TPS: 10597.19<br>Mean TPOT(ms): 206.51</td>
+<td>Total TPS: 14764.26 <span style="background-color:lightgreen;">(+39.3%)</span><br>Mean TPOT(ms): 143.22</td>
+</tr>
+<tr>
+<td><strong>Long Prompt</strong></td>
+<td>Total TPS: 9218.03<br>Mean TPOT(ms): 132.45</td>
+<td>Total TPS: 12257.62 <span style="background-color:lightgreen;">(+33.0%)</span><br>Mean TPOT(ms): 84.93</td>
+</tr>
+<tr>
+<td><strong>Very Long Prompt</strong></td>
+<td>Total TPS: 8298.56<br>Mean TPOT(ms): 277.44</td>
+<td>Total TPS: 10014.29 <span style="background-color:lightgreen;">(+20.7%)</span><br>Mean TPOT(ms): 215.93</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol>
+<li>Our benchmark tests do not cover all possible optimization combinations. For example, we select the inference engine that performs best under its default configuration as the starting point for further tuning. This pruning approach yields a local optimum, which may not be the global optimum.</li>
+<li>There are other optimization methods that depend on specific user scenarios, including max batch size, schedule configuration, extended KV cache, CUDA graph, Torch Compile, etc. The conclusions in this document can serve as a starting point for more targeted optimizations.</li>
+<li>The tests are conducted on specific hardware and software setups. Advances in the inference engine may lead to new conclusions.</li>
+<li>Although using quantization may impact accuracy. FP8 quantization can achieves less than 1% accuracy drop for most models. See the <a href="https://github.com/Tencent/AngelSlim/blob/main/README_en.md#-benchmark">evaluation results</a> for more details. Therefore, it is highly recommended to use FP8 quantization for high-throughput serving scenarios.</li>
+</ol>
+</div>
+<p>If there are any missing points or updates reflecting new changes, please <a href="https://github.com/gpustack/gpustack/issues/new/choose">let us know</a>.</p>
+<h2 id="optimization-objective">Optimization Objective</h2>
+<p>Achieve high throughput under high-concurrency request scenarios.</p>
+<h2 id="experimental-setup">Experimental Setup</h2>
+<h3 id="model">Model</h3>
+<p>Qwen3-14B</p>
+<h3 id="hardware">Hardware</h3>
+<p>NVIDIA H100 GPUs</p>
+<h3 id="engine-version">Engine Version</h3>
+<ul>
+<li>vLLM: v0.11.0</li>
+<li>SGLang: v0.5.5.post1</li>
+<li>TensorRT-LLM: v1.2.0rc1</li>
+</ul>
+<h3 id="benchmark-dataset">Benchmark Dataset</h3>
+<ol>
+<li>ShareGPT</li>
+<li>Random dataset with varying sequence lengths:<ul>
+<li>Very long prompt: 32000 input tokens, 100 output tokens</li>
+<li>Long prompt: 4000 input tokens, 200 output tokens</li>
+<li>Medium prompt: 2000 input tokens, 100 output tokens</li>
+<li>Short prompt: 128 input tokens, 4 output tokens</li>
+</ul>
+</li>
+</ol>
+<h3 id="benchmark-script">Benchmark Script</h3>
+<p>We use the <strong>vLLM bench CLI</strong> tool to benchmark the model performance. The following command is used to run the benchmark:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Prepare the ShareGPT dataset</span>
+wget<span class="w"> </span>https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json
+
+<span class="c1"># Benchmark on ShareGPT dataset</span>
+vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3-14B<span class="w"> </span>--backend<span class="w"> </span>openai-chat<span class="w"> </span>--endpoint<span class="w"> </span>/v1/chat/completions<span class="w"> </span>--dataset-name<span class="w"> </span>sharegpt<span class="w"> </span>--dataset-path<span class="w"> </span>ShareGPT_V3_unfiltered_cleaned_split.json<span class="w"> </span>--num-prompts<span class="w"> </span><span class="m">1000</span>
+
+<span class="c1"># Benchmark on random dataset (fixed seed for reproducibility)</span>
+vllm<span class="w"> </span>bench<span class="w"> </span>serve<span class="w"> </span>--model<span class="w"> </span>Qwen/Qwen3-14B<span class="w"> </span>--backend<span class="w"> </span>openai-chat<span class="w"> </span>--endpoint<span class="w"> </span>/v1/chat/completions<span class="w"> </span>--dataset-name<span class="w"> </span>random<span class="w"> </span>--random-input-len<span class="w"> </span><span class="m">4000</span><span class="w"> </span>--random-output-len<span class="w"> </span><span class="m">200</span><span class="w"> </span>--num-prompts<span class="w"> </span><span class="m">500</span><span class="w"> </span>--seed<span class="w"> </span><span class="m">42</span>
+</code></pre></div>
+<h2 id="experiment-results">Experiment Results</h2>
+<h3 id="1-choosing-the-inference-engine">1. Choosing the Inference Engine</h3>
+<p>vLLM</p>
+<details class="info">
+<summary>Serving script</summary>
+<div class="highlight"><pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>Qwen/Qwen3-14B
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Benchmark result</summary>
+<div class="highlight"><pre><span></span><code>============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  63.53
+Total input tokens:                      217393
+Total generated tokens:                  201648
+Request throughput (req/s):              15.74
+Output token throughput (tok/s):         3173.92
+Peak output token throughput (tok/s):    8890.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          6595.66
+---------------Time to First Token----------------
+Mean TTFT (ms):                          22141.21
+Median TTFT (ms):                        21872.31
+P99 TTFT (ms):                           31156.86
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          226.03
+Median TPOT (ms):                        117.46
+P99 TPOT (ms):                           621.87
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           92.83
+Median ITL (ms):                         59.99
+P99 ITL (ms):                            627.72
+==================================================
+</code></pre></div>
+</details>
+<p>SGLang</p>
+<details class="info">
+<summary>Serving script</summary>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span>--model-path<span class="w"> </span>Qwen/Qwen3-14B
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Benchmark result</summary>
+<div class="highlight"><pre><span></span><code>============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  49.86
+Total input tokens:                      217393
+Total generated tokens:                  201628
+Request throughput (req/s):              20.06
+Output token throughput (tok/s):         4043.89
+Peak output token throughput (tok/s):    12059.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          8403.97
+---------------Time to First Token----------------
+Mean TTFT (ms):                          9230.85
+Median TTFT (ms):                        8812.15
+P99 TTFT (ms):                           19581.07
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          235.33
+Median TPOT (ms):                        118.67
+P99 TPOT (ms):                           1462.03
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           91.54
+Median ITL (ms):                         51.39
+P99 ITL (ms):                            442.65
+==================================================
+</code></pre></div>
+</details>
+<p>TensorRT-LLM</p>
+<details class="info">
+<summary>Serving script</summary>
+<div class="highlight"><pre><span></span><code>trtllm-serve<span class="w"> </span>Qwen/Qwen3-14B
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Benchmark result</summary>
+<div class="highlight"><pre><span></span><code>============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  50.39
+Total input tokens:                      217393
+Total generated tokens:                  201612
+Request throughput (req/s):              19.84
+Output token throughput (tok/s):         4000.99
+Peak output token throughput (tok/s):    8281.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          8315.15
+---------------Time to First Token----------------
+Mean TTFT (ms):                          10230.91
+Median TTFT (ms):                        9088.74
+P99 TTFT (ms):                           24363.57
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          161.58
+Median TPOT (ms):                        107.16
+P99 TPOT (ms):                           579.49
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           84.78
+Median ITL (ms):                         0.12
+P99 ITL (ms):                            1440.77
+==================================================
+</code></pre></div>
+</details>
+<p>Result: SGLang (8424.86 tok/s) &gt; TensorRT-LLM (8315.15 tok/s) &gt; vLLM (6595.66 tok/s)</p>
+<h3 id="2-quantization-in-sglang">2. Quantization in SGLang</h3>
+<p>FP8</p>
+<details class="info">
+<summary>Serving script</summary>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span>--model-path<span class="w"> </span>Qwen/Qwen3-14B-FP8
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Benchmark result</summary>
+<div class="highlight"><pre><span></span><code>============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  40.21
+Total input tokens:                      217393
+Total generated tokens:                  201833
+Request throughput (req/s):              24.87
+Output token throughput (tok/s):         5019.64
+Peak output token throughput (tok/s):    14199.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          10426.27
+---------------Time to First Token----------------
+Mean TTFT (ms):                          7320.60
+Median TTFT (ms):                        7110.49
+P99 TTFT (ms):                           13187.08
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          251.67
+Median TPOT (ms):                        94.53
+P99 TPOT (ms):                           1678.80
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           77.06
+Median ITL (ms):                         48.45
+P99 ITL (ms):                            383.61
+==================================================
+</code></pre></div>
+</details>
+<h3 id="3-attention-backends-in-sglang">3. Attention Backends in SGLang</h3>
+<details class="info">
+<summary>Serving script</summary>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span>--model-path<span class="w"> </span>Qwen/Qwen3-14B-FP8<span class="w"> </span>--attention-backend<span class="o">=</span>fa3
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Benchmark result</summary>
+<div class="highlight"><pre><span></span><code># fa3
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  40.18
+Total input tokens:                      217393
+Total generated tokens:                  201833
+Request throughput (req/s):              24.89
+Output token throughput (tok/s):         5023.58
+Peak output token throughput (tok/s):    13005.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          10434.44
+---------------Time to First Token----------------
+Mean TTFT (ms):                          7304.47
+Median TTFT (ms):                        7081.19
+P99 TTFT (ms):                           13629.09
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          242.72
+Median TPOT (ms):                        94.43
+P99 TPOT (ms):                           1559.90
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           76.97
+Median ITL (ms):                         47.55
+P99 ITL (ms):                            359.57
+================================================== 
+
+# --attention-backend=flashinfer
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  45.91
+Total input tokens:                      217393
+Total generated tokens:                  201462
+Request throughput (req/s):              21.78
+Output token throughput (tok/s):         4388.17
+Peak output token throughput (tok/s):    15814.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          9123.34
+---------------Time to First Token----------------
+Mean TTFT (ms):                          13440.31
+Median TTFT (ms):                        13197.52
+P99 TTFT (ms):                           19982.69
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          246.57
+Median TPOT (ms):                        95.09
+P99 TPOT (ms):                           1613.59
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           76.95
+Median ITL (ms):                         48.29
+P99 ITL (ms):                            367.15
+==================================================
+
+# --attention-backend=triton
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  41.67
+Total input tokens:                      217393
+Total generated tokens:                  201602
+Request throughput (req/s):              24.00
+Output token throughput (tok/s):         4838.09
+Peak output token throughput (tok/s):    14024.00
+Peak concurrent requests:                1000.00
+Total Token throughput (tok/s):          10055.13
+---------------Time to First Token----------------
+Mean TTFT (ms):                          7297.40
+Median TTFT (ms):                        6973.27
+P99 TTFT (ms):                           14354.40
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          268.09
+Median TPOT (ms):                        100.54
+P99 TPOT (ms):                           1810.20
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           82.50
+Median ITL (ms):                         51.79
+P99 ITL (ms):                            379.98
+==================================================
+</code></pre></div>
+</details>
+<h3 id="summary-of-optimization-options">Summary of Optimization Options</h3>
+<table>
+<thead>
+<tr>
+<th>Optimization Option</th>
+<th>Throughput Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engine Selection</td>
+<td><span style="background-color:lightgreen;">+27.7%</span></td>
+</tr>
+<tr>
+<td>Quantization</td>
+<td><span style="background-color:lightgreen;">+23.8%</span></td>
+</tr>
+<tr>
+<td>Attention Backend</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-benchmark-cases">Other Benchmark Cases</h3>
+<p>We further benchmarked the optimized configuration to evaluate its generalization under various workloads.</p>
+<details class="info">
+<summary>Baseline serving script</summary>
+<div class="highlight"><pre><span></span><code>vllm<span class="w"> </span>serve<span class="w"> </span>Qwen/Qwen3-14B
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Baseline benchmark results</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># random 32K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">100</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">386</span>.80
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">3200000</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">9855</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">0</span>.26
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">25</span>.48
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">192</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">100</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">8298</span>.56
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">191024</span>.43
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">191051</span>.49
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">380407</span>.97
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">277</span>.44
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">284</span>.52
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">324</span>.14
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">274</span>.38
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">43</span>.48
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">1101</span>.18
+<span class="o">==================================================</span>
+
+<span class="c1"># random 4K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">500</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">227</span>.57
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">1997942</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">99803</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">2</span>.20
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">438</span>.56
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">1536</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">500</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">9218</span>.03
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">112716</span>.92
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">110734</span>.54
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">219749</span>.74
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">132</span>.45
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">139</span>.68
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">161</span>.93
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">132</span>.11
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">43</span>.93
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">656</span>.79
+<span class="o">==================================================</span>
+
+<span class="c1"># random 2K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">500</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">98</span>.91
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">998175</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">50000</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">5</span>.06
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">505</span>.51
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">2890</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">500</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">10597</span>.19
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">50716</span>.13
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">49138</span>.28
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">94614</span>.51
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">206</span>.51
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">231</span>.62
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">236</span>.67
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">204</span>.84
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">46</span>.01
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">642</span>.06
+<span class="o">==================================================</span>
+
+<span class="c1"># random 128 input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">1000</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">22</span>.72
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">127698</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">4000</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">44</span>.02
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">176</span>.06
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">843</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">1000</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">5796</span>.73
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">18282</span>.75
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">18061</span>.13
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">22564</span>.77
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">525</span>.31
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">597</span>.29
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">610</span>.81
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">393</span>.98
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">581</span>.28
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">633</span>.07
+<span class="o">==================================================</span>
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Optimized serving script</summary>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>sglang.launch_server<span class="w"> </span>--model-path<span class="w"> </span>Qwen/Qwen3-14B-FP8
+</code></pre></div>
+</details>
+<details class="info">
+<summary>Optimized benchmark results</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># random 32K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">100</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">320</span>.54
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">3200000</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">9964</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">0</span>.31
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">31</span>.09
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">250</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">100</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">10014</span>.29
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">158068</span>.68
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">157591</span>.30
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">313702</span>.45
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">215</span>.93
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">212</span>.59
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">326</span>.36
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">211</span>.53
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">41</span>.38
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">5675</span>.37
+<span class="o">==================================================</span>
+
+<span class="c1"># random 4K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">500</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">171</span>.14
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">1997942</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">99814</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">2</span>.92
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">583</span>.23
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">1950</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">500</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">12257</span>.62
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">82073</span>.47
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">85092</span>.81
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">165401</span>.79
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">84</span>.93
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">83</span>.43
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">131</span>.23
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">84</span>.30
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">41</span>.87
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">89</span>.35
+<span class="o">==================================================</span>
+
+<span class="c1"># random 2K input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">500</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">70</span>.99
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">998175</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">50000</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">7</span>.04
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">704</span>.28
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">3496</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">500</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">14764</span>.26
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">33245</span>.08
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">33169</span>.68
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">68799</span>.73
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">143</span>.22
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">146</span>.25
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">216</span>.28
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">140</span>.52
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">45</span>.98
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">1987</span>.27
+<span class="o">==================================================</span>
+
+<span class="c1"># random 128 input</span>
+<span class="o">============</span><span class="w"> </span>Serving<span class="w"> </span>Benchmark<span class="w"> </span><span class="nv">Result</span><span class="w"> </span><span class="o">============</span>
+Successful<span class="w"> </span>requests:<span class="w">                     </span><span class="m">1000</span>
+Benchmark<span class="w"> </span>duration<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w">                  </span><span class="m">7</span>.80
+Total<span class="w"> </span>input<span class="w"> </span>tokens:<span class="w">                      </span><span class="m">127698</span>
+Total<span class="w"> </span>generated<span class="w"> </span>tokens:<span class="w">                  </span><span class="m">4000</span>
+Request<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>req/s<span class="o">)</span>:<span class="w">              </span><span class="m">128</span>.21
+Output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">         </span><span class="m">512</span>.83
+Peak<span class="w"> </span>output<span class="w"> </span>token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">    </span><span class="m">3784</span>.00
+Peak<span class="w"> </span>concurrent<span class="w"> </span>requests:<span class="w">                </span><span class="m">1000</span>.00
+Total<span class="w"> </span>Token<span class="w"> </span>throughput<span class="w"> </span><span class="o">(</span>tok/s<span class="o">)</span>:<span class="w">          </span><span class="m">16884</span>.75
+---------------Time<span class="w"> </span>to<span class="w"> </span>First<span class="w"> </span>Token----------------
+Mean<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">4489</span>.43
+Median<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">4057</span>.99
+P99<span class="w"> </span>TTFT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">7239</span>.77
+-----Time<span class="w"> </span>per<span class="w"> </span>Output<span class="w"> </span>Token<span class="w"> </span><span class="o">(</span>excl.<span class="w"> </span>1st<span class="w"> </span>token<span class="o">)</span>------
+Mean<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                          </span><span class="m">927</span>.88
+Median<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                        </span><span class="m">962</span>.87
+P99<span class="w"> </span>TPOT<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">1793</span>.61
+---------------Inter-token<span class="w"> </span>Latency----------------
+Mean<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                           </span><span class="m">556</span>.73
+Median<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                         </span><span class="m">82</span>.38
+P99<span class="w"> </span>ITL<span class="w"> </span><span class="o">(</span>ms<span class="o">)</span>:<span class="w">                            </span><span class="m">5043</span>.60
+<span class="o">==================================================</span>
+</code></pre></div>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["search.suggest", "search.highlight", "content.tabs.link", "navigation.indexes", "content.tooltips", "navigation.path", "navigation.tabs", "content.code.annotate", "content.code.copy", "content.code.select", "content.action.view", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
