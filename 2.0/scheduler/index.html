@@ -2019,6 +2019,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#cluster-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Matching Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Matching Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-matching-policy" class="md-nav__link">
     <span class="md-ellipsis">
       Label Matching Policy
@@ -2031,6 +2049,15 @@
   <a href="#status-policy" class="md-nav__link">
     <span class="md-ellipsis">
       Status Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-framework-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Framework Matching Policy
     </span>
   </a>
   
@@ -3653,6 +3680,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#cluster-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Matching Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Matching Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#label-matching-policy" class="md-nav__link">
     <span class="md-ellipsis">
       Label Matching Policy
@@ -3665,6 +3710,15 @@
   <a href="#status-policy" class="md-nav__link">
     <span class="md-ellipsis">
       Status Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-framework-matching-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Framework Matching Policy
     </span>
   </a>
   
@@ -3751,23 +3805,61 @@
 <h3 id="filtering-phase">Filtering Phase</h3>
 <p>The filtering phase aims to narrow down the available workers or GPUs to those that meet specific criteria. The main policies involved are:</p>
 <ul>
+<li>Cluster Matching Policy</li>
+<li>GPU Matching Policy</li>
 <li>Label Matching Policy</li>
 <li>Status Policy</li>
 <li>Resource Fit Policy</li>
 </ul>
+<h4 id="cluster-matching-policy">Cluster Matching Policy</h4>
+<p>This policy filters workers based on the cluster configuration of the model. Only those workers that belong to the specified cluster are retained for further evaluation.</p>
+<h4 id="gpu-matching-policy">GPU Matching Policy</h4>
+<p>This policy filters workers based on the user selected GPUs. Only workers that included the selected GPUs are retained for further evaluation.</p>
 <h4 id="label-matching-policy">Label Matching Policy</h4>
 <p>This policy filters workers based on the label selectors configured for the model. If no label selectors are defined for the model, all workers are considered. Otherwise, the system checks whether the labels of each worker node match the model's label selectors, retaining only those workers that match.</p>
 <h4 id="status-policy">Status Policy</h4>
 <p>This policy filters workers based on their status, retaining only those that are in a READY state.</p>
+<h4 id="backend-framework-matching-policy">Backend Framework Matching Policy</h4>
+<p>This policy filters workers based on the backend framework required by the model (e.g., vLLM, SGLang). Only those workers with GPUs that support the specified backend framework are retained for further evaluation.</p>
 <h4 id="resource-fit-policy">Resource Fit Policy</h4>
-<p>The Resource Fit Policy is a critical strategy in the scheduling system, used to filter workers or GPUs based on resource compatibility. The goal of this policy is to ensure that model instances can run on the selected nodes without exceeding resource limits. The Resource Fit Policy prioritizes candidates in the following order:</p>
+<p>The Resource Fit Policy is a critical strategy in the scheduling system, used to filter workers or GPUs based on resource compatibility. The goal of this policy is to ensure that model instances can run on the selected workers. The Resource Fit Policy prioritizes candidates in the following order:</p>
+<p>Resource requirements are determined based on:</p>
 <ul>
-<li>Single Worker Node, Single GPU Full Offload: Identifies candidates where a single GPU on a single worker can fully offload the model, which usually offers the best performance.</li>
-<li>Single Worker Node, Multiple GPU Full Offload: Identifies candidates where multiple GPUs on a single worker can fully the offload the model.</li>
-<li>Distributed Inference Across Multiple Workers: Identifies candidates where a combination of GPUs across multiple workers can handle full or partial offloading, used only when distributed inference across nodes is permitted.</li>
-<li>Single Worker Node Partial Offload: Identifies candidates on a single worker that can handle a partial offload, used only when partial offloading is allowed.</li>
-<li>Single Worker Node, CPU: When no GPUs are available, the system will use the CPU for inference, identifying candidates where memory resources on a single worker are sufficient.</li>
+<li>
+<p>For GGUF models: Uses the <a href="https://github.com/gpustack/gguf-parser-go">GGUF parser</a> to estimate the model's resource requirements.</p>
+</li>
+<li>
+<p>For other model types: Estimated by the backend (e.g., vLLM, SGLang, MindIE, VoxBox).</p>
+</li>
 </ul>
+<p>Backends have different capabilities:</p>
+<ul>
+<li>
+<p>vLLM, SGLang, MindIE: GPU-only, no CPU or partial offload.</p>
+</li>
+<li>
+<p>Custom backends, VoxBox: Support GPU offload or CPU execution.</p>
+</li>
+</ul>
+<p>Candidates are evaluated in the following order, and the process stops once the first valid placement is found:</p>
+<ol>
+<li>
+<p>Single Worker, Single GPU (Full Fit)
+A single GPU fully satisfies the model’s requirements.</p>
+</li>
+<li>
+<p>Single Worker, Multiple GPUs (Full Fit)
+Multiple GPUs on the same worker jointly satisfy the requirements.</p>
+</li>
+<li>
+<p>Distributed Inference (Across Workers)
+GPUs across multiple workers can be used when the backend supports distributed execution.</p>
+</li>
+<li>
+<p>Single Worker, CPU Execution
+CPU-only execution, supported only for Custom and VoxBox backends.</p>
+</li>
+</ol>
 <h3 id="scoring-phase">Scoring Phase</h3>
 <p>The scoring phase evaluates the filtered candidates, scoring them to select the optimal deployment location. The primary strategy involved is:</p>
 <ul>
@@ -3781,7 +3873,7 @@
 <ul>
 <li>Spread</li>
 </ul>
-<p>This strategy seeks to distribute multiple model instances across different worker nodes as evenly as possible, improving system fault tolerance and load balancing.</p>
+<p>This strategy seeks to distribute multiple model instances across different workers as evenly as possible, improving system fault tolerance and load balancing.</p>
 
 
 

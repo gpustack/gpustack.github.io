@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-custom-inference-backend" class="md-skip">
+        <a href="#using-custom-inference-backends" class="md-skip">
           Skip to content
         </a>
       
@@ -3668,26 +3668,26 @@
   
 
 
-<h1 id="using-custom-inference-backend">Using Custom Inference Backend</h1>
-<p>This article demonstrates how to add a custom inference backend that is not built into GPUStack, using TensorRT-LLM as an example. Configuration methods for common inference backends are also provided at the end of the article.
+<h1 id="using-custom-inference-backends">Using Custom Inference Backends</h1>
+<p>This guide shows how to add a custom inference backend that is not built into GPUStack, using TensorRT-LLM as an example. Configuration examples for common inference backends are provided at the end of the article.
 For a description of each parameter, see the <a href="../../user-guide/inference-backend-management/">User Guide</a>.</p>
 <h2 id="core-steps">Core Steps</h2>
 <ol>
 <li>Prepare the Docker image for the required inference backend.</li>
 <li>Understand the image's ENTRYPOINT or CMD to determine the inference backend startup command.</li>
-<li>Add configuration in the Inference Backend page.</li>
-<li>Deploy models in the Deployment page and select the newly added inference backend.</li>
+<li>Add configuration on the Inference Backend page.</li>
+<li>Deploy models on the Deployments page and select the newly added backend.</li>
 </ol>
 <h2 id="example">Example</h2>
 <p>The following uses TensorRT-LLM as an example to illustrate how to add and use an inference backend.</p>
 <blockquote>
-<p>The following examples do not represent the optimal performance configuration and are for functional demonstration only. For better inference performance, please refer to the official documentation of each inference backend for tuning, or use GPUStack's Catalog.</p>
+<p>These examples are functional demonstrations, not performance-optimized configurations. For better performance, consult each backend’s official documentation for tuning.</p>
 </blockquote>
 <ol>
-<li>Find the required image from the <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tensorrt-llm/containers/release">release page</a> mentioned in TensorRT-LLM documentation.</li>
-<li>TensorRT-LLM images must launch the inference service using <code>trtllm-serve</code>; otherwise, it will start a regular bash session. The run_command supports {{model_path}} and {{port}} templates, which are automatically replaced with the actual model path and port number after scheduling.</li>
-<li>Add configuration in Inference Backend page, supporting YAML import. Example:
-<div class="highlight"><pre><span></span><code><span class="nt">backend_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TensorRT-LLM</span>
+<li>Find the required image from the <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tensorrt-llm/containers/release">release page</a> linked from the TensorRT-LLM documentation.</li>
+<li>TensorRT-LLM images must launch the inference service using <code>trtllm-serve</code>; otherwise, they start an interactive shell session. The <code>run_command</code> supports placeholders such as <code>{{model_path}}</code> and <code>{{port}}</code> (and optionally <code>{{model_name}}</code>, <code>{{worker_ip}}</code>), which are automatically replaced with the actual values when the deployment is scheduled to a worker.</li>
+<li>Add configuration on the Inference Backend page; YAML import is supported. Example:
+<div class="highlight"><pre><span></span><code><span class="nt">backend_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TensorRT-LLM-custom</span>
 <span class="nt">default_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2.0rc0</span>
 <span class="nt">version_configs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">1.2.0rc0</span><span class="p">:</span>
@@ -3698,11 +3698,11 @@ For a description of each parameter, see the <a href="../../user-guide/inference
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You may see some inference backends labeled as Built-in (such as vLLM, MindIE) in the Inference Backend page. These are GPUStack's built-in inference backends. When using built-in backends, appropriate container images matching the worker environment are automatically obtained based on the runtime.
-You can also add custom versions to these Built-in inference backends and specify the image names you need.</p>
+<p>Some inference backends are labeled as Built-in (e.g., vLLM, MindIE) on the Inference Backend page. These are GPUStack's built-in inference backends. When using built-in backends, appropriate container images matching the worker environment are automatically obtained based on the runtime.
+You can add custom versions to these built-in inference backends and specify the image names you need.</p>
 </div>
 <ol start="4">
-<li>In Deployment page, select the newly added inference backend and deploy the model.
+<li>On the Deployments page, select the newly added backend and deploy the model.
 <a class="glightbox" href="../../assets/tutorials/using-custom-backend/deploy-by-custom-backend.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image.png" src="../../assets/tutorials/using-custom-backend/deploy-by-custom-backend.png" /></a></li>
 </ol>
 <p><strong>Result</strong></p>
@@ -3737,7 +3737,7 @@ You can engage in conversations in the Playground.
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This image includes a built-in model, so the model you select on the Deployment page may be ignored. To avoid unexpected errors, choose a model consistent with the one bundled in the image.
+<p>This image includes a built-in model, so the model you select on the Deployments page may be ignored. To avoid unexpected errors, choose a model consistent with the one bundled in the image.
 The kokoro-fastapi image uses the <a href="https://huggingface.co/hexgrad/Kokoro-82M">Kokoro-82M</a> model.</p>
 </div>
 <ol start="2">
@@ -3749,7 +3749,7 @@ The kokoro-fastapi image uses the <a href="https://huggingface.co/hexgrad/Kokoro
 <span class="w">    </span><span class="nt">custom_framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda</span>
 <span class="nt">default_run_command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python -m uvicorn api.src.main:app --host 0.0.0.0 --port {{port}} --log-level debug</span>
 </code></pre></div></li>
-<li>On the Deployment page, select the Kokoro-82M model, choose <code>kokoro</code> as the backend, and set <code>Name</code> to <code>kokoro</code>.</li>
+<li>On the Deployments page, select the Kokoro-82M model, choose <code>kokoro</code> as the backend, and set <code>Name</code> to one of the supported keys (e.g., <code>kokoro</code>).</li>
 </ol>
 <div class="admonition warning">
 <p class="admonition-title">Known Limitations for Name</p>

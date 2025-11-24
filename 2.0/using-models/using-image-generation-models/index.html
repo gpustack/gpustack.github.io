@@ -3639,7 +3639,7 @@
 
 
 <h1 id="using-image-generation-models">Using Image Generation Models</h1>
-<p>GPUStack supports deploying and running <strong>Image Generation Models</strong>. In this guide, you will deploy and use the Qwen-Image text-to-image model via the SGLang backend, then generate images from textual descriptions in the GPUStack UI.</p>
+<p>GPUStack supports deploying and running <strong>Image Generation Models</strong>. In this guide, you deploy and use the Qwen-Image text-to-image model via the SGLang backend, then generate images from textual prompts in the GPUStack UI.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before you begin, ensure that you have the following:</p>
 <ul>
@@ -3653,8 +3653,8 @@
 <li>Navigate to the <code>Deployments</code> page in the GPUStack UI.</li>
 <li>Click the <code>Deploy Model</code> button.</li>
 <li>In the dropdown, select <code>Hugging Face</code> as the source for your model.</li>
-<li>Use the search bar in the top left to search for the repository <code>Qwen/Qwen-Image</code>.</li>
-<li>Leave everything as default and click the <code>Save</code> button to deploy. GPUStack will start the SGLang backend for Qwen-Image and download the necessary files.</li>
+<li>Use the search bar in the top-left to search for the repository <code>Qwen/Qwen-Image</code>.</li>
+<li>Keep the default settings and click the <code>Save</code> button to deploy. GPUStack will start the SGLang backend for Qwen-Image and download the required files.</li>
 </ol>
 <p><a class="glightbox" href="../../assets/using-models/using-image-generation-models/deploy-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Model" src="../../assets/using-models/using-image-generation-models/deploy-model.png" /></a></p>
 <p>After deployment, you can monitor the model deployment's status on the <code>Deployments</code> page.</p>
@@ -3673,7 +3673,7 @@
 </ol>
 <p>The generated image will be displayed in the UI. Results vary with randomness, seeds, and prompt details.
 <a class="glightbox" href="../../assets/using-models/using-image-generation-models/image-playground.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generated" src="../../assets/using-models/using-image-generation-models/image-playground.png" /></a></p>
-<p>Since diffusion models consume additional VRAM after generating an image, we observe that the memory usage increased from 45GB (weights only) to 54GB., we observe that after completing an image generation task, the memory usage increased from 45GB (weights only) to 54GB. If additional models like LoRA are used, VRAM consumption will further increase.</p>
+<p>After completing an image generation task, memory usage typically increases from ~45 GB (weights only) to ~54 GB due to additional VRAM consumption by diffusion models. If additional models like LoRA are used, VRAM consumption will further increase.</p>
 <p><a class="glightbox" href="../../assets/using-models/using-image-generation-models/qwen-image-usage-after.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="qwen-image-usage-after.png" src="../../assets/using-models/using-image-generation-models/qwen-image-usage-after.png" /></a></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>With this setup, you can generate unique and visually compelling images from textual prompts using Qwen-Image served by SGLang. Experiment with different prompts and settings to push the boundaries of what’s possible.</p>

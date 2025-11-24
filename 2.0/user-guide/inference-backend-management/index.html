@@ -3676,8 +3676,8 @@
 
 <h1 id="inference-backend-management">Inference Backend Management</h1>
 <p>GPUStack allows admins to configure inference backends and backend versions.</p>
-<p>This article serves as an operations guide for the Inference Backend page. For supported built-in backends and their capabilities, see <a href="../built-in-inference-backends/">Built-in Inference Backends</a>.</p>
-<p>For guidelines on configuring custom backends and example for custom backends verified as functional, see <a href="../../tutorials/using-custom-backends/">Custom Inference Backends</a>.</p>
+<p>This article serves as an operational guide for the Inference Backend page. For supported built-in backends and their capabilities, see <a href="../built-in-inference-backends/">Built-in Inference Backends</a>.</p>
+<p>For guidelines for configuring custom backends and examples of custom backends that have been verified to work, see <a href="../../tutorials/using-custom-backends/">Custom Inference Backends</a>.</p>
 <h2 id="parameter-description">Parameter Description</h2>
 <table>
 <thead>
@@ -3695,17 +3695,17 @@
 </tr>
 <tr>
 <td>Health Check Path</td>
-<td>Health check path used to verify if the inference backend has started and is running properly. Default value is /v1/models (OpenAI API specification)</td>
+<td>Health check path used to verify the backend is up and responding. Default: /v1/models (OpenAI-compatible).</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Default Execution Command</td>
-<td>Execution command passed as <code>args</code> when the inference backend container starts. For example, for vllm backend, this would be <code>vllm serve {{model_path}} --port {{port}} --served-model-name {{model_name}} --host {{worker_ip}}</code>. Note that this command supports {{model_path}}, {{model_name}}, {{port}}, {{worker_ip}} templates, allowing automatic substitution of model path and port number and model name(optional) after scheduling</td>
+<td>Container startup command/args. For example (vLLM): <code>vllm serve {{model_path}} --port {{port}} --served-model-name {{model_name}} --host {{worker_ip}}</code>. The placeholders <code>{{model_path}}</code>, <code>{{model_name}}</code>, <code>{{port}}</code>, and <code>{{worker_ip}}</code> are automatically substituted when the deployment is scheduled to a worker.</td>
 <td>No</td>
 </tr>
 <tr>
 <td>Default Backend Parameters</td>
-<td>Default backend parameters used to pre-fill Advanced-Backend Parameters during deployment for convenient deployment and adjustment</td>
+<td>Pre-populate the Advanced Backend Parameters section during deployment; you can adjust them before launching</td>
 <td>No</td>
 </tr>
 <tr>
@@ -3715,12 +3715,12 @@
 </tr>
 <tr>
 <td>Version Configs</td>
-<td>Inference backend version configurations, used to add inference backend versions</td>
+<td>Configure available versions of this backend</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Default Version</td>
-<td>Dropdown option used to pre-fill during deployment. If no version is selected during deployment, the image corresponding to Default Version will be used</td>
+<td>Preselected during deployment. If you don’t choose a version, its image is used</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -3737,22 +3737,22 @@
 <tbody>
 <tr>
 <td>Version</td>
-<td>Version name, displayed in BackendVersion options during deployment</td>
+<td>Version name shown in the Backend Version dropdown during deployment</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Image Name</td>
-<td>Inference backend image name</td>
+<td>Container image name for the backend (e.g., <code>ghcr.io/org/image:tag</code>)</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Framework<br/>(custom_framework)</td>
-<td>Inference backend framework. Deployment and scheduling will filter based on supported Frameworks</td>
+<td>Backend framework (internal identifier: <code>custom_framework</code>). Deployment and scheduling are filtered by supported frameworks</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Execution Command</td>
-<td>Execution command for this version. If not set, uses Default Execution Command</td>
+<td>Version-specific startup command. If omitted, the Default Execution Command is used</td>
 <td>No</td>
 </tr>
 </tbody>
@@ -3778,14 +3778,14 @@
 <li>Click "Delete" in the confirmation dialog.</li>
 </ol>
 <h2 id="list-versions-of-inference-backend">List Versions of Inference Backend</h2>
-<p>On the Inference Backend page, click the blank area of the backend card to open a modal where you can browse all built-in and custom-added versions.</p>
+<p>On the Inference Backend page, click anywhere on the backend card (except the action buttons) to open a modal where you can browse all built-in and custom-added versions.</p>
 <h2 id="flexible-testing-deployment">Flexible Testing Deployment</h2>
-<p>For quick and flexible verification or adjustment of the image and startup command.</p>
+<p>Use this mode to quickly verify or tweak the image and startup command without editing the backend definition.</p>
 <ol>
 <li>Navigate to the Deployments page, click the "Deploy Model" button, and choose any model source.</li>
-<li>In the Basic tab, click "Backend" and select "Custom" under the built-in category from the dropdown.</li>
-<li>Two new input fields will appear to specify custom <code>image_name</code> and <code>run_command</code>.</li>
-<li>After completing the inputs, confirm other required deployment settings and click the submit button.</li>
+<li>In the Basic tab, open the "Backend" dropdown and select "Custom" under the "Built-in" section.</li>
+<li>Two fields appear: <code>image_name</code> and <code>run_command</code>. These override the backend configuration for this deployment only.</li>
+<li>Review the remaining required settings and submit the deployment.</li>
 </ol>
 
 
