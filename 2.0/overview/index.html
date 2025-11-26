@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#key-features" class="md-skip">
+        <a href="#tested-inference-engines-gpus-and-models" class="md-skip">
           Skip to content
         </a>
       
@@ -448,36 +448,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#tested-inference-engines-gpus-and-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Tested Inference Engines, GPUs, and Models
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-accelerators" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported Accelerators
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported Models
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openai-compatible-apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenAI-Compatible APIs
+      Architecture
     </span>
   </a>
   
@@ -3562,36 +3544,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#tested-inference-engines-gpus-and-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Tested Inference Engines, GPUs, and Models
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-accelerators" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported Accelerators
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-models" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported Models
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openai-compatible-apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenAI-Compatible APIs
+      Architecture
     </span>
   </a>
   
@@ -3655,54 +3619,44 @@
   <a class="github-button" href="https://github.com/gpustack/gpustack/fork" data-show-count="true" data-icon="octicon-repo-forked" data-size="large" aria-label="Fork">Fork</a>
 </p>
 
-<p>GPUStack is an open-source GPU cluster manager for running AI models.</p>
-<h3 id="key-features">Key Features</h3>
+<p>GPUStack is an open-source GPU cluster manager designed for efficient AI model deployment. It lets you run models efficiently on your own GPU hardware by choosing the best inference engines, scheduling GPU resources, analyzing model architectures, and automatically configuring deployment parameters.</p>
+<p>The following figure shows how GPUStack delivers improved inference throughput over the unoptimized vLLM baseline:</p>
+<p><a class="glightbox" href="../assets/a100-throughput-comparison.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="a100-throughput-comparison" src="../assets/a100-throughput-comparison.png" /></a></p>
+<p>For detailed benchmarking methods and results, visit our <a href="https://docs.gpustack.ai/latest/performance-lab/overview/">Inference Performance Lab</a>.</p>
+<h2 id="tested-inference-engines-gpus-and-models">Tested Inference Engines, GPUs, and Models</h2>
+<p>GPUStack uses a plug-in architecture that makes it easy to add new AI models, inference engines, and GPU hardware. We work closely with partners and the open-source community to test and optimize emerging models across different inference engines and GPUs. Below is the current list of supported inference engines, GPUs, and models, which will continue to expand over time.</p>
+<p><strong>Tested Inference Engines:</strong></p>
 <ul>
-<li><strong>High Performance:</strong> Optimized for high-throughput and low-latency inference.</li>
-<li><strong>GPU Cluster Management:</strong> Efficiently manage multiple GPU clusters across different providers, including Docker-based, Kubernetes, and cloud platforms such as DigitalOcean.</li>
-<li><strong>Broad GPU Compatibility:</strong> Seamless support for GPUs from various vendors.</li>
-<li><strong>Extensive Model Support:</strong> Supports a wide range of models, including LLMs, VLMs, image models, audio models, embedding models, and rerank models.</li>
-<li><strong>Flexible Inference Backends:</strong> Built-in support for fast inference engines such as vLLM and SGLang, with the ability to integrate custom backends.</li>
-<li><strong>Multi-Version Backend Support:</strong> Run multiple versions of inference backends concurrently to meet diverse runtime requirements.</li>
-<li><strong>Distributed Inference:</strong> Supports single-node and multi-node, multi-GPU inference, including heterogeneous GPUs across vendors and environments.</li>
-<li><strong>Scalable GPU Architecture:</strong> Easily scale by adding more GPUs, nodes, or clusters to your infrastructure.</li>
-<li><strong>Robust Model Stability:</strong> Ensures high availability through automatic failure recovery, multi-instance redundancy, and intelligent load balancing.</li>
-<li><strong>Intelligent Deployment Evaluation:</strong> Automatically assesses model resource requirements, backend and architecture compatibility, OS compatibility, and other deployment factors.</li>
-<li><strong>Automated Scheduling:</strong> Dynamically allocates models based on available resources.</li>
-<li><strong>OpenAI-Compatible APIs:</strong> Fully compatible with OpenAI API specifications for seamless integration.</li>
-<li><strong>User &amp; API Key Management:</strong> Simplified management of users and API keys.</li>
-<li><strong>Real-Time GPU Monitoring:</strong> Monitor GPU performance and utilization in real time.</li>
-<li><strong>Token and Rate Metrics:</strong> Track token usage and API request rates.</li>
+<li>vLLM</li>
+<li>SGLang</li>
+<li>TensorRT-LLM</li>
+<li>MindIE</li>
 </ul>
-<h2 id="supported-accelerators">Supported Accelerators</h2>
-<p>GPUStack supports a variety of General-Purpose Accelerators, including:</p>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> NVIDIA GPU</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> AMD GPU</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Ascend NPU</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Hygon DCU (Experimental)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> MThreads GPU (Experimental)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Iluvatar GPU (Experimental)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> MetaX GPU (Experimental)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Cambricon MLU (Experimental)</li>
+<p><strong>Tested GPUs:</strong></p>
+<ul>
+<li>NVIDIA A100</li>
+<li>NVIDIA H100/H200</li>
+<li>Ascend 910B</li>
 </ul>
-<h2 id="supported-models">Supported Models</h2>
-<p>GPUStack uses <a href="https://github.com/vllm-project/vllm">vLLM</a>, <a href="https://github.com/sgl-project/sglang">SGLang</a>, <a href="https://www.hiascend.com/en/software/mindie">MindIE</a> and <a href="https://github.com/gpustack/vox-box">vox-box</a> as built-in inference backends, and it also supports any custom backend that can run in a container and expose a serving API. This allows GPUStack to work with a wide range of models.</p>
-<p>Models can come from the following sources:</p>
-<ol>
-<li>
-<p><a href="https://huggingface.co/">Hugging Face</a></p>
-</li>
-<li>
-<p><a href="https://modelscope.cn/">ModelScope</a></p>
-</li>
-<li>
-<p>Local File Path</p>
-</li>
-</ol>
-<p>For information on which models are supported by each built-in inference backend, please refer to the supported models section in the <a href="../user-guide/built-in-inference-backends/">Built-in Inference Backends</a> documentation.</p>
-<h2 id="openai-compatible-apis">OpenAI-Compatible APIs</h2>
-<p>GPUStack serves OpenAI compatible APIs. For details, please refer to <a href="../user-guide/openai-compatible-apis/">OpenAI Compatible APIs</a></p>
+<p><strong>Tuned Models:</strong></p>
+<ul>
+<li>Qwen3</li>
+<li>gpt-oss</li>
+<li>GLM-4.5-Air</li>
+<li>GLM-4.5/4.6</li>
+<li>DeepSeek-R1</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<p>GPUStack enables development teams, IT organizations, and service providers to deliver Model-as-a-Service at scale. It supports industry-standard APIs for LLM, voice, image, and video models. The platform includes built-in user authentication and access control, real-time monitoring of GPU performance and utilization, and detailed metering of token usage and API request rates.</p>
+<p>The figure below illustrates how a single GPUStack server can manage multiple GPU clusters across both on-premises and cloud environments. The GPUStack scheduler allocates GPUs to maximize resource utilization and selects the appropriate inference engines for optimal performance. Administrators also gain full visibility into system health and metrics through integrated Grafana and Prometheus dashboards.</p>
+<p><a class="glightbox" href="../assets/gpustack-v2-architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-v2-architecture" src="../assets/gpustack-v2-architecture.png" /></a></p>
+<p>GPUStack provides a powerful framework for deploying AI models. Its core features include:</p>
+<ul>
+<li><strong>Multi-Cluster GPU Management.</strong> Manages GPU clusters across multiple environments. This includes on-premises servers, Kubernetes clusters, and cloud providers.</li>
+<li><strong>Pluggable Inference Engines.</strong> Automatically configures high-performance inference engines such as vLLM, SGLang, and TensorRT-LLM. You can also add custom inference engines as needed.</li>
+<li><strong>Performance-Optimized Configurations.</strong> Offers pre-tuned modes for low latency or high throughput. GPUStack supports extended KV cache systems like LMCache and HiCache to reduce TTFT. It also includes built-in support for speculative decoding methods such as EAGLE3, MTP, and N-grams.</li>
+<li><strong>Enterprise-Grade Operations.</strong> Offers support for automated failure recovery, load balancing, monitoring, authentication, and access control.</li>
+</ul>
 
 
 
