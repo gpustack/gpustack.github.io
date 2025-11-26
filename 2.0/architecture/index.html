@@ -1987,6 +1987,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ai-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Gateway
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sql-database" class="md-nav__link">
     <span class="md-ellipsis">
       SQL Database
@@ -2005,18 +2014,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rpc-server" class="md-nav__link">
+  <a href="#ray" class="md-nav__link">
     <span class="md-ellipsis">
-      RPC Server
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ray-headworker" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ray Head/Worker
+      Ray
     </span>
   </a>
   
@@ -3606,6 +3606,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ai-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Gateway
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sql-database" class="md-nav__link">
     <span class="md-ellipsis">
       SQL Database
@@ -3624,18 +3633,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rpc-server" class="md-nav__link">
+  <a href="#ray" class="md-nav__link">
     <span class="md-ellipsis">
-      RPC Server
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ray-headworker" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ray Head/Worker
+      Ray
     </span>
   </a>
   
@@ -3673,31 +3673,32 @@
 
 
 <h1 id="architecture">Architecture</h1>
-<p>The following diagram shows the architecture of GPUStack:</p>
-<p><a class="glightbox" href="../assets/gpustack-architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-architecture" src="../assets/gpustack-architecture.png" /></a></p>
+<p>The diagram below provides a high-level view of the GPUStack architecture.</p>
+<p><a class="glightbox" href="../assets/gpustack-v2-architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-v2-architecture" src="../assets/gpustack-v2-architecture.png" /></a></p>
+<p>The diagram below details the internal components and their interactions.</p>
+<p><a class="glightbox" href="../assets/gpustack-v2-components.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="gpustack-v2-components" src="../assets/gpustack-v2-components.png" /></a></p>
 <h3 id="server">Server</h3>
 <p>The GPUStack server consists of the following components:</p>
 <ul>
-<li><strong>API Server</strong>: Provides a RESTful interface for clients to interact with the system. It handles authentication and authorization.</li>
-<li><strong>Scheduler</strong>: Responsible for assigning model instances to workers.</li>
-<li><strong>Model Controller</strong>: Manages the rollout and scaling of model instances to match the desired model replicas.</li>
-<li><strong>HTTP Proxy</strong>: Routes inference API requests to workers.</li>
+<li><strong>API Server:</strong> Provides a RESTful interface for clients to interact with the system. It handles authentication and authorization.</li>
+<li><strong>Scheduler:</strong> Responsible for assigning model instances to workers.</li>
+<li><strong>Controllers:</strong> Manages the state of resources in the system. For example, they handle the rollout and scaling of model instances to match the desired number of replicas.</li>
 </ul>
 <h3 id="worker">Worker</h3>
-<p>GPUStack workers are responsible for:</p>
+<p>The GPUStack worker consists of the following components:</p>
 <ul>
-<li>Running inference servers for model instances assigned to the worker.</li>
-<li>Reporting status to the server.</li>
-<li>Routes inference API requests to backend inference servers.</li>
+<li><strong>GPUStack Runtime:</strong> Detects GPU devices and interacts with the container runtime to deploy model instances.</li>
+<li><strong>Serving Manager:</strong> Manages the lifecycle of model instances on the worker.</li>
+<li><strong>Metric Exporter:</strong> Exports metrics about the model instances and their performance.</li>
 </ul>
+<h3 id="ai-gateway">AI Gateway</h3>
+<p>The AI Gateway handles incoming API requests from clients. It routes requests to the appropriate model instances based on the requested model. GPUStack uses <a href="https://github.com/alibaba/higress">Higress</a> for API routing and load balancing.</p>
 <h3 id="sql-database">SQL Database</h3>
-<p>The GPUStack server connects to a SQL database as the datastore. GPUStack uses PostgreSQL by default, but you can configure it to use an external MySQL as well.</p>
+<p>The GPUStack server connects to a SQL database as the datastore. GPUStack uses an Embedded PostgreSQL by default, but you can configure it to use an external PostgreSQL or MySQL as well.</p>
 <h3 id="inference-server">Inference Server</h3>
-<p>Inference servers are the backends that performs the inference tasks. GPUStack supports <a href="https://github.com/vllm-project/vllm">vLLM</a>, <a href="https://www.hiascend.com/en/software/mindie">Ascend MindIE</a>, <a href="https://github.com/gpustack/llama-box">llama-box</a> and <a href="https://github.com/gpustack/vox-box">vox-box</a> as the inference server.</p>
-<h3 id="rpc-server">RPC Server</h3>
-<p>The RPC server enables running llama-box backend on a remote host. The Inference Server communicates with one or several instances of RPC server, offloading computations to these remote hosts. This setup allows for distributed LLM inference across multiple workers, enabling the system to load larger models even when individual resources are limited.</p>
-<h3 id="ray-headworker">Ray Head/Worker</h3>
-<p><a href="https://ray.io">Ray</a> is a distributed computing framework that GPUStack utilizes to run distributed vLLM. Users can enable a Ray cluster in GPUStack to run vLLM across multiple workers. By default, it is disabled.</p>
+<p>Inference servers are the backends that performs the inference tasks. GPUStack supports <a href="https://github.com/vllm-project/vllm">vLLM</a>, <a href="https://github.com/sgl-project/sglang">SGLang</a>, <a href="https://www.hiascend.com/en/software/mindie">Ascend MindIE</a> and <a href="https://github.com/gpustack/vox-box">vox-box</a> as the built-in inference server. You can also add custom inference backends.</p>
+<h3 id="ray">Ray</h3>
+<p><a href="https://ray.io">Ray</a> is a distributed computing framework that GPUStack utilizes to run distributed vLLM. GPUStack bootstraps Ray cluster on-demand to run distributed vLLM across multiple workers.</p>
 
 
 
