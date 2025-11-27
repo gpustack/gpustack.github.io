@@ -1830,7 +1830,7 @@
         
   
   <span class="md-ellipsis">
-    Adding GPUCluster Using DigitalOcean
+    Adding a GPU Cluster Using DigitalOcean
   </span>
   
 
@@ -1851,7 +1851,7 @@
         
   
   <span class="md-ellipsis">
-    Adding GPUCluster Using Kubernetes
+    Adding a GPU Cluster Using Kubernetes
   </span>
   
 
@@ -3718,7 +3718,10 @@ You can engage in conversations in the Playground.
     <div class="highlight"><pre><span></span><code><span class="nt">backend_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llama.cpp-custom</span>
 <span class="nt">default_run_command</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-m</span><span class="nv"> </span><span class="s">{{model_path}}</span><span class="nv"> </span><span class="s">--host</span><span class="nv"> </span><span class="s">0.0.0.0</span><span class="nv"> </span><span class="s">--port</span><span class="nv"> </span><span class="s">{{port}}&#39;</span>
 <span class="nt">version_configs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">v1-custom</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">v1-cuda</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/ggml-org/llama.cpp:server-cuda</span>
+<span class="w">    </span><span class="nt">custom_framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cuda</span>
+<span class="w">  </span><span class="nt">v1-cpu</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/ggml-org/llama.cpp:server</span>
 <span class="w">    </span><span class="nt">custom_framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpu</span>
 <span class="nt">default_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1-custom</span>

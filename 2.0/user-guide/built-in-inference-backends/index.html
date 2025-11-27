@@ -2010,7 +2010,7 @@
         
   
   <span class="md-ellipsis">
-    Adding GPUCluster Using DigitalOcean
+    Adding a GPU Cluster Using DigitalOcean
   </span>
   
 
@@ -2031,7 +2031,7 @@
         
   
   <span class="md-ellipsis">
-    Adding GPUCluster Using Kubernetes
+    Adding a GPU Cluster Using Kubernetes
   </span>
   
 
@@ -4143,30 +4143,31 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 <p>Within GPUStack, support <a href="https://www.hiascend.com/software/mindie/modellist">large language models (LLMs)</a> and <a href="https://www.hiascend.com/software/mindie/modellist">multimodal language models (VLMs)</a>.</p>
 <p>However, <em>embedding models</em> and <em>multimodal generation models</em> are not supported yet.</p>
 <h3 id="supported-features_2">Supported Features</h3>
-<p>MindIE owns a variety of features outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0001.html">here</a>.</p>
+<p>MindIE owns a variety of features outlined <a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0001.html">here</a>.</p>
 <p>At present, GPUStack supports a subset of these capabilities, including
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0279.html">Quantization</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0295.html">Extending Context Size</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0296.html">Distributed Inference</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0297.html">Mixture of Experts(MoE)</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0300.html">Split Fuse</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0301.html">Speculative Decoding</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0500.html">Multi-Token Prediction</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0302.html">Prefix Caching</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0303.html">Function Calling</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0304.html">Multimodal Understanding</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0511.html">Tensor Parallelism</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0508.html">Context Parallelism</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0517.html">Sequence Parallelism</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0509.html">Expert Parallelism</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0424.html">Data Parallelism</a>,
-<a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0425.html">Buffer Response(Since Ascend MindIE 2.0.RC1)</a>.</p>
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0279.html">Quantization</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0295.html">Extending Context Size</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0296.html">Distributed Inference</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0297.html">Mixture of Experts(MoE)</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0300.html">Split Fuse</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0301.html">Speculative Decoding</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0500.html">Multi-Token Prediction</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0302.html">Prefix Caching</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0303.html">Function Calling</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0304.html">Multimodal Understanding</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0305.html">Multi-head Latent Attention(MLA)</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0511.html">Tensor Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0508.html">Context Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0517.html">Sequence Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0509.html">Expert Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0424.html">Data Parallelism</a>,
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0425.html">Buffer Response(Since Ascend MindIE 2.0.RC1)</a>.
+<a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0538.html">KV Pool(Since Ascend MindIE 2.2.RC1)</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
 <li>
-<p>Quantization needs specific weight, and must adjust the model's <code>config.json</code>, please follow the <a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0279.html">reference(guide)</a> to prepare the correct weight.</p>
+<p>Quantization needs specific weight, and must adjust the model's <code>config.json</code>, please follow the <a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0279.html">reference(guide)</a> to prepare the correct weight.</p>
 </li>
 <li>
 <p>Some features are mutually exclusive, so be careful when using them. For example, with Prefix Caching enabled, the Extending Context Size feature cannot be used.</p>
@@ -4174,7 +4175,7 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 </ol>
 </div>
 <h3 id="parameters-reference_2">Parameters Reference</h3>
-<p>MindIE has configurable <a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0004.html">parameters</a> and <a href="https://www.hiascend.com/document/detail/zh/mindie/21RC2/mindiellm/llmdev/mindie_llm0416.html">environment variables</a>.</p>
+<p>MindIE has configurable <a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_service0285.html">parameters</a> and <a href="https://www.hiascend.com/document/detail/zh/mindie/22RC1/mindiellm/llmdev/mindie_llm0416.html">environment variables</a>.</p>
 <p>To avoid directly configuring JSON, GPUStack provides a set of command line parameters as below.</p>
 <table>
 <thead>
@@ -4216,6 +4217,13 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 <td>E2E (from request accepted to inference stopped) timeout in seconds.</td>
 </tr>
 <tr>
+<td><code>--kv-pool-config</code></td>
+<td></td>
+<td></td>
+<td>Backend Config</td>
+<td>KV pool configuration in JSON format. For example: <code>{"backend":"&lt;KV pool backend name&gt;", "configPath":"/path/to/your/config/file"}</code>.</td>
+</tr>
+<tr>
 <td><code>--max-seq-len</code></td>
 <td>8192</td>
 <td>(0, *)</td>
@@ -4227,7 +4235,7 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 <td></td>
 <td>(0, <code>--max-seq-len</code>]</td>
 <td>Model Deploy Config</td>
-<td>Maximum input token length. If unspecified, it will be derived from <code>--max-seq-len</code>.</td>
+<td>Maximum input token length. If unspecified, it will be derived from <code>min(--max-seq-len, --max-prefill-tokens)</code>.</td>
 </tr>
 <tr>
 <td><code>--truncation</code></td>
@@ -4265,6 +4273,13 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 <td>Models configuration in JSON format, for certain specific configurations, like Expert Parallelism Implementation Method, Tensor Parallelism LM Header/Output Attention Split.</td>
 </tr>
 <tr>
+<td><code>--async-scheduler-wait-time</code></td>
+<td>120</td>
+<td>[1, 3600]</td>
+<td>Model Config</td>
+<td>The wait time (in seconds) for the asynchronous scheduler to start.</td>
+</tr>
+<tr>
 <td><code>--cache-block-size</code></td>
 <td>128</td>
 <td></td>
@@ -4280,7 +4295,7 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 </tr>
 <tr>
 <td><code>--max-prefill-tokens</code></td>
-<td>50</td>
+<td></td>
 <td>[1, <code>--max-seq-len</code>]</td>
 <td>Schedule Config</td>
 <td>During each prefill, the total number of all input tokens in the current batch cannot exceed <code>--max-prefill-tokens</code>. Default is same as <code>--max-seq-len</code>.</td>
@@ -4308,7 +4323,7 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 </tr>
 <tr>
 <td><code>--max-iter-times</code></td>
-<td>200</td>
+<td></td>
 <td>[1, <code>--max-seq-len</code>]</td>
 <td>Schedule Config</td>
 <td>Maximum iterations for decoding stage. Default is same as <code>--max-seq-len</code>.</td>
@@ -4347,6 +4362,13 @@ Through SGLang's parallel processing techniques and optimized kernels, it achiev
 <td>[500, 1000000]</td>
 <td>Schedule Config</td>
 <td>Maximum queue wait time in microseconds.</td>
+</tr>
+<tr>
+<td><code>--max-first-token-wait-time</code></td>
+<td>2500</td>
+<td>[0, 3600000]</td>
+<td>Schedule Config</td>
+<td>Maximum milliseconds to wait for the first token generation.</td>
 </tr>
 <tr>
 <td><code>--override-generation-config</code></td>
