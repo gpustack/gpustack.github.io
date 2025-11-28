@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migration-from-v07-and-earlier" class="md-skip">
+        <a href="#migrating-from-v07-and-earlier-versions-to-v2" class="md-skip">
           Skip to content
         </a>
       
@@ -3815,7 +3815,7 @@
   
 
 
-<h1 id="migration-from-v07-and-earlier">Migration from v0.7 and Earlier</h1>
+<h1 id="migrating-from-v07-and-earlier-versions-to-v2">Migrating from v0.7 and Earlier Versions to v2</h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Since v2.0.0, GPUStack supports Linux only. For other OS, move the data directory to a Linux system and run the migration.</p>
@@ -3891,18 +3891,18 @@
 <h4 id="recreating-model-instances">Recreating Model Instances</h4>
 <p>After the upgrade is complete, existing Model Instances may remain stuck in the <code>Starting</code> state. If this happens, recreating the Model Instance will allow the model to run normally.</p>
 <h2 id="external-database-migration">External Database Migration</h2>
-<p>GPUStack supported used an external database to store management data. If you previously deployed GPUStack with the external database, follow the steps below to migrate your data.</p>
+<p>GPUStack supports using an external database to store the management data. If you previously deployed GPUStack with an external database, follow the steps below to migrate your data.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Backup Required:</strong> Make sure to:</p>
+<p><strong>Backup Required.</strong> Before proceeding, back up the following:</p>
 <ul>
 <li>
-<p>Back up the data directory at:</p>
+<p>The data directory used by your previous GPUStack installation, typically located at:</p>
 <div class="highlight"><pre><span></span><code>/var/lib/gpustack
 </code></pre></div>
 </li>
 <li>
-<p>Back up your external database using your database system’s recommended backup procedure.</p>
+<p>Your external database, using the backup procedure recommended by your database system.</p>
 </li>
 </ul>
 </div>
