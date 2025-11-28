@@ -3873,7 +3873,20 @@
 </code></pre></div>
 <ul>
 <li>To restrict NPU access, remove <code>--privileged</code> flag and set the <code>ASCEND_VISIBLE_DEVICES</code> environment variable.
-  See <a href="https://www.hiascend.com/document/detail/zh/mindcluster/72rc1/clustersched/dlug/dlruntime_ug_004.html">MindCluster - Docker Client Usage</a>.</li>
+  See <a href="https://www.hiascend.com/document/detail/zh/mindcluster/72rc1/clustersched/dlug/dlruntime_ug_004.html">MindCluster - Docker Client Usage</a>.
+  When GPUStack detects device indexes that don't start from 0 or are not consecutive, it performs automatic alignment. 
+  This is useful for virtual machine scenarios where only some devices are pass-through. 
+  However, if the host's devices are consecutive, automatic alignment can be counterproductive. 
+  Therefore, automatic alignment can be turned off to avoid wrong device mapping.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>sudo docker run -d --name gpustack \
+<span class="w"> </span>    ...
+<span class="gd">-    --privileged \</span>
+<span class="gi">+    --env &quot;ASCEND_VISIBLE_DEVICES=&lt;expected_devices_comma_seperated_list&gt;&quot; \</span>
+<span class="gi">+    --env &quot;GPUSTACK_RUNTIME_DEPLOY_BACKEND_VISIBLE_DEVICES_VALUE_ALIGNMENT=&quot; \</span>
+<span class="w"> </span>    ...
+</code></pre></div>
+<ul>
 <li>The <code>--network=host</code> option is necessary for port awareness.</li>
 <li>Mounting <code>/var/run/docker.sock</code> allows GPUStack to manage Docker containers for inference engines.</li>
 </ul>

@@ -3860,6 +3860,7 @@
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--volume<span class="w"> </span>/opt/rocm:/opt/rocm:ro<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
@@ -3870,6 +3871,7 @@
 <li>The <code>--privileged</code> flag is required for device vendor-agnostic access.</li>
 <li>To restrict GPU access, remove <code>--privileged</code> flag and set the <code>AMD_VISIBLE_DEVICES</code> environment variable.
   See <a href="https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/migration-guide.html">AMD Container Runtime - Migration Guide</a>.</li>
+<li>If the <code>/opt/rocm</code> directory does not exist, please create a symbolic link pointing to the ROCm installed path: <code>ln -s /path/to/rocm /opt/rocm</code>.</li>
 <li>The <code>--network=host</code> option is necessary for port awareness.</li>
 <li>Mounting <code>/var/run/docker.sock</code> allows GPUStack to manage Docker containers for inference engines.</li>
 </ul>
