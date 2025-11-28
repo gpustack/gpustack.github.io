@@ -101,6 +101,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.gpustack.ai/2.0/installation/docker-compose/</loc>
+         <lastmod>2025-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.gpustack.ai/2.0/installation/requirements/</loc>
          <lastmod>2025-11-28</lastmod>
          <changefreq>daily</changefreq>

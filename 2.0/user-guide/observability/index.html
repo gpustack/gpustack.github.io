@@ -472,6 +472,8 @@
       
         
       
+        
+      
     
     
       
@@ -683,6 +685,27 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/docker-compose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation via Docker Compose
   </span>
   
 
@@ -1412,30 +1435,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-gpustack-with-the-observability-stack" class="md-nav__link">
+  <a href="#deploy-observability-stack" class="md-nav__link">
     <span class="md-ellipsis">
-      Deploy GPUStack with the Observability Stack
+      Deploy Observability Stack
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deploy GPUStack with the Observability Stack">
+    <nav class="md-nav" aria-label="Deploy Observability Stack">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-compose-configuration" class="md-nav__link">
+  <a href="#deploying-alongside-gpustack-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker Compose Configuration
+      Deploying alongside GPUStack Server
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prometheus-configuration" class="md-nav__link">
+  <a href="#deploying-separately" class="md-nav__link">
     <span class="md-ellipsis">
-      Prometheus Configuration
+      Deploying Separately
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploying Separately">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1448,7 +1486,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#customizing-metrics-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       Customizing Metrics Mapping
@@ -1473,11 +1516,6 @@
       Example Usage
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3713,30 +3751,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy-gpustack-with-the-observability-stack" class="md-nav__link">
+  <a href="#deploy-observability-stack" class="md-nav__link">
     <span class="md-ellipsis">
-      Deploy GPUStack with the Observability Stack
+      Deploy Observability Stack
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deploy GPUStack with the Observability Stack">
+    <nav class="md-nav" aria-label="Deploy Observability Stack">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-compose-configuration" class="md-nav__link">
+  <a href="#deploying-alongside-gpustack-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker Compose Configuration
+      Deploying alongside GPUStack Server
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#prometheus-configuration" class="md-nav__link">
+  <a href="#deploying-separately" class="md-nav__link">
     <span class="md-ellipsis">
-      Prometheus Configuration
+      Deploying Separately
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deploying Separately">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3749,7 +3802,12 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#customizing-metrics-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       Customizing Metrics Mapping
@@ -3774,11 +3832,6 @@
       Example Usage
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -4074,72 +4127,69 @@
 <blockquote>
 <p><strong>Note</strong>: All metrics are labeled with relevant identifiers (cluster, worker, model, instance, user) for fine-grained monitoring and filtering.</p>
 </blockquote>
-<h2 id="deploy-gpustack-with-the-observability-stack">Deploy GPUStack with the Observability Stack</h2>
-<p>The observability stack consists of three main components:</p>
+<h2 id="deploy-observability-stack">Deploy Observability Stack</h2>
+<p>The observability stack consists of two components:</p>
 <ul>
-<li><strong>GPUStack Server</strong>: Exposes metrics at <code>/metrics</code> endpoint, expose worker metrics targets at <code>/metrics/targets</code>.</li>
 <li><strong>Prometheus</strong>: Scrapes metrics from GPUStack and stores them.</li>
 <li><strong>Grafana</strong>: Visualizes metrics from Prometheus.</li>
 </ul>
-<p>All components are deployed via Docker Compose for easy management.</p>
-<h3 id="docker-compose-configuration">Docker Compose Configuration</h3>
-<p>GPUStack provides a <code>docker-compose.yaml</code> file to deploy the observability stack in NVIDIA GPU environments, please refer to <a href="https://github.com/gpustack/gpustack/blob/main/docker-compose/docker-compose.server.nvidia.yaml">Docker Compose</a>.</p>
-<p>Below is a sample <code>docker-compose.yaml</code> for deploying GPUStack Server, Prometheus, and Grafana:</p>
+<p>All components can be deployed together via Docker Compose for easy management.</p>
+<h3 id="deploying-alongside-gpustack-server">Deploying alongside GPUStack Server</h3>
+<p>You can deploy GPUStack together with the observability stack using the provided <code>docker-compose.yaml</code> for a one-step setup. For details, refer to the <a href="../../installation/docker-compose/">Installation via Docker Compose</a>.</p>
+<h3 id="deploying-separately">Deploying Separately</h3>
+<p>If you started GPUStack using <code>docker run</code> (not Compose), you can deploy the observability components separately and connect them to your existing GPUStack server as follows:</p>
+<h4 id="steps">Steps</h4>
+<ol>
+<li>
+<p><strong>Docker Compose Configuration</strong></p>
+<p>Compose file location: <a href="https://github.com/gpustack/gpustack/blob/main/docker-compose/docker-compose.observability.yaml">docker-compose.observability.yaml (GitHub)</a></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpustack-server</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack/gpustack</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-server</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-data:/var/lib/gpustack</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/docker.sock:/var/run/docker.sock</span>
-<span class="w">    </span><span class="nt">runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nvidia</span>
-
-<span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span>
+<span class="nt">prometheus</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom/prometheus</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-prometheus</span>
 <span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 <span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
 <span class="w">    </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--config.file=/etc/prometheus/prometheus.yml&quot;</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--web.enable-remote-write-receiver&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--config.file=/etc/prometheus/prometheus.yml&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--web.enable-remote-write-receiver&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prometheus:/etc/prometheus</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom_data:/prometheus</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prometheus:/etc/prometheus</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom_data:/prometheus</span>
 
-<span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<span class="nt">grafana</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-grafana</span>
 <span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 <span class="w">    </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SERVER_HTTP_PORT=3000</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_USER=admin</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_PASSWORD=grafana</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_FEATURE_TOGGLES_ENABLE=flameGraph traceqlSearch traceQLStreaming correlations metricsSummary traceqlEditor traceToMetrics traceToProfiles</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SERVER_HTTP_PORT=3000</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_USER=admin</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_PASSWORD=grafana</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_FEATURE_TOGGLES_ENABLE=flameGraph traceqlSearch traceQLStreaming correlations metricsSummary traceqlEditor traceToMetrics traceToProfiles</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_provisioning:/etc/grafana/provisioning:ro</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_dashboards:/etc/dashboards:ro</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_provisioning:/etc/grafana/provisioning:ro</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_dashboards:/etc/dashboards:ro</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">prom_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">  </span><span class="nt">gpustack-data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="nt">prom_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<h3 id="prometheus-configuration">Prometheus Configuration</h3>
-<p>Configure Prometheus to scrape metrics from GPUStack Server and Worker by adding the following to <code>prometheus.yml</code>:</p>
+</li>
+<li>
+<p><strong>Edit the Prometheus configuration file <code>prometheus.yml</code></strong>.</p>
+<p>Configure Prometheus to scrape metrics from GPUStack by editing the <code>prometheus.yml</code>, file location: <a href="https://github.com/gpustack/gpustack/blob/main/docker-compose/prometheus/prometheus.yml">prometheus.yaml (GitHub)</a></p>
 <div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-worker-discovery</span>
-<span class="w">    </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
-<span class="w">    </span><span class="nt">http_sd_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:10161/metrics/targets&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-worker-discovery</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">scrape_interval</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">http_sd_configs</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;gpustack_server_host&gt;:10161/metrics/targets&quot;</span>
 <span class="w">        </span><span class="nt">refresh_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-server</span>
-<span class="w">    </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;localhost:10161&quot;</span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-server</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">scrape_interval</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">static_configs</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;gpustack_server_host&gt;:10161&quot;</span><span class="p p-Indicator">]</span>
 </code></pre></div>
+</li>
+</ol>
 <h3 id="accessing-metrics">Accessing Metrics</h3>
 <ul>
 <li><strong>GPUStack Metrics Endpoint</strong>:<br />
@@ -4151,9 +4201,9 @@
 <li><strong>Grafana UI</strong>:<br />
   Access Grafana at <code>http://&lt;host&gt;:3000</code> (default user: <code>admin</code>, password: <code>grafana</code>)</li>
 </ul>
-<h3 id="customizing-metrics-mapping">Customizing Metrics Mapping</h3>
+<h2 id="customizing-metrics-mapping">Customizing Metrics Mapping</h2>
 <p>GPUStack supports dynamic customization of metrics mapping through its configuration API. This allows you to update how runtime engine metrics are mapped to GPUStack metrics without restarting the service. The configuration is managed centrally on the server and can be accessed or modified via HTTP API.</p>
-<h4 id="api-endpoints">API Endpoints</h4>
+<h3 id="api-endpoints">API Endpoints</h3>
 <ul>
 <li>
 <p><strong>Get Current Metrics Config</strong></p>
@@ -4179,7 +4229,7 @@
 <li>GET <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/default-config</code></li>
 <li>Returns the default metrics mapping configuration in JSON format, useful for reference or resetting.</li>
 </ul>
-<h4 id="example-usage">Example Usage</h4>
+<h3 id="example-usage">Example Usage</h3>
 <p><strong>Get current config:</strong></p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/config
 </code></pre></div>

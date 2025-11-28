@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.gpustack.ai/2.0/user-guide/cluster-management/">
+        <link rel="canonical" href="https://docs.gpustack.ai/2.0/installation/docker-compose/">
       
       
-        <link rel="prev" href="../model-file-management/">
+        <link rel="prev" href="../air-gapped/">
       
       
-        <link rel="next" href="../cloud-credential-management/">
+        <link rel="next" href="../uninstallation/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Cluster Management - GPUStack</title>
+        <title>Installation via Docker Compose - GPUStack</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cluster-management" class="md-skip">
+        <a href="#gpustack-installation-via-docker-compose" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cluster Management
+              Installation via Docker Compose
             
           </span>
         </div>
@@ -447,8 +447,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -480,11 +482,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
         
           
           <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
@@ -498,7 +500,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_1_3">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -512,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/requirements/" class="md-nav__link">
+      <a href="../requirements/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../nvidia/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/amd/installation/" class="md-nav__link">
+      <a href="../amd/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/ascend/installation/" class="md-nav__link">
+      <a href="../ascend/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/hygon/installation/" class="md-nav__link">
+      <a href="../hygon/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/mthreads/installation/" class="md-nav__link">
+      <a href="../mthreads/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -638,7 +640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/iluvatar/installation/" class="md-nav__link">
+      <a href="../iluvatar/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -659,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/cambricon/installation/" class="md-nav__link">
+      <a href="../cambricon/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/air-gapped/" class="md-nav__link">
+      <a href="../air-gapped/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -698,10 +700,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../installation/docker-compose/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Installation via Docker Compose
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -710,6 +732,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of Services
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia" class="md-nav__link">
+    <span class="md-ellipsis">
+      NVIDIA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NVIDIA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ascend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ascend
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ascend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-gpu-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other GPU Platforms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other GPU Platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -722,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/uninstallation/" class="md-nav__link">
+      <a href="../uninstallation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -790,10 +940,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -835,11 +983,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
         
           
           <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
@@ -853,7 +1001,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1_6">
             <span class="md-nav__icon md-icon"></span>
             User Guide
@@ -898,7 +1046,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../playground/" class="md-nav__link ">
+            <a href="../../user-guide/playground/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -931,7 +1079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../playground/chat/" class="md-nav__link">
+      <a href="../../user-guide/playground/chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -952,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../playground/image/" class="md-nav__link">
+      <a href="../../user-guide/playground/image/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -973,7 +1121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../playground/audio/" class="md-nav__link">
+      <a href="../../user-guide/playground/audio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -994,7 +1142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../playground/embedding/" class="md-nav__link">
+      <a href="../../user-guide/playground/embedding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1015,7 +1163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../playground/rerank/" class="md-nav__link">
+      <a href="../../user-guide/playground/rerank/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1044,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../model-catalog/" class="md-nav__link">
+      <a href="../../user-guide/model-catalog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1065,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../model-deployment-management/" class="md-nav__link">
+      <a href="../../user-guide/model-deployment-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1086,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inference-backend-management/" class="md-nav__link">
+      <a href="../../user-guide/inference-backend-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1107,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../built-in-inference-backends/" class="md-nav__link">
+      <a href="../../user-guide/built-in-inference-backends/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1128,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compatibility-check/" class="md-nav__link">
+      <a href="../../user-guide/compatibility-check/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1149,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../model-file-management/" class="md-nav__link">
+      <a href="../../user-guide/model-file-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1167,30 +1315,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Cluster Management
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../user-guide/cluster-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1199,95 +1327,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Cluster
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Create Cluster">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-docker-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create Docker Cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#register-kubernetes-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Register Kubernetes Cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-digitalocean-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating DigitalOcean Cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operating-worker-pools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operating Worker Pools
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update Cluster
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete Cluster
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1300,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud-credential-management/" class="md-nav__link">
+      <a href="../../user-guide/cloud-credential-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1321,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../openai-compatible-apis/" class="md-nav__link">
+      <a href="../../user-guide/openai-compatible-apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1342,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../image-generation-apis/" class="md-nav__link">
+      <a href="../../user-guide/image-generation-apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1363,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rerank-api/" class="md-nav__link">
+      <a href="../../user-guide/rerank-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1384,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-key-management/" class="md-nav__link">
+      <a href="../../user-guide/api-key-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1405,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-management/" class="md-nav__link">
+      <a href="../../user-guide/user-management/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1426,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sso/" class="md-nav__link">
+      <a href="../../user-guide/sso/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1447,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/" class="md-nav__link">
+      <a href="../../user-guide/observability/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3628,46 +3667,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
+  <a href="#overview-of-services" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Cluster
+      Overview of Services
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create Cluster">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia" class="md-nav__link">
+    <span class="md-ellipsis">
+      NVIDIA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NVIDIA">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-docker-cluster" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Create Docker Cluster
+      Requirements
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#register-kubernetes-cluster" class="md-nav__link">
+  <a href="#deployment" class="md-nav__link">
     <span class="md-ellipsis">
-      Register Kubernetes Cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-digitalocean-cluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating DigitalOcean Cluster
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#operating-worker-pools" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operating Worker Pools
+      Deployment
     </span>
   </a>
   
@@ -3679,20 +3718,59 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-cluster" class="md-nav__link">
+  <a href="#ascend" class="md-nav__link">
     <span class="md-ellipsis">
-      Update Cluster
+      Ascend
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ascend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#delete-cluster" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Delete Cluster
+      Deployment
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-gpu-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other GPU Platforms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other GPU Platforms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3711,7 +3789,7 @@
                   
 
   
-    <a href="https://github.com/gpustack/gpustack/edit/main/docs/user-guide/cluster-management.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/edit/main/docs/installation/docker-compose.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -3720,99 +3798,93 @@
     
       
     
-    <a href="https://github.com/gpustack/gpustack/raw/main/docs/user-guide/cluster-management.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/raw/main/docs/installation/docker-compose.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="cluster-management">Cluster Management</h1>
-<p>GPUStack supports cluster-based worker management and provides multiple cluster types. You can provision a cluster through a <code>Cloud Provider</code> such as <code>DigitalOcean</code>, or create a self-hosted cluster and add workers using <code>Docker</code> run commands. Alternatively, you can register all nodes in a self-hosted <code>Kubernetes</code> cluster as GPUStack workers.</p>
-<h2 id="create-cluster">Create Cluster</h2>
-<ol>
-<li>Go to the <code>Clusters</code> page.</li>
-<li>Click the <code>Add Cluster</code> button.</li>
-<li>Select a cluster provider. There are <code>Docker</code> and <code>Kubernetes</code> for the <code>Self-Host</code> provider and <code>DigitalOcean</code> for the <code>Cloud Provider</code>.</li>
-<li>Depending on the provider, different options need to be set in the <code>Base Configuration</code> and <code>Add Worker</code> steps.</li>
-</ol>
-<h3 id="create-docker-cluster">Create Docker Cluster</h3>
-<ol>
-<li>In the <code>Basic Configuration</code> step, the <code>Name</code> field is required and <code>Description</code> is optional.</li>
-<li>Click <code>Save</code>.</li>
-<li>In the <code>Add Worker</code> step, some options and validations are needed before adding a worker via the <code>docker run</code> command.</li>
-<li><code>Select the GPU vendor</code>. Tested vendors include <code>Nvidia</code>, <code>AMD</code>, and <code>Ascend</code>. Experimental vendors include <code>Hygon</code>, <code>Moore Threads</code>, <code>Iluvatar</code>, <code>Cambricon</code>, and <code>Metax</code>. Click <code>Next</code> after selecting a vendor.</li>
-<li><code>Check Environment</code>. A shell command is provided to verify your environment is ready to add a worker. Copy the script and run it in your environment. Click <code>Next</code> after the script returns OK.</li>
-<li><code>Specify arguments</code> for the worker to be added. Provide the following arguments and click <code>Next</code>:</li>
-</ol>
+<h1 id="gpustack-installation-via-docker-compose">GPUStack Installation via Docker Compose</h1>
+<p>This guide explains how to deploy GPUStack and observability components (Prometheus, Grafana) using Docker Compose. NVIDIA and Ascend platforms are covered, with notes for other GPU types.</p>
+<h2 id="overview-of-services">Overview of Services</h2>
+<p><strong>Services:</strong></p>
 <ul>
-<li><code>Specify the worker IP</code>, or let the worker <code>Auto-detect the Worker IP</code>. Make sure the worker IP is accessible from the server.</li>
-<li>Specify a <code>Additional Volume Mount</code> for the worker container. The mount path can be used to reuse existing model files.</li>
+<li><strong>gpustack-server</strong>: Central server for scheduling, management, and built-in inference.</li>
+<li><strong>gpustack-worker</strong>: (Optional) Distributed inference worker, can run on separate nodes.</li>
+<li><strong>prometheus</strong>: Metrics collection.</li>
+<li><strong>grafana</strong>: Metrics visualization.</li>
 </ul>
-<ol start="7">
-<li><code>Run command</code> to create and start the worker container. Copy the bash script and run it in your environment.</li>
-</ol>
-<p>The worker also can be added after the cluster is created.</p>
-<ol>
-<li>Go to <code>Clusters</code> page.</li>
-<li>Find the cluster which you want to add workers.</li>
-<li>Click the ellipsis button in the operations column, then select <code>Add Worker</code>.</li>
-<li>Select the options to add worker. Following the same steps as above, from <code>Select the GPU vendor</code> to <code>Run command</code>.</li>
-</ol>
-<h3 id="register-kubernetes-cluster">Register Kubernetes Cluster</h3>
-<ol>
-<li>In the <code>Basic Configuration</code> step, the <code>Name</code> field is required and <code>Description</code> is optional.</li>
-<li>Click <code>Save</code>.</li>
-<li><code>Select the GPU vendor</code>. Tested vendors include <code>Nvidia</code>, <code>AMD</code>, and <code>Ascend</code>. Experimental vendors include <code>Hygon</code>, <code>Moore Threads</code>, <code>Iluvatar</code>, <code>Cambricon</code>, and <code>Metax</code>. Click <code>Next</code> after selecting a vendor.</li>
-<li><code>Check environment</code>. A shell command is provided to verify that your environment is ready to add a worker. Copy the script and run it in your environment. Click <code>Next</code> after the script returns OK.</li>
-<li><code>Run command</code> to apply the worker manifests. Copy the bash script and run it in an environment where <code>kubectl</code> is installed and <code>kubeconfig</code> is configured.</li>
-</ol>
-<p>The kubernetes can be registerred after the cluster is created.</p>
-<ol>
-<li>Go to <code>Clusters</code> page.</li>
-<li>Find the cluster which you want to register the Kubernetes cluster.</li>
-<li>Click the ellipsis button in the operations column, then select <code>Register Cluster</code>.</li>
-<li>Select the options to register cluster. Following the same steps as abovve, from <code>Select the GPU vendor</code> to <code>Run command</code>.</li>
-</ol>
-<h3 id="creating-digitalocean-cluster">Creating DigitalOcean Cluster</h3>
-<ol>
-<li>In the <code>Basic Configuration</code> step, the <code>Name</code> field is required and <code>Description</code> is optional. Create or select a <code>Cloud Credential</code> to use to communicate to DigitalOcean API. Select the <code>Region</code> from the regions have GPU Droplet to create.</li>
-<li>Click <code>Next</code>.</li>
-<li>Adding one or more <code>Worker Pools</code>. For each pool, <code>Name</code>, <code>Instance Type</code>, <code>OS Image</code>, <code>Replicas</code>, <code>Batch Size</code>, <code>Labels</code> and <code>Volumes</code> can be specified.</li>
-<li>Click <code>Save</code> after the worker pools are configured.</li>
-</ol>
-<p>The worker poll can be added after the cluster is created.</p>
-<ol>
-<li>Go to <code>Clusters</code> page.</li>
-<li>Find the <code>DigitalOcean</code> cluster which you want to add worker pool.</li>
-<li>Click the ellipsis button in the operations column, then select <code>Add Worker Pool</code></li>
-<li>Adding new worker pool with options from Step 3 above.</li>
-</ol>
-<h3 id="operating-worker-pools">Operating Worker Pools</h3>
-<p>You can manage worker pools for DigitalOcean clusters on the <code>Clusters</code> page:</p>
-<ol>
-<li>Go to the <code>Clusters</code> page.</li>
-<li>Find the DigitalOcean cluster you want to manage and expand it to view its worker pools.</li>
-<li>To edit the replica count for a worker, modify it directly in the worker column.</li>
-<li>To edit a worker pool, click the <code>Edit</code> button and update the <code>Name</code>, <code>Replica</code>, <code>Batch Size</code>, and <code>Labels</code> as needed.</li>
-<li>To delete a worker pool, click the ellipsis button in the operations column for the worker pool, then select <code>Delete</code>.</li>
-</ol>
-<h2 id="update-cluster">Update Cluster</h2>
-<ol>
-<li>Go to the <code>Clusters</code> page.</li>
-<li>Find the cluster which you want to edit.</li>
-<li>Click the <code>Edit</code> button.</li>
-<li>Update the <code>Name</code>, and <code>Description</code> as needed.</li>
-<li>Click the <code>Save</code> button.</li>
-</ol>
-<h2 id="delete-cluster">Delete Cluster</h2>
-<ol>
-<li>Go to the <code>Clusters</code> page.</li>
-<li>Find the cluster which you want to delete.</li>
-<li>Click the ellipsis button in the operations column, then select <code>Delete</code>.</li>
-<li>Confirm the deletion.</li>
-<li>You cannot delete a cluster if there are any models or workers still present in it.</li>
-</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Docker Compose installed (<a href="https://docs.docker.com/compose/install/">guide</a>).</li>
+<li>Required ports available (<a href="../requirements/#port-requirements">see requirements</a>).</li>
+</ul>
+<h2 id="nvidia">NVIDIA</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>NVIDIA GPU driver (CUDA 12.4+), verify with:
+  <div class="highlight"><pre><span></span><code>nvidia-smi
+</code></pre></div></li>
+<li>NVIDIA Container Toolkit, verify with:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia
+</code></pre></div></li>
+</ul>
+<h3 id="deployment">Deployment</h3>
+<ul>
+<li><strong>Server</strong> (<a href="https://github.com/gpustack/gpustack/blob/v2.0.0/docker-compose/docker-compose.server.nvidia.yaml">compose file</a>):
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.server.nvidia.yaml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+  Access UI: <code>http://your_host_ip</code>
+  Get admin password:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack-server<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div></li>
+<li><strong>Worker</strong> (<a href="https://github.com/gpustack/gpustack/blob/v2.0.0/docker-compose/docker-compose.worker.nvidia.yaml">compose file</a>):</li>
+<li>Edit file: set <code>server-url</code> and <code>token</code>.</li>
+<li>Start:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.worker.nvidia.yaml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div></li>
+</ul>
+<h2 id="ascend">Ascend</h2>
+<h3 id="requirements_1">Requirements</h3>
+<ul>
+<li><a href="https://www.hiascend.com/hardware/firmware-drivers/community">Ascend NPU Driver</a> supporting Ascend CANN 8.2 or higher, verify with:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>npu-smi<span class="w"> </span>info
+</code></pre></div></li>
+<li>Ascend Container Toolkit, verify with:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>info<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;ascend&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ascend Container Toolkit OK&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="o">||</span><span class="w"> </span><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Ascend Container Toolkit not configured&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="o">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="deployment_1">Deployment</h3>
+<ul>
+<li><strong>Device detection</strong> (before starting):
+  <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ASCEND_VISIBLE_DEVICES</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>/dev/davinci*<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-o<span class="w"> </span><span class="s1">&#39;[0-9]\+&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="k">)</span>
+</code></pre></div></li>
+<li><strong>Server</strong> (<a href="https://github.com/gpustack/gpustack/blob/v2.0.0/docker-compose/docker-compose.server.ascend.yaml">compose file</a>):
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-E<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.server.ascend.yaml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+  Access UI: <code>http://your_host_ip</code>
+  Get admin password:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>gpustack-server<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
+</code></pre></div></li>
+<li><strong>Worker</strong> (<a href="https://github.com/gpustack/gpustack/blob/v2.0.0/docker-compose/docker-compose.worker.ascend.yaml">compose file</a>):</li>
+<li>Edit file: set <code>server-url</code> and <code>token</code>.</li>
+<li>Start:
+  <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>-E<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.worker.ascend.yaml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div></li>
+</ul>
+<h2 id="other-gpu-platforms">Other GPU Platforms</h2>
+<p>Refer to <a href="../requirements/">requirements</a> for platform-specific setup (AMD, MLU, etc.).</p>
+<h3 id="deployment_2">Deployment</h3>
+<ul>
+<li>Edit Compose files as needed:</li>
+<li>Adjust/remove <code>runtime: nvidia</code>.</li>
+<li>Set environment variables and volumes for your hardware.</li>
+<li>For workers, set correct <code>server-url</code> and <code>token</code>.</li>
+<li>Start services using <code>docker compose -f &lt;compose-file&gt; up -d</code>.</li>
+</ul>
 
 
 
