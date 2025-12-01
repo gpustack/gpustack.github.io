@@ -367,6 +367,8 @@
       
         
       
+        
+      
     
     
       
@@ -700,16 +702,7 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embedded-gateway-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedded Gateway Ports
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Embedded Gateway Ports">
+    <nav class="md-nav" aria-label="Worker Ports">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -723,6 +716,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-gateway-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded Gateway Ports
+    </span>
+  </a>
   
 </li>
         
@@ -2403,6 +2405,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment-variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3830,16 +3853,7 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embedded-gateway-ports" class="md-nav__link">
-    <span class="md-ellipsis">
-      Embedded Gateway Ports
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Embedded Gateway Ports">
+    <nav class="md-nav" aria-label="Worker Ports">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3853,6 +3867,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-gateway-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded Gateway Ports
+    </span>
+  </a>
   
 </li>
         
@@ -4078,6 +4101,24 @@
 </tr>
 </tbody>
 </table>
+<h5 id="distributed-vllm-with-ray-ports">Distributed vLLM with Ray Ports</h5>
+<p>When using distributed vLLM, GPUStack will parse the above port range for Ray services,
+and assign them in order as below:</p>
+<ol>
+<li>GCS server port (the first port of the range)</li>
+<li>Client Server port</li>
+<li>Dashboard port</li>
+<li>Dashboard gRPC port (no longer used since Ray 2.45.0, kept for backward compatibility)</li>
+<li>Dashboard agent gRPC port</li>
+<li>Dashboard agent listen port</li>
+<li>Metrics export port</li>
+<li>Node Manager port</li>
+<li>Object Manager port</li>
+<li>Raylet runtime env agent port</li>
+<li>Minimum port number for the worker</li>
+<li>Maximum port number for the worker (the last port of the range)</li>
+</ol>
+<p>For more details on Ray ports, see the <a href="https://docs.ray.io/en/latest/ray-core/configure.html#ports-configurations">Ray documentation</a>.</p>
 <h4 id="embedded-gateway-ports">Embedded Gateway Ports</h4>
 <p>The embedded gateway for both server and worker uses the following ports for internal communications.</p>
 <table>
@@ -4141,24 +4182,6 @@
 </tr>
 </tbody>
 </table>
-<h5 id="distributed-vllm-with-ray-ports">Distributed vLLM with Ray Ports</h5>
-<p>When using distributed vLLM, GPUStack will parse the above port range for Ray services,
-and assign them in order as below:</p>
-<ol>
-<li>GCS server port (the first port of the range)</li>
-<li>Client Server port</li>
-<li>Dashboard port</li>
-<li>Dashboard gRPC port (no longer used since Ray 2.45.0, kept for backward compatibility)</li>
-<li>Dashboard agent gRPC port</li>
-<li>Dashboard agent listen port</li>
-<li>Metrics export port</li>
-<li>Node Manager port</li>
-<li>Object Manager port</li>
-<li>Raylet runtime env agent port</li>
-<li>Minimum port number for the worker</li>
-<li>Maximum port number for the worker (the last port of the range)</li>
-</ol>
-<p>For more details on Ray ports, see the <a href="https://docs.ray.io/en/latest/ray-core/configure.html#ports-configurations">Ray documentation</a>.</p>
 
 
 

@@ -369,6 +369,8 @@
       
         
       
+        
+      
     
     
       
@@ -2288,6 +2290,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../environment-variables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment Variables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4054,37 +4077,8 @@
 </tbody>
 </table>
 <h3 id="available-environment-variables">Available Environment Variables</h3>
-<p>Most of the options can be set via environment variables. The environment variables are prefixed with <code>GPUSTACK_</code> and are in uppercase. For example, <code>--data-dir</code> can be set via the <code>GPUSTACK_DATA_DIR</code> environment variable.</p>
-<p>Below are additional environment variables that can be set:</p>
-<table>
-<thead>
-<tr>
-<th><div style="width:360px">Flag</div></th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>HF_ENDPOINT</code></td>
-<td>Hugging Face Hub endpoint. e.g., <code>https://hf-mirror.com</code></td>
-</tr>
-</tbody>
-</table>
-<p>Below are prefixed with <code>GPUSTACK_</code> special environment variables that can be set:</p>
-<table>
-<thead>
-<tr>
-<th><div style="width:360px">Flag</div></th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>GPUSTACK_DISABLE_DYNAMIC_LINK_LLAMA_BOX</code></td>
-<td>Dynamic linking is used by default. Setting this to <code>true</code> enables static linking.</td>
-</tr>
-</tbody>
-</table>
+<p>Most command line parameters can also be set via environment variables with the <code>GPUSTACK_</code> prefix and in uppercase format (e.g., <code>--data-dir</code> can be set via <code>GPUSTACK_DATA_DIR</code>). </p>
+<p>For environment variables beyond the command-line parameters mentioned above, please refer to the <a href="../../environment-variables/">environment variables documentation</a>.</p>
 <h2 id="config-file">Config File</h2>
 <p>You can configure start options using a YAML-format config file when starting GPUStack server or worker. Here is a complete example:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Common Options</span>

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.gpustack.ai/2.0/troubleshooting/">
+        <link rel="canonical" href="https://docs.gpustack.ai/2.0/environment-variables/">
       
       
-        <link rel="prev" href="../scheduler/">
+        <link rel="prev" href="../cli-reference/copy-images/">
       
       
-        <link rel="next" href="../faq/">
+        <link rel="next" href="../performance-lab/overview/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Troubleshooting - GPUStack</title>
+        <title>Environment Variables - GPUStack</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting" class="md-skip">
+        <a href="#environment-variables" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Environment Variables
             
           </span>
         </div>
@@ -1941,30 +1941,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1973,62 +1953,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#view-gpustack-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      View GPUStack Logs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-debug-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enable Debug Mode
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-log-level" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure Log Level
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reset-admin-password" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reset Admin Password
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2266,10 +2190,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../environment-variables/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Environment Variables
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2278,6 +2222,197 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#priority-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Order
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpustack-core-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPUStack Core Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPUStack Core Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hugging-face-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hugging Face Hub
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gateway Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-and-model-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker and Model Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-deployment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Deployment Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Deployment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpustack-runtime-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPUStack Runtime Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPUStack Runtime Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detector Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployer-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployer Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocm-detector-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROCm Detector Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3570,38 +3705,173 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#view-gpustack-logs" class="md-nav__link">
+  <a href="#priority-order" class="md-nav__link">
     <span class="md-ellipsis">
-      View GPUStack Logs
+      Priority Order
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enable-debug-mode" class="md-nav__link">
+  <a href="#gpustack-core-environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Enable Debug Mode
+      GPUStack Core Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPUStack Core Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hugging-face-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hugging Face Hub
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#configure-log-level" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#database-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure Log Level
+      Database Configuration
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#reset-admin-password" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Reset Admin Password
+      Network Configuration
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication &amp; Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gateway Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-and-model-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker and Model Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-deployment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Deployment Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Deployment Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpustack-runtime-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPUStack Runtime Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPUStack Runtime Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detector-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detector Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployer-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployer Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rocm-detector-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROCm Detector Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3620,7 +3890,7 @@
                   
 
   
-    <a href="https://github.com/gpustack/gpustack/edit/main/docs/troubleshooting.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/edit/main/docs/environment-variables.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -3629,44 +3899,485 @@
     
       
     
-    <a href="https://github.com/gpustack/gpustack/raw/main/docs/troubleshooting.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/gpustack/gpustack/raw/main/docs/environment-variables.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="troubleshooting">Troubleshooting</h1>
-<h2 id="view-gpustack-logs">View GPUStack Logs</h2>
-<p>You can view GPUStack logs with the following commands for the default setup:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
+<h1 id="environment-variables">Environment Variables</h1>
+<p>GPUStack supports various environment variables for configuration. </p>
+<p>Most command line parameters can also be set via environment variables with the <code>GPUSTACK_</code> prefix and in uppercase format (e.g., <code>--data-dir</code> can be set via <code>GPUSTACK_DATA_DIR</code>). </p>
+<p>For a complete list of command line parameters that can be set as environment variables, see <a href="../cli-reference/start/#available-environment-variables">CLI Reference</a>. This will not be discussed here.</p>
+<h3 id="priority-order">Priority Order</h3>
+<p>Configuration values are applied in the following priority order (highest to lowest):</p>
+<ol>
+<li>Command line arguments</li>
+<li>Environment variables</li>
+<li>Configuration file</li>
+<li>Default values</li>
+</ol>
+<p>This means that command line arguments will always override environment variables, and environment variables will override values in the configuration file.</p>
+<h2 id="gpustack-core-environment-variables">GPUStack Core Environment Variables</h2>
+<p>These environment variables are typically used for third-party service integrations.</p>
+<h3 id="hugging-face-hub">Hugging Face Hub</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HF_ENDPOINT</code></td>
+<td>Hugging Face Hub endpoint. e.g., <code>https://hf-mirror.com</code></td>
+<td>(empty)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="database-configuration">Database Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_DB_ECHO</code></td>
+<td>Enable database query logging.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_DB_POOL_SIZE</code></td>
+<td>Database connection pool size.</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_DB_MAX_OVERFLOW</code></td>
+<td>Database connection pool max overflow.</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_DB_POOL_TIMEOUT</code></td>
+<td>Database connection pool timeout in seconds.</td>
+<td><code>30</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="network-configuration">Network Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_PROXY_TIMEOUT_SECONDS</code></td>
+<td>Proxy timeout in seconds.</td>
+<td><code>1800</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_TCP_CONNECTOR_LIMIT</code></td>
+<td>HTTP client TCP connector limit.</td>
+<td><code>1000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="authentication-security">Authentication &amp; Security</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_JWT_TOKEN_EXPIRE_MINUTES</code></td>
+<td>JWT token expiration time in minutes.</td>
+<td><code>120</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gateway-configuration">Gateway Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_HIGRESS_EXT_AUTH_TIMEOUT_MS</code></td>
+<td>Higress external authentication timeout in milliseconds.</td>
+<td><code>3000</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="worker-and-model-configuration">Worker and Model Configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_WORKER_HEARTBEAT_GRACE_PERIOD</code></td>
+<td>Worker heartbeat grace period in seconds.</td>
+<td><code>150</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_WORKER_ORPHAN_WORKLOAD_CLEANUP_GRACE_PERIOD</code></td>
+<td>Worker orphan workload cleanup grace period in seconds.</td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_MODEL_INSTANCE_RESCHEDULE_GRACE_PERIOD</code></td>
+<td>Model instance reschedule grace period in seconds.</td>
+<td><code>300</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_MODEL_INSTANCE_HEALTH_CHECK_INTERVAL</code></td>
+<td>Model instance health check interval in seconds.</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_MODEL_EVALUATION_CACHE_MAX_SIZE</code></td>
+<td>Maximum size of model evaluation cache.</td>
+<td><code>1000</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_MODEL_EVALUATION_CACHE_TTL</code></td>
+<td>TTL of model evaluation cache in seconds.</td>
+<td><code>3600</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_DISABLE_OS_FILELOCK</code></td>
+<td>Disable OS file lock.</td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="model-deployment-configuration">Model Deployment Configuration</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These environment variables are <strong>not</strong> set when starting GPUStack. Instead, they should be configured in the <strong>Advanced Options &gt; Environment Variables</strong> section when deploying a model. They are used to customize the model serving behavior.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th><div style="width:180px">Variable</div></th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_MODEL_SERVING_COMMAND_SCRIPT_DISABLED</code></td>
+<td>Disable the automatic serving command script execution. When set to <code>1</code> or <code>true</code>, the script that handles package installation and other setup tasks will not run.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>PYPI_PACKAGES_INSTALL</code></td>
+<td>Additional PyPI packages to install in the model serving environment. Multiple packages should be space-separated. The script will use <code>uv pip install</code> if available, otherwise <code>pip install</code>.</td>
+<td>(empty)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="usage-example">Usage Example</h4>
+<p>When deploying a model, navigate to <strong>Advanced Options &gt; Environment Variables</strong> and add:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install additional packages before model serving starts</span>
+<span class="nv">PYPI_PACKAGES_INSTALL</span><span class="o">=</span>torch-audio<span class="o">==</span><span class="m">2</span>.0.0<span class="w"> </span><span class="nv">transformers</span><span class="o">==</span><span class="m">4</span>.30.0
+
+<span class="c1"># Disable the serving command script entirely</span>
+<span class="nv">GPUSTACK_MODEL_SERVING_COMMAND_SCRIPT_DISABLED</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
-<h2 id="enable-debug-mode">Enable Debug Mode</h2>
-<p>You can enable the <code>DEBUG</code> mode by setting the <code>--debug</code> flag when running GPUStack:</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --name gpustack \
-<span class="w"> </span>   ...
-<span class="w"> </span>   gpustack/gpustack \
-<span class="gi">+    --debug</span>
-<span class="w"> </span>   ...
-</code></pre></div>
-<p>You can also enable GPUStack's debug mode at runtime by running the following command inside the <strong>server container</strong>:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reload-config<span class="w"> </span>--set<span class="w"> </span><span class="nv">debug</span><span class="o">=</span><span class="nb">true</span>
-</code></pre></div>
-<h2 id="configure-log-level">Configure Log Level</h2>
-<p>You can configure log level of the GPUStack server at runtime by running the following command inside the <strong>server container</strong>:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost/debug/log_level<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;debug&quot;</span>
-</code></pre></div>
-<p>The same applies to GPUStack workers:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>http://localhost:10150/debug/log_level<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;debug&quot;</span>
-</code></pre></div>
-<p>The available log levels are: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>warning</code>, <code>error</code>, <code>critical</code>.</p>
-<h2 id="reset-admin-password">Reset Admin Password</h2>
-<p>In case you forgot the admin password, you can reset it by running the following command inside the <strong>server container</strong>:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password
-</code></pre></div>
-<p>If you changed the default port using <code>--port</code> when starting GPUStack, specify the GPUStack URL using the <code>--server-url</code> parameter. It must be run locally on the server and accessed via <code>localhost</code>:</p>
-<div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password<span class="w"> </span>--server-url<span class="w"> </span>http://localhost:9090
-</code></pre></div>
+<p>The serving command script automatically handles:</p>
+<ul>
+<li>Installing additional PyPI packages specified in <code>PYPI_PACKAGES_INSTALL</code></li>
+<li>Supporting both <code>uv pip</code> and <code>pip</code> for package installation</li>
+<li>Handling custom PyPI indices via <code>PIP_INDEX_URL</code> and <code>PIP_EXTRA_INDEX_URL</code></li>
+</ul>
+<h2 id="gpustack-runtime-environment-variables">GPUStack Runtime Environment Variables</h2>
+<p>These environment variables are used by GPUStack runtime. Commonly used to adjust the behavior of inference backends running in Docker/Kubernetes.</p>
+<p>They are only usable within workers. Please set the environment variables in the workers’ containers to ensure they take effect properly.</p>
+<h3 id="global-variables">Global Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_RUNTIME_LOG_LEVEL</code></td>
+<td>Log level.</td>
+<td><code>INFO</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_LOG_TO_FILE</code></td>
+<td>Log to file path instead of stdout.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_LOG_WARNING</code></td>
+<td>Enable logging warnings.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_LOG_EXCEPTION</code></td>
+<td>Enable logging exceptions.</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="detector-variables">Detector Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DETECT</code></td>
+<td>Detector to use. Options: Auto, AMD, ASCEND, CAMBRICON, HYGON, ILUVATAR, METAX, MTHREADS, NVIDIA.</td>
+<td><code>Auto</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DETECT_NO_PCI_CHECK</code></td>
+<td>Enable no PCI check during detection. Useful for WSL environments.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DETECT_BACKEND_MAP_RESOURCE_KEY</code></td>
+<td>Backend mapping to resource keys.</td>
+<td>The default values named by each vendor</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DETECT_PHYSICAL_INDEX_PRIORITY</code></td>
+<td>Use physical index priority at detecting devices.</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deployer-variables">Deployer Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY</code></td>
+<td>Deployer to use. Options: Auto, Docker, Kubernetes.</td>
+<td><code>Auto</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_DEFAULT_REGISTRY</code></td>
+<td>Default container registry for deployer to pull images from.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_API_CALL_ERROR_DETAIL</code></td>
+<td>Enable detailing the API call error during deployment.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_ASYNC</code></td>
+<td>Enable asynchronous deployment.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_ASYNC_THREADS</code></td>
+<td>The number of threads in the threadpool.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_MIRRORED_DEPLOYMENT</code></td>
+<td>Enable mirrored deployment mode.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_MIRRORED_NAME</code></td>
+<td>The name of the deployer.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_MIRRORED_DEPLOYMENT_IGNORE_ENVIRONMENTS</code></td>
+<td>Environment variable names to ignore during mirrored deployment.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_MIRRORED_DEPLOYMENT_IGNORE_VOLUMES</code></td>
+<td>Volume mount destinations to ignore during mirrored deployment.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_CORRECT_RUNNER_IMAGE</code></td>
+<td>Correct the gpustack-runner image by rendering it with the host's detection.</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_LABEL_PREFIX</code></td>
+<td>Label prefix for the deployer.</td>
+<td><code>runtime.gpustack.ai</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_AUTOMAP_RESOURCE_KEY</code></td>
+<td>The resource key to use for automatic mapping of container backend visible devices environment variables.</td>
+<td><code>gpustack.ai/devices</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_RESOURCE_KEY_MAP_RUNTIME_VISIBLE_DEVICES</code></td>
+<td>Manual mapping of runtime visible devices environment variables.</td>
+<td>The default values named by each vendor</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_RESOURCE_KEY_MAP_BACKEND_VISIBLE_DEVICES</code></td>
+<td>Manual mapping of backend visible devices environment variables.</td>
+<td>The default values named by each vendor</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_RUNTIME_VISIBLE_DEVICES_VALUE_UUID</code></td>
+<td>Use UUIDs for the given runtime visible devices environment variables.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_BACKEND_VISIBLE_DEVICES_VALUE_ALIGNMENT</code></td>
+<td>Enable value alignment for the given backend visible devices environment variables.</td>
+<td><code>ASCEND_RT_VISIBLE_DEVICES,NPU_VISIBLE_DEVICES</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="docker-variables">Docker Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DOCKER_MIRRORED_NAME_FILTER_LABELS</code></td>
+<td>Filter labels for selecting the mirrored deployer container in Docker.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DOCKER_PAUSE_IMAGE</code></td>
+<td>Docker image used for the pause container.</td>
+<td><code>gpustack/runtime:pause</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DOCKER_UNHEALTHY_RESTART_IMAGE</code></td>
+<td>Docker image used for unhealthy restart container.</td>
+<td><code>gpustack/runtime:health</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DOCKER_EPHEMERAL_FILES_DIR</code></td>
+<td>Directory for storing ephemeral files for Docker.</td>
+<td><code>~/.cache/gpustack-runtime</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DOCKER_MUTE_ORIGINAL_HEALTHCHECK</code></td>
+<td>Mute the original healthcheck of the container.</td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="kubernetes-variables">Kubernetes Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPUSTACK_RUNTIME_KUBERNETES_NODE_NAME</code></td>
+<td>Name of the Kubernetes Node to deploy workloads to.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_KUBERNETES_NAMESPACE</code></td>
+<td>Namespace of the Kubernetes to deploy workloads to.</td>
+<td><code>default</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_KUBERNETES_DOMAIN_SUFFIX</code></td>
+<td>Domain suffix for Kubernetes services.</td>
+<td><code>cluster.local</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_KUBERNETES_SERVICE_TYPE</code></td>
+<td>Service type for Kubernetes services. Options: ClusterIP, NodePort, LoadBalancer.</td>
+<td><code>ClusterIP</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_KUBERNETES_QUORUM_READ</code></td>
+<td>Whether to use quorum read for Kubernetes services.</td>
+<td><code>0</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rocm-detector-variables">ROCm Detector Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ROCM_SMI_LIB_PATH</code></td>
+<td>ROCm SMI library path.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>ROCM_HOME</code></td>
+<td>ROCm home directory.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>ROCM_PATH</code></td>
+<td>ROCm path.</td>
+<td><code>/opt/rocm</code></td>
+</tr>
+<tr>
+<td><code>ROCM_CORE_LIB_PATH</code></td>
+<td>ROCm core library path.</td>
+<td>(empty)</td>
+</tr>
+</tbody>
+</table>
 
 
 
