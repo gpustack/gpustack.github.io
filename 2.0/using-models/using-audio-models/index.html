@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.gpustack.ai/2.0/using-models/using-audio-models/">
       
       
-        <link rel="prev" href="../editing-images/">
+        <link rel="prev" href="../using-image-generation-models/">
       
       
         <link rel="next" href="../../tutorials/running-deepseek-r1-671b-with-distributed-vllm/">
@@ -1381,10 +1381,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -1512,48 +1508,6 @@
   
   <span class="md-ellipsis">
     Using Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../recommended-parameters-for-image-generation-models/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Recommended Parameters for Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../editing-images/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Editing Images
   </span>
   
 
@@ -3745,7 +3699,7 @@
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before you begin, ensure that you have the following:</p>
 <ul>
-<li>A Linux system with AMD64 architecture or macOS.</li>
+<li>A Linux system with AMD64 architecture.</li>
 <li>Access to Hugging Face for downloading the model files.</li>
 <li>GPUStack is installed and running. If not, refer to the <a href="../../quickstart/">Quickstart Guide</a>.</li>
 </ul>
@@ -3756,7 +3710,7 @@
 <li>Navigate to the <code>Deployments</code> page in the GPUStack UI.</li>
 <li>Click the <code>Deploy Model</code> button.</li>
 <li>In the dropdown, select <code>Hugging Face</code> as the source for your model.</li>
-<li>Use the search bar in the top left to search for the model name <code>Systran/faster-whisper-medium</code>.</li>
+<li>Use the search bar in the top left to search for the model name <code>Systran/faster-whisper-large-v3</code>.</li>
 <li>Leave everything as default and click the <code>Save</code> button to deploy the model.</li>
 </ol>
 <p><a class="glightbox" href="../../assets/using-models/using-audio-models/deploy-stt-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Model" src="../../assets/using-models/using-audio-models/deploy-stt-model.png" /></a></p>

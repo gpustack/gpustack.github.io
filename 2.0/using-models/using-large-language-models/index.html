@@ -1381,10 +1381,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -1498,15 +1494,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deployment-using-llama-box" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deployment Using llama-box
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#deployment-using-vllm" class="md-nav__link">
     <span class="md-ellipsis">
       Deployment Using vLLM
@@ -1618,48 +1605,6 @@
   
   <span class="md-ellipsis">
     Using Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../recommended-parameters-for-image-generation-models/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Recommended Parameters for Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../editing-images/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Editing Images
   </span>
   
 
@@ -3654,15 +3599,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deployment-using-llama-box" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deployment Using llama-box
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#deployment-using-vllm" class="md-nav__link">
     <span class="md-ellipsis">
       Deployment Using vLLM
@@ -3734,47 +3670,32 @@
 <h2 id="step-1-deploy-large-language-models">Step 1: Deploy Large Language Models</h2>
 <h3 id="deoloy-from-catalog">Deoloy from Catalog</h3>
 <p>Large language models in the catalog are marked with the <code>LLM</code> category. When you select a large language model from the catalog, the default configurations should work as long as you have enough GPU resources and the backend is compatible with your setup (e.g., vLLM backend requires an amd64 Linux worker).</p>
-<p>Here, we take the deployment of <code>DeepSeek R1</code> as an example.</p>
+<p>Here, we take the deployment of <code>Qwen3 0.6B</code> as an example.</p>
+<p>Follow these steps to deploy the model from Catalog:</p>
 <ol>
-<li>Navigate to the <code>Deployments</code> page in the GPUStack UI.</li>
-<li>Click the <code>Deploy Model</code> button.</li>
-<li>In the dropdown, select <code>Catalog</code> as the source for your model.</li>
-<li>In the catalog list page, use the search bar in the top left to search for the model keyword <code>DeepSeek</code>.</li>
+<li>Navigate to the <code>Catalog</code> page in the GPUStack UI.</li>
+<li>In the model list page, use dropdown to filter with <code>LLM</code>.</li>
 <li>Review the model description, maximum context length and supported sizes.</li>
 </ol>
-<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/model-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Model List" src="../../assets/using-models/using-large-language-models/model-list.png" /></a></p>
-<h4 id="deployment-using-llama-box">Deployment Using llama-box</h4>
-<ol>
-<li>Select the <code>Deepseek R1</code> from the catalog.</li>
-<li>Select <code>7B</code> in Size.</li>
-<li>Click the <code>Save</code> button to deploy the model.</li>
-</ol>
-<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/deploy-model-llama-box.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy GGUF Model" src="../../assets/using-models/using-large-language-models/deploy-model-llama-box.png" /></a></p>
-<p>After deployment, you can monitor the model deployment's status on the <code>Deployments</code> page and wait for it to start running.</p>
+<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/model-list.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Model List" src="../../assets/using-models/using-large-language-models/model-list.png" /></a> </p>
 <h4 id="deployment-using-vllm">Deployment Using vLLM</h4>
 <ol>
-<li>Select the <code>Deepseek R1</code> from the catalog.</li>
-<li>Since the model name is the access ID and cannot be the same as a previously created one, change the default model name to <code>deepseek-r1-vllm</code>.</li>
-<li>Select the <code>vLLM</code> backend.</li>
-<li>Select <code>7B</code> in Size.</li>
+<li>Select the <code>Qwen3 0.6B</code> from the catalog.</li>
+<li>Change the model name and configuration as needed.</li>
 <li>Click the <code>Save</code> button to deploy the model.</li>
 </ol>
-<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/deploy-model-vllm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Safetensors Model" src="../../assets/using-models/using-large-language-models/deploy-model-vllm.png" /></a></p>
+<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/deploy-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Model" src="../../assets/using-models/using-large-language-models/deploy-model.png" /></a></p>
 <p>After deployment, you can monitor the model deployment's status on the <code>Deployments</code> page and wait for it to start running.</p>
 <h2 id="step-2-use-the-llms-for-text-generation">Step 2: Use the LLMs for Text Generation</h2>
 <ol>
 <li>Navigate to the <code>Playground</code> &gt; <code>Chat</code> page in the GPUStack UI.</li>
 <li>Verify that the deployed model is selected from the top-right <code>Model</code> dropdown.</li>
-<li>Provide a prompt for the text generation. For example:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>2, 4, 6, 8, &gt; What is the next number?
-</code></pre></div>
-<ol start="4">
+<li>Provide a prompt for the text generation.</li>
 <li>Adjust the <code>Parameters</code> on the right based on your needs.</li>
 <li>Click the <code>Submit</code> button to generate the text.</li>
 </ol>
 <p>The generated chain of thought and result will be displayed in the UI.</p>
-<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/generated.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generated" src="../../assets/using-models/using-large-language-models/generated.png" /></a></p>
+<p><a class="glightbox" href="../../assets/using-models/using-large-language-models/playground-chat.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Generated" src="../../assets/using-models/using-large-language-models/playground-chat.png" /></a></p>
 <p>By following these steps, you can leverage LLMs for AI-powered text generation and natural language tasks in GPUStack. Experiment with different prompts and settings to explore the full capabilities of LLMs!</p>
 
 

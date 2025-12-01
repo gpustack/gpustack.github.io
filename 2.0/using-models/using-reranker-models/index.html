@@ -1381,10 +1381,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -1588,48 +1584,6 @@
   
   <span class="md-ellipsis">
     Using Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../recommended-parameters-for-image-generation-models/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Recommended Parameters for Image Generation Models
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../editing-images/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Editing Images
   </span>
   
 
@@ -3671,14 +3625,11 @@
 <li>Access to Hugging Face for downloading the model files.</li>
 </ul>
 <h2 id="step-1-deploy-the-model">Step 1: Deploy the Model</h2>
-<p>Follow these steps to deploy the model from Hugging Face:</p>
+<p>Follow these steps to deploy the model from Catalog:</p>
 <ol>
-<li>Navigate to the <code>Deployments</code> page in the GPUStack UI.</li>
-<li>Click the <code>Deploy Model</code> button.</li>
-<li>In the dropdown, select <code>Hugging Face</code> as the source for your model.</li>
-<li>Enable the <code>GGUF</code> checkbox to filter models by GGUF format.</li>
-<li>Use the search bar in the top left to search for the model name <code>gpustack/bge-reranker-v2-m3-GGUF</code>.</li>
-<li>Leave everything as default and click the <code>Save</code> button to deploy the model.</li>
+<li>Navigate to the <code>Catalog</code> page in the GPUStack UI.</li>
+<li>In the model list page, use dropdown to filter with <code>Reranker</code>.</li>
+<li>Review the model description, maximum context length and supported sizes.</li>
 </ol>
 <p><a class="glightbox" href="../../assets/using-models/using-reranker-models/deploy-model.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Deploy Model" src="../../assets/using-models/using-reranker-models/deploy-model.png" /></a></p>
 <p>After deployment, you can monitor the model deployment's status on the <code>Deployments</code> page.</p>
@@ -3699,7 +3650,7 @@ curl<span class="w"> </span><span class="nv">$SERVER_URL</span>/v1/rerank<span c
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$GPUSTACK_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-<span class="s1">        &quot;model&quot;: &quot;bge-reranker-v2-m3&quot;,</span>
+<span class="s1">        &quot;model&quot;: &quot;qwen3-reranker-4b&quot;,</span>
 <span class="s1">        &quot;query&quot;: &quot;What is a panda?&quot;,</span>
 <span class="s1">        &quot;top_n&quot;: 3,</span>
 <span class="s1">        &quot;documents&quot;: [</span>
@@ -3712,34 +3663,36 @@ curl<span class="w"> </span><span class="nv">$SERVER_URL</span>/v1/rerank<span c
 <p>Replace <code>&lt;your-server-url&gt;</code> with the URL of your GPUStack server and <code>&lt;your-api-key&gt;</code> with the API key you generated in the previous step.</p>
 <p>Example response:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bge-reranker-v2-m3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen3-reranker-4b&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China.&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.951932668685913</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it is a bear&quot;</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-3.7347371578216553</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hi&quot;</span>
-<span class="w">      </span><span class="p">},</span>
 <span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-6.157620906829834</span>
+<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hi&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;multi_modal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9996911287307739</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The giant panda (Ailuropoda melanoleuca), sometimes called a panda bear or simply panda, is a bear species endemic to China.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;multi_modal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8206241726875305</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;document&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;it is a bear&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;multi_modal&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;relevance_score&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7244728803634644</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
 <span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">69</span>
+<span class="w">    </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
