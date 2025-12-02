@@ -2,462 +2,462 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.gpustack.ai/2.0/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/api-reference/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/architecture/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/code-of-conduct/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/contributing/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/development/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/environment-variables/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/faq/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/migration/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/overview/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/quickstart/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/scheduler/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/troubleshooting/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/upgrade/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/copy-images/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/download-tools/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/list-images/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/reload-config/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/save-images/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/cli-reference/start/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/air-gapped/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/docker-compose/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/requirements/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/uninstallation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/amd/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/ascend/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/cambricon/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/hygon/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/iluvatar/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/metax/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/mthreads/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/installation/nvidia/installation/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/integrations/integrate-with-cherrystudio/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/integrations/integrate-with-dify/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/integrations/integrate-with-ragflow/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/integrations/openai-compatible-apis/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/overview/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/deepseek-r1/h200/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/glm-4.5-air/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/glm-4.5-air/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/glm-4.6/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/glm-4.6/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/glm-4.6/h200/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/gpt-oss-120b/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/gpt-oss-120b/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/gpt-oss-20b/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/gpt-oss-20b/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-14b/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-14b/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-235b-a22b/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-235b-a22b/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-30b-a3b/910b/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-32b/a100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-32b/h100/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-8b/910b/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/qwen3-8b/h100-latency/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/references/evaluating-lmcache-prefill-acceleration-in-vllm/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/performance-lab/references/the-impact-of-quantization-on-vllm-inference-performance/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/adding-gpucluster-using-digitalocean/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/adding-gpucluster-using-kubernetes/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/inference-on-cpus/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/inference-with-tool-calling/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/running-deepseek-r1-671b-with-distributed-ascend-mindie/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/running-deepseek-r1-671b-with-distributed-vllm/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/tutorials/using-custom-backends/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/api-key-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/built-in-inference-backends/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/cloud-credential-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/cluster-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/compatibility-check/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/image-generation-apis/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/inference-backend-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/model-catalog/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/model-deployment-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/model-file-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/observability/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/openai-compatible-apis/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/rerank-api/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/sso/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/user-management/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/audio/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/chat/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/embedding/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/image/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/user-guide/playground/rerank/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-audio-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-embedding-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-image-generation-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-large-language-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-reranker-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.gpustack.ai/2.0/using-models/using-vision-language-models/</loc>
-         <lastmod>2025-12-01</lastmod>
+         <lastmod>2025-12-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

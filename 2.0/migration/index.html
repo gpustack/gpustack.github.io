@@ -866,6 +866,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#migration-from-llama-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from llama-box
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -918,6 +927,15 @@
   <a href="#recreating-model-instances_1" class="md-nav__link">
     <span class="md-ellipsis">
       Recreating Model Instances
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-from-llama-box_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from llama-box
     </span>
   </a>
   
@@ -3694,6 +3712,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#migration-from-llama-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from llama-box
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3746,6 +3773,15 @@
   <a href="#recreating-model-instances_1" class="md-nav__link">
     <span class="md-ellipsis">
       Recreating Model Instances
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-from-llama-box_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from llama-box
     </span>
   </a>
   
@@ -3867,6 +3903,17 @@
 </ul>
 <h4 id="recreating-model-instances">Recreating Model Instances</h4>
 <p>After the upgrade is complete, existing Model Instances may remain stuck in the <code>Starting</code> state. If this happens, recreating the Model Instance will allow the model to run normally.</p>
+<h4 id="migration-from-llama-box">Migration from llama-box</h4>
+<p>If you were using llama-box as the inference backend in previous versions, please note that llama-box is no longer supported as of v2.0.0. Use llama.cpp via the custom inference backend instead.</p>
+<ol>
+<li>Configure llama.cpp on Inference Backend page. For llama.cpp configuration, refer to this <a href="../tutorials/using-custom-backends/#deploy-gguf-models-with-llamacpp">document</a>.</li>
+<li>Go to the Deployment page, modify the model originally launched with llama-box, change the backend to llama.cpp</li>
+<li>Recreate the model instance after saving.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Distributed inference across multiple workers is currently not supported with custom inference backends.</p>
+</div>
 <h2 id="external-database-migration">External Database Migration</h2>
 <p>GPUStack supports using an external database to store the management data. If you previously deployed GPUStack with an external database, follow the steps below to migrate your data.</p>
 <div class="admonition warning">
@@ -3940,6 +3987,17 @@
 </ul>
 <h4 id="recreating-model-instances_1">Recreating Model Instances</h4>
 <p>After the upgrade is complete, existing Model Instances may remain stuck in the <code>Starting</code> state. If this happens, recreating the Model Instance will allow the model to run normally.</p>
+<h4 id="migration-from-llama-box_1">Migration from llama-box</h4>
+<p>If you were using llama-box as the inference backend in previous versions, please note that llama-box is no longer supported as of v2.0.0. Use llama.cpp via the custom inference backend instead.</p>
+<ol>
+<li>Configure llama.cpp on Inference Backend page. For llama.cpp configuration, refer to this <a href="../tutorials/using-custom-backends/#deploy-gguf-models-with-llamacpp">document</a>.</li>
+<li>Go to the Deployment page, modify the model originally launched with llama-box, change the backend to llama.cpp</li>
+<li>Recreate the model instance after saving.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Distributed inference across multiple workers is currently not supported with custom inference backends.</p>
+</div>
 
 
 
