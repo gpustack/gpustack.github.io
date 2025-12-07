@@ -464,20 +464,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -537,137 +523,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -689,27 +549,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -3829,8 +3668,13 @@
 </tr>
 <tr>
 <td><code>--disable-worker</code></td>
+<td>(empty)</td>
+<td>(DEPRECATED) Disable the embedded worker for the GPUStack server. New installations will not have the embedded worker by default. Use '--enable-worker' to enable the embedded worker if needed. If neither flag is set, for backward compatibility, the embedded worker will be enabled by default for legacy installations prior to v2.0.1.</td>
+</tr>
+<tr>
+<td><code>--enable-worker</code></td>
 <td><code>False</code></td>
-<td>Disable built-in worker.</td>
+<td>Enable the embedded worker for the GPUStack server.</td>
 </tr>
 <tr>
 <td><code>--bootstrap-password</code> value</td>
@@ -3918,6 +3762,16 @@
 <td>The redirect URI configured in your OIDC application. This must be set to <code>&lt;server-url&gt;/auth/oidc/callback</code>.</td>
 </tr>
 <tr>
+<td><code>--oidc-skip-userinfo</code></td>
+<td><code>False</code></td>
+<td>Skip requesting the OIDC userinfo_endpoint and instead attempt to parse it directly from the header.</td>
+</tr>
+<tr>
+<td><code>--oidc-use-userinfo</code></td>
+<td>(empty)</td>
+<td>[Deprecated] Use the UserInfo endpoint to fetch user details after authentication.</td>
+</tr>
+<tr>
 <td><code>--saml-idp-server-url</code> value</td>
 <td>(empty)</td>
 <td>SAML Identity Provider server URL.</td>
@@ -3973,6 +3827,11 @@
 <td>Mapping of external authentication user information to user's avatar URL.</td>
 </tr>
 <tr>
+<td><code>--external-auth-default-inactive</code></td>
+<td><code>False</code></td>
+<td>True if new users should be deactivated by default.</td>
+</tr>
+<tr>
 <td><code>--server-external-url</code> value</td>
 <td>(empty)</td>
 <td>The external server URL for worker registration. This option is required when provisioning workers via cloud providers, ensuring that workers can connect to the server correctly.</td>
@@ -3981,11 +3840,6 @@
 <td><code>--saml-sp-attribute-prefix</code> value</td>
 <td>(empty)</td>
 <td>SAML Service Provider attribute prefix, used for fetching attributes specified by --external-auth-*.</td>
-</tr>
-<tr>
-<td><code>--oidc-use-userinfo</code></td>
-<td><code>False</code></td>
-<td>Use the UserInfo endpoint to fetch user details after authentication.</td>
 </tr>
 </tbody>
 </table>
@@ -4017,7 +3871,7 @@
 <tr>
 <td><code>--worker-ip</code> value</td>
 <td>(empty)</td>
-<td>Deprecated, use advertise-address instead.</td>
+<td>(DEPRECATED) Use advertise-address instead.</td>
 </tr>
 <tr>
 <td><code>--disable-worker-metrics</code></td>
@@ -4094,7 +3948,7 @@
 <span class="c1"># Server Options</span>
 <span class="nt">api_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 <span class="nt">metrics_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10161</span>
-<span class="nt">disable_worker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">enable_worker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">bootstrap_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">your_admin_password</span>
 <span class="nt">database_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgresql://user:password@host:port/db_name</span>
 <span class="c1"># database_url: mysql://user:password@host:port/db_name</span>

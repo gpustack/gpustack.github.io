@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -3703,6 +3542,10 @@
 <td><code>--external-auth-avatar-url</code> (Optional)</td>
 <td>Mapping of OIDC user information to user's avatar URL. By default, the <code>picture</code> claim is used if available.</td>
 </tr>
+<tr>
+<td><code>--external-auth-default-inactive</code> (Optional)</td>
+<td>Prevents new SSO users from being activated by default.</td>
+</tr>
 </tbody>
 </table>
 <p>You can also set these options via environment variables instead of CLI flags:</p>
@@ -3714,6 +3557,7 @@
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_NAME</span><span class="o">=</span><span class="s2">&quot;email&quot;</span>
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_FULL_NAME</span><span class="o">=</span><span class="s2">&quot;name&quot;</span>
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_AVATAR_URL</span><span class="o">=</span><span class="s2">&quot;picture&quot;</span>
+<span class="nv">GPUSTACK_EXTERNAL_AUTH_DEFAULT_INACTIVE</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
 </code></pre></div>
 <h3 id="example-integrate-with-auth0-oidc">Example: Integrate with Auth0 OIDC</h3>
 <p>To configure GPUStack with Auth0 as the OIDC provider:</p>
@@ -3802,6 +3646,10 @@
 <td><code>--external-auth-avatar-url</code> (Optional)</td>
 <td>Mapping of SAML user information to user's avatar URL. You must configure the full attribute name like 'http://schemas.auth0.com/picture' or simplify with 'picture' by '--saml-sp-attribute-prefix'.</td>
 </tr>
+<tr>
+<td><code>--external-auth-default-inactive</code> (Optional)</td>
+<td>Prevents new SSO users from being activated by default.</td>
+</tr>
 </tbody>
 </table>
 <p>You can also set these options via environment variables instead of CLI flags:</p>
@@ -3818,6 +3666,7 @@
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_NAME</span><span class="o">=</span><span class="s2">&quot;emailaddress&quot;</span>
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_FULL_NAME</span><span class="o">=</span><span class="s2">&quot;name&quot;</span>
 <span class="nv">GPUSTACK_EXTERNAL_AUTH_AVATAR_URL</span><span class="o">=</span><span class="s2">&quot;picture&quot;</span>
+<span class="nv">GPUSTACK_EXTERNAL_AUTH_DEFAULT_INACTIVE</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
 </code></pre></div>
 <h3 id="example-integrate-with-auth0-saml">Example: Integrate with Auth0 SAML</h3>
 <p>To configure GPUStack with Auth0 as the SAML provider:</p>

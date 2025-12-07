@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -3729,23 +3568,18 @@
 </ul>
 </div>
 <h2 id="step-1-install-gpustack-server">Step 1: Install GPUStack Server</h2>
-<p>According to the <a href="../../installation/ascend/installation/">Ascend Installation</a>, you can use the following command to start the GPUStack server <strong>with the built-in worker</strong>:</p>
+<p>According to the <a href="../../installation/installation/">Installation</a>, you can use the following command to start the GPUStack server:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--env<span class="w"> </span><span class="s2">&quot;ASCEND_VISIBLE_DEVICES=</span><span class="k">$(</span>sudo<span class="w"> </span>ls<span class="w"> </span>/dev/davinci*<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-o<span class="w"> </span><span class="s1">&#39;[0-9]\+&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>/path/to/your/model:/path/to/your/model<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--runtime<span class="w"> </span>ascend<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul>
 <li>Replace <code>/path/to/your/model</code> with the actual path on your system where the DeepSeek R1 model files are stored.</li>
-<li>Ensure the <code>hccn_tool</code> tool is installed and configured correctly on your system. This is required for discvoring the HCCN network communication.</li>
 </ul>
 </div>
 <p>After GPUStack server is up and running, run the following commands to get the initial admin password:</p>

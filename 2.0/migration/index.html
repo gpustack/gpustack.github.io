@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -820,16 +659,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#embedded-database-migration-sqlite-embedded-postgresql" class="md-nav__link">
+  <a href="#before-migration" class="md-nav__link">
     <span class="md-ellipsis">
-      Embedded Database Migration (SQLite → Embedded PostgreSQL)
+      Before Migration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Embedded Database Migration (SQLite → Embedded PostgreSQL)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#migration-steps" class="md-nav__link">
     <span class="md-ellipsis">
       Migration Steps
@@ -849,9 +687,51 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#migrate-using-docker" class="md-nav__link">
+  <a href="#migrate-server-using-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      Migrate Using Docker
+      Migrate Server Using Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrate Server Using Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-database-migration-sqlite-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded Database Migration (SQLite → PostgreSQL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-database-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Database Migration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrate-workers-using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrate Workers Using Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-gpu-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other GPU Architectures
     </span>
   </a>
   
@@ -872,77 +752,6 @@
       Migration from llama-box
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#external-database-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      External Database Migration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="External Database Migration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#migration-steps_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migration Steps
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Migration Steps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-your-legacy-data-directory_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identify Your Legacy Data Directory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migrate-using-docker_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migrate Using Docker
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recreating-model-instances_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recreating Model Instances
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migration-from-llama-box_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migration from llama-box
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3666,16 +3475,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#embedded-database-migration-sqlite-embedded-postgresql" class="md-nav__link">
+  <a href="#before-migration" class="md-nav__link">
     <span class="md-ellipsis">
-      Embedded Database Migration (SQLite → Embedded PostgreSQL)
+      Before Migration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Embedded Database Migration (SQLite → Embedded PostgreSQL)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#migration-steps" class="md-nav__link">
     <span class="md-ellipsis">
       Migration Steps
@@ -3695,9 +3503,51 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#migrate-using-docker" class="md-nav__link">
+  <a href="#migrate-server-using-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      Migrate Using Docker
+      Migrate Server Using Docker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migrate Server Using Docker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedded-database-migration-sqlite-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Embedded Database Migration (SQLite → PostgreSQL)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-database-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Database Migration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migrate-workers-using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrate Workers Using Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-gpu-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other GPU Architectures
     </span>
   </a>
   
@@ -3718,77 +3568,6 @@
       Migration from llama-box
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#external-database-migration" class="md-nav__link">
-    <span class="md-ellipsis">
-      External Database Migration
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="External Database Migration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#migration-steps_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migration Steps
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Migration Steps">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-your-legacy-data-directory_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identify Your Legacy Data Directory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migrate-using-docker_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migrate Using Docker
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#recreating-model-instances_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Recreating Model Instances
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#migration-from-llama-box_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migration from llama-box
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3831,166 +3610,101 @@
 <h1 id="migrating-from-v07-and-earlier-versions-to-v2">Migrating from v0.7 and Earlier Versions to v2</h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Since v2.0.0, GPUStack supports Linux only. For other OS, move the data directory to a Linux system and run the migration.</p>
+<p>Since v2.0.0, GPUStack Worker officially supports only Linux. If you are using Windows or macOS, please move your data directory to a Linux system to perform the migration.</p>
+<p>On Windows and macOS, GPUStack Server (without the embedded worker) can still be run using Docker Desktop.</p>
 </div>
-<h2 id="embedded-database-migration-sqlite-embedded-postgresql">Embedded Database Migration (SQLite → Embedded PostgreSQL)</h2>
-<p>In v0.7 and earlier, GPUStack used an embedded SQLite database by default to store management data. Starting from v2.0.0, GPUStack dropped SQLite support and now uses an embedded PostgreSQL database by default for improved performance and scalability.</p>
-<p>If you previously deployed GPUStack with the embedded SQLite database, follow the steps below to migrate your data to the new PostgreSQL-based format.</p>
+<h2 id="before-migration">Before Migration</h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Backup First:</strong> Before starting the migration, it’s strongly recommended to back up your database.</p>
+<p><strong>Backup First:</strong> Before starting the server migration, it’s strongly recommended to back up your database.</p>
 <p>For default installations on v0.7 or earlier, stop the GPUStack server and create a backup of data dir located inside the container at:</p>
 <div class="highlight"><pre><span></span><code>/var/lib/gpustack
 </code></pre></div>
 </div>
-<h3 id="migration-steps">Migration Steps</h3>
-<h4 id="identify-your-legacy-data-directory">Identify Your Legacy Data Directory</h4>
+<p>Please go through to the <a href="../installation/requirements/">Installation Requirements</a> before starting the migration.</p>
+<p>If you used GPUStack <strong>without Docker</strong> in versions prior to v0.7.1(for example, via pip install or an installation script), please install Docker by following the Docker Engine <a href="https://docs.docker.com/engine/install/">Installation Guide</a> before proceeding with the migration.</p>
+<p>If you used GPU acceleration for inference in GPUStack prior to v0.7.1, please check whether you need to install the corresponding accelerator runtime’s Container Toolkit or Container Runtime after installing Docker. You can follow the steps in the <strong>Installation Requirements</strong> to check and install them.</p>
+<h2 id="migration-steps">Migration Steps</h2>
+<h3 id="identify-your-legacy-data-directory">Identify Your Legacy Data Directory</h3>
 <p>Locate the data directory used by your previous GPUStack installation. The default path is:</p>
 <div class="highlight"><pre><span></span><code>/var/lib/gpustack
 </code></pre></div>
-<p>For other installation methods, refer to this <a href="../faq/#where-are-gpustacks-data-stored">link</a> to locate the data directory.</p>
-<p>In the following steps, this path is referenced as <code>${your-data-dir}</code>.</p>
-<h4 id="migrate-using-docker">Migrate Using Docker</h4>
-<ul>
-<li>
-<p><strong>Server Migration (NVIDIA GPUs)</strong></p>
-<p>If you are using NVIDIA GPUs, run the following Docker command to start the migration. Replace <code>${your-data-dir}</code> with your legacy data directory containing the original SQLite database and related files.</p>
-<p>By mounting <code>${your-data-dir}</code> to <code>/var/lib/gpustack</code> and setting the environment variable <code>GPUSTACK_MIGRATION_DATA_DIR</code>, GPUStack to automatically migrate the SQLite data to the new embedded PostgreSQL database during startup.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --name gpustack-server \
-<span class="w"> </span>   --restart=unless-stopped \
-<span class="w"> </span>   --privileged \
-<span class="w"> </span>   --network=host \
-<span class="w"> </span>   --volume /var/run/docker.sock:/var/run/docker.sock \
-<span class="gi">+   --env GPUSTACK_MIGRATION_DATA_DIR=/var/lib/gpustack \</span>
-<span class="gi">+   --volume ${your-data-dir}:/var/lib/gpustack \</span>
-<span class="w"> </span>   --runtime nvidia \
-<span class="w"> </span>   gpustack/gpustack
+<p>For other installation methods, refer to this <a href="../faq/#where-are-gpustacks-data-stored">link</a> to locate the data directory. In the following steps, this path is referenced as <code>${your-data-dir}</code>.</p>
+<p>Due to architectural changes in v2.0.0, new components such as <code>postgres</code> and <code>s6-supervisor</code> may read from and write to files in <code>${your-data-dir}</code> using non-root users. Make sure that <code>${your-data-dir}</code> is accessible to all required users. You can use the following script to adjust permissions, but please be aware of the security risks and understand exactly what the script does before running it.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">your</span><span class="p">-data-dir</span><span class="si">}</span><span class="s2">&quot;</span>
+chmod<span class="w"> </span>a+rx<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">dir</span><span class="si">}</span><span class="s2">/log&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+chmod<span class="w"> </span>a+rx<span class="w"> </span><span class="nv">$dir</span>
+<span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dir</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>chmod<span class="w"> </span>a+x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dir</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="nv">dir</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dir</span><span class="s2">&quot;</span><span class="k">)</span>
+<span class="k">done</span>
 </code></pre></div>
-<p>This command will launch the GPUStack server in Docker, preserving and migrating your existing data.</p>
-</li>
-<li>
-<p><strong>Worker Migration (NVIDIA GPUs)</strong></p>
+<h3 id="migrate-server-using-docker">Migrate Server Using Docker</h3>
+<p>Since v2.0.0, you no longer need to specify the GPU computing platform or version (such as <code>-cpu</code>, <code>-cuda12.8</code>, or <code>-rocm</code>) for the server or worker images. Simply use the latest image: gpustack/gpustack:latest.</p>
+<h4 id="embedded-database-migration-sqlite-postgresql">Embedded Database Migration (SQLite → PostgreSQL)</h4>
+<p>In v0.7 and earlier, GPUStack used an embedded SQLite database by default to store management data. Starting from v2.0.0, GPUStack dropped SQLite support and now uses an embedded PostgreSQL database by default for improved performance and scalability.</p>
+<p>Start the GPUStack with the <code>GPUSTACK_DATA_MIGRATION=true</code> to enable the embedded database migration. Replace <code>${your-data-dir}</code> with your legacy data directory containing the original SQLite database and related files:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--env<span class="w"> </span><span class="nv">GPUSTACK_DATA_MIGRATION</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span><span class="si">${</span><span class="nv">your</span><span class="p">-data-dir</span><span class="si">}</span>:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpustack/gpustack:latest
+</code></pre></div>
+<p>If you are getting the error from docker <code>docker: Error response from daemon: unknown or invalid runtime name: nvidia</code>, please check <a href="../installation/requirements/#accelerator-runtime-requirements">Accelerator Runtime Requirements</a> first and following the document <a href="#other-gpu-architectures">Other GPU Architectures</a> to change the <code>--runtime nvidia</code> argument with your runtime.</p>
+<p>Also customizing the <code>--data-dir</code>, <code>GPUSTACK_DATA_DIR</code> is also supported in database migration by following command changes:</p>
+<div class="highlight"><pre><span></span><code>...
+<span class="gd">-  --volume ${your-data-dir}:/var/lib/gpustack</span>
+<span class="gi">+  --volume ${your-data-dir}:${your-data-dir}</span>
+...
+<span class="gi">+   gpustack/gpustack:latest \</span>
+<span class="gi">+   --data-dir :${your-data-dir}</span>
+</code></pre></div>
+<h4 id="external-database-migration">External Database Migration</h4>
+<p>GPUStack supports using an external database to store the management data. If you previously deployed GPUStack with an external database, start the server will following command:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack-server<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span><span class="si">${</span><span class="nv">your</span><span class="p">-data-dir</span><span class="si">}</span>:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--database-url<span class="w"> </span><span class="si">${</span><span class="nv">your</span><span class="p">-database-url</span><span class="si">}</span>
+</code></pre></div>
+<h3 id="migrate-workers-using-docker">Migrate Workers Using Docker</h3>
 <p>For worker nodes, replace <code>${your-data-dir}</code> with the legacy worker data directory path. Use the following command:</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --name gpustack-worker \
-<span class="w"> </span>   --restart=unless-stopped \
-<span class="w"> </span>   --privileged \
-<span class="w"> </span>   --network=host \
-<span class="w"> </span>   --volume /var/run/docker.sock:/var/run/docker.sock \
-<span class="gi">+   --volume ${your-data-dir}:/var/lib/gpustack \</span>
-<span class="w"> </span>   --runtime nvidia \
-<span class="w"> </span>   gpustack/gpustack \
-<span class="w"> </span>   --server-url ${server-url} \
-<span class="w"> </span>   --token ${token}
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack-worker<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span><span class="si">${</span><span class="nv">your</span><span class="p">-data-dir</span><span class="si">}</span>:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--server-url<span class="w"> </span><span class="si">${</span><span class="nv">server</span><span class="p">-url</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--token<span class="w"> </span><span class="si">${</span><span class="nv">token</span><span class="si">}</span>
 </code></pre></div>
+<p>Please make sure both <code>--volume /var/run/docker.sock:/var/run/docker.sock</code> and <code>--runtime nvidia</code> are added to the docker command. Those are not required for previous version. For different accelerator runtime, Refer to <a href="#other-gpu-architectures">Other GPU Architectures</a> to use different option from <code>--runtime nvidia</code>.</p>
 <p>This will launch the GPUStack worker using your existing data and connect it to the specified server.</p>
-</li>
-<li>
-<p><strong>Other GPU Architectures</strong></p>
-<p>For architectures other than NVIDIA (e.g., AMD, Ascend), the migration process remains the same. To migrate on these platforms:</p>
-<ol>
-<li>
-<p>Get the installation commands, please refer to the commands in the <a href="../installation/requirements/">Installation Documentation</a>.</p>
-</li>
-<li>
-<p>Mount the legacy data directory to <code>/var/lib/gpustack</code>.</p>
-</li>
-<li>
-<p>(Server Only) Add the environment variable <code>GPUSTACK_MIGRATION_DATA_DIR</code> as shown in the NVIDIA examples, only the server needs to add this environment variable.</p>
-</li>
-</ol>
-<p>The Server and Worker migration commands can be used directly after applying these changes.</p>
-</li>
-</ul>
-<h4 id="recreating-model-instances">Recreating Model Instances</h4>
+<h3 id="other-gpu-architectures">Other GPU Architectures</h3>
+<p>For architectures other than NVIDIA (e.g., AMD, Ascend), the migration process remains the same. Please confirm your GPU architecture is supported in document <a href="../installation/requirements/#accelerator-runtime-requirements">Accelerator Runtime Requirements</a>.</p>
+<p>For example, running server and worker in host with AMD GPU, modify the docker run command with:</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span> sudo docker run -d --name gpustack \
+<span class="w"> </span> ...
+<span class="gd">- --runtime amd \</span>
+<span class="gi">+ --runtime amd \</span>
+<span class="w"> </span> ...
+</code></pre></div>
+<h3 id="recreating-model-instances">Recreating Model Instances</h3>
 <p>After the upgrade is complete, existing Model Instances may remain stuck in the <code>Starting</code> state. If this happens, recreating the Model Instance will allow the model to run normally.</p>
-<h4 id="migration-from-llama-box">Migration from llama-box</h4>
+<h3 id="migration-from-llama-box">Migration from llama-box</h3>
 <p>If you were using llama-box as the inference backend in previous versions, please note that llama-box is no longer supported as of v2.0.0. Use llama.cpp via the custom inference backend instead.</p>
 <ol>
-<li>Configure llama.cpp on Inference Backend page. For llama.cpp configuration, refer to this <a href="../tutorials/using-custom-backends/#deploy-gguf-models-with-llamacpp">document</a>.</li>
-<li>Go to the Deployment page, modify the model originally launched with llama-box, change the backend to llama.cpp</li>
-<li>Recreate the model instance after saving.</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Distributed inference across multiple workers is currently not supported with custom inference backends.</p>
-</div>
-<h2 id="external-database-migration">External Database Migration</h2>
-<p>GPUStack supports using an external database to store the management data. If you previously deployed GPUStack with an external database, follow the steps below to migrate your data.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>Backup Required.</strong> Before proceeding, back up the following:</p>
-<ul>
-<li>
-<p>The data directory used by your previous GPUStack installation, typically located at:</p>
-<div class="highlight"><pre><span></span><code>/var/lib/gpustack
-</code></pre></div>
-</li>
-<li>
-<p>Your external database, using the backup procedure recommended by your database system.</p>
-</li>
-</ul>
-</div>
-<h3 id="migration-steps_1">Migration Steps</h3>
-<h4 id="identify-your-legacy-data-directory_1">Identify Your Legacy Data Directory</h4>
-<p>Locate the data directory used by your previous GPUStack installation. The default path is:</p>
-<div class="highlight"><pre><span></span><code>/var/lib/gpustack
-</code></pre></div>
-<p>For other installation methods, refer to this <a href="../faq/#where-are-gpustacks-data-stored">link</a> to locate the data directory.</p>
-<p>In the following steps, this path is referenced as <code>${your-data-dir}</code>.</p>
-<h4 id="migrate-using-docker_1">Migrate Using Docker</h4>
-<ul>
-<li>
-<p><strong>Server Migration (NVIDIA GPUs)</strong></p>
-<p>Keep the <code>--database-url</code> flag, <code>GPUSTACK_DATABASE_URL</code> environment variable, or <code>database_url</code> in your configuration file exactly as before. It must continue pointing to your existing external database.</p>
-<p>If you are using NVIDIA GPUs, run the following Docker command to start the migration. Replace <code>${your-data-dir}</code> with your legacy data directory. By mounting <code>${your-data-dir}</code> to <code>/var/lib/gpustack</code>.</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --name gpustack-server \
-<span class="w"> </span>   --restart=unless-stopped \
-<span class="w"> </span>   --privileged \
-<span class="w"> </span>   --network=host \
-<span class="w"> </span>   --volume /var/run/docker.sock:/var/run/docker.sock \
-<span class="gi">+   --volume ${your-data-dir}:/var/lib/gpustack \</span>
-<span class="w"> </span>   --runtime nvidia \
-<span class="w"> </span>   gpustack/gpustack \
-<span class="gi">+     --database-url ${your-database-url}</span>
-</code></pre></div>
-</li>
-<li>
-<p><strong>Worker Migration (NVIDIA GPUs)</strong></p>
-<p>For worker nodes, replace <code>${your-data-dir}</code> with the legacy worker data directory path. Use the following command:</p>
-<div class="highlight"><pre><span></span><code>sudo docker run -d --name gpustack-worker \
-<span class="w"> </span>   --restart=unless-stopped \
-<span class="w"> </span>   --privileged \
-<span class="w"> </span>   --network=host \
-<span class="w"> </span>   --volume /var/run/docker.sock:/var/run/docker.sock \
-<span class="gi">+   --volume ${your-data-dir}:/var/lib/gpustack \</span>
-<span class="w"> </span>   --runtime nvidia \
-<span class="w"> </span>   gpustack/gpustack \
-<span class="w"> </span>   --server-url ${server-url} \
-<span class="w"> </span>   --token ${token}
-</code></pre></div>
-</li>
-<li>
-<p><strong>Other GPU Architectures</strong></p>
-<p>For architectures other than NVIDIA (e.g., AMD, Ascend), the migration process remains the same. To migrate on these platforms:</p>
-<ol>
-<li>
-<p>Get the installation commands, please refer to the commands in the <a href="../installation/requirements/">Installation Documentation</a>.</p>
-</li>
-<li>
-<p>Mount the legacy data directory to <code>/var/lib/gpustack</code>.</p>
-</li>
-<li>
-<p>(Server Only) Continue use gpustack start flag <code>--database-url</code> or <code>GPUSTACK_DATABASE_URL</code> environment variable or config file with <code>database_url</code> as before.</p>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="recreating-model-instances_1">Recreating Model Instances</h4>
-<p>After the upgrade is complete, existing Model Instances may remain stuck in the <code>Starting</code> state. If this happens, recreating the Model Instance will allow the model to run normally.</p>
-<h4 id="migration-from-llama-box_1">Migration from llama-box</h4>
-<p>If you were using llama-box as the inference backend in previous versions, please note that llama-box is no longer supported as of v2.0.0. Use llama.cpp via the custom inference backend instead.</p>
-<ol>
-<li>Configure llama.cpp on Inference Backend page. For llama.cpp configuration, refer to this <a href="../tutorials/using-custom-backends/#deploy-gguf-models-with-llamacpp">document</a>.</li>
+<li>Create a <code>llama.cpp</code> custom backend on Inference Backend page. For llama.cpp configuration, refer to this <a href="../tutorials/using-custom-backends/#deploy-gguf-models-with-llamacpp">document</a>.</li>
 <li>Go to the Deployment page, modify the model originally launched with llama-box, change the backend to llama.cpp</li>
 <li>Recreate the model instance after saving.</li>
 </ol>

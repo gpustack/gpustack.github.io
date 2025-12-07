@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -2020,6 +1859,24 @@
   <a href="#reset-admin-password" class="md-nav__link">
     <span class="md-ellipsis">
       Reset Admin Password
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assist-in-accelerators-detection-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assist in Accelerators Detection Diagnosis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assist-in-model-deployment-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assist in Model Deployment Diagnosis
     </span>
   </a>
   
@@ -3605,6 +3462,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#assist-in-accelerators-detection-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assist in Accelerators Detection Diagnosis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assist-in-model-deployment-diagnosis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assist in Model Deployment Diagnosis
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3666,6 +3541,17 @@
 </code></pre></div>
 <p>If you changed the default port using <code>--port</code> when starting GPUStack, specify the GPUStack URL using the <code>--server-url</code> parameter. It must be run locally on the server and accessed via <code>localhost</code>:</p>
 <div class="highlight"><pre><span></span><code>gpustack<span class="w"> </span>reset-admin-password<span class="w"> </span>--server-url<span class="w"> </span>http://localhost:9090
+</code></pre></div>
+<h2 id="assist-in-accelerators-detection-diagnosis">Assist in Accelerators Detection Diagnosis</h2>
+<p>After successfully deploying the GPUStack Worker as described in the <a href="../installation/requirements/">installation guide</a>,<br />
+if the Worker fails to detect any devices,<br />
+please enter the corresponding Worker container, run the following command, and report the results to <a href="https://github.com/gpustack/gpustack/issues">GPUStack</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">time</span><span class="w"> </span><span class="nv">GPUSTACK_RUNTIME_LOG_LEVEL</span><span class="o">=</span>debug<span class="w"> </span><span class="nv">GPUSTACK_RUNTIME_LOG_EXCEPTION</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>gpustack-runtime<span class="w"> </span>detect<span class="w"> </span>--format<span class="w"> </span>json
+</code></pre></div>
+<h2 id="assist-in-model-deployment-diagnosis">Assist in Model Deployment Diagnosis</h2>
+<p>If you experience issues after deploying a model, 
+please enter the corresponding Worker container, run the following command, and report the results to <a href="https://github.com/gpustack/gpustack/issues">GPUStack</a>.</p>
+<div class="highlight"><pre><span></span><code>gpustack-runtime<span class="w"> </span>inspect<span class="w"> </span>&lt;model<span class="w"> </span>instance<span class="w"> </span>name&gt;
 </code></pre></div>
 
 

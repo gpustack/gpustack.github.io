@@ -486,6 +486,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-a-gpu-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up a GPU Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploy-a-model" class="md-nav__link">
     <span class="md-ellipsis">
       Deploy a Model
@@ -529,20 +538,6 @@
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -611,137 +606,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -763,27 +632,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -3579,6 +3427,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#set-up-a-gpu-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up a GPU Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploy-a-model" class="md-nav__link">
     <span class="md-ellipsis">
       Deploy a Model
@@ -3637,33 +3494,35 @@
 
 
 <h1 id="quickstart">Quickstart</h1>
-<h2 id="install-gpustack">Install GPUStack</h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>GPUStack now supports Linux only.</p>
+<p>This guide will walk you through running GPUStack on your own self-hosted GPU servers. To use <a href="../tutorials/adding-gpucluster-using-digitalocean/">cloud GPUs</a>, or integrating with an  <a href="../tutorials/adding-gpucluster-using-kubernetes/">existing Kubernetes cluster</a>, see the relevant tutorials.</p>
+<div class="admonition info">
+<p class="admonition-title">Prerequisites</p>
+<ol>
+<li>A node with at least one NVIDIA GPU. For other GPU types, please check the guidelines in the GPUStack UI when adding a worker, or refer to the <a href="../installation/requirements/">Installation documentation</a> for more details.</li>
+<li>Ensure the NVIDIA driver, <a href="https://docs.docker.com/engine/install/">Docker</a> and <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a> are installed on the worker node.</li>
+<li><strong>(Optional)</strong> A CPU node for hosting the GPUStack server. The GPUStack server does not require a GPU and can run on a CPU-only machine. <a href="https://docs.docker.com/engine/install/">Docker</a> must be installed. Docker Desktop (for Windows and macOS) is also supported. If no dedicated CPU node is available, the GPUStack server can be installed on the same machine as a GPU worker node.</li>
+<li>Only Linux is supported for GPUStack worker nodes. If you use Windows, consider using WSL2 and avoid using Docker Desktop. macOS is not supported for GPUStack worker nodes.</li>
+</ol>
 </div>
-<p>If you are using NVIDIA GPUs, ensure the NVIDIA driver, <a href="https://docs.docker.com/engine/install/">Docker</a> and <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html">NVIDIA Container Toolkit</a> are installed. Then start the GPUStack with the following command:</p>
+<h2 id="install-gpustack">Install GPUStack</h2>
+<p>Run the following command to install and start the GPUStack server using <a href="https://docs.docker.com/engine/install/">Docker</a>:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>gpustack/gpustack
 </code></pre></div>
-<p>If you cannot pull images from <code>Docker Hub</code> or the download is very slow, you can use our <code>Quay.io</code> mirror by pointing your registry to <code>quay.io</code>:</p>
+<details class="note">
+<summary>Alternative: Use Quay Container Registry Mirror</summary>
+<p>If you cannot pull images from Docker Hub or the download is very slow, you can use our Quay Container Registry mirror by pointing your registry to <code>quay.io</code>:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--privileged<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--network<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">80</span>:80<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--volume<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>quay.io/gpustack/gpustack<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--system-default-container-registry<span class="w"> </span>quay.io
 </code></pre></div>
-<p>For more details on the installation or other GPU hardware platforms, please refer to the <a href="../installation/requirements/">Installation Requirements</a>.</p>
+</details>
 <p>Check the GPUStack startup logs:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>gpustack
 </code></pre></div>
@@ -3671,6 +3530,44 @@
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>gpustack<span class="w"> </span>cat<span class="w"> </span>/var/lib/gpustack/initial_admin_password
 </code></pre></div>
 <p>Open your browser and navigate to <code>http://your_host_ip</code> to access the GPUStack UI. Use the default username <code>admin</code> and the password you retrieved above to log in.</p>
+<h2 id="set-up-a-gpu-cluster">Set Up a GPU Cluster</h2>
+<ol>
+<li>
+<p>On the GPUStack UI, navigate to the <code>Clusters</code> page.</p>
+</li>
+<li>
+<p>Click the <code>Add Cluster</code> button.</p>
+</li>
+<li>
+<p>Select <code>Docker</code> as the cluster provider.</p>
+</li>
+<li>
+<p>Fill in the <code>Name</code> and <code>Description</code> fields for the new cluster, then click the <code>Save</code> button.</p>
+</li>
+<li>
+<p>Follow the UI guidelines to configure the new worker node. You will need to run a Docker command on the worker node to connect it to the GPUStack server. The command will look similar to the following:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack-worker<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--restart<span class="o">=</span>unless-stopped<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--privileged<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--network<span class="o">=</span>host<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--volume<span class="w"> </span>/var/run/docker.sock:/var/run/docker.sock<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--volume<span class="w"> </span>gpustack-data:/var/lib/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>gpustack/gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--server-url<span class="w"> </span>http://your_gpustack_server_url<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--token<span class="w"> </span>your_worker_token<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>--advertise-address<span class="w"> </span><span class="m">192</span>.168.1.2
+</code></pre></div>
+<ol start="4">
+<li>
+<p>Execute the command on the worker node to connect it to the GPUStack server.</p>
+</li>
+<li>
+<p>After the worker node connects successfully, it will appear on the <code>Workers</code> page in the GPUStack UI.</p>
+</li>
+</ol>
 <h2 id="deploy-a-model">Deploy a Model</h2>
 <ol>
 <li>
@@ -3687,6 +3584,10 @@
 <ol start="4">
 <li>GPUStack will start downloading the model files and deploying the model. When the deployment status shows <code>Running</code>, the model has been deployed successfully.</li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPUStack uses containers to run models. The first-time model deployment may take some time to download the model files and container images. You can click <code>View Logs</code> in the UI to monitor the deployment progress.</p>
+</div>
 <p><a class="glightbox" href="../assets/quick-start/model-running.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="model is running" src="../assets/quick-start/model-running.png" /></a></p>
 <ol start="5">
 <li>Click <code>Playground - Chat</code> in the navigation menu, check that the model <code>qwen3-0.6b</code> is selected from the top-right <code>Model</code> dropdown. Now you can chat with the model in the UI playground.</li>

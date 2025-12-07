@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -4356,8 +4195,33 @@
 <h3 id="model-category">Model Category</h3>
 <p>The model category helps you organize and filter models. By default, GPUStack automatically detects the model category based on the model's metadata. You can also customize the category by selecting it from the dropdown list.</p>
 <h3 id="backend-parameters">Backend Parameters</h3>
-<p>Input the parameters for the backend you want to customize when running the model. The parameter should be in the format <code>--parameter=value</code>, <code>--bool-parameter</code> or as separate fields for <code>--parameter</code> and <code>value</code>.
-For example, use <code>--max-model-length=8192</code> for vLLM.</p>
+<p>Input the parameters for the backend you want to customize when running the model. Supported parameter formats:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Example</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equal Sign Split</td>
+<td><code>--hf-overrides={"architectures": ["NewModel"]}</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Space Split</td>
+<td><code>--hf-overrides '{"architectures": ["NewModel"]}'</code></td>
+<td>Supports <code>shell-like</code> style splitting (e.g., for values containing spaces).</td>
+</tr>
+<tr>
+<td>Separate Fields</td>
+<td><code>--max-model-length</code>, <code>8192</code></td>
+<td>Input parameter name and value as two separate items.</td>
+</tr>
+</tbody>
+</table>
 <p>For full list of supported parameters, please refer to the <a href="../built-in-inference-backends/">Inference Backends</a> section.</p>
 <h3 id="environment-variables">Environment Variables</h3>
 <p>Environment variables used when running the model. These variables are passed to the backend process at startup.</p>

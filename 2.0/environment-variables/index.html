@@ -462,20 +462,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -535,137 +521,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/nvidia/installation/" class="md-nav__link">
+      <a href="../installation/installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NVIDIA
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/amd/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AMD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/ascend/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Ascend
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/hygon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hygon
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/mthreads/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MThreads
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/iluvatar/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Iluvatar
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/cambricon/installation/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Cambricon
+    Installation
   </span>
   
 
@@ -687,27 +547,6 @@
   
   <span class="md-ellipsis">
     Air-Gapped Installation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/docker-compose/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation via Docker Compose
   </span>
   
 
@@ -2375,7 +2214,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Deployer Variables">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#docker-variables" class="md-nav__link">
@@ -2392,6 +2232,11 @@
       Kubernetes Variables
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3841,7 +3686,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Deployer Variables">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#docker-variables" class="md-nav__link">
@@ -3858,6 +3704,11 @@
       Kubernetes Variables
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4169,6 +4020,11 @@
 <td>(empty)</td>
 </tr>
 <tr>
+<td><code>GPUSTACK_RUNTIME_DETECT_NO_TOOLKIT_CALL</code></td>
+<td>Enable only using management libraries calls during detection. Device detection typically involves calling platform-side management libraries and platform-side toolkit to retrieve extra information. For example, during NVIDIA detection, the NVML and CUDA are called, with CUDA used to retrieve GPU cores. However, if certain toolchains are not correctly installed in the environment, such as the Nvidia Fabric Manager being missing, calling the CUDA can cause blocking. Enabling this parameter can prevent blocking events.</td>
+<td>(empty)</td>
+</tr>
+<tr>
 <td><code>GPUSTACK_RUNTIME_DETECT_BACKEND_MAP_RESOURCE_KEY</code></td>
 <td>Backend mapping to resource keys.</td>
 <td>The default values named by each vendor</td>
@@ -4204,6 +4060,16 @@
 <td><code>GPUSTACK_RUNTIME_DEPLOY_API_CALL_ERROR_DETAIL</code></td>
 <td>Enable detailing the API call error during deployment.</td>
 <td><code>1</code></td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_DEFAULT_REGISTRY_USERNAME</code></td>
+<td>Username for the default container registry.</td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>GPUSTACK_RUNTIME_DEPLOY_DEFAULT_REGISTRY_PASSWORD</code></td>
+<td>Password for the default container registry.</td>
+<td>(empty)</td>
 </tr>
 <tr>
 <td><code>GPUSTACK_RUNTIME_DEPLOY_ASYNC</code></td>
@@ -4272,7 +4138,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="docker-variables">Docker Variables</h3>
+<h4 id="docker-variables">Docker Variables</h4>
 <table>
 <thead>
 <tr>
@@ -4309,7 +4175,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="kubernetes-variables">Kubernetes Variables</h3>
+<h4 id="kubernetes-variables">Kubernetes Variables</h4>
 <table>
 <thead>
 <tr>
