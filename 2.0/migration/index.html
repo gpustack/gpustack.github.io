@@ -755,6 +755,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#migration-from-custom-backend-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from Custom Backend Versions
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3571,6 +3580,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#migration-from-custom-backend-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration from Custom Backend Versions
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3712,6 +3730,13 @@ chmod<span class="w"> </span>a+rx<span class="w"> </span><span class="nv">$dir</
 <p class="admonition-title">Note</p>
 <p>Distributed inference across multiple workers is currently not supported with custom inference backends.</p>
 </div>
+<h3 id="migration-from-custom-backend-versions">Migration from Custom Backend Versions</h3>
+<p>If you were using a custom backend version in GPUStack versions prior to v2.0.0, please note that those versions relied on Python virtual environments, which are <strong>no longer supported</strong> as of v2.0.0. All inference backends now run in containerized environments.</p>
+<p>To continue using your models, you’ll need to <strong>recreate them</strong> using one of the following approaches:</p>
+<p><strong>Option 1 - Use a Built-in Backend Version:</strong></p>
+<p>GPUStack v2.0.0+ provides multiple pre-configured versions of built-in inference backends. Recreate your model deployment and select the built-in backend version that best matches your model’s requirements.</p>
+<p><strong>Option 2 - Add a Custom Version to a Built-in Backend:</strong></p>
+<p>If none of the built-in versions meet your needs, you can extend a built-in inference backend by adding a custom version. For detailed instructions, refer to this guide: <a href="../user-guide/inference-backend-management/#example-add-a-custom-version-to-the-built-in-vllm-inference-backend">Add a Custom Version to the Built-in vLLM Inference Backend</a>.</p>
 
 
 

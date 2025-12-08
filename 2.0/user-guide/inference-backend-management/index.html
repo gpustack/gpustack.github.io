@@ -997,6 +997,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Edit Inference Backend or Add Custom Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-add-a-custom-version-to-the-built-in-vllm-inference-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Add a Custom Version to the Built-in vLLM Inference Backend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3453,6 +3468,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Edit Inference Backend or Add Custom Version">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-add-a-custom-version-to-the-built-in-vllm-inference-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Add a Custom Version to the Built-in vLLM Inference Backend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3610,6 +3640,27 @@
 <li>For built-in backends, custom versions must end with "-custom" (pre-filled in the form).</li>
 <li>Click "Save" to submit.</li>
 </ol>
+<h3 id="example-add-a-custom-version-to-the-built-in-vllm-inference-backend">Example: Add a Custom Version to the Built-in vLLM Inference Backend</h3>
+<ol>
+<li>On the Inference Backend page, locate the vLLM inference backend. From the card's top-right dropdown menu, choose "Edit".</li>
+<li>In the Version Configs section, click "Add Version".</li>
+<li>
+<p>Fill in the fields as follows:</p>
+<ul>
+<li>Version: <code>0.12.0</code></li>
+<li>Image Name: <code>vllm/vllm-openai:v0.12.0</code></li>
+<li>Framework: <code>cuda</code></li>
+<li>Execution Command: <code>{{model_path}} --host {{worker_ip}} --port {{port}} --served-model-name {{model_name}}</code></li>
+</ul>
+</li>
+<li>
+<p>Click "Save" to submit.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>vLLM has changed the entrypoint of its Docker image since v0.11.1. Therefore, when adding a custom version for vLLM v0.11.1 or later, you must specify the <code>Execution Command</code> field; otherwise, the model will fail to start.</p>
+</div>
 <h2 id="delete-custom-inference-backend">Delete Custom Inference Backend</h2>
 <ol>
 <li>On the Inference Backend page, locate the target backend and select "Delete" from the card's top-right dropdown menu.</li>
