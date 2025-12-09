@@ -3957,44 +3957,23 @@
 <h4 id="steps">Steps</h4>
 <ol>
 <li>
-<p><strong>Docker Compose Configuration</strong></p>
-<p>Compose file location: <a href="https://github.com/gpustack/gpustack/blob/main/docker-compose/docker-compose.observability.yaml">docker-compose.observability.yaml (GitHub)</a></p>
-<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
-<span class="nt">prometheus</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom/prometheus</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-prometheus</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;9090:9090&quot;</span>
-<span class="w">    </span><span class="nt">command</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--config.file=/etc/prometheus/prometheus.yml&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--web.enable-remote-write-receiver&quot;</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./prometheus:/etc/prometheus</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prom_data:/prometheus</span>
-
-<span class="nt">grafana</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana</span>
-<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-grafana</span>
-<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
-<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3000:3000&quot;</span>
-<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SERVER_HTTP_PORT=3000</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_USER=admin</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_SECURITY_ADMIN_PASSWORD=grafana</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GF_FEATURE_TOGGLES_ENABLE=flameGraph traceqlSearch traceQLStreaming correlations metricsSummary traceqlEditor traceToMetrics traceToProfiles</span>
-<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_provisioning:/etc/grafana/provisioning:ro</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./grafana/grafana_dashboards:/etc/dashboards:ro</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="nt">prom_data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<p><strong>Get Docker Compose Directory</strong></p>
+<p>Compose file directory: <a href="https://github.com/gpustack/gpustack/tree/main/docker-compose">docker-compose(GitHub)</a></p>
+<div class="highlight"><pre><span></span><code><span class="nv">LATEST_TAG</span><span class="o">=</span><span class="k">$(</span>
+<span class="w">    </span>curl<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;https://api.github.com/repos/gpustack/gpustack/releases&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;&quot;tag_name&quot;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/.*&quot;tag_name&quot;: &quot;([^&quot;]+)&quot;.*/\1/&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">&#39;rc|beta|alpha|preview&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
+<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Latest stable release: </span><span class="nv">$LATEST_TAG</span><span class="s2">&quot;</span>
+git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_TAG</span><span class="s2">&quot;</span><span class="w"> </span>https://github.com/gpustack/gpustack.git
+<span class="nb">cd</span><span class="w"> </span>gpustack/docker-compose
 </code></pre></div>
 </li>
 <li>
 <p><strong>Edit the Prometheus configuration file <code>prometheus.yml</code></strong>.</p>
-<p>Configure Prometheus to scrape metrics from GPUStack by editing the <code>prometheus.yml</code>, file location: <a href="https://github.com/gpustack/gpustack/blob/main/docker-compose/prometheus/prometheus.yml">prometheus.yaml (GitHub)</a></p>
+<p>Edit <code>prometheus/prometheus.yml</code> to replace <code>&lt;gpustack_server_host&gt;</code> with the actual hostname or IP address of your GPUStack server.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpustack-worker-discovery</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">scrape_interval</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
@@ -4005,6 +3984,11 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">scrape_interval</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">static_configs</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;gpustack_server_host&gt;:10161&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Start the observability stack</strong></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.observability.yaml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 </li>
 </ol>
@@ -4027,7 +4011,7 @@
 <p><strong>Get Current Metrics Config</strong></p>
 </li>
 <li>
-<p>GET <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/config</code></p>
+<p>GET <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/config</code></p>
 </li>
 <li>
 <p>Returns the current metrics mapping configuration in JSON format.</p>
@@ -4036,7 +4020,7 @@
 <p><strong>Update Metrics Config</strong></p>
 </li>
 <li>
-<p>POST <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/config</code></p>
+<p>POST <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/config</code></p>
 </li>
 <li>
 <p>Accepts a JSON payload to update the metrics mapping configuration. Changes take effect immediately for all workers.</p>
@@ -4044,21 +4028,21 @@
 <li>
 <p><strong>Get Default Metrics Config</strong></p>
 </li>
-<li>GET <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/default-config</code></li>
+<li>GET <code>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/default-config</code></li>
 <li>Returns the default metrics mapping configuration in JSON format, useful for reference or resetting.</li>
 </ul>
 <h3 id="example-usage">Example Usage</h3>
 <p><strong>Get current config:</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/config
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/config
 </code></pre></div>
 <p><strong>Update config:</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/config<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/config<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>-d<span class="w"> </span>@custom_metrics_config.json
 </code></pre></div>
 <p><em>(where <code>custom_metrics_config.json</code> is your new config file)</em></p>
 <p><strong>Get default config:</strong></p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v1/metrics/default-config
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;gpustack_server_host&gt;:&lt;gpustack_server_port&gt;/v2/metrics/default-config
 </code></pre></div>
 <blockquote>
 <p><strong>Note</strong>: The configuration should be provided in valid JSON format.</p>
