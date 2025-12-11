@@ -3924,14 +3924,23 @@ docker<span class="w"> </span>volume<span class="w"> </span>inspect<span class="
 <hr />
 <h2 id="managing-gpustack">Managing GPUStack</h2>
 <h3 id="how-do-i-use-gpustack-behind-a-proxy">How do I use GPUStack behind a proxy?</h3>
-<p>Pass environment variables when running GPUStack:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-e<span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span><span class="s2">&quot;http://username:password@proxy-server:port&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-e<span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span><span class="s2">&quot;http://username:password@proxy-server:port&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-e<span class="w"> </span><span class="nv">ALL_PROXY</span><span class="o">=</span><span class="s2">&quot;socks5://username:password@proxy-server:port&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-e<span class="w"> </span><span class="nv">NO_PROXY</span><span class="o">=</span><span class="s2">&quot;localhost,127.0.0.1,192.168.0.0/24,172.16.0.0/16,10.0.0.0/8&quot;</span><span class="w"> </span><span class="se">\</span>
+<p>We recommend passing standard proxy environment variables when running GPUStack.</p>
+<div class="admonition warning">
+<p class="admonition-title"><strong>Important Note on <code>NO_PROXY</code>:</strong></p>
+<p>Some libraries don't support CIDR in the NO_PROXY environment variable. Instead, you should explicitly specify domain suffixes or individual IP addresses.</p>
+</div>
+<p>The following case demonstrates how to configure GPUStack to forward all requests to the target proxy, except for requests to addresses specified in the NO_PROXY environment variable.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>gpustack<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-e<span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span><span class="s2">&quot;http://proxy-server:port&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>...
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Replace the IP address/proxy address accordingly.</li>
+<li>If your proxy requires authentication, use the format <code>http://username:password@proxy-server:port</code>. Be aware that special characters in passwords may need URL encoding.</li>
+</ul>
+</div>
 
 
 
