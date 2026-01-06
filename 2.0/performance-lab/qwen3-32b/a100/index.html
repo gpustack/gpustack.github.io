@@ -3759,7 +3759,7 @@
 <h1 id="optimizing-qwen3-32b-throughput-on-nvidia-a100-gpus">Optimizing Qwen3-32B Throughput on NVIDIA A100 GPUs</h1>
 <h2 id="conclusion">Conclusion</h2>
 <p><a class="glightbox" href="../../../assets/performance-lab/qwen3-32b-a100.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="qwen3-32b-a100" src="../../../assets/performance-lab/qwen3-32b-a100.png" /></a></p>
-<p>Recommended configuration for optimizing throughput of Qwen3-14B on A100 GPUs:</p>
+<p>Recommended configuration for optimizing throughput of Qwen3-32B on A100 GPUs:</p>
 <details class="tip" open="open">
 <summary>Serving Command</summary>
 <div class="highlight"><pre><span></span><code>trtllm-serve<span class="w"> </span>Qwen/Qwen3-32B<span class="w"> </span>--max_seq_len<span class="o">=</span><span class="m">40960</span><span class="w"> </span>--enable_chunked_prefill
@@ -3817,7 +3817,7 @@
 <h3 id="model">Model</h3>
 <p>Qwen3-32B</p>
 <h3 id="hardware">Hardware</h3>
-<p>NVIDIA A100 GPUs</p>
+<p>A single NVIDIA A100 SXM 80GB GPU.</p>
 <h3 id="engine-version">Engine Version</h3>
 <ul>
 <li>vLLM: v0.11.0</li>
